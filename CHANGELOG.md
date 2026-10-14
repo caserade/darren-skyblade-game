@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.4.3 — 2026-10-14 — Monster refinement pass
+
+- **Chomp Rex:** a new grin. The teeth are now chunky cartoon teeth (broad root, rounded tapered tip, convex
+  front) in ivory, shaded darker at the gum. There are fewer and bigger teeth (2 x 18 instead of 2 x 23), tucked behind the lip
+  edge instead of sitting on it, with a wider gap between the lips so they read from across the island. It
+  also gets heavier drumstick thighs, thicker shins, ankles and toes, a tail that curls up at the tip like the
+  concept, and soft ventral plate lines across the belly and throat.
+- **Sky Drake:** thicker upper arms with a bicep, a thicker forearm, bigger hands and fingers, rounder
+  haunches, and darker navy wing bones.
+- **Heavyweight:** darker wing bones.
+- **Distance LOD:** each monster swaps to its 10,000-triangle mesh (with 512 px maps) when the camera is
+  more than about 38 m away. It swaps back under 30 m, so it never flickers at the boundary. Low graphics
+  stays on the light mesh.
+- Deformation check: Chomp Rex's worst stretch during the charge dropped from 77 to 46.
+
 ## 1.4.2 — 2026-10-14 — Monster studio pass (UVs, baked textures, normal maps)
 
 - **UV-unwrapped game meshes** (xatlas) with a **baked 1K colour atlas and 1K tangent-space normal map** per

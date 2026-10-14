@@ -7,7 +7,7 @@
   "creatures": {
     "skydrake": {
       "file": "models/skydrake.glb",
-      "bytes": 2603124,
+      "bytes": 2633080,
       "clips": {
         "idle": {
           "duration": 2.4,
@@ -115,7 +115,7 @@
       },
       "lod1": {
         "file": "models/skydrake_lod1.glb",
-        "bytes": 1488684,
+        "bytes": 1516860,
         "validation": {
           "meshes": 63,
           "skinned": 3,
@@ -143,7 +143,7 @@
     },
     "heavyweight": {
       "file": "models/heavyweight.glb",
-      "bytes": 2514532,
+      "bytes": 2514536,
       "clips": {
         "idle": {
           "duration": 2.4,
@@ -270,7 +270,7 @@
     },
     "chomprex": {
       "file": "models/chomprex.glb",
-      "bytes": 2214880,
+      "bytes": 2269564,
       "clips": {
         "idle": {
           "duration": 2.4,
@@ -340,10 +340,10 @@
         }
       },
       "validation": {
-        "meshes": 80,
+        "meshes": 70,
         "skinned": 1,
         "bones": 29,
-        "triangles": 39928,
+        "triangles": 43840,
         "clips": [
           "idle 2.40s",
           "walk 1.20s",
@@ -362,12 +362,12 @@
       },
       "lod1": {
         "file": "models/chomprex_lod1.glb",
-        "bytes": 1158432,
+        "bytes": 1160924,
         "validation": {
-          "meshes": 80,
+          "meshes": 70,
           "skinned": 1,
           "bones": 29,
-          "triangles": 19928,
+          "triangles": 23840,
           "clips": [
             "idle 2.40s",
             "walk 1.20s",

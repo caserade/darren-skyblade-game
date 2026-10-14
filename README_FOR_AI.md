@@ -246,6 +246,10 @@ guns / bows / mortars, `shot`. Optional model: a `buildX()` in `src/weapons.js` 
   `clearance()` in `tools/sculpt_lib.py` checks that arms and hands are not fused to the body.
 * Textures: `tools/sculpt_cast.py` UV-unwraps each mesh (xatlas) and bakes a colour atlas and a normal map from the
   sculpt (`bake()` in `tools/sculpt_lib.py`; scale size per monster is `SCALES`, texture sizes `TEX`).
+* LOD: each monster has a 30,000-triangle mesh and a 10,000-triangle `lod1`. `castLod()` in `src/cast.js` swaps
+  to lod1 past 38 m and back under 30 m. Low graphics always uses lod1.
+* Chomp Rex's teeth are separate meshes (`castToothGeo()`), placed on the lip edges from `grin_teeth()` in
+  `tools/sculpt_cast.py`, which sets the count, size and inset.
 * To change a body: edit its function in `tools/sculpt_cast.py`, run `python3 tools/sculpt_cast.py <type>`,
   then `node tests/cast_export.js` to refresh the `.glb`.
 

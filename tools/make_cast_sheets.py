@@ -46,9 +46,9 @@ h2 {{ font: 400 36px Lil; margin: 26px 0 12px; }} h2 span {{ font: 600 17px Nun;
 .foot {{ margin-top: 24px; color: #8a948f; font-size: 18px; display: flex; justify-content: space-between; }}
 </style><h1>{title}</h1><p class="sub">{sub}</p>
 <h2>Approved concept <span>design authority</span></h2><img class="ref" src="{(OUT / f'concept_{t}.jpg').as_uri()}">
-<h2>In-game model <span>sculpted, skinned, vertex-painted · {stats}</span></h2><div class="g">{views}</div>{extra}
+<h2>In-game model <span>sculpted, skinned, UV-mapped with baked colour + normal maps · {stats}</span></h2><div class="g">{views}</div>{extra}
 <h2>Key poses <span>baked into models/{t}.glb</span></h2><div class="g g3">{''.join(card(n, c) for n, c in poses)}</div>
-<div class="foot"><span>Rendered from the real in-game model (three.js r128)</span><span>Darren: Skyblade Hunt 1.4</span></div>'''
+<div class="foot"><span>Rendered from the real in-game model (three.js r128)</span><span>Darren: Skyblade Hunt 1.4.3</span></div>'''
     page = SH / f'sheet_{t}.html'
     page.write_text(html, encoding='utf-8')
     out = OUT / f'{t}_model_sheet.png'

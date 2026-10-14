@@ -193,22 +193,34 @@ function castZigzag(pts, r0, r1, rad) {
   g.computeVertexNormals();
   return g;
 }
-// a unit box with rounded edges (teeth)
-let CAST_RBOX = null;
-function castRoundBox() {
-  if (CAST_RBOX) return CAST_RBOX;
-  const g = new T.BoxGeometry(1, 1, 1, 3, 3, 2),
+// a chunky cartoon tooth: broad rounded root, slightly tapered and rounded biting edge, convex front.
+// dir -1 hangs down (upper row), +1 points up (lower row). Vertex colours shade the root towards the gum.
+const CAST_TOOTH = {};
+function castToothGeo(dir) {
+  if (CAST_TOOTH[dir]) return CAST_TOOTH[dir];
+  const g = new T.BoxGeometry(1, 1, 1, 4, 6, 3),
     p = g.attributes.position,
     v = new T.Vector3(),
-    s = new T.Vector3();
+    s = new T.Vector3(),
+    col = new Float32Array(p.count * 3),
+    root = new T.Color('#c9ad7a').convertSRGBToLinear(),
+    tip = new T.Color('#f6ead0').convertSRGBToLinear(),
+    c = new T.Color();
   for (let i = 0; i < p.count; i++) {
     v.fromBufferAttribute(p, i);
+    const a = 0.5 - v.y * dir; // 0 at the root, 1 at the biting edge
+    v.x *= 1 - 0.16 * a * a;
+    v.z *= 1 - 0.22 * a;
     s.copy(v).normalize().multiplyScalar(0.62);
-    v.lerp(s, 0.45);
+    v.lerp(s, 0.32 + 0.3 * a * a); // rounder towards the tip
+    v.z += 0.12 * (1 - 4 * v.x * v.x) * (v.z > 0 ? 1 : 0); // convex front face
     p.setXYZ(i, v.x, v.y, v.z);
+    c.copy(root).lerp(tip, Math.min(1, 0.25 + a * 1.4));
+    col.set([c.r, c.g, c.b], i * 3);
   }
+  g.setAttribute('color', new T.BufferAttribute(col, 3));
   g.computeVertexNormals();
-  return (CAST_RBOX = g);
+  return (CAST_TOOTH[dir] = g);
 }
 // bat wings: one skinned membrane per side on the same skeleton, plus bony arms and fingers
 const WING_SPEC = {
@@ -353,7 +365,8 @@ function buildCastModel(type, opts) {
     body = new T.Group();
   body.add(mesh);
   root.add(body);
-  const D = { type, root, body, mesh, B, BW, U, skeleton, eyes: [], lids: [], wingMeshes: [], shell: new T.Object3D(), rot: {} };
+  const D = { type, root, body, mesh, B, BW, U, skeleton, eyes: [], lids: [], wingMeshes: [], shell: new T.Object3D(), rot: {}, lod, lodFixed: opts && opts.lod !== undefined };
+  D.lodSet = { [lod]: { geo, mat: mesh.material } };
   const A = M.anchors,
     at = (bone, p) => {
       const g = new T.Group(),
@@ -454,10 +467,10 @@ function buildCastModel(type, opts) {
   if (type === 'chomprex') {
     // two even rows of big rounded teeth around the lips that meet in a clenched grin
     // (positions, widths and heights come from the sculpt script, so they sit exactly on the lip planes)
-    const tg = castRoundBox();
+    const rexToothM = new T.MeshPhysicalMaterial({ color: 0xffffff, vertexColors: true, roughness: 0.38, clearcoat: 0.4, clearcoatRoughness: 0.35, envMapIntensity: 0.5 });
     for (const [row, bone, dir] of [[A.teethUp, 'head', -1], [A.teethLo, 'jaw', 1]])
       for (const tt of row || []) {
-        const t = new T.Mesh(tg, toothM),
+        const t = new T.Mesh(castToothGeo(dir), rexToothM),
           tx = -tt.d[2],
           tz = tt.d[0];
         t.scale.set(tt.w, tt.h, 0.075);
@@ -1332,9 +1345,27 @@ function castClipNow(e) {
   if (e.flinchT > 0 && (e.clip === 'idle' || e.clip === 'walk' || e.clip === 'heavyWalk')) return 'hit';
   return e.clip;
 }
+// distance LOD: the 30k-triangle mesh close up, the 10k one (with 512 maps) past ~34 m; Low graphics stays on lod1
+function castLod(D) {
+  if (D.lodFixed) return;
+  const dx = camera.position.x - D.root.position.x,
+    dz = camera.position.z - D.root.position.z,
+    d2 = dx * dx + dz * dz;
+  const want = SETTINGS.gfx === 'low' ? 1 : D.lod === 0 ? (d2 > 38 * 38 ? 1 : 0) : d2 < 30 * 30 ? 0 : 1; // hysteresis
+  if (want === D.lod) return;
+  let L = D.lodSet[want];
+  if (!L) {
+    const geo = castGeometry(D.type, want);
+    L = D.lodSet[want] = { geo, mat: castMaterial(D.U, geo.userData.tex) };
+  }
+  D.mesh.geometry = L.geo;
+  D.mesh.material = L.mat;
+  D.lod = want;
+}
 function castAnimate(e, dt) {
   const M = e.m,
     c = e.c;
+  castLod(M);
   e.flinchT = Math.max(0, (e.flinchT || 0) - dt);
   M.root.position.set(e.x, e.y, e.z);
   M.root.rotation.y = e.face;

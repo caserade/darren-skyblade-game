@@ -110,19 +110,20 @@ def skydrake():
             Part('cheek' + side, ellipsoid((s * 0.21, 4.33, 0.52), (0.13, 0.13, 0.17)), ['head'], 0.08, 'head'),
             Part('jawhinge' + side, ellipsoid((s * 0.2, 4.25, 0.42), (0.1, 0.12, 0.12)), ['jaw', 'head'], 0.06, 'head'),
             Part('shoulder' + side, ellipsoid((s * 0.55, 2.62, 0.1), (0.24, 0.24, 0.24)), ['chest', 'arm' + side], 0.12, 'torso'),
-            Part('thigh' + side, ellipsoid((s * 0.7, 1.22, -0.02), (0.53, 0.66, 0.58)), ['thigh' + side], 0.18, 'thigh'),
+            Part('thigh' + side, ellipsoid((s * 0.72, 1.22, -0.04), (0.6, 0.72, 0.64)), ['thigh' + side], 0.18, 'thigh'),
             Part('knee' + side, sphere((s * 0.72, 0.86, 0.14), 0.24), ['thigh' + side, 'shin' + side], 0.1, 'leg'),
             Part('shin' + side, roundcone((s * 0.72, 0.86, 0.1), (s * 0.72, 0.36, -0.32), 0.25, 0.16), ['shin' + side], 0.08, 'leg'),
             Part('foot' + side, roundcone((s * 0.72, 0.36, -0.32), (s * 0.72, 0.11, 0.12), 0.15, 0.14), ['ankle' + side], 0.07, 'leg'),
-            Part('uarm' + side, roundcone((s * 0.6, 2.6, 0.12), (s * 1.12, 2.15, 0.2), 0.19, 0.14), ['arm' + side], 0.1, 'arm'),
+            Part('uarm' + side, roundcone((s * 0.6, 2.6, 0.12), (s * 1.12, 2.15, 0.2), 0.23, 0.155), ['arm' + side], 0.1, 'arm'),
+            Part('bicepA' + side, ellipsoid((s * 0.85, 2.42, 0.18), (0.17, 0.2, 0.17)), ['arm' + side], 0.08, 'arm'),
             Part('elbow' + side, sphere((s * 1.13, 2.15, 0.19), 0.14), ['arm' + side, 'forearm' + side], 0.05, 'farm'),
-            Part('farm' + side, roundcone((s * 1.12, 2.15, 0.2), (s * 1.18, 1.86, 0.62), 0.135, 0.1), ['forearm' + side], 0.05, 'farm'),
-            Part('hand' + side, ellipsoid((s * 1.2, 1.8, 0.66), (0.12, 0.1, 0.11)), ['hand' + side], 0.04, 'hand'),
+            Part('farm' + side, roundcone((s * 1.12, 2.15, 0.2), (s * 1.18, 1.86, 0.62), 0.16, 0.115), ['forearm' + side], 0.05, 'farm'),
+            Part('hand' + side, ellipsoid((s * 1.2, 1.8, 0.67), (0.14, 0.115, 0.13)), ['hand' + side], 0.04, 'hand'),
         ]
         for ox in (-0.17, -0.055, 0.06, 0.17):
             P.append(Part('toe' + side, roundcone((s * 0.72 + ox * 0.6, 0.11, 0.14), (s * 0.72 + s * ox * 1.1 if False else s * 0.72 + ox * 1.25, 0.07, 0.5), 0.075, 0.05), ['toe' + side], 0.04, 'toe'))
         for fx in (-0.06, 0.0, 0.06):
-            P.append(Part('finger' + side, roundcone((s * (1.2 + fx), 1.77, 0.71), (s * (1.2 + fx * 1.5), 1.56, 0.87), 0.045, 0.03), ['hand' + side], 0.02, 'finger'))
+            P.append(Part('finger' + side, roundcone((s * (1.2 + fx * 1.2), 1.77, 0.72), (s * (1.2 + fx * 1.6), 1.56, 0.88), 0.052, 0.036), ['hand' + side], 0.02, 'finger'))
     P.append(Part('tail', chain(tail, [0.5, 0.37, 0.25, 0.15, 0.08, 0.05]), ['tail1', 'tail2', 'tail3', 'tail4', 'tail5', 'tail6'], 0.25, 'tail'))
     tip_dir = math.atan2(0.3, -0.45)
     def arrow(p):  # flat diamond at the tail tip, turned to follow the tail
@@ -132,7 +133,7 @@ def skydrake():
         d2 = (np.abs(x) / 0.21 + np.abs(z) / 0.34) - 1.0
         return smax(d2 * 0.18, np.abs(q[..., 1]) - 0.045, 0.03)
     P.append(Part('arrow', arrow, ['tail6'], 0.04, 'tail'))
-    C = Creature('skydrake', P, bones, (-1.55, -0.2, -4.5), (1.8, 4.95, 1.62), 0.019, LOD[0])
+    C = Creature('skydrake', P, bones, (-1.6, -0.2, -4.5), (1.85, 4.95, 1.62), 0.019, LOD[0])
     def detail(p):
         x, y, z = p[..., 0], p[..., 1], p[..., 2]
         ph = np.abs(((y + 0.18 * x * x) % 0.21) - 0.105)
@@ -328,21 +329,21 @@ def heavyweight():
 # =========================================================================== C: Chomp Rex / Grin
 # Chomp Rex head wedges: (z0, z1, half-width back, front, bottom back, front, top back, front, rounding)
 RX_UP = (1.72, 3.06, 0.43, 0.31, 3.4, 3.4, 4.0, 3.8, 0.14)
-RX_LO = (1.7, 2.96, 0.41, 0.29, 2.92, 3.02, 3.24, 3.24, 0.12)
+RX_LO = (1.7, 2.96, 0.41, 0.29, 2.9, 2.98, 3.18, 3.18, 0.12)
 
 def grin_teeth():
     """exact tooth positions around the lip outline of the two wedges (sides and front), evenly spaced"""
     rows = {}
-    for name, W, y, inset in (('teethUp', RX_UP, RX_UP[4], 0.075), ('teethLo', RX_LO, RX_LO[6], 0.11)):
+    for name, W, y, inset in (('teethUp', RX_UP, RX_UP[4], 0.13), ('teethLo', RX_LO, RX_LO[6], 0.155)):
         z0, z1, w0, w1 = W[0], W[1], W[2], W[3]
         hw = lambda z: w0 + (w1 - w0) * (z - z0) / (z1 - z0) - inset
         zf = z1 - inset - 0.03
         path = []
-        for z in np.linspace(1.98, zf, 9):
+        for z in np.linspace(1.98, zf, 7):
             path.append((-hw(z), z))
-        for x in np.linspace(-hw(zf), hw(zf), 7)[1:-1]:
+        for x in np.linspace(-hw(zf), hw(zf), 6)[1:-1]:
             path.append((x, zf + 0.02 * (1 - (x / hw(zf)) ** 2)))
-        for z in np.linspace(zf, 1.98, 9):
+        for z in np.linspace(zf, 1.98, 7):
             path.append((hw(z), z))
         out = []
         for i, (x, z) in enumerate(path):
@@ -351,12 +352,14 @@ def grin_teeth():
             l = math.hypot(tx, tz) or 1
             nx, nz = tz / l, -tx / l  # outward normal (path runs clockwise seen from above)
             front = 1 - min(1, abs(x) / 0.25) if z > zf - 0.05 else 0
-            out.append(dict(p=r5((x, y, z)), d=r5((nx, 0, nz)), w=round(min(0.11, l * 0.46), 3), h=round(0.105 + 0.02 * front, 3)))
+            k = min(1.0, max(0.0, (z - 1.98) / (zf - 1.98)))  # 0 at the mouth corners, 1 at the front
+            h = (0.112 + 0.04 * k + 0.012 * front) if name == 'teethUp' else (0.1 + 0.035 * k + 0.008 * front)
+            out.append(dict(p=r5((x, y, z)), d=r5((nx, 0, nz)), w=round(min(0.14, l * 0.47), 3), h=round(float(h), 3)))
         rows[name] = out
     return rows
 
 def chomprex():
-    tail = [(0, 2.35, -0.9), (0, 2.22, -2.0), (0, 2.08, -3.0), (0, 2.02, -3.8), (0, 2.12, -4.4), (0, 2.3, -4.8)]
+    tail = [(0, 2.35, -0.9), (0, 2.22, -2.0), (0, 2.08, -3.0), (0, 2.04, -3.8), (0, 2.2, -4.38), (0, 2.58, -4.72)]  # curls up at the tip
     bones = [
         ('root', None, (0, 0, 0)), ('hips', 'root', (0, 2.1, -0.35)), ('spine', 'hips', (0, 2.45, 0.45)),
         ('chest', 'spine', (0, 2.72, 1.05)), ('neck', 'chest', (0, 3.0, 1.35)), ('head', 'neck', (0, 3.6, 1.68), (0, 3.7, 3.05)),
@@ -382,24 +385,24 @@ def chomprex():
     ]
     for s, side in LR:
         P += [
-            Part('haunch' + side, ellipsoid((s * 0.56, 2.05, -0.3), (0.52, 0.86, 0.78)), ['thigh' + side], 0.25, 'thigh'),
-            Part('shin' + side, roundcone((s * 0.62, 1.55, -0.38), (s * 0.64, 0.76, -0.72), 0.33, 0.18), ['thigh' + side, 'shin' + side], 0.12, 'leg'),
-            Part('meta' + side, roundcone((s * 0.64, 0.76, -0.72), (s * 0.64, 0.17, -0.32), 0.17, 0.14), ['ankle' + side], 0.08, 'leg'),
+            Part('haunch' + side, ellipsoid((s * 0.6, 2.0, -0.3), (0.6, 0.94, 0.86)), ['thigh' + side], 0.25, 'thigh'),
+            Part('shin' + side, roundcone((s * 0.62, 1.55, -0.38), (s * 0.64, 0.76, -0.72), 0.42, 0.27), ['thigh' + side, 'shin' + side], 0.12, 'leg'),
+            Part('meta' + side, roundcone((s * 0.64, 0.76, -0.72), (s * 0.64, 0.17, -0.32), 0.25, 0.2), ['ankle' + side], 0.08, 'leg'),
             Part('browIn' + side, ellipsoid((s * 0.19, 4.02, 2.24), (0.14, 0.07, 0.19), tilt=0.25), ['brow' + side], 0.06, 'brow'),
             Part('browOut' + side, ellipsoid((s * 0.37, 4.07, 2.04), (0.14, 0.07, 0.2), tilt=0.4), ['brow' + side], 0.06, 'brow'),
             # cheeks bridge the jaw hinge so the corners of the grin are closed
             Part('cheek' + side, ellipsoid((s * 0.42, 3.36, 1.8), (0.19, 0.28, 0.26)), ['head', 'jaw'], 0.1, 'head'),
-            Part('uarm' + side, roundcone((s * 0.55, 2.62, 1.38), (s * 0.74, 2.42, 1.7), 0.13, 0.1), ['arm' + side], 0.06, 'arm'),
-            Part('farm' + side, roundcone((s * 0.74, 2.42, 1.7), (s * 0.72, 2.3, 1.98), 0.1, 0.08), ['forearm' + side], 0.04, 'farm'),
+            Part('uarm' + side, roundcone((s * 0.55, 2.62, 1.38), (s * 0.74, 2.42, 1.7), 0.15, 0.115), ['arm' + side], 0.06, 'arm'),
+            Part('farm' + side, roundcone((s * 0.74, 2.42, 1.7), (s * 0.72, 2.3, 1.98), 0.115, 0.09), ['forearm' + side], 0.04, 'farm'),
             Part('hand' + side, sphere((s * 0.72, 2.28, 2.01), 0.075), ['hand' + side], 0.03, 'hand'),
         ]
         for ox in (-0.15, 0.0, 0.15):
-            P.append(Part('toe' + side, roundcone((s * 0.64 + ox * 0.6, 0.16, -0.28), (s * 0.64 + ox * 1.8, 0.085, 0.26), 0.11, 0.075), ['toe' + side], 0.04, 'toe'))
+            P.append(Part('toe' + side, roundcone((s * 0.64 + ox * 0.6, 0.16, -0.28), (s * 0.64 + ox * 1.8, 0.09, 0.28), 0.125, 0.085), ['toe' + side], 0.04, 'toe'))
         for fx in (-0.035, 0.035):
             P.append(Part('finger' + side, roundcone((s * (0.72 + fx), 2.26, 2.05), (s * (0.72 + fx), 2.13, 2.14), 0.03, 0.02), ['hand' + side], 0.015, 'finger'))
     C = Creature('chomprex', P, bones, (-1.25, -0.2, -5.0), (1.25, 4.45, 3.5), 0.019, LOD[0])
     ym = lambda z: 3.32 + 0 * z
-    C.jaw_split = lambda v: sstep(3.35, 3.29, v[:, 1]) * sstep(1.5, 1.72, v[:, 2]) * sstep(2.7, 2.85, v[:, 1])
+    C.jaw_split = lambda v: sstep(3.33, 3.25, v[:, 1]) * sstep(1.5, 1.72, v[:, 2]) * sstep(2.7, 2.85, v[:, 1])
     base = lambda p: C.sdf(p, False)
     anch = {}
     # the grin: upper-lip and lower-lip edges around the snout, front and sides
@@ -418,7 +421,7 @@ def chomprex():
     claws = []
     for s, side in LR:
         for ox in (-0.15, 0.0, 0.15):
-            claws.append(claw(base, (s * 0.64 + ox * 1.8, 0.085, 0.26), (s * ox * 0.6, -0.3, 1), 0.2, 'toe' + side))
+            claws.append(claw(base, (s * 0.64 + ox * 1.8, 0.09, 0.28), (s * ox * 0.6, -0.3, 1), 0.2, 'toe' + side))
         for fx in (-0.035, 0.035):
             claws.append(claw(base, (s * (0.72 + fx), 2.13, 2.14), (0, -1, 0.6), 0.06, 'hand' + side))
     anch['claws'] = claws
@@ -427,7 +430,7 @@ def chomprex():
         C.parts.append(Part('socket', sphere(anch['eye' + side], 0.085), [], 0.03, sub=True))
         C.parts.append(Part('nostril', sphere(np.array(anch['nose']) + np.array((s * 0.13, 0.02, -0.02)), 0.04), [], 0.015, sub=True))
     # dark throat at the back of the grin so the gap reads as a mouth
-    C.parts.append(Part('throat', ellipsoid((0, 3.32, 2.1), (0.3, 0.05, 0.5)), [], 0.03, sub=True))
+    C.parts.append(Part('throat', ellipsoid((0, 3.29, 2.1), (0.3, 0.08, 0.5)), [], 0.03, sub=True))
     def paint(v, N, gw):
         x, y, z = v[:, 0], v[:, 1], v[:, 2]
         Cc = np.tile(hexc('#6b3560'), (len(v), 1))
@@ -437,13 +440,16 @@ def chomprex():
         ven += gw.get('tail', 0) * sstep(-0.15, -0.6, N[:, 1])
         ven = np.clip(ven, 0, 1)
         Cc = mix(Cc, '#d9a24c', ven)
+        # soft ventral plate lines across the belly and throat
+        band = sstep(0.86, 0.97, np.cos((y - 0.35 * z) * (2 * np.pi / 0.21))) * sstep(0.6, 0.95, ven) * (y < 3.0)
+        Cc = mix(Cc, '#b07a36', band * 0.55)
         # big round spots, like the concept
         nz = np.sin(x * 7 + 0.7) * np.sin(y * 6.5 + 0.2) * np.sin(z * 7.5 + 1.6) + 0.25 * np.sin(x * 17 + y * 13 + z * 5)
         Cc = mix(Cc, '#3f1a3a', sstep(0.5, 0.58, nz) * (1 - ven) * (1 - gw.get('toe', 0)) * 0.85)
         Cc = mix(Cc, '#221a22', gw.get('toe', 0) * sstep(0.12, 0.2, z) + gw.get('finger', 0) * sstep(2.18, 2.14, y))
         Cc = mix(Cc, '#55284d', gw.get('brow', 0) * 0.6)
         # gums and the inside of the grin
-        inner = (np.abs(y - 3.32) < 0.12) * (z > 1.6) * ((gw.get('head', 0) * (N[:, 1] < -0.55)) + (gw.get('jaw', 0) * (N[:, 1] > 0.55)))
+        inner = (np.abs(y - 3.29) < 0.14) * (z > 1.6) * ((gw.get('head', 0) * (N[:, 1] < -0.55)) + (gw.get('jaw', 0) * (N[:, 1] > 0.55)))
         Cc = mix(Cc, '#5a1a2c', np.clip(inner, 0, 1))
         return Cc, ven
     def masks(v, N, gw):
