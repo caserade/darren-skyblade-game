@@ -28,7 +28,9 @@ for t, (title, sub, poses) in INFO.items():
             card(n, c) for n, c in (('34', 'Stage 1'), ('stage4', 'Stage 4'), ('stage7', 'Stage 7 (limit)'))) + '</div>'
     m = man['creatures'].get(t, {})
     v = m.get('validation', {})
-    stats = (f"{v.get('triangles', '?')} triangles · {v.get('bones', '?')} bones · {len(v.get('clips', []))} clips · "
+    l1 = m.get('lod1', {}).get('validation', {})
+    stats = (f"{v.get('triangles', '?')} triangles (LOD1 {l1.get('triangles', '?')}) · {v.get('bones', '?')} bones · "
+             f"{len(v.get('clips', []))} clips · max {v.get('maxInfluences', 4)} weights per vertex · "
              f"{round(m.get('bytes', 0) / 1024)} KB .glb") if v else ''
     html = f'''<!doctype html><meta charset="utf-8"><style>
 @font-face {{ font-family: Lil; src: url({F}/lilita-one-latin-400-normal.woff2); }}

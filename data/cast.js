@@ -41,7 +41,7 @@
       speed: 3.4,
       flyHeight: 6.5,
       respawn: 240,
-      colors: { body: '#3447b4', lid: '#2c3c9c', eye: '#ffd23a', horn: '#e0a92a', wing: '#5cc8f0', bone: '#2f43a8', spine: '#1f2a6b', fang: '#fff6e6' },
+      colors: { body: '#3447b4', lid: '#24318c', eye: '#ffd23a', horn: '#e0a92a', wing: '#5cc8f0', bone: '#2f43a8', spine: '#1f2a6b', fang: '#fff6e6' },
       attacks: {
         swoop: { wind: 0.9, dmg: 34, r: 3.2 },
         tail: { wind: 0.7, dmg: 24, r: 4.4, rec: 0.9 },
@@ -69,7 +69,7 @@
       aggro: 20,
       speed: 2.3,
       respawn: 240,
-      colors: { body: '#2e6694', lid: '#285a84', eye: '#ffc23a', horn: '#c99a4a', wing: '#4f86b4', bone: '#285a84', spine: '#1d3260', fang: '#fff3dc' },
+      colors: { body: '#2e6694', lid: '#1f4a72', eye: '#ffc23a', horn: '#c99a4a', wing: '#4f86b4', bone: '#285a84', spine: '#1d3260', fang: '#fff3dc' },
       attacks: {
         stomp: { wind: 1.1, dmg: 38, r: 3.2, ring: 26, rec: 1.9 },
         slam: { wind: 0.6, dmg: 28, r: 2.6, rec: 1.1 }, // close-range belly slam
@@ -95,7 +95,7 @@
       aggro: 22,
       speed: 4.2,
       respawn: 240,
-      colors: { body: '#6b3560', lid: '#5b2c52', eye: '#f2c84a', spine: '#2a1f2a', tooth: '#fff6e0' },
+      colors: { body: '#6b3560', lid: '#4a2244', eye: '#f2c84a', spine: '#2a1f2a', tooth: '#fff6e0' },
       attacks: {
         charge: { wind: 0.8, dmg: 36, speed: 15, time: 1.0, rec: 1.2 },
         bite: { wind: 0.45, dmg: 30, r: 3.4, rec: 0.8 },

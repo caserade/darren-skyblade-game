@@ -1128,8 +1128,8 @@ function animDumpling(rdt) {
   B.footR.rotation.x = -Math.max(0, -Math.sin(ph)) * 0.4 * amp;
   D.body.position.y = Math.abs(Math.sin(ph)) * 0.06 * amp;
   // arms rest on top of the belly: they ride further out and forward as he gets rounder
-  const armOut = 0.08 + w * 0.7 + DUMP.full * 0.22,
-    armFwd = -(w * 0.55 + DUMP.full * 0.22);
+  const armOut = 0.08 + w * 0.95 + DUMP.full * 0.25,
+    armFwd = -(w * 0.72 + DUMP.full * 0.25);
   let aSw = Math.sin(ph) * 0.25 * amp;
   B.armL.rotation.set(armFwd + aSw, 0, armOut);
   B.armR.rotation.set(armFwd - aSw, 0, -armOut);

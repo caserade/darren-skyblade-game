@@ -19,10 +19,10 @@ const ROOT = path.join(__dirname, '..');
   await p.addScriptTag({ path: path.join(ROOT, 'node_modules/three/examples/js/exporters/GLTFExporter.js') });
   fs.mkdirSync(path.join(ROOT, 'models'), { recursive: true });
   const manifest = { format: 'glTF 2.0 binary', up: '+Y', forward: '+Z (the creature faces +Z)', units: 'metres, scale 1', fps: 30, creatures: {} };
-  for (const type of ['skydrake', 'heavyweight', 'chomprex']) {
-    const out = await p.evaluate(async type => {
+  for (const [type, lod] of ['skydrake', 'heavyweight', 'chomprex'].flatMap(t => [[t, 0], [t, 1]])) {
+    const out = await p.evaluate(async ([type, lod]) => {
       const T = THREE,
-        D = buildCastModel(type),
+        D = buildCastModel(type, { lod }),
         clips = [],
         info = {};
       D.root.name = type;
@@ -108,11 +108,13 @@ const ROOT = path.join(__dirname, '..');
         info,
         check: { meshes, skinned, bones, triangles: Math.round(tris), clips: gl.animations.map(a => a.name + ' ' + a.duration.toFixed(2) + 's'), maxInfluences: maxInf },
       };
-    }, type);
-    const file = path.join(ROOT, 'models', type + '.glb');
+    }, [type, lod]);
+    const name = type + (lod ? '_lod1' : '');
+    const file = path.join(ROOT, 'models', name + '.glb');
     fs.writeFileSync(file, Buffer.from(out.b64, 'base64'));
-    manifest.creatures[type] = { file: 'models/' + type + '.glb', bytes: fs.statSync(file).size, clips: out.info, validation: out.check };
-    console.log(type, (fs.statSync(file).size / 1024).toFixed(0) + ' KB', JSON.stringify(out.check));
+    if (!lod) manifest.creatures[type] = { file: 'models/' + type + '.glb', bytes: fs.statSync(file).size, clips: out.info, validation: out.check };
+    else Object.assign(manifest.creatures[type], { lod1: { file: 'models/' + name + '.glb', bytes: fs.statSync(file).size, validation: out.check } });
+    console.log(name, (fs.statSync(file).size / 1024).toFixed(0) + ' KB', JSON.stringify(out.check));
   }
   fs.writeFileSync(path.join(ROOT, 'models', 'cast_animations.json'), JSON.stringify(manifest, null, 2));
   console.log(errs.length ? errs.join('\n') : 'no errors');

@@ -16,7 +16,7 @@ import bpy
 HERE = os.path.dirname(os.path.abspath(__file__))
 MODELS = os.path.join(HERE, '..', 'models')
 
-for name in ('skydrake', 'heavyweight', 'chomprex'):
+for name in ('skydrake', 'heavyweight', 'chomprex', 'skydrake_lod1', 'heavyweight_lod1', 'chomprex_lod1'):
     src = os.path.join(MODELS, name + '.glb')
     if not os.path.exists(src):
         print('missing', src)

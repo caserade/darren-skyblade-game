@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.4.1 — 2026-10-14 — Monster model pass (mesh, rig, weights)
+
+- **Meshes:** sculpted on a grid about 2.5 times finer (19 mm instead of 26 mm), 36,000 triangles each, plus a
+  light 11,000-triangle LOD that Low graphics uses. Feet stand exactly on the ground. Ambient occlusion is
+  baked into the vertex colours.
+- **Anatomy closer to the concept sheets:** Sky Drake gets a thicker S-neck with four neck bones, a split angry
+  brow, knees, four toes and three fingers. Heavyweight gets deltoids, biceps, forearm bulk, a jutting underbite
+  with tusks and deeper belly folds. Chomp Rex gets a new angular wedge head with flat lip planes and a
+  clenched grin of 2 x 23 evenly spaced teeth.
+- **Real claws** on every toe and finger, angular zigzag horns on the Sky Drake, and lids that match the skin.
+- **Rig:** new brow bones (angry by default, furrowed on every wind-up), a belly bone for secondary motion, more
+  tail bones (6 / 5 / 5), toe bones on the Heavyweight.
+- **Weight paint:** found and fixed arms that were fused to the belly and thighs in the sculpt (an automatic
+  clearance check now guards it). Weights are relaxed over the surface in the blend zones, pruned below 5% and
+  capped at 4 per vertex, and the jaw gets an exact split along the mouth line so opening it never drags the
+  upper lip. A new deformation check (`tests/cast_deform.js`) poses every clip and measures triangle stretch.
+- Heavier weight stages push the Stormbellies' arms outward so the belly never swallows them (Dumpling too).
+- `models/` now has both LODs as rigged, animated `.glb` files.
+
 ## 1.4.0 — 2026-10-14 — Dumpling, the big monsters of Cloud Utopia, and weight stages
 
 ### Dumpling, the chubby cloud drake

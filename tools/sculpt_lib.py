@@ -92,6 +92,7 @@ class Creature:
     def __init__(self, name, parts, bones, lo, hi, step, tris):
         self.name, self.parts, self.bones, self.lo, self.hi, self.step, self.tris = name, parts, bones, np.array(lo), np.array(hi), step, tris
         self.detail = None  # optional f(p) -> extra distance (grooves); positive cuts in
+        self.jaw_split = None  # optional f(v) -> 0..1, how much a head vertex follows the jaw
 
     def sdf(self, p, with_detail=True):
         d = None
@@ -138,7 +139,17 @@ def adjacency(n, faces):
     A.data[:] = 1
     return sparse.diags(1 / np.maximum(np.asarray(A.sum(1)).ravel(), 1)) @ A
 
+def reproject(C, v, iters=2, k=0.85):
+    """pull vertices back onto the true surface (keeps grooves, lips and plates crisp)"""
+    eps = 1e-3
+    for it in range(iters):
+        d = C.sdf(v)
+        g = norm(np.stack([(C.sdf(v + dv) - C.sdf(v - dv)) / (2 * eps) for dv in np.eye(3) * eps], -1))
+        v = v - g * d[:, None] * k
+    return v
+
 def mesh(C, log=print):
+    """marching cubes on a fine grid, Taubin smoothing, back onto the surface. Returns the full-res mesh."""
     lo, hi, st = C.lo, C.hi, C.step
     xs = np.arange(lo[0], hi[0] + st, st); ys = np.arange(lo[1], hi[1] + st, st); zs = np.arange(lo[2], hi[2] + st, st)
     YZ = np.stack(np.meshgrid(ys, zs, indexing='ij'), -1)
@@ -154,22 +165,46 @@ def mesh(C, log=print):
     log('  raw', len(verts), 'verts')
     W = adjacency(len(verts), faces)
     v = verts.copy()
-    for it in range(12):
+    for it in range(10):
         v = v + 0.55 * (W @ v - v)
         v = v - 0.58 * (W @ v - v)
-    for it in range(2):  # pull back onto the true surface (keeps grooves crisp)
-        d = C.sdf(v)
-        eps = 1e-3
-        g = norm(np.stack([(C.sdf(v + dv) - C.sdf(v - dv)) / (2 * eps) for dv in np.eye(3) * eps], -1))
-        v = v - g * d[:, None] * 0.8
+    return reproject(C, v), faces
+
+def decimate(C, v, faces, tris, log=print):
+    """quadric decimation (keeps detail where the surface bends), then a light relax + reproject"""
     import pyfqmr
     s = pyfqmr.Simplify()
     s.setMesh(v, faces)
-    s.simplify_mesh(target_count=C.tris, aggressiveness=5, preserve_border=True, verbose=0)
-    v, faces, _ = s.getMesh()
-    v = v.astype(np.float64); faces = faces.astype(np.int64)
-    log('  decimated', len(v), 'verts', len(faces), 'tris')
-    return v, faces
+    s.simplify_mesh(target_count=tris, aggressiveness=6, preserve_border=True, verbose=0)
+    v2, f2, _ = s.getMesh()
+    v2 = v2.astype(np.float64); f2 = f2.astype(np.int64)
+    # drop degenerate / sliver triangles left by decimation
+    a = length(np.cross(v2[f2[:, 1]] - v2[f2[:, 0]], v2[f2[:, 2]] - v2[f2[:, 0]]))
+    f2 = f2[a > 1e-10]
+    W = adjacency(len(v2), f2)
+    for it in range(2):
+        v2 = v2 + 0.4 * (W @ v2 - v2)
+        v2 = v2 - 0.42 * (W @ v2 - v2)
+    v2 = reproject(C, v2)
+    log('  decimated', len(v2), 'verts', len(f2), 'tris')
+    return v2, f2
+
+def bake_ao(C, v, N, dists=(0.025, 0.06, 0.12, 0.22, 0.38)):
+    """ambient occlusion from the distance field: how much the surface around each vertex closes in"""
+    occ = np.zeros(len(v))
+    for i, d in enumerate(dists):
+        occ += np.clip((d - C.sdf(v + N * d)) / d, 0, 1) * (0.62 ** i)
+    return np.clip(1 - occ * 0.62, 0.3, 1)
+
+def shift_y(obj, dy):
+    """move every [x, y, z] in an anchor tree up by dy"""
+    if isinstance(obj, dict):  # directions (n, d, ...N) are not moved
+        return {k: (x if (k in ('n', 'd') or k.endswith('N')) else shift_y(x, dy)) for k, x in obj.items()}
+    if isinstance(obj, list):
+        if len(obj) == 3 and all(isinstance(t, (int, float)) for t in obj):
+            return [obj[0], round(obj[1] + dy, 5), obj[2]]
+        return [shift_y(x, dy) for x in obj]
+    return obj
 
 def bone_world(bones):
     return {b[0]: np.array(b[2], float) for b in bones}
@@ -185,7 +220,10 @@ def bone_end(bones, name):
     p = [b for b in bones if b[0] == name][0]
     return np.array(p[2], float) + np.array((0, 0.05, 0))
 
-def skin(C, v, tau=0.035, sigma=0.09):
+def skin(C, v, faces, tau=0.035, sigma=0.09, smooth=18):
+    """bone weights. Each part follows its own bones (nearest bone segment, soft at joints); parts blend
+    where their surfaces meet; then the weights are relaxed over the mesh so joints bend smoothly.
+    Returns the full weight matrix (vertices x bones) and the part-group ownership."""
     BI = {b[0]: i for i, b in enumerate(C.bones)}
     BW = bone_world(C.bones)
     parts = [P for P in C.parts if not P.sub]
@@ -202,13 +240,34 @@ def skin(C, v, tau=0.035, sigma=0.09):
         for b, w in zip(P.bones, bw):
             Wb[:, BI[b]] += own * w
     Wb /= np.maximum(Wb.sum(1, keepdims=True), 1e-9)
+    W = adjacency(len(v), faces)
+    # harmonic relax: vertices clearly inside one part keep their weights, the blend zones between parts
+    # are diffused over the surface, so joints get wide, smooth falloffs instead of sharp seams
+    fixed = Wb.max(1) > 0.72  # clearly one bone: keep it
+    W0 = Wb.copy()
+    for it in range(smooth):
+        Wb = Wb * 0.35 + (W @ Wb) * 0.65
+        Wb[fixed] = W0[fixed] * 0.6 + Wb[fixed] * 0.4
+    # the jaw: a clean split along the mouth line (so opening the mouth never drags the upper lip)
+    if C.jaw_split is not None and 'jaw' in BI and 'head' in BI:
+        j = np.clip(C.jaw_split(v), 0, 1)
+        h = Wb[:, BI['head']] + Wb[:, BI['jaw']]
+        Wb[:, BI['jaw']] = h * j
+        Wb[:, BI['head']] = h * (1 - j)
+    tot = sum(gw.values())
+    return Wb, {k: g / tot for k, g in gw.items()}
+
+def finalize_weights(Wb, prune=0.05):
+    """at most 4 influences per vertex, tiny weights dropped, renormalised, packed to bytes"""
+    Wb = np.where(Wb < prune, 0, Wb)
+    Wb /= np.maximum(Wb.sum(1, keepdims=True), 1e-9)
     order = np.argsort(-Wb, 1)[:, :4]
     top = np.take_along_axis(Wb, order, 1)
-    top /= top.sum(1, keepdims=True)
+    top /= np.maximum(top.sum(1, keepdims=True), 1e-9)
     w8 = np.round(top * 255).astype(int)
     w8[:, 0] += 255 - w8.sum(1)
-    tot = sum(gw.values())
-    return order.astype(np.uint8), w8.astype(np.uint8), {k: g / tot for k, g in gw.items()}
+    order = np.where(w8 > 0, order, order[:, :1])  # unused slots point at the main bone with weight 0
+    return order.astype(np.uint8), w8.astype(np.uint8)
 
 def grow_dirs(v, faces, N, belly, core_fn, belly_c):
     """direction each vertex moves when the creature gains weight: smoothed normals blended with the
@@ -233,7 +292,8 @@ def mix(C, col, m):
     m = np.clip(m, 0, 1)[:, None]
     return C * (1 - m) + hexc(col) * m if isinstance(col, str) else C * (1 - m) + col * m
 
-def encode(C, v, faces, colors, skI, skW, belly, fat, fdir, anchors, extra=None):
+def encode(C, v, faces, colors, skI, skW, belly, fat, fdir, anchors, extra=None, dy=0.0):
+    v = v + np.array((0, dy, 0))
     lo = v.min(0); hi = v.max(0)
     q = np.round((v - lo) / (hi - lo) * 65535).astype(np.uint16)
     idx = faces.astype(np.uint16 if len(v) < 65536 else np.uint32)
@@ -244,8 +304,8 @@ def encode(C, v, faces, colors, skI, skW, belly, fat, fdir, anchors, extra=None)
         idx32=bool(idx.dtype == np.uint32), col=b64(np.round(lin * 255).astype(np.uint8)), skI=b64(skI), skW=b64(skW),
         belly=b64(np.round(belly * 255).astype(np.uint8)), fat=b64(np.round(fat * 255).astype(np.uint8)),
         fdir=b64(np.round(fdir * 127).astype(np.int8)),
-        bones=[dict(name=b[0], parent=[x[0] for x in C.bones].index(b[1]) if b[1] else -1, pos=[round(float(t), 5) for t in b[2]]) for b in C.bones],
-        anchors=anchors,
+        bones=[dict(name=b[0], parent=[x[0] for x in C.bones].index(b[1]) if b[1] else -1, pos=[round(float(b[2][0]), 5), round(float(b[2][1] + (dy if b[1] else 0)), 5), round(float(b[2][2]), 5)]) for b in C.bones],
+        anchors=shift_y(anchors, dy),
     )
     if extra:
         out.update(extra)
@@ -253,3 +313,37 @@ def encode(C, v, faces, colors, skI, skW, belly, fat, fdir, anchors, extra=None)
 
 def r5(a):
     return np.round(np.asarray(a, float), 4).tolist()
+
+def clearance(C, a_groups, b_groups, step=0.03):
+    """smallest gap (m) between the surfaces of two sets of parts. Negative = they are fused together,
+    which makes skin weights bleed (an arm that touches the belly drags the belly along)."""
+    A = [P for P in C.parts if not P.sub and P.group in a_groups]
+    B = [P for P in C.parts if not P.sub and P.group in b_groups]
+    if not A or not B:
+        return None
+    xs = np.arange(C.lo[0], C.hi[0], step); ys = np.arange(C.lo[1], C.hi[1], step); zs = np.arange(C.lo[2], C.hi[2], step)
+    best = 9.0
+    for x in xs:
+        g = np.stack(np.meshgrid([x], ys, zs, indexing='ij'), -1).reshape(-1, 3)
+        da = np.minimum.reduce([P.fn(g) for P in A])
+        on = np.abs(da) < step
+        if not on.any():
+            continue
+        db = np.minimum.reduce([P.fn(g[on]) for P in B])
+        best = min(best, float(db.min()))
+    return best
+
+def wedge(z0, z1, w0, w1, ylo0, ylo1, yhi0, yhi1, r):
+    """a rounded box that tapers from the back (z0) to the front (z1): half-width w, bottom ylo, top yhi.
+    Good for angular snouts and jaws with flat lip planes."""
+    def f(p):
+        x, y, z = p[..., 0], p[..., 1], p[..., 2]
+        t = np.clip((z - z0) / (z1 - z0), 0, 1)
+        hw = w0 + (w1 - w0) * t
+        lo = ylo0 + (ylo1 - ylo0) * t
+        hi = yhi0 + (yhi1 - yhi0) * t
+        cy = (lo + hi) / 2; hh = (hi - lo) / 2
+        cz = (z0 + z1) / 2; hz = (z1 - z0) / 2
+        q = np.stack([np.abs(x) - hw + r, np.abs(y - cy) - hh + r, np.abs(z - cz) - hz + r], -1)
+        return length(np.maximum(q, 0)) + np.minimum(q.max(-1), 0) - r
+    return f

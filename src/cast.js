@@ -17,9 +17,10 @@ function castBytes(s) {
   return u;
 }
 const CAST_GEO = {};
-function castGeometry(type) {
-  if (CAST_GEO[type]) return CAST_GEO[type];
-  const M = window.CAST_MODELS[type],
+function castGeometry(type, lod) {
+  const key = type + (lod ? '_lod1' : '');
+  if (CAST_GEO[key]) return CAST_GEO[key];
+  const M = lod && window.CAST_MODELS[type].lod1 ? window.CAST_MODELS[type].lod1 : window.CAST_MODELS[type],
     n = M.count,
     q = new Uint16Array(castBytes(M.pos).buffer),
     pos = new Float32Array(n * 3);
@@ -36,7 +37,7 @@ function castGeometry(type) {
   g.setAttribute('aFat', new T.BufferAttribute(castBytes(M.fat), 1, true));
   g.setAttribute('aFdir', new T.BufferAttribute(new Int8Array(castBytes(M.fdir).buffer), 3, true));
   g.computeVertexNormals();
-  return (CAST_GEO[type] = g);
+  return (CAST_GEO[key] = g);
 }
 function castMaterial(U) {
   const m = new T.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.66, metalness: 0, clearcoat: 0.06, clearcoatRoughness: 0.6, skinning: true });
@@ -142,6 +143,45 @@ function castTube(pts, r0, r1, segs, rad) {
   g.computeVertexNormals();
   return g;
 }
+// a tapered tube through a polyline with sharp corners (zigzag horns)
+function castZigzag(pts, r0, r1, rad) {
+  const path = new T.CurvePath(),
+    V = pts.map(p => new T.Vector3(p[0], p[1], p[2]));
+  for (let i = 0; i < V.length - 1; i++) path.add(new T.LineCurve3(V[i], V[i + 1]));
+  const segs = (V.length - 1) * 8,
+    g = new T.TubeGeometry(path, segs, 1, rad, false),
+    p = g.attributes.position,
+    v = new T.Vector3();
+  for (let i = 0; i <= segs; i++) {
+    const t = i / segs,
+      c = path.getPointAt(Math.min(t, 0.9999)),
+      r = r0 + (r1 - r0) * t;
+    for (let j = 0; j <= rad; j++) {
+      const k = i * (rad + 1) + j;
+      v.fromBufferAttribute(p, k).sub(c).multiplyScalar(r).add(c);
+      p.setXYZ(k, v.x, v.y, v.z);
+    }
+  }
+  g.computeVertexNormals();
+  return g;
+}
+// a unit box with rounded edges (teeth)
+let CAST_RBOX = null;
+function castRoundBox() {
+  if (CAST_RBOX) return CAST_RBOX;
+  const g = new T.BoxGeometry(1, 1, 1, 4, 4, 4),
+    p = g.attributes.position,
+    v = new T.Vector3(),
+    s = new T.Vector3();
+  for (let i = 0; i < p.count; i++) {
+    v.fromBufferAttribute(p, i);
+    s.copy(v).normalize().multiplyScalar(0.62);
+    v.lerp(s, 0.45);
+    p.setXYZ(i, v.x, v.y, v.z);
+  }
+  g.computeVertexNormals();
+  return (CAST_RBOX = g);
+}
 // bat wings: one skinned membrane per side on the same skeleton, plus bony arms and fingers
 const WING_SPEC = {
   skydrake: {
@@ -166,12 +206,14 @@ function buildWings(type, D, M, skeleton) {
     boneM = toy(new T.Color(C.bone).getHex(), { roughness: 0.6, clearcoat: 0.05 });
   for (const [s, side] of [[1, 'L'], [-1, 'R']]) {
     const m = p => [s * p[0], p[1], p[2]],
+      // the tips are given before the model was stood on the ground: lift them by the same amount
+      lift = p => [p[0], p[1] + (M.dy || 0), p[2]],
       // bone positions are already per side; only the tips and the body attach point are given for the left wing
       sh = P0(S.bones[0] + side),
       el = P0(S.bones[1] + side),
-      wr = S.bones[2] === S.bones[1] ? P0(S.bones[1] + side).map((v, i) => v + (m(S.tips[0])[i] - v) * 0.35) : P0(S.bones[2] + side),
-      tips = S.tips.map(m),
-      at = m(S.attach),
+      wr = S.bones[2] === S.bones[1] ? P0(S.bones[1] + side).map((v, i) => v + (m(lift(S.tips[0]))[i] - v) * 0.35) : P0(S.bones[2] + side),
+      tips = S.tips.map(t => m(lift(t))),
+      at = m(lift(S.attach)),
       pos = [],
       sk = [],
       sw = [],
@@ -233,7 +275,7 @@ function buildWings(type, D, M, skeleton) {
     arm1.castShadow = arm2.castShadow = true;
   }
 }
-function buildCastModel(type) {
+function buildCastModel(type, opts) {
   const M = window.CAST_MODELS && window.CAST_MODELS[type];
   if (!M) return null;
   const C = CD(type).colors,
@@ -260,7 +302,9 @@ function buildCastModel(type) {
     B[b.name] = bone;
     BW[b.name] = b.pos;
   }
-  const mesh = new T.SkinnedMesh(castGeometry(type), castMaterial(U));
+  // the light mesh on Low graphics (or when asked for), the full one otherwise
+  const lod = opts && opts.lod !== undefined ? opts.lod : SETTINGS.gfx === 'low' ? 1 : 0;
+  const mesh = new T.SkinnedMesh(castGeometry(type, lod), castMaterial(U));
   mesh.name = type + '_body';
   mesh.add(bones[0]);
   mesh.updateMatrixWorld(true);
@@ -284,7 +328,7 @@ function buildCastModel(type) {
     };
   // eyes with heavy, angry lids (body coloured)
   const eyeM = new T.MeshPhysicalMaterial({ map: castEyeTex(C.eye, type !== 'heavyweight'), roughness: 0.15, clearcoat: 1 }),
-    lidM = new T.MeshPhysicalMaterial({ color: C.lid, roughness: 0.65, side: T.DoubleSide }),
+    lidM = new T.MeshStandardMaterial({ color: new T.Color(C.lid).multiplyScalar(0.72), roughness: 0.8, side: T.DoubleSide }),
     er = type === 'skydrake' ? 0.085 : 0.09,
     eyeG = new T.SphereGeometry(er, 24, 16),
     lidG = new T.SphereGeometry(er * 1.08, 24, 10, 0, TAU, 0, PI * 0.5);
@@ -301,23 +345,24 @@ function buildCastModel(type) {
     D.eyes.push(e);
     D.lids.push(lid);
   }
-  // horns
-  const hornM = toy(new T.Color(C.horn || '#ffffff').getHex(), { roughness: 0.45, metalness: 0.25, clearcoat: 0.2 });
+  // horns: Sky Drake's are gold angular zigzags, Heavyweight's short swept ochre hooks
+  const hornM = toy(new T.Color(C.horn || '#ffffff').getHex(), { roughness: 0.42, metalness: 0.3, clearcoat: 0.25 });
   if (type === 'skydrake')
     for (const [s, side] of [[1, 'L'], [-1, 'R']]) {
-      const pts = [[0, -0.04, 0.02], [s * 0.04, 0.22, -0.04], [s * 0.11, 0.3, -0.16], [s * 0.08, 0.5, -0.24], [s * 0.16, 0.66, -0.4], [s * 0.15, 0.86, -0.5]];
-      at('head', A['horn' + side]).add(new T.Mesh(castTube(pts, 0.085, 0.01, 30, 10), hornM));
+      const pts = [[0, -0.05, 0.03], [s * 0.03, 0.2, -0.03], [s * 0.13, 0.3, -0.13], [s * 0.07, 0.52, -0.2], [s * 0.17, 0.66, -0.33], [s * 0.13, 0.9, -0.44]];
+      at('head', A['horn' + side]).add(new T.Mesh(castZigzag(pts, 0.085, 0.008, 10), hornM));
     }
   if (type === 'heavyweight')
     for (const [s, side] of [[1, 'L'], [-1, 'R']]) {
-      const pts = [[0, -0.04, 0.02], [s * 0.14, 0.12, -0.08], [s * 0.3, 0.2, -0.24], [s * 0.42, 0.24, -0.46]];
-      at('head', A['horn' + side]).add(new T.Mesh(castTube(pts, 0.12, 0.015, 24, 12), hornM));
+      const pts = [[0, -0.05, 0.03], [s * 0.15, 0.12, -0.08], [s * 0.31, 0.2, -0.24], [s * 0.43, 0.25, -0.47]];
+      at('head', A['horn' + side]).add(new T.Mesh(castTube(pts, 0.13, 0.014, 24, 14), hornM));
     }
   // back spines: flat sawtooth fins along the neck, back and tail
   const spM = toy(new T.Color(A.spineCol || C.spine).getHex(), { roughness: 0.55, clearcoat: 0.1 }),
     spG = new T.ConeGeometry(0.5, 1, 4);
   spG.translate(0, 0.5, 0);
-  const up = new T.Vector3(0, 1, 0);
+  const up = new T.Vector3(0, 1, 0),
+    V = new T.Vector3();
   for (const sp of A.spines || []) {
     const g = at(sp.b, sp.p),
       c = new T.Mesh(spG, spM),
@@ -325,45 +370,46 @@ function buildCastModel(type) {
     c.quaternion.setFromUnitVectors(up, n);
     c.scale.set(sp.s * 0.45, sp.s * 1.6, sp.s * 1.3);
     c.position.addScaledVector(n, -sp.s * 0.15);
-    c.castShadow = true;
     g.add(c);
   }
-  // fangs and teeth
-  const toothM = toy(new T.Color(C.fang || C.tooth || '#ffffff').getHex(), { roughness: 0.35, clearcoat: 0.3 });
+  // claws: one on every toe and finger, curving down
+  const clawM = toy(new T.Color(A.clawCol || '#222222').getHex(), { roughness: 0.35, clearcoat: 0.4 }),
+    clawG = new T.ConeGeometry(0.32, 1, 10);
+  clawG.translate(0, 0.5, 0);
+  for (const cl of A.claws || []) {
+    const g = at(cl.b, cl.p),
+      c = new T.Mesh(clawG, clawM),
+      d = V.set(cl.d[0], cl.d[1], cl.d[2]).normalize();
+    c.quaternion.setFromUnitVectors(up, d);
+    c.scale.set(cl.s, cl.s * 1.1, cl.s * 0.8);
+    g.add(c);
+  }
+  // fangs (Sky Drake, pointing down) and tusks (Heavyweight, up out of the jaw)
+  const toothM = toy(new T.Color(C.fang || C.tooth || '#ffffff').getHex(), { roughness: 0.3, clearcoat: 0.35 });
   if (type === 'skydrake' || type === 'heavyweight')
-    for (const side of ['L', 'R']) {
-      const f = new T.Mesh(new T.ConeGeometry(type === 'skydrake' ? 0.035 : 0.06, type === 'skydrake' ? 0.14 : 0.16, 10), toothM);
-      if (type === 'skydrake') f.rotation.x = PI; // upper fangs point down
-      at(type === 'skydrake' ? 'head' : 'jaw', A['fang' + side]).add(f);
+    for (const [s, side] of [[1, 'L'], [-1, 'R']]) {
+      const sd = type === 'skydrake',
+        f = new T.Mesh(new T.ConeGeometry(sd ? 0.035 : 0.065, sd ? 0.15 : 0.22, 12), toothM);
+      if (sd) f.rotation.x = PI;
+      else {
+        f.position.y = 0.09;
+        f.rotation.z = -s * 0.25;
+      }
+      at(sd ? 'head' : 'jaw', A['fang' + side]).add(f);
     }
   if (type === 'chomprex') {
-    // a tight row of square-ish teeth along the grin, upper row on the head, lower row on the jaw
-    const tg = new T.SphereGeometry(1, 12, 10),
-      G2 = A.grin,
-      pts = [];
-    for (let i = 0; i < G2.length - 1; i++)
-      for (let j = 0; j < 2; j++) {
-        const u = j / 2;
-        pts.push(G2[i].map((v, k) => v + (G2[i + 1][k] - v) * u));
+    // two even rows of big rounded teeth around the lips that meet in a clenched grin
+    // (positions, widths and heights come from the sculpt script, so they sit exactly on the lip planes)
+    const tg = castRoundBox();
+    for (const [row, bone, dir] of [[A.teethUp, 'head', -1], [A.teethLo, 'jaw', 1]])
+      for (const tt of row || []) {
+        const t = new T.Mesh(tg, toothM),
+          tx = -tt.d[2],
+          tz = tt.d[0];
+        t.scale.set(tt.w, tt.h, 0.075);
+        t.rotation.y = Math.atan2(-tz, tx);
+        at(bone, [tt.p[0], tt.p[1] + dir * (tt.h * 0.5 - 0.02), tt.p[2]]).add(t);
       }
-    pts.push(G2[G2.length - 1]);
-    for (let i = 2; i < pts.length - 2; i++) {
-      const p = pts[i],
-        tx = pts[i + 1][0] - pts[i - 1][0],
-        tz = pts[i + 1][2] - pts[i - 1][2],
-        tl = Math.hypot(tx, tz) || 1,
-        mid = 1 - Math.abs(i - (pts.length - 1) / 2) / ((pts.length - 1) / 2),
-        w = tl * 0.27;
-      for (const lowr of [false, true]) {
-        const t = new T.Mesh(tg, toothM);
-        t.scale.set(w, 0.065 + mid * 0.012, 0.028);
-        t.rotation.y = Math.atan2(-tz / tl, tx / tl);
-        // sit the teeth just inside the lips, along the inward surface direction
-        const ix = -p[0] * 0.08,
-          iz = -0.03;
-        at(lowr ? 'jaw' : 'head', [p[0] + ix, p[1] + (lowr ? -0.04 : 0.05), p[2] + iz - (lowr ? 0.02 : 0)]).add(t);
-      }
-    }
   }
   root.traverse(o => o.isMesh && (o.castShadow = true));
   buildWings(type, D, M, skeleton);
@@ -448,7 +494,7 @@ function castPose(type, clip, t) {
     H = type === 'heavyweight',
     X = type === 'chomprex',
     digi = !H,
-    nt = A ? 5 : 4,
+    nt = A ? 6 : 5,
     neck = A ? ['neck1', 'neck2', 'neck3'] : ['neck'];
   const breathe = Math.sin(t * TAU * 0.45);
   const base = () => {
@@ -580,10 +626,11 @@ function castPose(type, clip, t) {
       const k = env(t, 0, 0.5);
       wingsFlap(Q, t, 1.8, 0.5, -0.1);
       for (const [s, side] of [[1, 'L'], [-1, 'R']]) Q['wing1' + side] = [0, s * -0.2, s * (0.9 + Math.sin(t * TAU * 1.8) * 0.4)];
-      R.pitch = -0.4 * k;
-      Q.neck1 = [-0.25 * k, 0, 0];
-      Q.neck2 = [-0.2 * k, 0, 0];
-      Q.head = [-0.3 * k, 0, 0];
+      R.pitch = -0.28 * k;
+      Q.neck1 = [-0.1 * k, 0, 0];
+      Q.neck2 = [-0.08 * k, 0, 0];
+      Q.neck4 = [0.25 * k, 0, 0];
+      Q.head = [0.15 * k, 0, 0];
       Q.jaw = [0.55 * k, 0, 0];
       for (const [s, side] of [[1, 'L'], [-1, 'R']]) {
         Q['thigh' + side] = [-0.9 * k, 0, s * 0.1];
@@ -744,6 +791,13 @@ function castPose(type, clip, t) {
       break;
     }
   }
+  // brows: angry by default, furrowed hard on every wind-up, raised when staggered or dying
+  const furrow = /Windup|windup/.test(clip) ? 0.32 : clip === 'stagger' || clip === 'death' || clip === 'recover' ? -0.18 : clip === 'hit' ? 0.25 : 0.12;
+  Q.browL = [0, 0, furrow];
+  Q.browR = [0, 0, -furrow];
+  // belly: breathes, and bounces on impacts (the game adds its spring wobble on top)
+  const thud = clip === 'stompImpact' || clip === 'land' || clip === 'slam' ? Math.sin(env(t, 0, 0.35) * PI * 2) * 0.05 : 0;
+  Q.belly = [breathe * 0.015 + thud + (clip.indexOf('alk') > 0 || clip === 'charge' ? Math.sin(t * TAU * 2) * 0.02 : 0), 0, 0];
   return R;
 }
 function legsTuck(Q, k) {
@@ -1249,7 +1303,13 @@ function castAnimate(e, dt) {
     const h = R.bones.head || [0, 0, 0];
     R.bones.head = [h[0], h[1] + yaw * 0.6, h[2]];
   }
-  castApplyPose(M, R, dt, clip === 'bite' || clip === 'stompImpact' || clip === 'tailWhip' ? 30 : 10);
+  // heavier weight stages push the arms out so the belly never swallows them
+  if (e.vis > 0.01)
+    for (const [sd, side] of [[1, 'L'], [-1, 'R']]) {
+      const q = R.bones['arm' + side] || [0, 0, 0];
+      R.bones['arm' + side] = [q[0] - e.vis * 0.25, q[1], q[2] + sd * e.vis * 0.4];
+    }
+    castApplyPose(M, R, dt, clip === 'bite' || clip === 'stompImpact' || clip === 'tailWhip' ? 30 : 10);
   // belly spring: footsteps and landings kick it
   const J = e.J,
     w = e.vis || 0,

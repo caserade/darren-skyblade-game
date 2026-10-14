@@ -64,8 +64,9 @@ const only = process.argv.slice(3);
       const a = o.a || 0,
         d = o.d,
         h = o.h;
-      g.camera.position.set(Math.sin(a) * d, h, Math.cos(a) * d);
-      g.camera.lookAt(0, o.ty, 0);
+      const tz = o.tz || 0;
+      g.camera.position.set(Math.sin(a) * d, h, tz + Math.cos(a) * d);
+      g.camera.lookAt(0, o.ty, tz);
       g.camera.fov = 34;
       g.camera.updateProjectionMatrix();
       g.camera.updateMatrixWorld();
@@ -73,6 +74,20 @@ const only = process.argv.slice(3);
   });
   const sizes = { skydrake: [13, 2.6, 2.3], heavyweight: [11, 2.0, 1.7], chomprex: [14, 2.6, 2.1] };
   const types = only.length ? only : ['skydrake', 'heavyweight', 'chomprex'];
+  if (process.env.POSES) {
+    for (const spec of process.env.POSES.split(',')) {
+      const [type, clip, t, a, zf, zy, zz] = spec.split(':');
+      const [d, h, ty] = sizes[type];
+      await p.evaluate(x => show(x[0], x[1]), [type, { d: d * (zf ? +zf : 0.75), h: zy ? +zy : h, ty: zy ? +zy : ty, a: +a, clip, t: +t, tz: zz ? +zz : 0 }]);
+      await p.waitForTimeout(50);
+      await p.waitForTimeout(300);
+      await p.screenshot({ path: `tests/shots/${tag}_${type}_${clip}_${t}_${a}.png`, clip: { x: 250, y: 30, width: 900, height: 840 } });
+      console.log('shot', spec);
+    }
+    console.log(errs.length ? errs.join('\n') : 'no errors');
+    await b.close();
+    return;
+  }
   for (const type of types) {
     const [d, h, ty] = sizes[type];
     const views = [

@@ -241,6 +241,9 @@ guns / bows / mortars, `shot`. Optional model: a `buildX()` in `src/weapons.js` 
   add it to `CAST_CLIPS` and a `case` in `castPose`.
 * AI: `castUpdate()` in `src/cast.js` (a state machine per monster: idle, eat, chase, the attack states,
   recover, stagger, dead). Hits go through `castHit()` (poise), so they do not get stun-locked.
+* Rig per monster: root, hips, spine, chest, neck chain, head, jaw, browL/R, belly, tail chain, leg chains to the
+  toes, arm chains to the hands, wing chains. `tests/cast_deform.js` poses every clip and reports skin stretch;
+  `clearance()` in `tools/sculpt_lib.py` checks that arms and hands are not fused to the body.
 * To change a body: edit its function in `tools/sculpt_cast.py`, run `python3 tools/sculpt_cast.py <type>`,
   then `node tests/cast_export.js` to refresh the `.glb`.
 
