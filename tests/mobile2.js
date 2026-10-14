@@ -5,11 +5,11 @@ const { chromium } = require('playwright-core');
   for (const [w, h, n] of [[390, 780, 'port'], [844, 390, 'land']]) {
     const c = await b.newContext({ viewport: { width: w, height: h }, hasTouch: true, isMobile: true });
     const p = await c.newPage(); p.on('pageerror', e => console.log('ERR', e.message));
-    await p.goto('http://localhost:8766/dist/test.html'); await p.waitForTimeout(2500);
+    await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html')); await p.waitForTimeout(2500);
     await p.evaluate(() => localStorage.clear());
     await p.tap('#chapPick button:nth-child(2)');
     await p.screenshot({ path: `tests/shots/m2_${n}_title.png` });
-    await p.tap('#optBtn'); await p.tap('.ptab:nth-child(7)');
+    await p.tap('#optBtn'); await p.tap('.ptab:nth-child(8)');
     await p.screenshot({ path: `tests/shots/m2_${n}_panel.png` });
     console.log(n, 'overflowX', await p.evaluate(() => document.documentElement.scrollWidth > innerWidth));
     await p.tap('#panelClose');

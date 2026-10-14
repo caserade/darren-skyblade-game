@@ -471,6 +471,8 @@ function updateBlobs() {
   blobAt(i++, P.x, P.y, P.z, 0.6);
   if (LV.ruffy && LV.ruffy.root.visible)
     blobAt(i++, LV.ruffy.root.position.x, LV.ruffy.root.position.y, LV.ruffy.root.position.z, 0.45);
+  if (typeof DUMP !== 'undefined' && DUMP.on && DUMP.m)
+    blobAt(i++, DUMP.x, DUMP.y, DUMP.z, (0.85 + DUMP.vis * 0.35) * DATA.dumpling.scale);
   if (LV.mom && LV.mom.root.visible && LV.mom.root.parent)
     blobAt(i++, LV.mom.root.position.x, 0, LV.mom.root.position.z, 0.65);
   for (const e of G.enemies) {

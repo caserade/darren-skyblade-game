@@ -3,7 +3,7 @@ const { chromium } = require('playwright-core');
   const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   const p = await b.newPage({ viewport: { width: 960, height: 540 } });
   const errs = []; p.on('pageerror', e => errs.push(e.message + ' | ' + (e.stack || '').split('\n')[1]));
-  await p.goto('http://localhost:8766/dist/test.html'); await p.waitForTimeout(3000);
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html')); await p.waitForTimeout(3000);
   await p.click('#startBtn'); await p.waitForTimeout(500);
   // skip to meadow fight in real time
   await p.evaluate(() => { const g = window.__game; for (let i = 0; i < 40; i++) g.advanceTalk(); const I = g.LV.islands.meadow; g.P.x = I.x; g.P.z = I.z - 9; });

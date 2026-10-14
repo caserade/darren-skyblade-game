@@ -5,7 +5,7 @@ const { chromium } = require('playwright-core');
   const p = await b.newPage({ viewport: { width: 1280, height: 720 } });
   const errs = []; p.on('pageerror', e => errs.push('PAGEERROR ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 5).join('\n')));
   p.on('console', m => { if (m.type() === 'error' && !/fonts|ERR_TUNNEL|net::/.test(m.text())) errs.push('CONSOLE ' + m.text()); });
-  await p.goto('http://localhost:8766/dist/test.html'); await p.waitForTimeout(3500);
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html')); await p.waitForTimeout(3500);
   const snap = async n => { await p.evaluate(() => { const g = window.__game; g.tick(1 / 60); }).catch(() => {}); try { await p.screenshot({ path: `tests/shots/${n}.png`, timeout: 15000 }); } catch (e) { console.log('snap fail', n); } };
   const ev = (fn, a) => p.evaluate(fn, a);
   console.log('skinned', await ev(() => !!window.__skinned));

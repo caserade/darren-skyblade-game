@@ -95,6 +95,7 @@ function advBuild() {
     LV.colliders.push({ x: v.x, z: v.z, r });
   }
   AD.gearAdded = false;
+  dumpBuild();
 }
 function advReset(retry) {
   const A = ADV();
@@ -125,6 +126,8 @@ function advReset(retry) {
   cam.fx = P.x;
   cam.fz = P.z;
   if (LV.ruffyFollow) LV.ruffy.root.position.set(P.x - 1.4, 0, P.z - 1.4);
+  dumpReset();
+  castAdvReset();
   setObjective(contractObjective());
 }
 function lightWay(id, on, quiet) {
@@ -177,6 +180,9 @@ function advUpdate(s, dt) {
   // the "press E" prompt at the forge
   const F = A.forge;
   AD.prompt = Math.hypot(P.x - F.x, P.z - F.z) < 4.2 && P.onG ? 'forge' : null;
+  dumpUpdate(s, dt);
+  castAdvUpdate(dt);
+  if (!AD.prompt && dumpNear()) AD.prompt = 'dumpling';
   // island names as Darren arrives
   const I = P.onG ? islandAt(P.x, P.z) : null;
   if (I && I !== AD.island) {
@@ -263,6 +269,7 @@ function spawnDen(id) {
 }
 function advUse() {
   if (AD.prompt === 'forge') openHangar('forge');
+  if (AD.prompt === 'dumpling') openHangar('dumpling');
 }
 function openMap() {
   openHangar('map');
@@ -331,6 +338,7 @@ function checkContract(c) {
 }
 function advOnKill(e) {
   if (!isAdventure() || e.d.static) return;
+  dumpOnKill(e);
   bumpContracts(c =>
     c.type === 'hunt' && (c.target === e.type || c.target === 'any' || (c.target === 'elite' && e.elite)) ? 1 : 0,
   );
@@ -358,6 +366,8 @@ function advHud() {
   if (!isAdventure() || G.cine) {
     box.hidden = true;
     $('prompt').hidden = true;
+    $('dumpHud').hidden = true;
+    $('tBelly').hidden = true;
     return;
   }
   const a = UNLOCKS.contracts.active,
@@ -370,6 +380,11 @@ function advHud() {
   box.hidden = !a.length;
   if (box.textContent !== txt) box.textContent = txt;
   $('prompt').hidden = !AD.prompt;
+  if (AD.prompt) {
+    const t = AD.prompt === 'dumpling' ? 'Feed Dumpling' : 'Open the Skyforge';
+    if ($('promptT').textContent !== t) $('promptT').textContent = t;
+  }
+  dumpHud();
 }
 $('prompt').addEventListener('click', () => advUse());
 

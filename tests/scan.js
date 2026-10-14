@@ -4,7 +4,7 @@ const { chromium } = require('playwright-core');
   const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   const p = await b.newPage({ viewport: { width: 640, height: 480 } });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
-  await p.goto('http://localhost:8766/dist/test.html'); await p.waitForTimeout(3000);
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html')); await p.waitForTimeout(3000);
   await p.evaluate(() => { window.__manual = true; }); await p.click('#startBtn');
   await p.evaluate(() => { const g = window.__game; window.T_ = n => { for (let i = 0; i < n; i++) g.tick(1 / 60); }; T_(10); let k = 0; while (g.G.cine && k++ < 60) { g.advanceTalk(); g.advanceTalk(); T_(2); } document.getElementById('hud').style.opacity = 0; });
   const strip = async (name, setup, frames, step) => {

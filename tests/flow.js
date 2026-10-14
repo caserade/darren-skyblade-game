@@ -4,7 +4,7 @@ const { chromium } = require('playwright-core');
   const ctx = await b.newContext({ viewport: { width: 1280, height: 720 } });
   const p = await ctx.newPage();
   const errs = []; p.on('pageerror', e => errs.push('PAGEERROR ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 4).join('\n')));
-  await p.goto('http://localhost:8766/dist/test.html'); await p.waitForTimeout(2500);
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html')); await p.waitForTimeout(2500);
   await p.evaluate(() => { window.__manual = true; }); await p.click('#startBtn');
   const ev = (fn, a) => p.evaluate(fn, a);
   await ev(() => {

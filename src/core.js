@@ -133,6 +133,7 @@ const KEY = {
   KeyV: 'fly',
   KeyT: 'style',
   KeyE: 'use',
+  KeyG: 'buddy',
   KeyN: 'map',
   Tab: 'map',
   KeyC: 'down',
@@ -346,6 +347,7 @@ function pollPad() {
     [14, 'style'],
     [13, 'use'],
     [8, 'map'],
+    [10, 'buddy'],
     [6, 'down'],
   ];
   for (const [i, a] of map) {

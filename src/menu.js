@@ -71,6 +71,7 @@ const TABS = [
   ['forge', 'Forge'],
   ['parts', 'Parts'],
   ['contracts', 'Contracts'],
+  ['dumpling', 'Dumpling'],
   ['map', 'Map'],
   ['moves', 'Moves'],
   ['settings', 'Settings'],
@@ -99,6 +100,7 @@ function openPanel(tab) {
     forge: fillForge,
     parts: fillParts,
     contracts: fillContracts,
+    dumpling: fillDumpling,
     map: fillMap,
     moves: fillMoves,
     settings: fillSettings,
@@ -372,6 +374,174 @@ function fillParts(box) {
     grid.appendChild(c);
   }
   s.appendChild(grid);
+}
+
+/* Dumpling, the chubby cloud drake (Cloud Utopia companion, data/dumpling.js) */
+function meter(label, v, cls, marks) {
+  const m = el('div', 'dmeter ' + (cls || ''));
+  m.appendChild(el('span', 'dml', label));
+  const bar = el('i', '');
+  const f = el('em', '');
+  f.style.width = Math.round(clamp(v, 0, 1) * 100) + '%';
+  bar.appendChild(f);
+  for (const t of marks || []) {
+    const k = el('u', '');
+    k.style.left = t * 100 + '%';
+    bar.appendChild(k);
+  }
+  m.appendChild(bar);
+  return m;
+}
+function fillDumpling(box) {
+  const D = DATA.dumpling,
+    S = dumpState();
+  if (!S.met) {
+    const s = section(
+      box,
+      'Dumpling',
+      'A chubby cloud drake bakes in Skyforge Haven (Adventure: Cloud Utopia). Visit his oven to meet him.',
+    );
+    if (window.DUMPLING_ART) {
+      const im = el('img', 'dport');
+      im.src = DUMPLING_ART.plump;
+      im.alt = 'Dumpling the cloud drake';
+      s.appendChild(im);
+    }
+    return;
+  }
+  const w = DUMP.w,
+    SI = dumpStage(),
+    st = dumpBounceStats(SI.size, DUMP.full),
+    s = section(box, D.name + ' · ' + D.title);
+  const top = el('div', 'dtop');
+  if (window.DUMPLING_ART) {
+    const im = el('img', 'dport');
+    im.src = SI.k < 2 ? DUMPLING_ART.trim : SI.k < 5 ? DUMPLING_ART.plump : DUMPLING_ART.round;
+    im.alt = 'Dumpling the cloud drake, ' + dumpTier(w);
+    top.appendChild(im);
+  }
+  const info = el('div', 'dinfo');
+  info.appendChild(el('p', 'dbig', SI.name + ' · ' + SI.lbs + ' lb'));
+  info.appendChild(meter('Stage ' + (SI.k + 1) + '/' + WEIGHT_STAGES, (SI.k + SI.next * (SI.max ? 0 : 1)) / (WEIGHT_STAGES - 1), 'wt', D.weight.stages.slice(1, -1).map((s, i) => (i + 1) / (WEIGHT_STAGES - 1))));
+  info.appendChild(
+    el(
+      'p',
+      'hint',
+      SI.max
+        ? 'Stage 7 is his limit: he will not grow any rounder.'
+        : Math.round(SI.next * 100) + '% of the way to ' + D.weight.stages[SI.k + 1].name + '.',
+    ),
+  );
+  info.appendChild(meter('Belly', DUMP.full, 'fu'));
+  info.appendChild(
+    el(
+      'p',
+      'hint',
+      'Belly Bounce (G): ' +
+        Math.round(st.dmg) +
+        ' damage · ' +
+        st.r.toFixed(1) +
+        ' m shockwave · ' +
+        (st.kd ? 'knocks enemies down' : 'launches enemies up') +
+        ' · every ' +
+        Math.round(st.wait) +
+        ' s. Trampoline: ' +
+        (D.trampoline.light + (D.trampoline.heavy - D.trampoline.light) * SI.size).toFixed(1) +
+        '× jump. ' +
+        (dumpFloats() ? 'Too round to flap: he floats like a balloon.' : 'Flies with his tiny wings.') +
+        (DUMP.spicy > 0 ? ' Ember Belly: ' + Math.ceil(DUMP.spicy) + ' s.' : ''),
+    ),
+  );
+  const row = el('div', 'drow');
+  const tog = (label, on, fn) => {
+    const b = el('button', 'dtog' + (on ? ' on' : ''), label);
+    b.type = 'button';
+    b.setAttribute('aria-pressed', on);
+    b.addEventListener('click', () => {
+      fn();
+      dumpSave();
+      openPanel('dumpling');
+    });
+    row.appendChild(b);
+  };
+  tog(DUMP.follow ? 'Following Darren' : 'Waiting at the bakery', DUMP.follow, () => {
+    DUMP.follow = !DUMP.follow;
+    DUMP.st = DUMP.follow ? 'follow' : 'home';
+  });
+  tog(S.hold ? 'Weight held' : 'Hold his weight', !!S.hold, () => (S.hold = !S.hold));
+  const pat = el('button', 'dtog', 'Pat his belly');
+  pat.type = 'button';
+  pat.addEventListener('click', () => {
+    dumpKick(0, -0.8, 0.6, 0.02);
+    DUMP.mood = 1.5;
+    dumpSound('giggle');
+  });
+  row.appendChild(pat);
+  info.appendChild(row);
+  top.appendChild(info);
+  s.appendChild(top);
+  s.appendChild(
+    el(
+      'p',
+      'hint',
+      'Snacks fill his belly; a belly digests into weight. Walking and flying with Darren slowly burn it off (unless held).',
+    ),
+  );
+  // snacks
+  const sn = section(box, 'Snacks', 'Shake snack bushes, beat enemies, or bake them from parts below.');
+  const grid = el('div', 'pgrid');
+  for (const id in D.snacks) {
+    const k = D.snacks[id],
+      n = UNLOCKS.snacks[id] || 0,
+      c = el('div', 'pcell dsn' + (n ? '' : ' none'));
+    c.appendChild(swatch(k.color));
+    const t = el('div');
+    t.appendChild(el('b', '', k.name));
+    t.appendChild(
+      el('small', '', k.text + ' Belly +' + Math.round(k.full * 100) + '%' + (k.gain ? ', weight +' + Math.round(k.gain * 100) + '%' : '') + '. ' + k.where),
+    );
+    c.appendChild(t);
+    const b = el('button', 'craft feed', n ? 'Feed ×' + n : '×0');
+    b.type = 'button';
+    b.disabled = !n || DUMP.full >= 0.97;
+    b.addEventListener('click', () => {
+      feedDumpling(id);
+      openPanel('dumpling');
+    });
+    c.appendChild(b);
+    grid.appendChild(c);
+  }
+  sn.appendChild(grid);
+  if (DUMP.full >= 0.97) sn.appendChild(el('p', 'hint warn', 'He is completely full. Give him a while to digest (or go for a walk together).'));
+  // baking
+  const bk = section(box, "Dumpling's oven", 'Bake snacks from Skyforge parts.');
+  D.bake.forEach((R, i) => {
+    const k = D.snacks[R.snack],
+      card = el('div', 'ccard'),
+      head = el('div', 'fhead');
+    head.appendChild(el('b', '', k.name + (R.makes > 1 ? ' ×' + R.makes : '')));
+    card.appendChild(head);
+    const rw = el('div', 'chips');
+    let ok = true;
+    for (const p in R.recipe) {
+      const have = partCount(p),
+        ch = el('span', 'chip' + (have >= R.recipe[p] ? ' ok' : ''));
+      if (have < R.recipe[p]) ok = false;
+      ch.appendChild(swatch(PARTS[p].color));
+      ch.appendChild(el('span', '', R.recipe[p] + ' ' + PARTS[p].name + ' (' + have + ')'));
+      rw.appendChild(ch);
+    }
+    card.appendChild(rw);
+    const b = el('button', 'craft', ok ? 'Bake' : 'Need more parts');
+    b.type = 'button';
+    b.disabled = !ok;
+    b.addEventListener('click', () => {
+      bake(i);
+      openPanel('dumpling');
+    });
+    card.appendChild(b);
+    bk.appendChild(card);
+  });
 }
 
 /* Contracts (Cloud Utopia) */

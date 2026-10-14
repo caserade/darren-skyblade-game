@@ -6,7 +6,7 @@ const { chromium } = require('playwright-core');
   const errs = [];
   p.on('pageerror', e => errs.push('PAGEERROR ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 5).join('\n')));
   p.on('console', m => { if (m.type() === 'error' && !/fonts|ERR_TUNNEL|net::|404/.test(m.text())) errs.push('CONSOLE ' + m.text()); });
-  await p.goto('http://localhost:8766/dist/test.html');
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html'));
   await p.waitForTimeout(3500);
   const snap = async n => { await p.evaluate(() => window.__game.tick(1 / 60)).catch(() => {}); try { await p.screenshot({ path: `tests/shots/c2_${n}.png`, timeout: 15000 }); } catch (e) { console.log('snap fail', n); } };
   const ev = (fn, a) => p.evaluate(fn, a);

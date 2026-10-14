@@ -1,5 +1,46 @@
 # Changelog
 
+## 1.4.0 — 2026-10-14 — Dumpling, the big monsters of Cloud Utopia, and weight stages
+
+### Dumpling, the chubby cloud drake
+
+- **Seven weight stages with a hard limit** (`src/weight.js`), shared by every creature that gains weight. Each
+  stage has a fixed body size; bodies ease between stages and never grow past stage 7. A full belly can only
+  add a small, capped bulge on top. Dumpling: Trim, Chubby, Plump, Round, Rotund, Hefty, Wobbly Wonder.
+- **Three big monsters from Michael's approved concept sheets**, each a sculpted, seamless, skinned body
+  (34,000 triangles, 25 to 34 bones) with painted scales, eyes with angry lids, horns, back spines and teeth:
+  - **Stormbelly Sky Drake** (Gale Spires): bat wings on a skinned membrane, takes off, circles and swoops
+    onto a red ground marker; tail whip on the ground.
+  - **Stormbelly Heavyweight** (Sparkstone Mesa): a 1.1 s telegraphed stomp with a jumpable shockwave ring, a
+    long recovery to punish, and a close-range belly slam.
+  - **Chomp Rex** (Thorn Wastes): a 0.8 s ground scrape, a straight charge and a bite with its toothy grin.
+  - Poise: they only stagger when enough damage piles up. They come back four minutes after being beaten.
+  - **The two Stormbellies eat snack bushes** on their islands while calm and climb the 7 weight stages
+    (more health and damage, wider attacks, slower), then slowly slim down. Shake the bushes first.
+  - New parts (Storm Scale, Gold Drake Horn, Belly Plate, Plum Rex Hide, Chomp Rex Fang), the Stormbelly armor
+    set, the Chompfang blade, the Stormbelly Cannon and three repeatable contracts.
+  - **Rigged .glb files with 12 to 14 named animation clips each** in `models/`, plus
+    `models/cast_animations.json` (durations, loop flags, gameplay event times) and model sheets in
+    `docs/art/cast/`.
+
+- **New companion: Dumpling**, an original jade cloud drake baker who lives at an oven in Skyforge Haven and
+  follows Darren around Cloud Utopia once met. A sculpted, seamless, skinned body (16 bones) with belly plates,
+  freckled blushing cheeks, amber eyes with blinking lids, curled horns, sunset ear fins, comically tiny wings,
+  cloud tufts on his head and tail, back nubs and a polka-dot neckerchief.
+- **Weight and belly:** snacks fill his belly, digesting turns it into weight, and walking or flying with Darren
+  burns it off (or hold his weight). Seven stages from Trim to Wobbly Wonder; his whole body, cheeks and belly grow,
+  the belly sags as it gets heavy and his arms ride up on top of it.
+- **Belly jiggle:** a spring-driven wobble with a ripple across the belly on every footstep, landing, bite,
+  giggle, sword poke (it tickles) and trampoline bounce. Heavier means slower, floppier wobbles.
+- **Weight changes how he plays:** Belly Bounce (G / Belly button / L3) hits harder and wider and knocks enemies
+  down when he is heavy; it is quicker and launches enemies when he is light. Land on him for a trampoline
+  bounce (higher the rounder he is). Light Dumpling buzzes his tiny wings; heavy Dumpling floats like a balloon.
+- **Snacks:** nine snacks (Sky Berry to the Titan Feast Cake), snack bushes on the islands, snack drops from
+  enemies, six bake recipes from Skyforge parts, and the spicy Ember Pepper for a minute of flaming bounces.
+- **Hangar > Dumpling:** portrait, weight in lb and tier, belly meter, Belly Bounce numbers, feed and bake,
+  follow / wait at the bakery, hold weight, pat his belly. A HUD chip shows his tier and the bounce timer.
+- **Concept art:** `docs/art/dumpling_concept.png`, rendered from the in-game model.
+
 ## 1.3.0 — 2026-10-14 — Semi-realistic polish (two passes)
 
 - **Rendering:** filmic (ACES) tone mapping, HDR bloom, colour grade and vignette; a sky dome with a sun and

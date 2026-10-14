@@ -1022,6 +1022,9 @@ function tryAction(a) {
     case 'use':
       if (window.advUse) advUse();
       return true;
+    case 'buddy':
+      if (window.dumpCall) dumpCall();
+      return true;
     case 'map':
       if (window.openMap) openMap();
       return true;
@@ -2099,6 +2102,7 @@ function enemyTakeHit(e, dmg, A, nx, nz) {
     killEnemy(e);
     return dmg;
   }
+  if (d.monster) return castHit(e, dmg, A, nx, nz); // big Cloud Utopia monsters (src/cast.js)
   if (d.w >= 2) {
     if (A.hs >= 6 || e.broken) {
       if (e.st !== 'stun') {
@@ -2261,6 +2265,10 @@ function updateEnemy(e, s) {
   if (e.shown > 0) e.shown -= s;
   M.shell.visible = !e.d.boss && e.y > -0.4 && (e.flash > 0 || (e.wind && Math.floor(G.time * 14) % 2 === 0));
   M.shell.material = e.flash > 0 ? MAT.flashW : MAT.flashR;
+  if (e.d.monster) {
+    castUpdate(e, s); // src/cast.js: its own AI, animation and death
+    return;
+  }
   if (e.dead > 0) {
     e.dead += s;
     const k = Math.max(0, 1 - e.dead / 16);

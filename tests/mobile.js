@@ -4,7 +4,7 @@ const { chromium } = require('playwright-core');
   for (const [w, h, n] of [[390, 780, 'port'], [800, 380, 'land']]) {
     const c = await b.newContext({ viewport: { width: w, height: h }, hasTouch: true, isMobile: true });
     const p = await c.newPage(); p.on('pageerror', e => console.log('ERR', e.message));
-    await p.goto('http://localhost:8766/dist/test.html'); await p.waitForTimeout(2500);
+    await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html')); await p.waitForTimeout(2500);
     await p.screenshot({ path: `tests/shots/m_${n}_title.png` });
     console.log(n, 'overflowX', await p.evaluate(() => document.documentElement.scrollWidth > innerWidth));
     await p.evaluate(() => { window.__manual = true; }); await p.tap('#startBtn');

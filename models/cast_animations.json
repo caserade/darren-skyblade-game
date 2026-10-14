@@ -1,0 +1,312 @@
+{
+  "format": "glTF 2.0 binary",
+  "up": "+Y",
+  "forward": "+Z (the creature faces +Z)",
+  "units": "metres, scale 1",
+  "fps": 30,
+  "creatures": {
+    "skydrake": {
+      "file": "models/skydrake.glb",
+      "bytes": 1638544,
+      "clips": {
+        "idle": {
+          "duration": 2.4,
+          "loop": true,
+          "events": {}
+        },
+        "walk": {
+          "duration": 1.2,
+          "loop": true,
+          "events": {}
+        },
+        "turn": {
+          "duration": 1,
+          "loop": true,
+          "events": {}
+        },
+        "hit": {
+          "duration": 0.45,
+          "loop": false,
+          "events": {}
+        },
+        "stagger": {
+          "duration": 1.6,
+          "loop": true,
+          "events": {}
+        },
+        "recover": {
+          "duration": 0.8,
+          "loop": false,
+          "events": {}
+        },
+        "death": {
+          "duration": 2.2,
+          "loop": false,
+          "events": {
+            "down": 1.2
+          }
+        },
+        "flyIdle": {
+          "duration": 0.8,
+          "loop": true,
+          "events": {}
+        },
+        "takeoff": {
+          "duration": 1,
+          "loop": false,
+          "events": {
+            "liftoff": 0.35
+          }
+        },
+        "land": {
+          "duration": 0.6,
+          "loop": false,
+          "events": {
+            "touchdown": 0.45
+          }
+        },
+        "attackWindup": {
+          "duration": 0.9,
+          "loop": false,
+          "events": {}
+        },
+        "attack": {
+          "duration": 0.6,
+          "loop": false,
+          "events": {
+            "impact": 0.6
+          }
+        },
+        "tailWindup": {
+          "duration": 0.7,
+          "loop": false,
+          "events": {}
+        },
+        "tailWhip": {
+          "duration": 0.5,
+          "loop": false,
+          "events": {
+            "hit": 0.2
+          }
+        }
+      },
+      "validation": {
+        "meshes": 45,
+        "skinned": 3,
+        "bones": 34,
+        "triangles": 38902,
+        "clips": [
+          "idle 2.40s",
+          "walk 1.20s",
+          "turn 1.00s",
+          "hit 0.45s",
+          "stagger 1.60s",
+          "recover 0.80s",
+          "death 2.20s",
+          "flyIdle 0.80s",
+          "takeoff 1.00s",
+          "land 0.60s",
+          "attackWindup 0.90s",
+          "attack 0.60s",
+          "tailWindup 0.70s",
+          "tailWhip 0.50s"
+        ],
+        "maxInfluences": 4
+      }
+    },
+    "heavyweight": {
+      "file": "models/heavyweight.glb",
+      "bytes": 1522752,
+      "clips": {
+        "idle": {
+          "duration": 2.4,
+          "loop": true,
+          "events": {}
+        },
+        "walk": {
+          "duration": 1.2,
+          "loop": true,
+          "events": {}
+        },
+        "turn": {
+          "duration": 1,
+          "loop": true,
+          "events": {}
+        },
+        "hit": {
+          "duration": 0.45,
+          "loop": false,
+          "events": {}
+        },
+        "stagger": {
+          "duration": 1.6,
+          "loop": true,
+          "events": {}
+        },
+        "recover": {
+          "duration": 0.8,
+          "loop": false,
+          "events": {}
+        },
+        "death": {
+          "duration": 2.2,
+          "loop": false,
+          "events": {
+            "down": 1.2
+          }
+        },
+        "heavyWalk": {
+          "duration": 1.5,
+          "loop": true,
+          "events": {}
+        },
+        "stompWindup": {
+          "duration": 1.1,
+          "loop": false,
+          "events": {
+            "stomp": 1.1
+          }
+        },
+        "stompImpact": {
+          "duration": 0.35,
+          "loop": false,
+          "events": {
+            "impact": 0.05
+          }
+        },
+        "stompRecovery": {
+          "duration": 1.9,
+          "loop": true,
+          "events": {}
+        },
+        "slamWindup": {
+          "duration": 0.6,
+          "loop": false,
+          "events": {}
+        },
+        "slam": {
+          "duration": 0.45,
+          "loop": false,
+          "events": {
+            "impact": 0.2
+          }
+        }
+      },
+      "validation": {
+        "meshes": 38,
+        "skinned": 3,
+        "bones": 27,
+        "triangles": 38770,
+        "clips": [
+          "idle 2.40s",
+          "walk 1.20s",
+          "turn 1.00s",
+          "hit 0.45s",
+          "stagger 1.60s",
+          "recover 0.80s",
+          "death 2.20s",
+          "heavyWalk 1.50s",
+          "stompWindup 1.10s",
+          "stompImpact 0.35s",
+          "stompRecovery 1.90s",
+          "slamWindup 0.60s",
+          "slam 0.45s"
+        ],
+        "maxInfluences": 4
+      }
+    },
+    "chomprex": {
+      "file": "models/chomprex.glb",
+      "bytes": 1367232,
+      "clips": {
+        "idle": {
+          "duration": 2.4,
+          "loop": true,
+          "events": {}
+        },
+        "walk": {
+          "duration": 1.2,
+          "loop": true,
+          "events": {}
+        },
+        "turn": {
+          "duration": 1,
+          "loop": true,
+          "events": {}
+        },
+        "hit": {
+          "duration": 0.45,
+          "loop": false,
+          "events": {}
+        },
+        "stagger": {
+          "duration": 1.6,
+          "loop": true,
+          "events": {}
+        },
+        "recover": {
+          "duration": 0.8,
+          "loop": false,
+          "events": {}
+        },
+        "death": {
+          "duration": 2.2,
+          "loop": false,
+          "events": {
+            "down": 1.2
+          }
+        },
+        "chargeWindup": {
+          "duration": 0.8,
+          "loop": false,
+          "events": {
+            "go": 0.8
+          }
+        },
+        "charge": {
+          "duration": 0.5,
+          "loop": true,
+          "events": {}
+        },
+        "biteWindup": {
+          "duration": 0.45,
+          "loop": false,
+          "events": {}
+        },
+        "bite": {
+          "duration": 0.3,
+          "loop": false,
+          "events": {
+            "snap": 0.08
+          }
+        },
+        "recovery": {
+          "duration": 1.2,
+          "loop": true,
+          "events": {}
+        }
+      },
+      "validation": {
+        "meshes": 80,
+        "skinned": 1,
+        "bones": 25,
+        "triangles": 49084,
+        "clips": [
+          "idle 2.40s",
+          "walk 1.20s",
+          "turn 1.00s",
+          "hit 0.45s",
+          "stagger 1.60s",
+          "recover 0.80s",
+          "death 2.20s",
+          "chargeWindup 0.80s",
+          "charge 0.50s",
+          "biteWindup 0.45s",
+          "bite 0.30s",
+          "recovery 1.20s"
+        ],
+        "maxInfluences": 4
+      }
+    }
+  }
+}

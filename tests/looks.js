@@ -7,7 +7,7 @@ const { chromium } = require('playwright-core');
   });
   const p = await (await b.newContext({ viewport: { width: 1000, height: 700 } })).newPage();
   p.on('pageerror', e => console.log('ERR', e.message));
-  await p.goto('http://localhost:8766/dist/test.html');
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html'));
   await p.waitForTimeout(3000);
   await p.evaluate(() => localStorage.clear());
   await p.reload();

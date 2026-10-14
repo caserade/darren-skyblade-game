@@ -41,6 +41,21 @@ Paste this guide plus `README_FOR_AI.md` and the data file you want changed, the
 > waystone, a den of 3 Elite Gustlings, two Cloudsilk crystals, and no bridge (the player flies there).
 > Keep at least 8 m of sky between it and every other island.
 
+**New snack for Dumpling**
+
+> ...add a snack to `snacks` in data/dumpling.js: "Starfruit Tart", gold colour, shape 'cake', fills the belly
+> 30%, weight +2%. Add a bake recipe for it (3 Spark Coils, 1 Cloudsilk) and a snack bush of them on Gale Spires.
+
+**Change how fast Dumpling gains weight**
+
+> ...in data/dumpling.js make Dumpling gain weight faster (gainPerFull 0.2) and burn it slower
+> (burnPerMetre 0.0001), and make his Belly Bounce hit harder when heavy (dmgHeavy 120).
+
+**Tune a big monster**
+
+> ...in data/cast.js make the Stormbelly Heavyweight's stomp wind-up 1.3 seconds, its shockwave faster
+> (ring 30), and give the Heavyweight 8 more weight per bush eaten (perBush 0.25).
+
 **New story chapter** — see "Add Chapter 3" in README_FOR_AI.md.
 
 ## Data cheat sheet
@@ -94,5 +109,11 @@ lrise aim aimL), `next` (Slash follow-up), `heavy` (Heavy branch), flags `kd lau
 | Armor 3D shapes, crafting, loadout | `src/forge.js` |
 | Twin Arms, shots, flight, boss part focus | `src/arms.js` |
 | Cloud Utopia behaviour, map | `src/adventure.js` |
+| Dumpling's snacks, recipes, weight numbers, lines | `data/dumpling.js` |
+| Big monsters: numbers, attacks, weight stages, parts, gear, contracts | `data/cast.js` |
+| Big monsters: AI and animation poses | `src/cast.js` |
+| Big monsters: body shapes and colours | `tools/sculpt_cast.py` (then run it) |
+| Dumpling's behaviour, belly shader, jiggle | `src/dumpling.js` |
+| Dumpling's body shape and colours | `tools/sculpt_dumpling.py` (then run it) |
 | Hangar menu screens | `src/menu.js`, styles in `src/style.css` |
 | Sky colours, textures, bloom, colour grade, ambience | `src/look.js` |

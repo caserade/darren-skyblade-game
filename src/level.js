@@ -781,6 +781,7 @@ function talkFocus() {
   if (w === 'mom' && LV.mom && LV.mom.root.visible) return LV.mom.root.position;
   if ((w === 'grumble' || w === 'knot' || w === 'titan') && G.boss) return new T.Vector3(G.boss.x, 0, G.boss.z);
   if (w === 'gear' && NPCS.gear && NPCS.gear.root.parent) return NPCS.gear.root.position;
+  if (w === 'dumpling' && DUMP.m && DUMP.on) return DUMP.m.root.position;
   if (w === 'ruffy' || w === 'grumble') return LV.ruffy.root.position;
   return null;
 }
@@ -1717,6 +1718,8 @@ function tick(rdt) {
   if (Snd.ctx) Music.tick();
   updateWorld(rdt, dt);
   animDarren(dt, rdt);
+  if (isAdventure()) animDumpling(rdt);
+  else if (DUMP.on) dumpHide();
   updateFx(dt);
   snowP.update(rdt);
   sparks.update(dt);
@@ -1790,6 +1793,15 @@ window.__game = {
   takePickup,
   showTitle,
   NPCS,
+  DUMP,
+  POST,
+  camera,
+  scene,
+  renderFrame,
+  feedDumpling,
+  addSnack,
+  dumpCall,
+  bake,
   addPart,
   craft,
   setStyle,

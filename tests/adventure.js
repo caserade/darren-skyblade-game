@@ -13,7 +13,7 @@ const { chromium } = require('playwright-core');
   p.on('console', m => {
     if (m.type() === 'error' && !/net::|404/.test(m.text())) errs.push('CONSOLE ' + m.text());
   });
-  await p.goto('http://localhost:8766/dist/test.html');
+  await p.goto((process.env.URL || 'http://localhost:8768/dist/test.html'));
   await p.waitForTimeout(3500);
   await p.evaluate(() => localStorage.clear());
   await p.reload();

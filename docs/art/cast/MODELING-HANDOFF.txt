@@ -1,0 +1,90 @@
+DARREN SKYBLADE — APPROVED CREATURES A, B AND C
+Selection confirmed by the user on October 14, 2026.
+
+Upload the three PNG turnaround sheets alongside this brief. If your Claude
+interface accepts and reads ZIP archives, you can provide the complete package.
+Otherwise extract it and attach the PNGs and this text file individually.
+
+REQUEST TO CLAUDE
+Help turn the attached approved character concepts into three separate,
+game-ready, textured and rigged 3D creatures for my Darren Skyblade game.
+Use the attached art as the design authority. Explain what modeling tools you
+can actually execute. If you cannot create and verify binary model files,
+provide reproducible Blender scripts and clear run instructions, and label
+unexecuted work honestly. Do not describe a rendered picture as a rigged mesh.
+
+APPROVED CHARACTERS — KEEP ALL THREE
+A — Stormbelly / Sky Drake: A-stormbelly-sky-drake-v2.png
+Long curved neck, narrow wedge muzzle, golden angular horns, broad cyan bat
+wings, indigo body, pale segmented belly, large thighs, long arrow-tipped tail.
+Preserve the tall flowing dragon silhouette, expressive face and hanging belly.
+
+B — Stormbelly / Heavyweight: B-stormbelly-heavyweight-v2.png
+A separate character, not a replacement for A. Broad low body, enormous belly,
+short thick neck, small wings, stocky limbs, teal-blue spotted skin, pale belly
+plates, short swept horns and a heavy spade-tipped tail. Emphasize weight.
+Use a distinct internal name such as stormbelly_heavyweight; display name can
+be decided later.
+
+C — Chomp Rex / Grin: C-chomp-rex-grin-v2.png
+Plum-purple T-rex with golden underside, huge sculpted wedge head and curved
+toothy grin, tiny forearms, strong haunches, digitigrade legs, three-clawed feet,
+and a long counterbalancing tail. It must read as a dinosaur with forward
+balance. No wings or horns. Use two fingers per forearm consistently; the
+generated illustrations may contain small finger-count inconsistencies.
+
+MODELING QUALITY
+Model continuous sculpted forms with intentional silhouette and facial planes.
+Avoid recreating the earlier sphere-and-box placeholder assembly. Keep coherent
+shoulder, hip, ankle, muzzle and mouth anatomy. Use clean deformation topology
+around joints and mouth. The sheets are AI-generated visual concepts, not
+dimensionally exact CAD drawings: resolve small view inconsistencies into one
+consistent model while preserving the approved appearance. Show full-body
+front, side, back and three-quarter previews before final rig approval.
+
+MATERIALS AND SIZE
+Keep the colorful cartoon look, matte surfaces, subtle scales and soft painted
+gradients. Avoid glossy plastic skin and heavy photorealistic detail. The game
+is browser-based, so prioritize efficient meshes, shared textures and modest
+download size. Suggested starting budgets, adjustable after visual testing:
+20,000–35,000 triangles per main model; a 1K color atlas and 1K normal map where
+needed, with a packed roughness/metalness map only when it adds useful detail.
+Supply a lighter LOD and 512-pixel texture option. Keep editable high-quality
+source assets separate from compact runtime exports. Report actual sizes.
+
+RIG
+Use a consistent root at ground level, hips, spine, head, jaw, limb chains,
+feet and toe controls, and multiple tail bones. A needs several neck bones
+and wing-arm/finger chains; B needs compact wing chains and restrained belly
+secondary motion. C needs a controllable jaw, short forearms and clear foot
+placement. Keep eyes and eyebrows expressive with bones or morph targets.
+Provide clean weights, neutral rest pose and a labeled control rig. Use
+in-place animations for game-controlled movement; export glTF with +Y up
+and document the model's forward direction and scale. Check wing, belly,
+tail and mouth intersections throughout the animation range.
+
+ANIMATION CLIPS
+All three: idle, walk, turn, hit reaction, stagger, recovery, death.
+A: flight idle/flap, takeoff, landing, attack windup and attack.
+B: heavy walk, stomp windup (1.1 seconds), stomp impact and long recovery.
+C: charge windup (0.8 seconds), short charge, bite and recovery.
+Treat A's flight and attack clips as proposed additions; they do not imply
+that those mechanics are already implemented in the game.
+Keep readable anticipation and clear impact timing. Supply clip durations,
+loop flags and gameplay event markers in a small animation manifest.
+
+DELIVERABLES
+For each character, provide an editable .blend file, a rigged .glb, compact
+textures, named animation clips, preview renders/video, and a short rig guide.
+Test exported GLBs in a real glTF viewer or the target game. Check missing
+textures, bone influence limits, normals, material appearance, clip playback,
+foot sliding, deformation and scale. Report validation actually performed.
+
+GAME CONTEXT
+Darren: Skyblade Hunt is a Three.js browser game; the current local copy uses
+Three.js r128 and GLTFLoader. Confirm compatibility against the supplied game
+source before integration, rather than assuming this brief includes the game.
+Existing Stormbelly uses a telegraphed stomp and Chomp Rex a charge/bite.
+Keep A and B distinct and propose their placement before changing encounters.
+This package contains art and a handoff brief only. No game source, rigged
+models, Blender files or animation data are included yet.

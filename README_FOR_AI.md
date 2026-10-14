@@ -45,7 +45,12 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `data/chapter2.js` | Chapter 2, "Firewood for Mom": its level, zones, story and ending (pushed onto `DATA.chapters`) |
 | `data/forge.js` | **Skyforge content**: parts, enemy drops, craftable weapons (blades, guns, bows, mortars), armor sets and pieces, recipes, Twin Arms moves, flight numbers |
 | `data/adventure.js` | **Cloud Utopia**: islands, links, dens, resource crystals, waystones, the forge, the Titan, contracts, dialogue |
+| `data/cast.js` | **Big monsters**: Sky Drake, Heavyweight, Chomp Rex: islands, health, poise, speed, attack timings and damage, weight stages, colours; their parts, drops, armor set, weapons, contracts and snack bushes |
+| `data/dumpling.js` | **Dumpling the cloud drake**: weight and belly numbers, Belly Bounce and trampoline numbers, snacks, bake recipes, snack bushes, snack drops, dialogue |
 | `assets/darren_model.js` | The rigged Darren model from Blender, as base64 (`window.DARREN_MODEL_B64`) |
+| `assets/dumpling_model.js` | Dumpling's sculpted, skinned body mesh (made by `tools/sculpt_dumpling.py`; do not edit by hand) |
+| `assets/cast_models.js` | The three monsters' sculpted, skinned bodies (made by `tools/sculpt_cast.py`) |
+| `assets/dumpling_art.js` | Dumpling's Hangar portraits (small images, made by `tools/make_dumpling_art.py`) |
 | `assets/music.js` | Michael's "Snowday Choir" loop, as base64 MP3 (`window.DARREN_MUSIC_B64`) |
 | `src/style.css` | All styling. Colours are CSS variables at the top (`--ember`, `--gold`, ...) |
 | `src/look.js` | Semi-realistic rendering: procedural textures (grass, rock, stone, bark, planks, snow), sky dome, cloud sea, soft clouds, post-processing (bloom, filmic grade, vignette), contact shadows, ambience (wind, birds, footsteps), the Graphics setting |
@@ -56,6 +61,9 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `src/weapons.js` | Weapon models (all blades and arm weapons), equipping, unlocking, per-weapon move numbers |
 | `src/forge.js` | Parts bag, part gems that drop and fly to Darren, crafting, armor stats and 3D pieces, loadout, Classic / Twin Arms style |
 | `src/arms.js` | Twin Arms attacks, Darren's projectiles, boss weak-spot focus, flight |
+| `src/weight.js` | The 7 weight stages shared by Dumpling and the Stormbellies (`stageInfo`) |
+| `src/cast.js` | Big monsters: model building (eyes, lids, horns, spines, skinned wing membranes, teeth), the pose functions for every animation clip (`castPose`, `CAST_CLIPS`), their AI, belly jiggle, eating bushes, spawning on their islands |
+| `src/dumpling.js` | Dumpling: builds his model (eyes, horns, fins, wings, cloud tufts, scarf), the belly / weight shader and jiggle spring, following and flying, feeding and digestion, Belly Bounce, trampoline, snack pickups and bushes, his oven, the HUD chip |
 | `src/adventure.js` | Cloud Utopia: dens, crystals, waystones, Gearwing and the Skyforge, contracts, the Titan, the map and fast travel |
 | `src/combat.js` | Effects (sparks, slash arcs, hit stars, warning marks, spikes), style rank, Darren's moves and state machine (`POSE`, `ATK`), damage, enemy AI with attack turns and poise, the shared boss AI |
 | `src/level.js` | Chapters (`CH`, `loadChapter`), building a level, ground checks, zones/story flow, pickups, dialogue, checkpoints, music, HUD, camera, Ruffy following, main loop |
@@ -63,8 +71,14 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `docs/CHATGPT_GUIDE.md` | Copy-paste prompts and a data cheat sheet for adding armor, weapons, contracts, islands |
 | `blender/darren_rig3.py` | Blender script that repairs, rigs, weights and animates Darren and exports `.blend/.fbx/.glb` |
 | `tools/build_single.py` | Inlines everything into one HTML file (`dist/`) |
+| `tools/sculpt_dumpling.py` | Sculpts Dumpling from smooth shapes and writes `assets/dumpling_model.js` (Python: numpy, scipy, scikit-image, pyfqmr) |
+| `tools/sculpt_lib.py`, `tools/sculpt_cast.py` | Sculpt the three monsters from smooth shapes (edit the `Part`s and paint functions, then run it) |
+| `tools/blender_import_cast.py` | Run in Blender on your PC: imports `models/*.glb` and saves editable `.blend` files |
+| `tools/make_cast_sheets.py` | Model sheets in `docs/art/cast/` (concept next to the in-game model) |
+| `models/*.glb` | Rigged, animated exports of the three monsters (glTF 2.0, +Y up, facing +Z, metres) and `cast_animations.json` (clip durations, loops, event times) |
+| `tools/make_dumpling_art.py` | Builds the concept sheet `docs/art/dumpling_concept.png` and the portraits from `tests/dumpling_art.js` renders |
 | `tools/pack_assets.py` | Re-packs a new `darren.glb` or music file into `assets/*.js` |
-| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems |
+| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
 
 ## How the game runs
 
@@ -179,10 +193,10 @@ It rebuilds the game mesh from the hidden source object `dragon 3d model`, re-ri
 Keyboard: WASD move, mouse camera, J or click Slash / R-arm, K or right-click Heavy / L-arm (hold to charge in Classic),
 Space jump (again for double jump, hold to glide), V fly (hold Space to climb, C to dive), Shift Wing Dash, Q lock-on
 (again on a boss: focus a weak spot), T Classic / Twin Arms, R switch weapon, 1 Blaze Wheel, 2 Flame Breath,
-F Dragon Heart, E use (Skyforge), N or Tab map, P pause / Hangar, M music.
+F Dragon Heart, E use (Skyforge, feed Dumpling), G Belly Bounce (Dumpling), N or Tab map, P pause / Hangar, M music.
 Controller: X slash, Y heavy, A jump, B dash, D-pad up fly, LT dive, D-pad left style, D-pad right weapon, D-pad down
-use, Back map, LB+X / LB+Y skills, LB+RB Dragon Heart, R3 lock-on, Start pause.
-Touch: on-screen stick and buttons (Fly and Style buttons included); the Hangar is in the pause menu.
+use, Back map, L3 Belly Bounce, LB+X / LB+Y skills, LB+RB Dragon Heart, R3 lock-on, Start pause.
+Touch: on-screen stick and buttons (Fly, Style and Belly buttons included); the Hangar is in the pause menu.
 
 ## Skyforge recipes (for ChatGPT)
 
@@ -197,6 +211,43 @@ guns / bows / mortars, `shot`. Optional model: a `buildX()` in `src/weapons.js` 
 `nodes`, or a contract `reward`).
 
 **Add a contract / island / den in Cloud Utopia.** Edit `data/adventure.js` (see the notes at the top of it).
+
+## Dumpling, the chubby cloud drake (Cloud Utopia companion)
+
+* All numbers, snacks, recipes, bushes and lines are in `data/dumpling.js` (notes at the top of the file).
+* He has 7 weight stages (`weight.stages`); `weight.stuffedLimit` caps how much a full belly adds on top.
+* **Weight** (`DUMP.w`, 0..1) and **belly fullness** (`DUMP.full`, 0..1) are saved in `UNLOCKS.dumpling`; the
+  snack bag is `UNLOCKS.snacks`. Snacks fill the belly; digesting turns fullness into weight; walking and flying
+  burn weight unless "Hold his weight" is on.
+* **How the body grows:** the mesh carries per-vertex masks. `aFat` (whole body) and `aBelly` (the belly) push
+  vertices along `aFdir` in the vertex shader in `dumpBodyMaterial()`: `grow = aFat * w * 0.3 + aBelly * (w * 0.5
+  + full * 0.3)`. Change those numbers to make him grow more or less.
+* **Jiggle:** `dumpJiggle()` is a damped spring (stiffer when light, floppier when heavy) driven by his own
+  accelerations; `dumpKick(x, y, z, ripple)` adds a wobble (footsteps, landings, eating, giggles, trampolines).
+* **Change his shape or colours:** edit `S`, `TAIL` and the paint colours in `tools/sculpt_dumpling.py`, run
+  `python3 tools/sculpt_dumpling.py`, then rebuild. Small parts (eyes, horns, ear fins, wings, cloud tufts, scarf,
+  tooth) are built in `buildDumpling()` in `src/dumpling.js` at anchor points the script finds.
+* **New snack:** add it to `snacks` in `data/dumpling.js` (shape: berry, bun, melon, pepper, cake, puff, comet),
+  then give it a source: a `bake` recipe, a `bushes` entry or a `drops` entry.
+
+## Big monsters (Cloud Utopia)
+
+* Numbers live in `data/cast.js`. Each monster has a home `island` and spot `at`, `hp`, `poise` (damage needed
+  to stagger it), `speed`, `aggro` range, `respawn` seconds and `attacks` (wind-up seconds, damage, radius).
+* **Weight stages** (Sky Drake, Heavyweight): `weight.stages` (7, from `src/weight.js`), `perBush` (weight per
+  snack bush eaten), `slimPerMinute`, and `perStage` multipliers (hp, damage, speed, radius per stage).
+* Animation: `castPose(type, clip, t)` in `src/cast.js` returns bone rotations for any clip at time t. The game
+  blends between them; `tests/cast_export.js` bakes the same functions into the `.glb` files. To add a clip,
+  add it to `CAST_CLIPS` and a `case` in `castPose`.
+* AI: `castUpdate()` in `src/cast.js` (a state machine per monster: idle, eat, chase, the attack states,
+  recover, stagger, dead). Hits go through `castHit()` (poise), so they do not get stun-locked.
+* To change a body: edit its function in `tools/sculpt_cast.py`, run `python3 tools/sculpt_cast.py <type>`,
+  then `node tests/cast_export.js` to refresh the `.glb`.
+
+## Weight stages (all creatures)
+
+* `src/weight.js`: `stageInfo(stages, weight)` gives the stage index, name, size, lbs and progress. A creature's
+  weight is 0..1 and never more; its body is drawn at its stage's `size`, so stage 7 is the size limit.
 
 ## Look and feel (semi-realistic rendering)
 

@@ -136,6 +136,8 @@ function buildWeapon(id) {
   if (id === 'emberblaster') return buildArmCannon(0xff8a1e, 0xffd23a);
   if (id === 'galebow') return buildBow();
   if (id === 'sporemortar') return buildMortar();
+  if (id === 'chompfang') return buildRecolorBlade(0xf3e6c8, 0x8a3f7a, 1.2);
+  if (id === 'stormcannon') return buildArmCannon(0x3b78a8, 0x7cd0ff);
   return buildSword();
 }
 /* Emberfang's shape in another colour (Frostfang, Titan Edge) */
