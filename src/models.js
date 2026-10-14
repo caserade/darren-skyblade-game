@@ -20,7 +20,7 @@ const TOYS = [];
 function toy(color, o) {
   const m = new T.MeshPhysicalMaterial(
     Object.assign(
-      { color, roughness: 0.32, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.14, envMapIntensity: 0.55 },
+      { color, roughness: 0.46, metalness: 0, clearcoat: 0.35, clearcoatRoughness: 0.3, envMapIntensity: 0.7 },
       o || {},
     ),
   );
@@ -51,9 +51,9 @@ const MAT = {
   shell: toy(0x1d5a2a),
   belly: toy(0xf2dc8a),
   green: toy(0x34883a),
-  stone: flat(0x8d8a86),
-  stoneD: flat(0x6a6764),
-  moss: flat(0x5b9a4a),
+  stone: lookMat('stone', 0xb0aca6, 2, { roughness: 0.92 }),
+  stoneD: lookMat('stone', 0x86827c, 2, { roughness: 0.95 }),
+  moss: lookMat('grass', 0xb8d8a0, 1, { roughness: 0.95 }),
   flashW: new T.MeshBasicMaterial({
     color: 0xffffff,
     transparent: true,
@@ -733,92 +733,178 @@ function grassTexture(ring) {
   t.anisotropy = 4;
   return t;
 }
-function buildIsland(R, withTex) {
-  const g = new T.Group();
-  const top = new T.Mesh(new T.CylinderGeometry(R, R * 0.96, 2.4, 56, 1), [
-    flat(0x7a6a55),
-    withTex
-      ? buildIsland.grass ||
-        (buildIsland.grass = new T.MeshStandardMaterial({ map: grassTexture(false), roughness: 0.95 }))
-      : flat(0x6fbf4a),
-    flat(0x7a6a55),
-  ]);
-  top.position.y = -1.2;
-  top.receiveShadow = true;
-  g.add(top);
-  const under = new T.Mesh(jitter(new T.ConeGeometry(R * 0.96, R * 0.7, 14, 3), R * 0.035), flat(0x8a7862));
-  under.rotation.x = PI;
-  under.position.y = -2.4 - R * 0.35;
-  g.add(under);
-  return g;
+/* islands: grassy top with a soil lip, layered rock cliffs, a rough rock underside with hanging stones */
+const ISLE = {};
+function isleMats() {
+  if (ISLE.grass) return ISLE;
+  ISLE.grass = lookMat('grass', 0xffffff, 1, { roughness: 0.95 });
+  ISLE.cliff = lookMat('rock', 0xffffff, 1, { roughness: 0.92 });
+  ISLE.under = lookMat('rock', 0xc8b8a8, 1, { roughness: 0.95 });
+  ISLE.soil = lookMat('rock', 0x6a5440, 1, { roughness: 1 });
+  return ISLE;
 }
-function buildTree(s) {
+function buildIsland(R, withTex) {
   const g = new T.Group(),
-    leaf = flat([0x3f9a4a, 0x4fae52, 0x358a44][Math.floor(rnd(3))]);
-  g.add(mk(GEO.lowCyl, flat(0x7a5236), 0, 1 * s, 0, 0.28 * s, 2 * s, 0.28 * s));
-  for (let i = 0; i < 3; i++) {
-    const c = mk(GEO.lowCone, leaf, 0, (2.2 + i * 1.15) * s, 0, (1.9 - i * 0.45) * s, 2 * s, (1.9 - i * 0.45) * s);
-    c.rotation.y = rnd(TAU);
+    M = isleMats(),
+    grass = M.grass.clone(),
+    cliff = M.cliff.clone(),
+    under = M.under.clone();
+  // texture density in metres: grass ~4 m per tile, cliff ~6 m around and 2.4 m high
+  for (const [m, rx, ry] of [
+    [grass, R / 4, R / 4],
+    [cliff, Math.max(2, Math.round((TAU * R) / 6)), 1],
+    [under, Math.max(2, Math.round((TAU * R) / 9)), 2],
+  ]) {
+    m.map = m.map.clone();
+    m.map.needsUpdate = true;
+    m.map.repeat.set(rx, ry);
+    m.normalMap = m.normalMap.clone();
+    m.normalMap.needsUpdate = true;
+    m.normalMap.repeat.set(rx, ry);
+  }
+  const cyl = jitterRim(new T.CylinderGeometry(R, R * 0.94, 2.6, 72, 3, false), R, 0.18);
+  const top = new T.Mesh(cyl, [cliff, grass, cliff]);
+  top.position.y = -1.3;
+  top.receiveShadow = true;
+  top.castShadow = true;
+  g.add(top);
+  // a darker soil band under the grass lip
+  const lip = new T.Mesh(new T.CylinderGeometry(R * 1.005, R * 0.99, 0.35, 72, 1, true), M.soil);
+  lip.position.y = -0.2;
+  g.add(lip);
+  const ug = jitter(new T.ConeGeometry(R * 0.94, R * 0.8, 28, 6), R * 0.05);
+  const und = new T.Mesh(ug, under);
+  und.rotation.x = PI;
+  und.position.y = -2.6 - R * 0.4;
+  und.castShadow = false;
+  g.add(und);
+  // hanging rocks
+  const n = Math.round(R * 0.5);
+  for (let i = 0; i < n; i++) {
+    const a = rnd(TAU),
+      r = rnd(0.25, 0.8) * R,
+      h = rnd(1.5, 4) * (1 - r / R + 0.3),
+      c = new T.Mesh(jitter(new T.ConeGeometry(rnd(0.6, 1.4), h * 2, 7, 2), 0.2), under);
+    c.rotation.x = PI;
+    c.position.set(Math.cos(a) * r, -2.6 - (1 - r / R) * R * 0.55 - h * 0.6, Math.sin(a) * r);
     g.add(c);
   }
   return g;
 }
+// wobble a cylinder's outline so islands are not perfect circles (top stays flat at its height)
+function jitterRim(geo, R, amt) {
+  const p = geo.attributes.position,
+    seed = rnd(100);
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i),
+      z = p.getZ(i),
+      y = p.getY(i),
+      a = Math.atan2(z, x),
+      rr = Math.hypot(x, z);
+    if (rr < 0.01) continue;
+    const k =
+      1 +
+      (Math.sin(a * 3 + seed) * 0.4 + Math.sin(a * 7 + seed * 2) * 0.35 + Math.sin(a * 13) * 0.25) *
+        amt *
+        (y < 1.2 ? 1 : 0.15) *
+        (0.6 / R + 0.02) *
+        2;
+    p.setX(i, x * k);
+    p.setZ(i, z * k);
+  }
+  geo.computeVertexNormals();
+  return geo;
+}
+/* trees: textured bark trunk with a branch or two, canopy of soft leaf clumps */
+const TREE = {};
+function treeParts() {
+  if (TREE.bark) return TREE;
+  TREE.bark = lookMat('bark', 0xffffff, 1, { roughness: 0.95 });
+  TREE.bark.map.repeat.set(1, 2);
+  TREE.bark.normalMap.repeat.set(1, 2);
+  TREE.leaf = [0x4f8f3a, 0x5d9e40, 0x46823a, 0x6aa848].map(
+    c =>
+      new T.MeshStandardMaterial({
+        color: c,
+        roughness: 0.82,
+        normalMap: lookTex('grass').normalMap,
+        normalScale: new T.Vector2(0.6, 0.6),
+      }),
+  );
+  TREE.blob = [0, 1, 2, 3].map(() => smoothNormals(jitter(new T.IcosahedronGeometry(1, 3), 0.12)));
+  TREE.trunk = new T.CylinderGeometry(0.6, 1, 1, 10, 3);
+  return TREE;
+}
+function buildTree(s) {
+  const g = new T.Group(),
+    Tp = treeParts(),
+    leaf = Tp.leaf[Math.floor(rnd(Tp.leaf.length))],
+    h = rnd(2.4, 3.2) * s;
+  const tr = mk(Tp.trunk, Tp.bark, 0, h / 2, 0, 0.26 * s, h, 0.26 * s);
+  tr.rotation.z = rnd(-0.06, 0.06);
+  g.add(tr);
+  for (let i = 0; i < 2; i++) {
+    const a = rnd(TAU);
+    g.add(
+      limb(0, h * rnd(0.55, 0.75), 0, Math.cos(a) * 1.0 * s, h * 0.95, Math.sin(a) * 1.0 * s, 0.08 * s, Tp.bark, true),
+    );
+  }
+  const n = 6 + Math.floor(rnd(3));
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * TAU + rnd(-0.3, 0.3),
+      rr = i === 0 ? 0 : rnd(0.7, 1.2) * s,
+      k = (i === 0 ? 1.35 : rnd(0.8, 1.15)) * s,
+      b = mk(
+        Tp.blob[i % 4],
+        leaf,
+        Math.cos(a) * rr,
+        h + (i === 0 ? 0.9 * s : rnd(0, 0.7) * s),
+        Math.sin(a) * rr,
+        k,
+        k * 0.82,
+        k,
+      );
+    b.rotation.set(rnd(TAU), rnd(TAU), 0);
+    b.receiveShadow = true;
+    g.add(b);
+  }
+  return g;
+}
 function buildSky() {
-  // sky, fog, lights, reflections, distant islands, clouds (the playable islands are built in level.js)
-  const sky = document.createElement('canvas');
-  sky.width = 8;
-  sky.height = 256;
-  const sx = sky.getContext('2d');
-  const gr = sx.createLinearGradient(0, 0, 0, 256);
-  gr.addColorStop(0, '#3f8fe0');
-  gr.addColorStop(0.55, '#8fd0f5');
-  gr.addColorStop(1, '#fbe9d2');
-  sx.fillStyle = gr;
-  sx.fillRect(0, 0, 8, 256);
-  const st = new T.CanvasTexture(sky);
-  st.encoding = T.sRGBEncoding;
-  scene.background = st;
-  scene.fog = new T.Fog(0xbfe2f5, 110, 460);
-  const hemi = new T.HemisphereLight(0xd8eeff, 0x86b070, 0.62);
+  // sky dome, fog, lights, reflections, distant islands, clouds and the cloud sea (playable islands: level.js)
+  scene.background = new T.Color(SKY.horizon);
+  scene.fog = new T.Fog(SKY.horizon.getHex(), 130, 520);
+  const dome = buildSkyDome();
+  scene.add(dome);
+  const sea = buildCloudSea();
+  scene.add(sea);
+  const hemi = new T.HemisphereLight(0xcfe4ff, 0x6f7d4c, 0.85);
   scene.add(hemi);
-  const sun = new T.DirectionalLight(0xfff1d8, 0.88);
+  const sun = new T.DirectionalLight(0xfff0d6, 2.1);
   sun.castShadow = true;
   const ms = COARSE ? 1024 : 2048;
   sun.shadow.mapSize.set(ms, ms);
   const sc = sun.shadow.camera;
-  sc.left = sc.bottom = -24;
-  sc.right = sc.top = 24;
+  sc.left = sc.bottom = -26;
+  sc.right = sc.top = 26;
   sc.near = 1;
-  sc.far = 90;
-  sun.shadow.bias = -0.0006;
-  sun.shadow.normalBias = 0.03;
+  sc.far = 100;
+  sun.shadow.bias = -0.0004;
+  sun.shadow.normalBias = 0.04;
   scene.add(sun, sun.target);
-  const rim = new T.DirectionalLight(0x9fd0ff, 0.45);
+  const rim = new T.DirectionalLight(0xa8d4ff, 0.55);
   rim.position.set(-10, 8, -14);
   scene.add(rim);
-  // environment map for glossy toy reflections
+  // environment map from the same sky, for reflections on glossy and metal surfaces
   try {
-    const es = new T.Scene(),
-      eg = new T.SphereGeometry(50, 24, 16),
-      col = [];
-    const p = eg.attributes.position,
-      c1 = new T.Color(0x5aa6ee),
-      c2 = new T.Color(0xfff2dc),
-      c3 = new T.Color(0x6fa85a),
-      cc = new T.Color();
-    for (let i = 0; i < p.count; i++) {
-      const y = p.getY(i) / 50;
-      if (y > 0) cc.copy(c2).lerp(c1, Math.pow(y, 0.6));
-      else cc.copy(c2).lerp(c3, Math.min(1, -y * 3));
-      col.push(cc.r, cc.g, cc.b);
-    }
-    eg.setAttribute('color', new T.Float32BufferAttribute(col, 3));
-    es.add(new T.Mesh(eg, new T.MeshBasicMaterial({ vertexColors: true, side: T.BackSide })));
-    const hl = new T.Mesh(new T.SphereGeometry(7, 12, 8), new T.MeshBasicMaterial({ color: 0xffffff }));
-    hl.position.set(20, 34, 14);
-    es.add(hl);
+    const es = new T.Scene();
+    es.add(buildSkyDome());
+    const gnd = new T.Mesh(new T.CircleGeometry(400, 24), new T.MeshBasicMaterial({ color: 0x55703a }));
+    gnd.rotation.x = -PI / 2;
+    gnd.position.y = -30;
+    es.add(gnd);
     const pm = new T.PMREMGenerator(renderer),
-      env = pm.fromScene(es, 0.03).texture;
+      env = pm.fromScene(es, 0.02).texture;
     pm.dispose();
     window.ENV_TEX = env;
     TOYS.forEach(m => {
@@ -848,33 +934,84 @@ function buildSky() {
       t.position.set(Math.cos(a) * r, 0, Math.sin(a) * r);
       g.add(t);
     }
+    g.traverse(o => (o.castShadow = false));
     scene.add(g);
     far.push(g);
   });
-  const cm = new T.MeshStandardMaterial({
-      color: 0xffffff,
-      flatShading: true,
-      roughness: 1,
-      emissive: 0xffffff,
-      emissiveIntensity: 0.18,
-    }),
-    clouds = [];
-  for (let i = 0; i < 22; i++) {
-    const g = new T.Group(),
-      n = 3 + Math.floor(rnd(3));
-    for (let j = 0; j < n; j++) {
-      const s = rnd(4, 8);
-      const m = new T.Mesh(GEO.rock, cm);
-      m.position.set(j * 5 - n * 2.5, rnd(-1, 1), rnd(-2, 2));
-      m.scale.set(s, s * 0.6, s * 0.8);
-      g.add(m);
-    }
-    const a = rnd(TAU),
-      r = rnd(70, 230);
-    g.position.set(Math.cos(a) * r, rnd(-30, 45), 90 + Math.sin(a) * r);
+  const clouds = [];
+  for (let i = 0; i < 26; i++) {
+    const g = buildSoftCloud(),
+      a = rnd(TAU),
+      r = rnd(60, 230);
+    g.position.set(Math.cos(a) * r, rnd(-25, 40), 90 + Math.sin(a) * r);
     g.userData.z = g.position.z;
     scene.add(g);
     clouds.push(g);
   }
-  return { sun, far, clouds };
+  return { sun, far, clouds, dome, sea, hemi };
 }
+
+/* ---------- grass and rocks shared by every level ---------- */
+const ROCK_GEO = [0, 1, 2].map(() => smoothNormals(jitter(new T.IcosahedronGeometry(1, 2), 0.16)));
+const GRASS = (function () {
+  // three blades crossed at 60 degrees; colour runs from a dark root to a sunlit tip
+  const pos = [],
+    col = [],
+    root = [0.11, 0.22, 0.06],
+    tip = [0.42, 0.6, 0.2];
+  for (let b = 0; b < 3; b++) {
+    const a = (b / 3) * PI + rnd(-0.2, 0.2),
+      ca = Math.cos(a),
+      sa = Math.sin(a),
+      w = 0.045,
+      h = rnd(0.32, 0.46),
+      lean = rnd(-0.06, 0.06),
+      ox = rnd(-0.06, 0.06),
+      oz = rnd(-0.06, 0.06);
+    const v = (x, y) => [ox + ca * x + lean * y * sa, y, oz + sa * x - lean * y * ca];
+    const tri = [
+      v(-w, 0),
+      v(w, 0),
+      v(w * 0.4, h * 0.6),
+      v(-w, 0),
+      v(w * 0.4, h * 0.6),
+      v(-w * 0.4, h * 0.6),
+      v(-w * 0.4, h * 0.6),
+      v(w * 0.4, h * 0.6),
+      v(0, h),
+    ];
+    tri.forEach(p => {
+      pos.push(...p);
+      const t = p[1] / h;
+      col.push(root[0] + (tip[0] - root[0]) * t, root[1] + (tip[1] - root[1]) * t, root[2] + (tip[2] - root[2]) * t);
+    });
+  }
+  const geo = new T.BufferGeometry();
+  geo.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+  geo.setAttribute('color', new T.Float32BufferAttribute(col, 3));
+  geo.computeVertexNormals();
+  const uT = { value: 0 };
+  const make = tint => {
+    const m = new T.MeshStandardMaterial({ vertexColors: true, side: T.DoubleSide, roughness: 0.9, color: tint });
+    m.onBeforeCompile = sh => {
+      sh.uniforms.uT = uT;
+      sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nuniform float uT;').replace(
+        '#include <begin_vertex>',
+        `#include <begin_vertex>
+          #ifdef USE_INSTANCING
+            vec3 ip = vec3(instanceMatrix[3][0], instanceMatrix[3][1], instanceMatrix[3][2]);
+            float sway = sin(uT * 1.8 + ip.x * 0.35 + ip.z * 0.22) * 0.6 + sin(uT * 3.7 + ip.x * 1.3) * 0.25;
+            transformed.x += sway * 0.09 * position.y;
+            transformed.z += sway * 0.05 * position.y;
+          #endif`,
+      );
+      // blades: light passes through, so the back side is not black
+      sh.fragmentShader = sh.fragmentShader.replace(
+        '#include <normal_fragment_begin>',
+        '#include <normal_fragment_begin>\nnormal = normalize(vec3(normal.x * 0.3, abs(normal.y) + 0.8, normal.z * 0.3));',
+      );
+    };
+    return m;
+  };
+  return { geo, mat: make(0xffffff), matSnow: make(0xc8dcc4), uT };
+})();

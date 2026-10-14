@@ -541,6 +541,27 @@ function fillSettings(box) {
       `Enemies hit ${Math.round(D.damage * 100)}% as hard, have ${Math.round(D.hp * 100)}% health, and up to ${D.attackers} attack at once.`,
     ),
   );
+  const gx = section(
+    box,
+    'Graphics',
+    'High: bloom, filmic colour, dense grass and soft shadows. Low: faster, for phones and older computers. Grass density changes when the next level loads.',
+  );
+  const gseg = el('div', 'seg');
+  for (const [id, name] of [
+    ['high', 'High'],
+    ['low', 'Low'],
+  ]) {
+    const b = el('button', SETTINGS.gfx === id ? 'on' : '', name);
+    b.type = 'button';
+    b.addEventListener('click', () => {
+      SETTINGS.gfx = id;
+      saveSettings();
+      setGfx(id);
+      openPanel('settings');
+    });
+    gseg.appendChild(b);
+  }
+  gx.appendChild(gseg);
   const s = section(box, 'Camera and sound');
   const slider = (label, key, min, max, step, fmt, apply) => {
     const r = el('div', 'srow'),

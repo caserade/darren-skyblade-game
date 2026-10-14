@@ -1,13 +1,13 @@
 /* PROPS: Mom, Ruffy, the cottage, bridges, stones, the thorn barrier, the crystal cage, pickups and decorations. */
 /* ---------- story characters and level props (medium poly, toy style) ---------- */
 const PROP = {
-  wood: flat(0x9a6a43),
-  woodD: flat(0x6e4a2e),
+  wood: lookMat('plank', 0xffffff, 1, { roughness: 0.85 }),
+  woodD: lookMat('plank', 0x9a7a60, 1, { roughness: 0.9 }),
   rope: flat(0xd9c49a),
   woodEnd: flat(0xe0c08a),
-  cream: toy(0xfff1dc, { clearcoat: 0.2, roughness: 0.6 }),
-  roof: flat(0xb5432f),
-  roofD: flat(0x8f3424),
+  cream: lookMat('stone', 0xfff4e4, 2, { roughness: 0.85, normalScale: new T.Vector2(0.4, 0.4) }),
+  roof: lookMat('plank', 0xd0583c, 3, { roughness: 0.8 }),
+  roofD: lookMat('plank', 0x9a3a28, 2, { roughness: 0.85 }),
   window: new T.MeshBasicMaterial({ color: 0xffd98a }),
   door: flat(0x7a4a2a),
   blue: toy(0x3f8fe0),
@@ -41,8 +41,8 @@ const PROP = {
     side: T.DoubleSide,
     depthWrite: false,
   }),
-  stone: flat(0x9b958d),
-  grass: flat(0x5aa840),
+  stone: lookMat('stone', 0xffffff, 1, { roughness: 0.9 }),
+  grass: lookMat('grass', 0xffffff, 1, { roughness: 0.95 }),
   apron: toy(0xfff8f0, { clearcoat: 0.3, roughness: 0.55 }),
   flower: toy(0xffd23a),
   pink: toy(0xff7ab8),
@@ -343,10 +343,10 @@ function buildBridge(A, B, w) {
 /* small floating stone platform */
 function buildStone(r) {
   const g = new T.Group();
-  const top = mk(GEO.lowCyl, PROP.grass, 0, -0.2, 0, r, 0.4, r);
+  const top = mk(GEO.cyl, PROP.grass, 0, -0.2, 0, r, 0.4, r);
   top.receiveShadow = true;
   g.add(top);
-  const under = new T.Mesh(jitter(new T.ConeGeometry(r * 0.95, r * 1.6, 9, 2), r * 0.06), PROP.stone);
+  const under = new T.Mesh(jitter(new T.ConeGeometry(r * 0.95, r * 1.6, 14, 3), r * 0.07), isleMats().under);
   under.rotation.x = PI;
   under.position.y = -0.4 - r * 0.8;
   under.castShadow = true;
@@ -506,21 +506,36 @@ function buildWoodStore() {
   };
 }
 /* Chapter 2 decorations: snowy pines, log piles, snow patches, mushroom rings */
-const PINE_M = [flat(0x2f7a4a), flat(0x3a8a52), flat(0x2a6e44)],
-  SNOW_M = flat(0xf4fbff);
+const PINE_M = [0x2e5e3a, 0x37694a, 0x2a5638].map(
+    c =>
+      new T.MeshStandardMaterial({
+        color: c,
+        roughness: 0.85,
+        normalMap: lookTex('grass').normalMap,
+        normalScale: new T.Vector2(0.8, 0.8),
+      }),
+  ),
+  SNOW_M = lookMat('snow', 0xffffff, 1, { roughness: 0.7 });
+const PINE_GEO = [0, 1, 2].map(() => jitter(new T.ConeGeometry(1, 1, 14, 3), 0.06));
 function buildPine(s) {
   const g = new T.Group(),
-    leaf = PINE_M[Math.floor(rnd(3))];
-  g.add(mk(GEO.lowCyl, flat(0x6e4a2e), 0, 0.8 * s, 0, 0.25 * s, 1.6 * s, 0.25 * s));
-  for (let i = 0; i < 4; i++) {
-    const r = (1.6 - i * 0.33) * s,
-      y = (1.6 + i * 0.95) * s,
-      c = mk(GEO.lowCone, leaf, 0, y, 0, r, 1.5 * s, r);
-    c.rotation.y = rnd(TAU);
+    leaf = PINE_M[Math.floor(rnd(3))],
+    Tp = treeParts();
+  g.add(mk(Tp.trunk, Tp.bark, 0, 1.2 * s, 0, 0.22 * s, 2.4 * s, 0.22 * s));
+  const tiers = 6;
+  for (let i = 0; i < tiers; i++) {
+    const t = i / (tiers - 1),
+      r = (1.75 - t * 1.25) * s,
+      y = (1.4 + i * 0.78) * s,
+      c = mk(PINE_GEO[i % 3], leaf, 0, y, 0, r, 1.35 * s, r);
+    c.rotation.set(rnd(-0.05, 0.05), rnd(TAU), rnd(-0.05, 0.05));
+    c.receiveShadow = true;
     g.add(c);
-    const sn = mk(GEO.lowCone, SNOW_M, 0, y + 0.42 * s, 0, r * 0.62, 0.7 * s, r * 0.62);
-    sn.rotation.y = c.rotation.y;
-    g.add(sn);
+    if (i % 2 === 0 || i === tiers - 1) {
+      const sn = mk(PINE_GEO[(i + 1) % 3], SNOW_M, 0, y + 0.34 * s, 0, r * 0.58, 0.55 * s, r * 0.58);
+      sn.rotation.y = c.rotation.y;
+      g.add(sn);
+    }
   }
   return g;
 }
@@ -616,10 +631,14 @@ function buildCrystalCluster() {
 function buildRuin() {
   const g = new T.Group(),
     h = rnd(1.4, 3.2);
-  g.add(mk(GEO.lowCyl, PROP.stone, 0, h / 2, 0, 0.4, h, 0.4));
+  const col = mk(GEO.cyl, PROP.stone, 0, h / 2, 0, 0.4, h, 0.4);
+  col.receiveShadow = true;
+  g.add(col);
   g.add(mk(GEO.box, PROP.stone, 0, h + 0.12, 0, 1.0, 0.24, 1.0));
+  g.add(mk(GEO.box, PROP.stone, 0, 0.1, 0, 0.95, 0.2, 0.95));
+  for (let i = 0; i < 3; i++) g.add(mk(GEO.rock, PROP.stone, rnd(-0.9, 0.9), 0.1, rnd(-0.9, 0.9), rnd(0.12, 0.25)));
   if (Math.random() < 0.5) {
-    const b = mk(GEO.lowCyl, PROP.stone, 0.9, 0.3, 0.2, 0.35, 1.2, 0.35);
+    const b = mk(GEO.cyl, PROP.stone, 0.9, 0.3, 0.2, 0.35, 1.2, 0.35);
     b.rotation.z = PI / 2 - 0.2;
     g.add(b);
   }

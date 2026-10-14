@@ -42,7 +42,7 @@ def build(mode):
         repl = "<script>\n/* ---- %s ---- */\n%s\n</script>" % (src, c.replace("</script", "<\\/script"))
         html = html.replace(tag, repl)
     if mode == "test":
-        html = html.replace(THREE_CDN, "../node_modules/three/build/three.min.js").replace(LOADER_CDN, "../node_modules/three/examples/js/loaders/GLTFLoader.js")
+        html = html.replace(THREE_CDN, "../node_modules/three/build/three.min.js").replace("https://cdn.jsdelivr.net/npm/three@0.128.0/", "../node_modules/three/")
     if mode == "artifact":
         # the artifact host wraps the page itself: keep <title>, styles and body content only
         head = html[html.index("<head>") + 6:html.index("</head>")]

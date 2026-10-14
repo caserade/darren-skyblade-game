@@ -21,7 +21,7 @@ function makeParticles(n, additive) {
     vertexShader:
       'attribute vec4 aColor;attribute float aSize;varying vec4 vC;uniform float uScale;void main(){vC=aColor;vec4 mv=modelViewMatrix*vec4(position,1.0);gl_PointSize=aSize*uScale/max(0.1,-mv.z);gl_Position=projectionMatrix*mv;}',
     fragmentShader:
-      'varying vec4 vC;void main(){float d=length(gl_PointCoord-0.5);float a=smoothstep(0.5,0.12,d);gl_FragColor=vec4(vC.rgb,vC.a*a);}',
+      'varying vec4 vC;void main(){float d=length(gl_PointCoord-0.5);float a=smoothstep(0.5,0.12,d);gl_FragColor=vec4(vC.rgb,vC.a*a);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}',
   });
   const pts = new T.Points(geo, mat);
   pts.frustumCulled = false;
@@ -1633,6 +1633,7 @@ function updatePlayer(s) {
       P.airWhiff = 0;
       P.fly = false;
       dust(P.x, P.z, 6);
+      if (Snd.ctx) Snd.noise(0.12, 0.12, 700, 120, 0.9); // landing thud
       if (P.st === 'dive') diveLand();
       else if (P.st === 'attack' && P.atk.air) {
         P.st = 'move';
@@ -1678,6 +1679,7 @@ function animDarren(dt, rdt) {
       if (!air) {
         if (spd > 0.9) {
           P.runPh += spd * dt * 2.25;
+          footstep(P.runPh, spd);
           const sn = Math.sin(P.runPh);
           tp.lL = sn * 0.95;
           tp.lR = -sn * 0.95;
@@ -1710,7 +1712,12 @@ function animDarren(dt, rdt) {
           // flying: big slow wing beats, body leaning into the direction of travel
           const fs = Math.min(1, spd / 9);
           tp.wing = 0.1;
-          tp.wf = Math.sin(t * (In.held.jump ? 16 : 11)) * 0.85;
+          const wr = In.held.jump ? 16 : 11;
+          tp.wf = Math.sin(t * wr) * 0.85;
+          if (Math.floor((t * wr) / TAU) !== P.wingN) {
+            P.wingN = Math.floor((t * wr) / TAU);
+            wingBeat();
+          }
           tp.bp = 0.15 + fs * 0.7;
           tp.lL = 0.5 + fs * 0.6;
           tp.lR = 0.4 + fs * 0.6;

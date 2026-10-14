@@ -36,7 +36,8 @@ try {
   throw e;
 }
 renderer.outputEncoding = T.sRGBEncoding;
-renderer.toneMapping = T.NoToneMapping;
+renderer.toneMapping = T.ACESFilmicToneMapping; // look.js switches this when post-processing is on
+renderer.physicallyCorrectLights = false;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = T.PCFSoftShadowMap;
 let pixelRatio = Math.min(window.devicePixelRatio || 1, COARSE ? 1.5 : 2);

@@ -21,12 +21,12 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 
 1. **No build step, no modules.** Every file is a plain `<script>` loaded by `index.html` in a fixed order and
    shares one global scope. Do not add `import`/`export`, npm packages or bundlers.
-2. **three.js r128** from cdnjs plus its `GLTFLoader` (r128 examples/js build). Use the r128 API
+2. **three.js r128** from cdnjs plus its `GLTFLoader` and post-processing files (r128 examples/js build, jsdelivr). Use the r128 API
    (`THREE.Geometry` no longer exists; use `BufferGeometry`). `T` is an alias for `THREE`.
 3. **Change content in `data/game_data.js` first.** Story text, level layout, zones, enemy HP, move frame data,
    player speeds and music volume all live there. Only touch `src/` when the behaviour itself must change.
 4. **Keep the load order** in `index.html`: `data/game_data.js`, `data/chapter2.js`, `data/forge.js`,
-   `data/adventure.js`, assets, then `core`, `models`, `props`, `skin`, `weapons`, `forge`, `arms`, `combat`,
+   `data/adventure.js`, assets, then `core`, `look`, `models`, `props`, `skin`, `weapons`, `forge`, `arms`, `combat`,
    `adventure`, `level`, `menu`. Later files may use anything defined in earlier ones.
    All files share one global scope, so two files must never declare the same `const` / `function` name.
 5. **All walkable ground is at height 0.** Islands are flat discs; bridges and stones connect them. A gap between
@@ -48,6 +48,7 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `assets/darren_model.js` | The rigged Darren model from Blender, as base64 (`window.DARREN_MODEL_B64`) |
 | `assets/music.js` | Michael's "Snowday Choir" loop, as base64 MP3 (`window.DARREN_MUSIC_B64`) |
 | `src/style.css` | All styling. Colours are CSS variables at the top (`--ember`, `--gold`, ...) |
+| `src/look.js` | Semi-realistic rendering: procedural textures (grass, rock, stone, bark, planks, snow), sky dome, cloud sea, soft clouds, post-processing (bloom, filmic grade, vignette), contact shadows, ambience (wind, birds, footsteps), the Graphics setting |
 | `src/core.js` | Renderer, scene, camera object, input (keyboard, mouse, touch, gamepad), sound effects |
 | `src/models.js` | Shared materials, placeholder toy Darren, enemies (incl. Barkling, Snowcap, Elite crown), both bosses, islands, trees, sky |
 | `src/props.js` | Mom's pose code, Ruffy (model and expressions), cottage, wood store, bridges, stones, barrier, cage, pickups, decorations |
@@ -196,3 +197,13 @@ guns / bows / mortars, `shot`. Optional model: a `buildX()` in `src/weapons.js` 
 `nodes`, or a contract `reward`).
 
 **Add a contract / island / den in Cloud Utopia.** Edit `data/adventure.js` (see the notes at the top of it).
+
+## Look and feel (semi-realistic rendering)
+
+* Textures are generated in code by `lookTex(kind)` in `src/look.js` (no image files): `grass`, `rock`, `stone`,
+  `bark`, `plank`, `snow`, `fine`. Use `lookMat(kind, tintColor, repeat, extraOptions)` for a textured material.
+* Sky colours and sun direction: `SKY` in `src/look.js`. Fog and lights: `buildSky()` in `src/models.js`.
+* Colour grade (exposure, saturation, warmth, vignette): `GradeShader` uniforms in `src/look.js`; bloom strength
+  and threshold in `setupPost()`.
+* Settings > Graphics: `high` (bloom, filmic grade, dense grass) or `low` (direct ACES render, for phones).
+  The game drops to `low` by itself when the frame rate stays low.

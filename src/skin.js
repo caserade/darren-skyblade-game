@@ -120,8 +120,11 @@ function loadDarrenGLB(url) {
         o.castShadow = true;
         o.frustumCulled = false;
         const m = o.material;
-        m.roughness = 0.3;
+        // semi-realistic skin: satin scales with a faint grain instead of glossy plastic
+        m.roughness = 0.5;
         m.metalness = 0;
+        m.normalMap = lookTex('fine').normalMap;
+        m.normalScale = new T.Vector2(0.25, 0.25);
         if (window.ENV_TEX) {
           m.envMap = window.ENV_TEX;
           m.envMapIntensity = 0.55;
@@ -231,8 +234,10 @@ function buildMomSkinned(D) {
     o.frustumCulled = false;
     const m = o.material.clone();
     m.color.setHex(S.tint);
-    m.roughness = 0.35;
+    m.roughness = 0.5;
     m.metalness = 0;
+    m.normalMap = lookTex('fine').normalMap;
+    m.normalScale = new T.Vector2(0.25, 0.25);
     if (window.ENV_TEX) {
       m.envMap = window.ENV_TEX;
       m.envMapIntensity = 0.55;
@@ -296,7 +301,9 @@ function buildGearwing(D) {
     o.castShadow = true;
     o.frustumCulled = false;
     const m = o.material.clone();
-    m.roughness = 0.35;
+    m.roughness = 0.5;
+    m.normalMap = lookTex('fine').normalMap;
+    m.normalScale = new T.Vector2(0.25, 0.25);
     hueShift(m, 215, 0.75, 1.15);
     if (window.ENV_TEX) m.envMap = window.ENV_TEX;
     o.material = m;

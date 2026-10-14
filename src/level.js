@@ -162,7 +162,8 @@ function buildLevel() {
           0.92,
           () => {
             const s = rnd(0.4, 1.1),
-              m = mk(GEO.rock0, flat(0x9a948c), 0, s * 0.35, 0, s, s * rnd(0.6, 1), s);
+              m = mk(ROCK_GEO[Math.floor(rnd(ROCK_GEO.length))], PROP.stone, 0, s * 0.3, 0, s, s * rnd(0.55, 0.9), s);
+            m.rotation.set(rnd(-0.3, 0.3), rnd(TAU), rnd(-0.3, 0.3));
             m.receiveShadow = true;
             const g = new T.Group();
             g.add(m);
@@ -178,23 +179,21 @@ function buildLevel() {
         add(f);
       }
     }
-    // grass tufts
-    const N = Math.round(I.r * I.r * (COARSE ? 1.4 : 3)),
-      inst = new T.InstancedMesh(
-        new T.ConeGeometry(0.07, 0.34, 4),
-        flat(I.deco.indexOf('snow') >= 0 ? 0x6fae5a : 0x4f9e3a),
-        N,
-      ),
+    // grass: instanced clumps of crossed blades that sway in the wind (see GRASS in look.js)
+    const N = Math.round(I.r * I.r * (SETTINGS.gfx === 'high' ? 6 : 2.2)),
+      inst = new T.InstancedMesh(GRASS.geo, I.deco.indexOf('snow') >= 0 ? GRASS.matSnow : GRASS.mat, N),
       dd = new T.Object3D();
     for (let i = 0; i < N; i++) {
       const a = rnd(TAU),
-        r = Math.sqrt(rnd(1)) * (I.r - 0.3);
-      dd.position.set(I.x + Math.cos(a) * r, 0.15, I.z + Math.sin(a) * r);
-      dd.rotation.set(rnd(-0.3, 0.3), rnd(TAU), rnd(-0.3, 0.3));
-      dd.scale.set(rnd(0.8, 1.6), rnd(0.5, 1.1), rnd(0.8, 1.6));
+        r = Math.sqrt(rnd(1)) * (I.r - 0.4);
+      dd.position.set(I.x + Math.cos(a) * r, 0, I.z + Math.sin(a) * r);
+      dd.rotation.set(rnd(-0.15, 0.15), rnd(TAU), rnd(-0.15, 0.15));
+      const k = rnd(0.7, 1.4);
+      dd.scale.set(k, k * rnd(0.7, 1.3), k);
       dd.updateMatrix();
       inst.setMatrixAt(i, dd.matrix);
     }
+    inst.receiveShadow = true;
     add(inst);
   }
   // Mom's house (Mom and Ruffy themselves are built once and kept between chapters)
@@ -284,6 +283,15 @@ function loadChapter(id) {
   for (const c of world.clouds) {
     c.position.z = c.userData.z + cz - 90;
     c.userData.dx = cx;
+    // keep clouds out of the play space so the camera never flies through a billboard
+    if (c.userData.y0 === undefined) c.userData.y0 = c.position.y;
+    c.position.y = c.userData.y0;
+    if (
+      c.position.y > -18 &&
+      c.position.y < 30 &&
+      CH.level.islands.some(I => Math.hypot(c.position.x - I.x, c.position.z - I.z) < I.r + 45)
+    )
+      c.position.y = c.position.y > 6 ? rnd(32, 45) : rnd(-32, -22);
   }
   placeHome();
   P.x = CH.level.start.x;
@@ -1591,6 +1599,7 @@ resize();
 loadChapter(loadJSON(DATA.meta.unlockKey).lastChapter || DATA.chapters[0].id);
 equipWeapon(UNLOCKS.weapon);
 loadDarrenGLB();
+setGfx(SETTINGS.gfx);
 showTitle();
 let last = performance.now(),
   slowAcc = 0,
@@ -1603,14 +1612,14 @@ function frame(now) {
   const rdt = Math.min(0.05, Math.max(0.001, (now - last) / 1000));
   last = now;
   if (!window.__manual) tick(rdt);
-  else renderer.render(scene, camera);
+  else renderFrame();
 }
 function tick(rdt) {
   pollPad();
   readMove();
   if (G.paused) {
     In.q.length = 0;
-    renderer.render(scene, camera);
+    renderFrame();
     return;
   }
   let scale = 1;
@@ -1715,21 +1724,30 @@ function tick(rdt) {
   updateCamera(rdt);
   const us = renderer.domElement.height / (2 * Math.tan((camera.fov * PI) / 360));
   sparks.mat.uniforms.uScale.value = puffs.mat.uniforms.uScale.value = snowP.mat.uniforms.uScale.value = us;
-  world.sun.position.set(P.x + 12, 24, P.z + 9);
+  world.sun.position.set(P.x + SKY.sunDir.x * 40, SKY.sunDir.y * 40, P.z + SKY.sunDir.z * 40);
   world.sun.target.position.set(P.x, 0, P.z);
+  world.dome.position.copy(camera.position);
+  world.sea.position.x = camera.position.x;
+  world.sea.position.z = camera.position.z;
+  world.sea.material.uniforms.uT.value = G.time + performance.now() / 1000;
+  world.sea.material.uniforms.uCam.value.copy(camera.position);
+  GRASS.uT.value = performance.now() / 1000;
+  updateBlobs();
+  ambTick(rdt);
   for (const c of world.clouds) {
     c.position.x += rdt * 0.6;
     if (c.position.x > 240 + (c.userData.dx || 0)) c.position.x -= 480;
   }
   if (G.mode === 'play') updateHud();
-  if (!window.__manual) renderer.render(scene, camera);
+  if (!window.__manual) renderFrame();
   slowAcc += rdt;
   slowN++;
   if (slowN >= 90) {
     const avg = slowAcc / slowN;
     slowAcc = slowN = 0;
     if (avg > 0.03) {
-      if (pixelRatio > 1) {
+      if (POST.on && pixelRatio <= 1.25) setGfx('low');
+      else if (pixelRatio > 1) {
         pixelRatio = Math.max(1, pixelRatio - 0.5);
         resize();
       } else if (renderer.shadowMap.enabled) {

@@ -1553,6 +1553,6 @@ body.touch #ctr {
     font-size: 17px;
   }
   #obj {
-    top: calc(var(--gut) + 96px);
+    top: calc(var(--gut) + 108px);
   }
 }

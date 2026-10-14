@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.3.0 — 2026-10-14 — Semi-realistic polish (two passes)
+
+- **Rendering:** filmic (ACES) tone mapping, HDR bloom, colour grade and vignette; a sky dome with a sun and
+  glow; a moving sea of clouds below the islands; soft billboard clouds kept out of the play space; fog matched
+  to the horizon; a stronger warm sun with cool sky fill and reflections taken from the sky.
+- **World materials:** procedural textures with normal maps for grass, layered rock cliffs, stone, bark, wooden
+  planks and snow. Islands now have uneven outlines, a soil lip, rough undersides and hanging rocks.
+- **Vegetation:** broadleaf trees with bark trunks, branches and soft leaf canopies; six-tier snowy pines;
+  thousands of wind-swaying grass blades (three-blade clumps shaded from root to tip).
+- **Props:** textured cottage walls and roof, ruins, bridges, stepping stones; smooth natural rocks; stone-skinned
+  Grumblepeak.
+- **Characters:** satin scaled skin with fine grain instead of plastic gloss on Darren, Mom and Gearwing; softer
+  clearcoat on enemies and props; contact shadows under everyone.
+- **Sound and feel:** wind ambience that rises with height and flight, birdsong on calm islands, footsteps with
+  dust puffs, landing thuds and wing beats.
+- **Settings > Graphics** (High / Low); automatic fallback to Low when the frame rate drops.
+
 ## 1.2.0 — 2026-10-14 — Skyforge update: Adventure mode, crafting, Twin Arms, flight
 
 Inspired by mech hunting games like Daemon X Machina: Titanic Scion, mixed with everything already in the game.

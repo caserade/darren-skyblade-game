@@ -95,3 +95,4 @@ lrise aim aimL), `next` (Slash follow-up), `heavy` (Heavy branch), flags `kd lau
 | Twin Arms, shots, flight, boss part focus | `src/arms.js` |
 | Cloud Utopia behaviour, map | `src/adventure.js` |
 | Hangar menu screens | `src/menu.js`, styles in `src/style.css` |
+| Sky colours, textures, bloom, colour grade, ambience | `src/look.js` |
