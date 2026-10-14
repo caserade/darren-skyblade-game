@@ -1,0 +1,14 @@
+{
+  "name": "darren-skyblade-game",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Darren: Skyblade Hunt, a browser 3D action game. No build step: open index.html. These packages are only for the automated tests.",
+  "scripts": {
+    "build": "python3 tools/build_single.py",
+    "build:test": "python3 tools/build_single.py --test"
+  },
+  "devDependencies": {
+    "playwright-core": "1.63.0",
+    "three": "0.128.0"
+  }
+}
