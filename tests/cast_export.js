@@ -28,10 +28,17 @@ const ROOT = path.join(__dirname, '..');
       D.root.name = type;
       D.body.name = 'body';
       // a plain, exportable copy of the body material (the game adds its weight/jiggle shader on top)
-      const plain = new T.MeshStandardMaterial({ vertexColors: true, roughness: 0.7, metalness: 0, skinning: true, name: type + '_skin' });
+      const m0 = D.mesh.material;
+      // wait for the baked textures to decode
+      await new Promise(res => {
+        const ok = () => !m0.map || (m0.map.image && m0.map.image.complete && m0.normalMap.image && m0.normalMap.image.complete);
+        const chk = () => (ok() ? res() : setTimeout(chk, 50));
+        chk();
+      });
+      const plain = new T.MeshStandardMaterial({ map: m0.map || null, normalMap: m0.normalMap || null, vertexColors: !m0.map, roughness: 0.68, metalness: 0, skinning: true, name: type + '_skin' });
       const g0 = D.mesh.geometry,
         g = new T.BufferGeometry();
-      for (const a of ['position', 'normal', 'color', 'skinIndex', 'skinWeight']) g.setAttribute(a, g0.attributes[a]);
+      for (const a of ['position', 'normal', 'uv', 'tangent', 'color', 'skinIndex', 'skinWeight']) if (g0.attributes[a]) g.setAttribute(a, g0.attributes[a]);
       const bl = g0.attributes.aBelly,
         f = new Float32Array(bl.count);
       for (let i = 0; i < bl.count; i++) f[i] = bl.getX(i);

@@ -57,6 +57,7 @@ const only = process.argv.slice(3);
       D.U.uW.value = o.w || 0;
       D.U.uStuff.value = 0;
       const R = castPose(type, o.clip || 'idle', o.t || 0.6);
+      if (o.w) for (const [sd, side] of [[1, 'L'], [-1, 'R']]) { const q = R.bones['arm' + side] || [0, 0, 0]; R.bones['arm' + side] = [q[0] - o.w * 0.35, q[1], q[2] + sd * o.w * 0.75]; }
       castApplyPose(D, R);
       D.root.position.set(0, (o.y || 0), 0);
       D.root.rotation.y = 0;

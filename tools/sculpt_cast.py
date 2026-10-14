@@ -13,16 +13,18 @@ with a clean jaw split along the mouth), a belly mask, a fat mask and growth dir
 vertex colours with baked ambient occlusion. Small parts are built in src/cast.js at the anchors found here:
 eyes and lids, horns, back spines, wings, claws (one per toe and finger), teeth, fangs and tusks.
 
-Run:  python3 tools/sculpt_cast.py [skydrake heavyweight chomprex]      (numpy, scipy, scikit-image, pyfqmr)
+Run:  python3 tools/sculpt_cast.py [skydrake heavyweight chomprex]      (numpy, scipy, scikit-image, pyfqmr, xatlas, Pillow)
 Units are metres, +y up, +z is the creature's front, +x its left. Feet stand on y = 0.
 """
-import json, math, os, sys
+import base64, json, math, os, sys
 import numpy as np
 from sculpt_lib import *
 
 OUT = os.path.join(os.path.dirname(__file__), '..', 'assets', 'cast_models.js')
 LR = ((1, 'L'), (-1, 'R'))
-LOD = (36000, 11000)  # triangles for the game mesh and the light mesh
+LOD = (30000, 10000)  # triangles for the game mesh and the light mesh
+TEX = (1024, 512)  # baked texture size for each
+SCALES = dict(skydrake=19.0, heavyweight=17.0, chomprex=15.0)  # scales per metre
 
 def mirror(s, p):
     return (s * p[0], p[1], p[2])
@@ -192,7 +194,7 @@ def skydrake():
         Cc = mix(Cc, '#28388f', gw.get('brow', 0) * 0.5)
         m = (np.abs(y - ym(z)) < 0.03) * (z > 0.45) * (gw.get('head', 0) + gw.get('jaw', 0))
         Cc = mix(Cc, '#4a1630', m * 0.8)
-        return Cc
+        return Cc, ven
     def masks(v, N, gw):
         bc = np.array((0, 1.5, 0.1))
         dv = norm(v - bc)
@@ -311,7 +313,7 @@ def heavyweight():
         Cc = mix(Cc, '#1f4a72', gw.get('brow', 0) * 0.5)
         m = (np.abs(y - ym(z)) < 0.035) * (z > 0.55) * (gw.get('head', 0) + gw.get('jaw', 0))
         Cc = mix(Cc, '#3c1426', m * 0.85)
-        return Cc
+        return Cc, ven
     def masks(v, N, gw):
         bc = np.array((0, 1.25, 0.2))
         dv = norm(v - bc)
@@ -443,7 +445,7 @@ def chomprex():
         # gums and the inside of the grin
         inner = (np.abs(y - 3.32) < 0.12) * (z > 1.6) * ((gw.get('head', 0) * (N[:, 1] < -0.55)) + (gw.get('jaw', 0) * (N[:, 1] > 0.55)))
         Cc = mix(Cc, '#5a1a2c', np.clip(inner, 0, 1))
-        return Cc
+        return Cc, ven
     def masks(v, N, gw):
         bc = np.array((0, 2.25, 0.4))
         dv = norm(v - bc)
@@ -469,10 +471,10 @@ def attributes(C, v, f, anch, paint, masks):
                 Wb[:, BI['belly']] += Wb[:, BI[b]] * take
                 Wb[:, BI[b]] *= 1 - take
     skI, skW = finalize_weights(Wb)
-    col = paint(v, N, gw)
+    col, _ = paint(v, N, gw)
     ao = bake_ao(C, v, N)
     col = col * (0.42 + 0.58 * ao)[:, None]
-    return skI, skW, bl, fat, fdir, col
+    return skI, skW, bl, fat, fdir, col, N
 
 def build(name):
     print(name)
@@ -482,12 +484,20 @@ def build(name):
     out = None
     for i, tris in enumerate(LOD):
         v, f = decimate(C, vf, ff, tris)
-        skI, skW, bl, fat, fdir, col = attributes(C, v, f, anch, paint, masks)
-        e = encode(C, v, f, col, skI, skW, bl, fat, fdir, anch, dict(tris=len(f)), dy=dy)
+        skI, skW, bl, fat, fdir, col, N = attributes(C, v, f, anch, paint, masks)
+        # UV-unwrap the game mesh and bake colour + normal maps from the true surface
+        res = TEX[i]
+        vm, f2, uv = unwrap(v, f, res)
+        print('  unwrapped: %d -> %d verts (UV seams)' % (len(v), len(vm)))
+        cmap, nmap = bake(C, v[vm], f2, uv, N[vm], paint, res, SCALES[name])
+        e = encode(C, v[vm], f2, col[vm], skI[vm], skW[vm], bl[vm], fat[vm], fdir[vm], anch, dict(tris=len(f2)), dy=dy)
+        e['uv'] = base64.b64encode(np.round(np.clip(uv, 0, 1) * 65535).astype(np.uint16).tobytes()).decode()
+        e['nrm'] = base64.b64encode(np.round(N[vm] * 127).astype(np.int8).tobytes()).decode()
+        e['tex'] = dict(map=img_uri(cmap, q=88), normal=img_uri(nmap * 0.5 + 0.5, q=92), size=res)
         if i == 0:
             out = e
         else:
-            out['lod1'] = {k: e[k] for k in ('count', 'lo', 'hi', 'pos', 'idx', 'idx32', 'col', 'skI', 'skW', 'belly', 'fat', 'fdir', 'tris')}
+            out['lod1'] = {k: e[k] for k in ('count', 'lo', 'hi', 'pos', 'idx', 'idx32', 'col', 'skI', 'skW', 'belly', 'fat', 'fdir', 'tris', 'uv', 'nrm', 'tex')}
     out['dy'] = round(dy, 5)
     print('  stands at +%.3f m' % dy)
     return out

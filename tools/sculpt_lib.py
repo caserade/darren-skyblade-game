@@ -347,3 +347,177 @@ def wedge(z0, z1, w0, w1, ylo0, ylo1, yhi0, yhi1, r):
         q = np.stack([np.abs(x) - hw + r, np.abs(y - cy) - hh + r, np.abs(z - cz) - hz + r], -1)
         return length(np.maximum(q, 0)) + np.minimum(q.max(-1), 0) - r
     return f
+
+# ------------------------------------------------------------------ UVs and texture baking
+def unwrap(v, f, res):
+    """UV-unwrap with xatlas. Returns (vmap, faces, uv): new vertex i is old vertex vmap[i]."""
+    import xatlas
+    atlas = xatlas.Atlas()
+    atlas.add_mesh(v.astype(np.float32), f.astype(np.uint32))
+    co = xatlas.ChartOptions()
+    co.max_iterations = 2
+    po = xatlas.PackOptions()
+    po.resolution = res
+    po.padding = 4
+    po.bilinear = True
+    po.bruteForce = False
+    atlas.generate(co, po)
+    vmap, faces, uv = atlas[0]
+    return vmap.astype(np.int64), faces.astype(np.int64), uv.astype(np.float64)
+
+def groups_at(C, p, tau=0.035):
+    """part-group ownership at arbitrary points (same rule as skin())"""
+    parts = [P for P in C.parts if not P.sub]
+    D = np.stack([P.fn(p) for P in parts])
+    dmin = D.min(0)
+    gw = {}
+    for P, d in zip(parts, D):
+        gw[P.group] = gw.get(P.group, 0) + np.exp(-np.maximum(d - dmin, 0) / tau)
+    tot = sum(gw.values())
+    return {k: g / tot for k, g in gw.items()}
+
+def _hash3(c):
+    """deterministic jitter in [0,1)^3 for integer cells"""
+    h = (c[..., 0] * 73856093) ^ (c[..., 1] * 19349663) ^ (c[..., 2] * 83492791)
+    h = h.astype(np.int64) & 0x7fffffff
+    out = []
+    for k in (1, 2, 3):
+        x = (h * (2654435761 + k * 97)) & 0xffffffff
+        out.append((x % 10007) / 10007.0)
+    return np.stack(out, -1)
+
+def cellular(p, freq):
+    """3D Worley noise: distances to the nearest and second nearest scale centre (in cell units)"""
+    q = p * freq
+    base = np.floor(q).astype(np.int64)
+    f1 = np.full(len(p), 9.0); f2 = np.full(len(p), 9.0)
+    for dx in (-1, 0, 1):
+        for dy in (-1, 0, 1):
+            for dz in (-1, 0, 1):
+                c = base + np.array((dx, dy, dz))
+                fp = c + 0.15 + 0.7 * _hash3(c)
+                d = length(q - fp)
+                f2 = np.where(d < f1, f1, np.minimum(f2, d))
+                f1 = np.minimum(f1, d)
+    return f1, f2
+
+def scale_height(p, freq):
+    """rounded scales with soft grooves between them: 1 on a scale's crown, 0 in the grooves"""
+    f1, f2 = cellular(p, freq)
+    edge = f2 - f1
+    return sstep(0.0, 0.22, edge) * (1 - 0.35 * sstep(0.0, 0.6, f1))
+
+def raster(f, uv, res):
+    """for each texel: triangle id and barycentric weights (texel centres, v up)"""
+    tid = np.full((res, res), -1, np.int64)
+    bary = np.zeros((res, res, 3))
+    P = uv[f] * res  # (T,3,2) in pixels, y = v*res
+    for t in range(len(f)):
+        a, b, c = P[t]
+        x0 = int(max(0, np.floor(min(a[0], b[0], c[0])))); x1 = int(min(res - 1, np.ceil(max(a[0], b[0], c[0]))))
+        y0 = int(max(0, np.floor(min(a[1], b[1], c[1])))); y1 = int(min(res - 1, np.ceil(max(a[1], b[1], c[1]))))
+        if x1 < x0 or y1 < y0:
+            continue
+        xs, ys = np.meshgrid(np.arange(x0, x1 + 1) + 0.5, np.arange(y0, y1 + 1) + 0.5)
+        den = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+        if abs(den) < 1e-12:
+            continue
+        w0 = ((b[1] - c[1]) * (xs - c[0]) + (c[0] - b[0]) * (ys - c[1])) / den
+        w1 = ((c[1] - a[1]) * (xs - c[0]) + (a[0] - c[0]) * (ys - c[1])) / den
+        w2 = 1 - w0 - w1
+        ins = (w0 >= -1e-4) & (w1 >= -1e-4) & (w2 >= -1e-4)
+        if not ins.any():
+            continue
+        yy = (ys[ins] - 0.5).astype(int); xx = (xs[ins] - 0.5).astype(int)
+        tid[yy, xx] = t
+        bary[yy, xx] = np.stack([w0[ins], w1[ins], w2[ins]], -1)
+    return tid, bary
+
+def dilate(img, mask, n=8):
+    """grow the baked islands outward a few texels so mip-mapping never shows the empty background"""
+    img = img.copy(); m = mask.copy()
+    for it in range(n):
+        acc = np.zeros_like(img); cnt = np.zeros(m.shape)
+        for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            sm = np.roll(np.roll(m, dy, 0), dx, 1)
+            si = np.roll(np.roll(img, dy, 0), dx, 1)
+            acc += si * sm[..., None]; cnt += sm
+        grow = (~m) & (cnt > 0)
+        img[grow] = acc[grow] / cnt[grow][:, None]
+        m = m | grow
+    return img
+
+def vertex_tangents(v, f, uv, N):
+    """port of three.js computeTangents (r128): per-vertex tangent + handedness"""
+    tan1 = np.zeros_like(v); tan2 = np.zeros_like(v)
+    a, b, c = f[:, 0], f[:, 1], f[:, 2]
+    x1, x2 = v[b] - v[a], v[c] - v[a]
+    s1, s2 = uv[b] - uv[a], uv[c] - uv[a]
+    den = s1[:, 0] * s2[:, 1] - s2[:, 0] * s1[:, 1]
+    ok = np.abs(den) > 1e-14
+    r = np.where(ok, 1.0 / np.where(ok, den, 1), 0)
+    sdir = (x1 * s2[:, 1:2] - x2 * s1[:, 1:2]) * r[:, None]
+    tdir = (x2 * s1[:, 0:1] - x1 * s2[:, 0:1]) * r[:, None]
+    for k in (a, b, c):
+        np.add.at(tan1, k, sdir); np.add.at(tan2, k, tdir)
+    t = norm(tan1 - N * (N * tan1).sum(1, keepdims=True))
+    w = np.where((np.cross(N, tan1) * tan2).sum(1) < 0, -1.0, 1.0)
+    return t, w
+
+def bake(C, v, f, uv, N, paint, res, scale_freq, scale_amp=0.003, log=print):
+    """bake a colour map and a tangent-space normal map from the true (high-detail) surface"""
+    tid, bary = raster(f, uv, res)
+    mask = tid >= 0
+    T = tid[mask]; Bw = bary[mask]
+    tri = f[T]
+    p = (v[tri] * Bw[..., None]).sum(1)
+    n = norm((N[tri] * Bw[..., None]).sum(1))
+    # per-vertex tangents exactly like three.js BufferGeometry.computeTangents(), interpolated per texel
+    Tv, Wv = vertex_tangents(v, f, uv, N)
+    Tg = norm((Tv[tri] * Bw[..., None]).sum(1))
+    Tg = norm(Tg - n * (Tg * n).sum(1, keepdims=True))
+    hand = np.sign(Wv[tri[:, 0]])
+    Bt = np.cross(n, Tg) * hand[:, None]
+    col = np.zeros((len(p), 3)); nrm = np.zeros((len(p), 3))
+    eps = 1e-3
+    CH = 200000
+    for i in range(0, len(p), CH):
+        q = p[i:i + CH]
+        g = norm(np.stack([(C.sdf(q + dv) - C.sdf(q - dv)) / (2 * eps) for dv in np.eye(3) * eps], -1))
+        q = q - g * C.sdf(q)[:, None]  # onto the true surface
+        gw = groups_at(C, q)
+        c, ven = paint(q, g, gw)
+        # scales everywhere except the smooth belly plates
+        # restrained scale clusters: strongest on the back, shoulders, thighs and tail, faint on the face
+        cl = np.sin(q[:, 0] * 3.1 + 0.4) * np.sin(q[:, 1] * 2.7 + 1.1) * np.sin(q[:, 2] * 2.9 + 2.3)
+        clus = 0.35 + 0.65 * sstep(-0.2, 0.45, cl + 0.35 * sstep(0.2, -0.6, g[:, 2]) - 0.4 * gw.get('head', 0) - 0.3 * gw.get('jaw', 0))
+        amt = np.clip(1 - ven, 0, 1) * scale_amp * clus
+        hs = scale_height(q, scale_freq)
+        e2 = 0.08 / scale_freq
+        gh = np.stack([(scale_height(q + dv, scale_freq) - scale_height(q - dv, scale_freq)) / (2 * e2) for dv in np.eye(3) * e2], -1) * amt[:, None]
+        gh = gh - g * (gh * g).sum(1, keepdims=True)
+        nn = norm(g - gh)
+        ao = bake_ao(C, q, g)
+        cav = 1 - 0.16 * (1 - hs) * np.clip(1 - ven, 0, 1) * clus
+        col[i:i + CH] = c * (0.42 + 0.58 * ao)[:, None] * cav[:, None]
+        # into the low mesh's tangent space
+        nl = n[i:i + CH]
+        nrm[i:i + CH] = np.stack([(nn * Tg[i:i + CH]).sum(1), (nn * Bt[i:i + CH]).sum(1), (nn * nl).sum(1)], -1)
+    nrm = norm(nrm)
+    cimg = np.zeros((res, res, 3)); nimg = np.zeros((res, res, 3)); nimg[..., 2] = 1
+    cimg[mask] = np.clip(col, 0, 1); nimg[mask] = nrm
+    cimg = dilate(cimg, mask); nimg = dilate(nimg, mask)
+    filled = (cimg.sum(-1) > 0)
+    cimg[~filled] = col.mean(0)  # the unused atlas space takes the average colour (clean mip-maps)
+    nimg[~filled] = (0, 0, 1)
+    log('  baked %d texels (%.0f%% of the %dpx atlas)' % (mask.sum(), 100 * mask.mean(), res))
+    # rows: v = 0 at the bottom of the image
+    return cimg[::-1], nimg[::-1]
+
+def img_uri(a, kind='jpeg', q=88):
+    import io
+    from PIL import Image
+    im = Image.fromarray(np.clip(a * 255 + 0.5, 0, 255).astype(np.uint8))
+    b = io.BytesIO()
+    im.save(b, 'JPEG', quality=q, optimize=True)
+    return 'data:image/jpeg;base64,' + base64.b64encode(b.getvalue()).decode()

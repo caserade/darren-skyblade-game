@@ -15,7 +15,7 @@ window.DARREN_DATA = {
   meta: {
     title: 'Darren',
     subtitle: 'Skyblade Hunt',
-    version: '1.4.1',
+    version: '1.4.2',
     settingsKey: 'darrenSkyblade.settings', // browser slot for the Settings menu
     unlockKey: 'darrenSkyblade.unlocks', // browser slot for unlocked weapons and finished chapters
   },

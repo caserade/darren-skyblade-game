@@ -244,6 +244,8 @@ guns / bows / mortars, `shot`. Optional model: a `buildX()` in `src/weapons.js` 
 * Rig per monster: root, hips, spine, chest, neck chain, head, jaw, browL/R, belly, tail chain, leg chains to the
   toes, arm chains to the hands, wing chains. `tests/cast_deform.js` poses every clip and reports skin stretch;
   `clearance()` in `tools/sculpt_lib.py` checks that arms and hands are not fused to the body.
+* Textures: `tools/sculpt_cast.py` UV-unwraps each mesh (xatlas) and bakes a colour atlas and a normal map from the
+  sculpt (`bake()` in `tools/sculpt_lib.py`; scale size per monster is `SCALES`, texture sizes `TEX`).
 * To change a body: edit its function in `tools/sculpt_cast.py`, run `python3 tools/sculpt_cast.py <type>`,
   then `node tests/cast_export.js` to refresh the `.glb`.
 

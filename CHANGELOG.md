@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.4.2 — 2026-10-14 — Monster studio pass (UVs, baked textures, normal maps)
+
+- **UV-unwrapped game meshes** (xatlas) with a **baked 1K colour atlas and 1K tangent-space normal map** per
+  monster (512 px for the light LOD). The bake samples the true high-detail sculpt, so belly plates, folds,
+  creases, lips and a layer of rounded scale clusters show up as real surface detail on a 30,000-triangle mesh.
+  Colour includes ambient occlusion and scale cavities. Tangents match three.js exactly (no seams).
+- **Thick swept-back fin spines** with rounded edges, **hooked claws**, wing membranes shaded dark at the arm
+  and light at the trailing edge, darker lids, matte spines and glossy claws.
+- Triangle budget: body 30,000 (light LOD 10,000) plus spines, claws, teeth, horns and eyes.
+- The rigged `.glb` files in `models/` now carry the UVs, tangents and both textures.
+
 ## 1.4.1 — 2026-10-14 — Monster model pass (mesh, rig, weights)
 
 - **Meshes:** sculpted on a grid about 2.5 times finer (19 mm instead of 26 mm), 36,000 triangles each, plus a
