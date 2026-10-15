@@ -1,0 +1,794 @@
+{
+  "scope": "Exact position comparison against accepted checkpoint08 connected components. Existing eye/jaw/tusk/horn components plus a bounded body-mesh eyelid region only. Non-facial components, horn roots and rear jaw hinge remain byte-identical. Does not certify all self-intersections.",
+  "variants": [
+    {
+      "variant": "candidate",
+      "assetSha256": "f24442408b38b84920e35185dfe75e5d9db7e851cab42f95f10ab6debc472dc4",
+      "checks": {
+        "otherComponent0Unchanged": true,
+        "otherComponent1Unchanged": true,
+        "otherComponent2Unchanged": true,
+        "otherComponent3Unchanged": true,
+        "otherComponent4Unchanged": true,
+        "otherComponent5Unchanged": true,
+        "otherComponent6Unchanged": true,
+        "otherComponent8Unchanged": true,
+        "otherComponent9Unchanged": true,
+        "otherComponent10Unchanged": true,
+        "otherComponent11Unchanged": true,
+        "otherComponent12Unchanged": true,
+        "otherComponent13Unchanged": true,
+        "hornAnchor14": true,
+        "otherComponent20Unchanged": true,
+        "otherComponent21Unchanged": true,
+        "otherComponent22Unchanged": true,
+        "otherComponent23Unchanged": true,
+        "otherComponent24Unchanged": true,
+        "otherComponent25Unchanged": true,
+        "otherComponent26Unchanged": true,
+        "otherComponent27Unchanged": true,
+        "otherComponent28Unchanged": true,
+        "otherComponent29Unchanged": true,
+        "otherComponent30Unchanged": true,
+        "otherComponent31Unchanged": true,
+        "otherComponent32Unchanged": true,
+        "otherComponent33Unchanged": true,
+        "otherComponent34Unchanged": true,
+        "otherComponent35Unchanged": true,
+        "jawRearHingeAnchored": true,
+        "hornAnchor42": true,
+        "otherComponent43Unchanged": true,
+        "otherComponent44Unchanged": true,
+        "otherComponent45Unchanged": true,
+        "otherComponent46Unchanged": true,
+        "otherComponent47Unchanged": true,
+        "otherComponent48Unchanged": true,
+        "otherComponent49Unchanged": true,
+        "otherComponent50Unchanged": true,
+        "otherComponent51Unchanged": true,
+        "otherComponent52Unchanged": true,
+        "otherComponent53Unchanged": true,
+        "otherComponent54Unchanged": true,
+        "otherComponent55Unchanged": true,
+        "allChangesInsideFacialScope": true,
+        "eightExistingEyeComponents": true,
+        "twoExistingHorns": true,
+        "belowFaceBodyUnchanged": true
+      },
+      "components": [
+        {
+          "kind": "other",
+          "vertices": 128,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 128,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 128,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 125,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 80,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 192,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 181,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 22953,
+          "changedVertices": 1519,
+          "maximumDisplacement": 0.02655508928000927
+        },
+        {
+          "kind": "other",
+          "vertices": 138,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 138,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 424,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 173,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 138,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 214,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "horn",
+          "vertices": 810,
+          "changedVertices": 679,
+          "maximumDisplacement": 0.23900842666625977
+        },
+        {
+          "kind": "tusk",
+          "vertices": 216,
+          "changedVertices": 216,
+          "maximumDisplacement": 0.07211542129516602
+        },
+        {
+          "kind": "eye",
+          "vertices": 472,
+          "changedVertices": 472,
+          "maximumDisplacement": 0.02958652377128601
+        },
+        {
+          "kind": "eye",
+          "vertices": 358,
+          "changedVertices": 358,
+          "maximumDisplacement": 0.03004564344882965
+        },
+        {
+          "kind": "eye",
+          "vertices": 446,
+          "changedVertices": 446,
+          "maximumDisplacement": 0.02757657878100872
+        },
+        {
+          "kind": "eye",
+          "vertices": 141,
+          "changedVertices": 141,
+          "maximumDisplacement": 0.030737053602933884
+        },
+        {
+          "kind": "other",
+          "vertices": 255,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 308,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 289,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 295,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 299,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 292,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 300,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 313,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 310,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 310,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 313,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 315,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 312,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 297,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 588,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 259,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "jaw",
+          "vertices": 1069,
+          "changedVertices": 853,
+          "maximumDisplacement": 0.11031059920787811
+        },
+        {
+          "kind": "eye",
+          "vertices": 141,
+          "changedVertices": 141,
+          "maximumDisplacement": 0.030737053602933884
+        },
+        {
+          "kind": "eye",
+          "vertices": 358,
+          "changedVertices": 358,
+          "maximumDisplacement": 0.03004564344882965
+        },
+        {
+          "kind": "eye",
+          "vertices": 444,
+          "changedVertices": 444,
+          "maximumDisplacement": 0.02757657878100872
+        },
+        {
+          "kind": "eye",
+          "vertices": 469,
+          "changedVertices": 469,
+          "maximumDisplacement": 0.02958652377128601
+        },
+        {
+          "kind": "tusk",
+          "vertices": 216,
+          "changedVertices": 216,
+          "maximumDisplacement": 0.07211542129516602
+        },
+        {
+          "kind": "horn",
+          "vertices": 831,
+          "changedVertices": 691,
+          "maximumDisplacement": 0.23900842666625977
+        },
+        {
+          "kind": "other",
+          "vertices": 255,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 168,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 376,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 138,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 138,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 62,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 187,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 177,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 138,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 133,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 126,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 126,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 126,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        }
+      ],
+      "passed": true
+    },
+    {
+      "variant": "lod",
+      "assetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+      "checks": {
+        "otherComponent0Unchanged": true,
+        "otherComponent1Unchanged": true,
+        "otherComponent2Unchanged": true,
+        "otherComponent3Unchanged": true,
+        "otherComponent4Unchanged": true,
+        "otherComponent5Unchanged": true,
+        "otherComponent6Unchanged": true,
+        "otherComponent7Unchanged": true,
+        "otherComponent8Unchanged": true,
+        "otherComponent9Unchanged": true,
+        "otherComponent11Unchanged": true,
+        "otherComponent12Unchanged": true,
+        "otherComponent13Unchanged": true,
+        "hornAnchor14": true,
+        "otherComponent20Unchanged": true,
+        "otherComponent21Unchanged": true,
+        "otherComponent22Unchanged": true,
+        "otherComponent23Unchanged": true,
+        "otherComponent24Unchanged": true,
+        "otherComponent25Unchanged": true,
+        "otherComponent26Unchanged": true,
+        "otherComponent27Unchanged": true,
+        "otherComponent28Unchanged": true,
+        "otherComponent29Unchanged": true,
+        "otherComponent30Unchanged": true,
+        "otherComponent31Unchanged": true,
+        "otherComponent32Unchanged": true,
+        "otherComponent33Unchanged": true,
+        "otherComponent34Unchanged": true,
+        "otherComponent35Unchanged": true,
+        "jawRearHingeAnchored": true,
+        "otherComponent42Unchanged": true,
+        "otherComponent43Unchanged": true,
+        "hornAnchor44": true,
+        "otherComponent45Unchanged": true,
+        "otherComponent46Unchanged": true,
+        "otherComponent47Unchanged": true,
+        "otherComponent48Unchanged": true,
+        "otherComponent49Unchanged": true,
+        "otherComponent50Unchanged": true,
+        "otherComponent51Unchanged": true,
+        "otherComponent52Unchanged": true,
+        "otherComponent53Unchanged": true,
+        "otherComponent54Unchanged": true,
+        "otherComponent55Unchanged": true,
+        "allChangesInsideFacialScope": true,
+        "eightExistingEyeComponents": true,
+        "twoExistingHorns": true,
+        "belowFaceBodyUnchanged": true
+      },
+      "components": [
+        {
+          "kind": "other",
+          "vertices": 81,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 81,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 81,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 79,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 308,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 104,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 80,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 152,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 141,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 104,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 14457,
+          "changedVertices": 1107,
+          "maximumDisplacement": 0.026499727740883827
+        },
+        {
+          "kind": "other",
+          "vertices": 89,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 103,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 119,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "horn",
+          "vertices": 331,
+          "changedVertices": 272,
+          "maximumDisplacement": 0.23900844156742096
+        },
+        {
+          "kind": "tusk",
+          "vertices": 116,
+          "changedVertices": 116,
+          "maximumDisplacement": 0.07205009460449219
+        },
+        {
+          "kind": "eye",
+          "vertices": 102,
+          "changedVertices": 102,
+          "maximumDisplacement": 0.030003471300005913
+        },
+        {
+          "kind": "eye",
+          "vertices": 156,
+          "changedVertices": 156,
+          "maximumDisplacement": 0.029551809653639793
+        },
+        {
+          "kind": "eye",
+          "vertices": 52,
+          "changedVertices": 52,
+          "maximumDisplacement": 0.030763087794184685
+        },
+        {
+          "kind": "eye",
+          "vertices": 256,
+          "changedVertices": 256,
+          "maximumDisplacement": 0.027555106207728386
+        },
+        {
+          "kind": "other",
+          "vertices": 110,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 159,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 175,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 185,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 186,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 185,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 297,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 172,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 184,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 187,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 193,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 196,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 187,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 177,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 155,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 115,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "eye",
+          "vertices": 53,
+          "changedVertices": 53,
+          "maximumDisplacement": 0.030765561386942863
+        },
+        {
+          "kind": "jaw",
+          "vertices": 732,
+          "changedVertices": 549,
+          "maximumDisplacement": 0.11031059920787811
+        },
+        {
+          "kind": "eye",
+          "vertices": 152,
+          "changedVertices": 152,
+          "maximumDisplacement": 0.029598120599985123
+        },
+        {
+          "kind": "eye",
+          "vertices": 104,
+          "changedVertices": 104,
+          "maximumDisplacement": 0.030003471300005913
+        },
+        {
+          "kind": "tusk",
+          "vertices": 114,
+          "changedVertices": 114,
+          "maximumDisplacement": 0.07205009460449219
+        },
+        {
+          "kind": "eye",
+          "vertices": 255,
+          "changedVertices": 255,
+          "maximumDisplacement": 0.027555106207728386
+        },
+        {
+          "kind": "other",
+          "vertices": 143,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 87,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "horn",
+          "vertices": 346,
+          "changedVertices": 284,
+          "maximumDisplacement": 0.23900844156742096
+        },
+        {
+          "kind": "other",
+          "vertices": 103,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 104,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 62,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 153,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 142,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 104,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 83,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 80,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 80,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 275,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        },
+        {
+          "kind": "other",
+          "vertices": 80,
+          "changedVertices": 0,
+          "maximumDisplacement": 0.0
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

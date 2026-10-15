@@ -1,0 +1,1049 @@
+{
+  "candidate": "FinalLocalCandidate23-local",
+  "baseAppCommit": "1e1975ffe83fb636dab097553ee662c00a324eff",
+  "packageManifestSha256": "6687a6f947c7bee3b4452b7517ab0232d637a669ff8076a05913e3a7ff03049e",
+  "scope": "Actual isolated release package with production paths and reduced trio. Fresh isolated reduced-trio desktop and mobile-sized touch-emulated Chromium profiles; scripts exercise the runtime suite with an isolated unobstructed-charge fixture and the unchanged repair suite. No physical phone/controller coverage.",
+  "results": [
+    {
+      "variant": "lod",
+      "mobile": false,
+      "suite": "runtime",
+      "passed": 61,
+      "total": 61,
+      "results": [
+        {
+          "name": "All game scripts loaded",
+          "pass": true
+        },
+        {
+          "name": "ch1 initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "ch2 initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "adv initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "ch3 initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "Chapter 3 has four islands, five lifts and three beacons",
+          "pass": true
+        },
+        {
+          "name": "Future islands remain locked",
+          "pass": true
+        },
+        {
+          "name": "Bell tower, moving orrery and cloth banners are built",
+          "pass": true
+        },
+        {
+          "name": "Static scenery is batched into fewer than 18 draw meshes",
+          "pass": true
+        },
+        {
+          "name": "Checkpoints remain clear of new landmark collisions",
+          "pass": true
+        },
+        {
+          "name": "Cloth and orrery animation changes rendered geometry",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes added scenery animation",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes added scenery animation",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes atmosphere",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes atmosphere",
+          "pass": true
+        },
+        {
+          "name": "Contact shadow pool stays bounded",
+          "pass": true
+        },
+        {
+          "name": "Performance mode disables heavy effects",
+          "pass": true
+        },
+        {
+          "name": "High detail restores shadows and atmosphere",
+          "pass": true
+        },
+        {
+          "name": "Updraft lifts Darren and restores flight energy",
+          "pass": true
+        },
+        {
+          "name": "Gale wave has three Stormlings and two Gustlings",
+          "pass": true
+        },
+        {
+          "name": "Selected Stormbelly spawns in Gale Gardens",
+          "pass": true
+        },
+        {
+          "name": "Stomp warning precedes damage",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes selected enemy attack",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes selected enemy attack",
+          "pass": true
+        },
+        {
+          "name": "Jumping avoids Stormbelly stomp",
+          "pass": true
+        },
+        {
+          "name": "Grounded player inside stomp takes damage",
+          "pass": true
+        },
+        {
+          "name": "Stomp exposes a recovery window",
+          "pass": true
+        },
+        {
+          "name": "Stormling windup folds its articulated crescent wings",
+          "pass": true
+        },
+        {
+          "name": "Stormling fires three projectiles and recovers",
+          "pass": true
+        },
+        {
+          "name": "Clearing Gale unlocks the Observatory bridge",
+          "pass": true
+        },
+        {
+          "name": "Selected Chomp Rex spawns in Observatory",
+          "pass": true
+        },
+        {
+          "name": "Rex arrow warns before charge damage",
+          "pass": true
+        },
+        {
+          "name": "Committed charge moves forward and sideways dodge avoids bite",
+          "pass": true
+        },
+        {
+          "name": "Rex bite damages at most once per charge",
+          "pass": true
+        },
+        {
+          "name": "Rex recovers after its short charge",
+          "pass": true
+        },
+        {
+          "name": "Selected enemy poses remain finite",
+          "pass": true
+        },
+        {
+          "name": "Defeated enemies hide their attack warnings",
+          "pass": true
+        },
+        {
+          "name": "Wardling windup plants its legs and raises its shields",
+          "pass": true
+        },
+        {
+          "name": "Wardling blocks frontal attacks",
+          "pass": true
+        },
+        {
+          "name": "Wardling takes full damage from the rear",
+          "pass": true
+        },
+        {
+          "name": "Wardling is vulnerable during recovery",
+          "pass": true
+        },
+        {
+          "name": "Checkpoint reload retains both cleared arenas",
+          "pass": true
+        },
+        {
+          "name": "Warden spawns with three breakable parts",
+          "pass": true
+        },
+        {
+          "name": "Warden has an animated segmented halo and articulated legs",
+          "pass": true
+        },
+        {
+          "name": "All attack and recovery animation states keep finite transforms",
+          "pass": true
+        },
+        {
+          "name": "Warden enters phase two below 60 percent",
+          "pass": true
+        },
+        {
+          "name": "Lightning warns before it deals damage",
+          "pass": true
+        },
+        {
+          "name": "Lightning bolt is absent during warning",
+          "pass": true
+        },
+        {
+          "name": "Leaving the lightning circle avoids damage",
+          "pass": true
+        },
+        {
+          "name": "Lightning strike creates a visible finite bolt",
+          "pass": true
+        },
+        {
+          "name": "Lightning cleanup removes bolt from scene",
+          "pass": true
+        },
+        {
+          "name": "Lightning column damages an airborne player inside it",
+          "pass": true
+        },
+        {
+          "name": "Warden enters phase three below 25 percent",
+          "pass": true
+        },
+        {
+          "name": "Breaking both arm crystals makes the Warden kneel",
+          "pass": true
+        },
+        {
+          "name": "Broken Warden crystals remain hidden while kneeling",
+          "pass": true
+        },
+        {
+          "name": "Crafting refuses insufficient resources",
+          "pass": true
+        },
+        {
+          "name": "Stormsaber recipe consumes exact materials once",
+          "pass": true
+        },
+        {
+          "name": "Defeating Warden completes and saves Chapter 3",
+          "pass": true
+        },
+        {
+          "name": "Field guide includes Sky Drake and all eight existing entries",
+          "pass": true
+        },
+        {
+          "name": "Leaving Chapter 3 restores original sky and clears hazards",
+          "pass": true
+        },
+        {
+          "name": "Leaving Chapter 3 releases added scenery references",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "variant": "lod",
+      "mobile": false,
+      "suite": "repair",
+      "passed": 64,
+      "total": 64,
+      "results": [
+        {
+          "name": "Enter in Settings does not start or reset the game",
+          "pass": true
+        },
+        {
+          "name": "Tab stays in the active panel and moves focus",
+          "pass": true
+        },
+        {
+          "name": "Blur clears action queue, touch movement, camera deltas and buffered action",
+          "pass": true
+        },
+        {
+          "name": "Touch stick accepts movement",
+          "pass": true
+        },
+        {
+          "name": "Lost touch capture releases movement",
+          "pass": true
+        },
+        {
+          "name": "Pause clears held and queued combat input",
+          "pass": true
+        },
+        {
+          "name": "Releasing one device preserves another held action",
+          "pass": true
+        },
+        {
+          "name": "Last device release clears held action",
+          "pass": true
+        },
+        {
+          "name": "Simulated controller action is held",
+          "pass": true
+        },
+        {
+          "name": "Controller disconnect releases held actions and edges",
+          "pass": true
+        },
+        {
+          "name": "Controller D-pad navigates visible menu controls",
+          "pass": true
+        },
+        {
+          "name": "Controller adjusts focused settings slider",
+          "pass": true
+        },
+        {
+          "name": "Controller Back closes panel and preserves pause",
+          "pass": true
+        },
+        {
+          "name": "Controller Back resumes from pause",
+          "pass": true
+        },
+        {
+          "name": "Escape closes Settings without unpausing combat",
+          "pass": true
+        },
+        {
+          "name": "Direct damage is suppressed during dialogue",
+          "pass": true
+        },
+        {
+          "name": "Hostile shockwaves freeze throughout dialogue",
+          "pass": true
+        },
+        {
+          "name": "Ending/transition timer freezes while paused",
+          "pass": true
+        },
+        {
+          "name": "Ending timer resumes exactly once",
+          "pass": true
+        },
+        {
+          "name": "Completed transition is not repeated",
+          "pass": true
+        },
+        {
+          "name": "Quit cancels stale ending callbacks",
+          "pass": true
+        },
+        {
+          "name": "Chapter switch cancels stale ending callbacks",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: {\"cp\":999,\"cleared\":\"broken\",\"taken\":5,\"t\":\"oops\"}",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: {\"cp\":-3,\"cleared\":null,\"taken\":null}",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: {\"cp\":1.4}",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: []",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: null",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: \"bad\"",
+          "pass": true
+        },
+        {
+          "name": "Invalid JSON checkpoint does not crash title",
+          "pass": true
+        },
+        {
+          "name": "Legacy checkpoint and elapsed time survive Continue",
+          "pass": true
+        },
+        {
+          "name": "Pre-repair save is preserved verbatim in recovery backup",
+          "pass": true
+        },
+        {
+          "name": "Repeated saves retain the original recovery value",
+          "pass": true
+        },
+        {
+          "name": "Storage failure returns false without replacing the old checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Fall recovery returns to finite safe coordinates",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 0",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 1",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 2",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 3",
+          "pass": true
+        },
+        {
+          "name": "Gem pickup at exact player center does not create NaN",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 0 true",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 0 false",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 1 true",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 1 false",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 2 true",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 2 false",
+          "pass": true
+        },
+        {
+          "name": "Repeated creature construction reuses geometry cache",
+          "pass": true
+        },
+        {
+          "name": "Exact-center prop overlap resolves to a finite exterior point",
+          "pass": true
+        },
+        {
+          "name": "Tall pillar collision extends to the visible stone height",
+          "pass": true
+        },
+        {
+          "name": "Flight remains clear above the pillar",
+          "pass": true
+        },
+        {
+          "name": "Camera retracts before obstructing stone",
+          "pass": true
+        },
+        {
+          "name": "Camera stays at full distance above the obstruction",
+          "pass": true
+        },
+        {
+          "name": "Repeated equipment cycles allocate no additional materials",
+          "pass": true
+        },
+        {
+          "name": "Re-equipping a weapon preserves the existing model",
+          "pass": true
+        },
+        {
+          "name": "Twin hands own separate weapon instances",
+          "pass": true
+        },
+        {
+          "name": "Invalid left-hand equipment is safely empty",
+          "pass": true
+        },
+        {
+          "name": "Adventure victory dialogue waits while paused",
+          "pass": true
+        },
+        {
+          "name": "Adventure victory dialogue resumes after pause",
+          "pass": true
+        },
+        {
+          "name": "Chapter switch cancels Adventure victory dialogue",
+          "pass": true
+        },
+        {
+          "name": "Chapter switch clears interrupted dialogue and callback",
+          "pass": true
+        },
+        {
+          "name": "Restart clears interrupted dialogue without applying its callback",
+          "pass": true
+        },
+        {
+          "name": "Camera retracts before a large enemy behind Darren",
+          "pass": true
+        },
+        {
+          "name": "Defeated enemy no longer obstructs camera",
+          "pass": true
+        },
+        {
+          "name": "Pause cancels a held charge without firing on resume",
+          "pass": true
+        },
+        {
+          "name": "Blur cancels a held charge without firing",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "variant": "lod",
+      "mobile": true,
+      "suite": "runtime",
+      "passed": 61,
+      "total": 61,
+      "results": [
+        {
+          "name": "All game scripts loaded",
+          "pass": true
+        },
+        {
+          "name": "ch1 initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "ch2 initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "adv initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "ch3 initializes with walkable spawn",
+          "pass": true
+        },
+        {
+          "name": "Chapter 3 has four islands, five lifts and three beacons",
+          "pass": true
+        },
+        {
+          "name": "Future islands remain locked",
+          "pass": true
+        },
+        {
+          "name": "Bell tower, moving orrery and cloth banners are built",
+          "pass": true
+        },
+        {
+          "name": "Static scenery is batched into fewer than 18 draw meshes",
+          "pass": true
+        },
+        {
+          "name": "Checkpoints remain clear of new landmark collisions",
+          "pass": true
+        },
+        {
+          "name": "Cloth and orrery animation changes rendered geometry",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes added scenery animation",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes added scenery animation",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes atmosphere",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes atmosphere",
+          "pass": true
+        },
+        {
+          "name": "Contact shadow pool stays bounded",
+          "pass": true
+        },
+        {
+          "name": "Performance mode disables heavy effects",
+          "pass": true
+        },
+        {
+          "name": "High detail restores shadows and atmosphere",
+          "pass": true
+        },
+        {
+          "name": "Updraft lifts Darren and restores flight energy",
+          "pass": true
+        },
+        {
+          "name": "Gale wave has three Stormlings and two Gustlings",
+          "pass": true
+        },
+        {
+          "name": "Selected Stormbelly spawns in Gale Gardens",
+          "pass": true
+        },
+        {
+          "name": "Stomp warning precedes damage",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes selected enemy attack",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes selected enemy attack",
+          "pass": true
+        },
+        {
+          "name": "Jumping avoids Stormbelly stomp",
+          "pass": true
+        },
+        {
+          "name": "Grounded player inside stomp takes damage",
+          "pass": true
+        },
+        {
+          "name": "Stomp exposes a recovery window",
+          "pass": true
+        },
+        {
+          "name": "Stormling windup folds its articulated crescent wings",
+          "pass": true
+        },
+        {
+          "name": "Stormling fires three projectiles and recovers",
+          "pass": true
+        },
+        {
+          "name": "Clearing Gale unlocks the Observatory bridge",
+          "pass": true
+        },
+        {
+          "name": "Selected Chomp Rex spawns in Observatory",
+          "pass": true
+        },
+        {
+          "name": "Rex arrow warns before charge damage",
+          "pass": true
+        },
+        {
+          "name": "Committed charge moves forward and sideways dodge avoids bite",
+          "pass": true
+        },
+        {
+          "name": "Rex bite damages at most once per charge",
+          "pass": true
+        },
+        {
+          "name": "Rex recovers after its short charge",
+          "pass": true
+        },
+        {
+          "name": "Selected enemy poses remain finite",
+          "pass": true
+        },
+        {
+          "name": "Defeated enemies hide their attack warnings",
+          "pass": true
+        },
+        {
+          "name": "Wardling windup plants its legs and raises its shields",
+          "pass": true
+        },
+        {
+          "name": "Wardling blocks frontal attacks",
+          "pass": true
+        },
+        {
+          "name": "Wardling takes full damage from the rear",
+          "pass": true
+        },
+        {
+          "name": "Wardling is vulnerable during recovery",
+          "pass": true
+        },
+        {
+          "name": "Checkpoint reload retains both cleared arenas",
+          "pass": true
+        },
+        {
+          "name": "Warden spawns with three breakable parts",
+          "pass": true
+        },
+        {
+          "name": "Warden has an animated segmented halo and articulated legs",
+          "pass": true
+        },
+        {
+          "name": "All attack and recovery animation states keep finite transforms",
+          "pass": true
+        },
+        {
+          "name": "Warden enters phase two below 60 percent",
+          "pass": true
+        },
+        {
+          "name": "Lightning warns before it deals damage",
+          "pass": true
+        },
+        {
+          "name": "Lightning bolt is absent during warning",
+          "pass": true
+        },
+        {
+          "name": "Leaving the lightning circle avoids damage",
+          "pass": true
+        },
+        {
+          "name": "Lightning strike creates a visible finite bolt",
+          "pass": true
+        },
+        {
+          "name": "Lightning cleanup removes bolt from scene",
+          "pass": true
+        },
+        {
+          "name": "Lightning column damages an airborne player inside it",
+          "pass": true
+        },
+        {
+          "name": "Warden enters phase three below 25 percent",
+          "pass": true
+        },
+        {
+          "name": "Breaking both arm crystals makes the Warden kneel",
+          "pass": true
+        },
+        {
+          "name": "Broken Warden crystals remain hidden while kneeling",
+          "pass": true
+        },
+        {
+          "name": "Crafting refuses insufficient resources",
+          "pass": true
+        },
+        {
+          "name": "Stormsaber recipe consumes exact materials once",
+          "pass": true
+        },
+        {
+          "name": "Defeating Warden completes and saves Chapter 3",
+          "pass": true
+        },
+        {
+          "name": "Field guide includes Sky Drake and all eight existing entries",
+          "pass": true
+        },
+        {
+          "name": "Leaving Chapter 3 restores original sky and clears hazards",
+          "pass": true
+        },
+        {
+          "name": "Leaving Chapter 3 releases added scenery references",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "variant": "lod",
+      "mobile": true,
+      "suite": "repair",
+      "passed": 64,
+      "total": 64,
+      "results": [
+        {
+          "name": "Enter in Settings does not start or reset the game",
+          "pass": true
+        },
+        {
+          "name": "Tab stays in the active panel and moves focus",
+          "pass": true
+        },
+        {
+          "name": "Blur clears action queue, touch movement, camera deltas and buffered action",
+          "pass": true
+        },
+        {
+          "name": "Touch stick accepts movement",
+          "pass": true
+        },
+        {
+          "name": "Lost touch capture releases movement",
+          "pass": true
+        },
+        {
+          "name": "Pause clears held and queued combat input",
+          "pass": true
+        },
+        {
+          "name": "Releasing one device preserves another held action",
+          "pass": true
+        },
+        {
+          "name": "Last device release clears held action",
+          "pass": true
+        },
+        {
+          "name": "Simulated controller action is held",
+          "pass": true
+        },
+        {
+          "name": "Controller disconnect releases held actions and edges",
+          "pass": true
+        },
+        {
+          "name": "Controller D-pad navigates visible menu controls",
+          "pass": true
+        },
+        {
+          "name": "Controller adjusts focused settings slider",
+          "pass": true
+        },
+        {
+          "name": "Controller Back closes panel and preserves pause",
+          "pass": true
+        },
+        {
+          "name": "Controller Back resumes from pause",
+          "pass": true
+        },
+        {
+          "name": "Escape closes Settings without unpausing combat",
+          "pass": true
+        },
+        {
+          "name": "Direct damage is suppressed during dialogue",
+          "pass": true
+        },
+        {
+          "name": "Hostile shockwaves freeze throughout dialogue",
+          "pass": true
+        },
+        {
+          "name": "Ending/transition timer freezes while paused",
+          "pass": true
+        },
+        {
+          "name": "Ending timer resumes exactly once",
+          "pass": true
+        },
+        {
+          "name": "Completed transition is not repeated",
+          "pass": true
+        },
+        {
+          "name": "Quit cancels stale ending callbacks",
+          "pass": true
+        },
+        {
+          "name": "Chapter switch cancels stale ending callbacks",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: {\"cp\":999,\"cleared\":\"broken\",\"taken\":5,\"t\":\"oops\"}",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: {\"cp\":-3,\"cleared\":null,\"taken\":null}",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: {\"cp\":1.4}",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: []",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: null",
+          "pass": true
+        },
+        {
+          "name": "Malformed checkpoint handled: \"bad\"",
+          "pass": true
+        },
+        {
+          "name": "Invalid JSON checkpoint does not crash title",
+          "pass": true
+        },
+        {
+          "name": "Legacy checkpoint and elapsed time survive Continue",
+          "pass": true
+        },
+        {
+          "name": "Pre-repair save is preserved verbatim in recovery backup",
+          "pass": true
+        },
+        {
+          "name": "Repeated saves retain the original recovery value",
+          "pass": true
+        },
+        {
+          "name": "Storage failure returns false without replacing the old checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Fall recovery returns to finite safe coordinates",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 0",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 1",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 2",
+          "pass": true
+        },
+        {
+          "name": "Repeated retry restores health and avoids duplicate hostiles 3",
+          "pass": true
+        },
+        {
+          "name": "Gem pickup at exact player center does not create NaN",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 0 true",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 0 false",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 1 true",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 1 false",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 2 true",
+          "pass": true
+        },
+        {
+          "name": "Creature transforms finite 2 false",
+          "pass": true
+        },
+        {
+          "name": "Repeated creature construction reuses geometry cache",
+          "pass": true
+        },
+        {
+          "name": "Exact-center prop overlap resolves to a finite exterior point",
+          "pass": true
+        },
+        {
+          "name": "Tall pillar collision extends to the visible stone height",
+          "pass": true
+        },
+        {
+          "name": "Flight remains clear above the pillar",
+          "pass": true
+        },
+        {
+          "name": "Camera retracts before obstructing stone",
+          "pass": true
+        },
+        {
+          "name": "Camera stays at full distance above the obstruction",
+          "pass": true
+        },
+        {
+          "name": "Repeated equipment cycles allocate no additional materials",
+          "pass": true
+        },
+        {
+          "name": "Re-equipping a weapon preserves the existing model",
+          "pass": true
+        },
+        {
+          "name": "Twin hands own separate weapon instances",
+          "pass": true
+        },
+        {
+          "name": "Invalid left-hand equipment is safely empty",
+          "pass": true
+        },
+        {
+          "name": "Adventure victory dialogue waits while paused",
+          "pass": true
+        },
+        {
+          "name": "Adventure victory dialogue resumes after pause",
+          "pass": true
+        },
+        {
+          "name": "Chapter switch cancels Adventure victory dialogue",
+          "pass": true
+        },
+        {
+          "name": "Chapter switch clears interrupted dialogue and callback",
+          "pass": true
+        },
+        {
+          "name": "Restart clears interrupted dialogue without applying its callback",
+          "pass": true
+        },
+        {
+          "name": "Camera retracts before a large enemy behind Darren",
+          "pass": true
+        },
+        {
+          "name": "Defeated enemy no longer obstructs camera",
+          "pass": true
+        },
+        {
+          "name": "Pause cancels a held charge without firing on resume",
+          "pass": true
+        },
+        {
+          "name": "Blur cancels a held charge without firing",
+          "pass": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "passed": true
+}

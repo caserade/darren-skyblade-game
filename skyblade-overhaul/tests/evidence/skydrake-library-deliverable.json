@@ -1,0 +1,23 @@
+{
+  "operation": "create_library_file",
+  "status": "succeeded",
+  "path": "/Skyblade-Hunt-SkyDrake-reference-comparison.png",
+  "file_id": "file_00000000958081f8bca5f8ee638d185c",
+  "library_file_id": "libfile_73f8379d38c88191a2e780681673e08d",
+  "file_name": "Skyblade-Hunt-SkyDrake-reference-comparison.png",
+  "current_version_number": 0,
+  "restored_from_version_number": null,
+  "xattrs": [
+    {
+      "name": "user.library-file-version",
+      "value": "0"
+    }
+  ],
+  "directory_id": "libdir_6ea35bc3ba88819185b09e226f689e8d",
+  "mime_type": "image/png",
+  "library_artifact_type": "image",
+  "file_size_bytes": 2047336,
+  "external_connectors_accessed": false,
+  "local_xattrs_applied": false,
+  "local_xattrs_error": "Windows Python has no os.setxattr"
+}

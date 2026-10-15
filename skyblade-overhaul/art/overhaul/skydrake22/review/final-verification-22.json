@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "manifestSha256": "540393857aa94ff0aabb6d7cc8104bc50837845216cf43ae891337de0935606e",
+  "baseCommit": "1e1975ffe83fb636dab097553ee662c00a324eff",
+  "changedFiles": [
+    "dist/assets/skydrake-rc15.glb"
+  ],
+  "assetHashes": {
+    "candidate": "ecddecad24f46b1b80ef773e0fcd1b99bfce2e1a5fc7607002fcd79cc7367a6e",
+    "lod": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e"
+  },
+  "checks": {
+    "exact46FileManifest": true,
+    "onlySkyDrakeAssetChanged": true,
+    "productionUsesFinalReducedMesh": true,
+    "projectAndPrivateConfigPreserved": true,
+    "onlyLocalizedWeightsChanged": true,
+    "editableSourcesReopened": true,
+    "aggregate250": true,
+    "soak340": true,
+    "startup320": true,
+    "realLoop8": true,
+    "testsBindExactPackage": true,
+    "gait162HashBound": true,
+    "productionCombat24": true,
+    "selectedMotionHashBound": true,
+    "all1148SelectedTrialPosesFinite": true,
+    "allPlayableClipLocalNeckAndP99PeaksImprove": true,
+    "fullLocalPeaksAndP99Improve": true,
+    "fullNeckTradeoffUnderPoint2Percent": true,
+    "noAdditionalCollapsedTrianglePeakOnPlayable": true,
+    "fullTrialNotPromoted": true,
+    "threeBoardsAndInputsExact": true,
+    "reviewedImageHashesMatch": true,
+    "neutralViewsHashBound": true,
+    "candidate21AndAcceptedSourcesUnchanged": true,
+    "candidate21ArchiveUnchanged": true,
+    "acceptedOtherCharactersExact": true,
+    "syntax": true
+  },
+  "checkCounts": {
+    "aggregate": 250,
+    "soak": 340,
+    "startupRecovery": 320,
+    "gait": 162,
+    "productionCombat": 24,
+    "realLoop": 8
+  },
+  "details": {
+    "finalPoseSamples": 1148,
+    "beforeAndAfterPoseSamples": 2296,
+    "gameplayScreenshots": 198,
+    "minimumGaitAllY": 0.0009530859920711292,
+    "maximumGaitPlantedP95": 1.1056389192915192e-06
+  },
+  "limits": "No physical phone/controller, full playthrough or hardware FPS claim. Weight repair improves deformation, not sculpt/texture likeness. Full working experiment is NOT accepted: an extra compressed stagger triangle and a 0.12% tailWhip neck increase remain. Accepted full-resolution fallback is SkyDrake15. Playable reduced local/neck/P99 peaks improve in every clip, with no compressed-triangle peak increase. No publication or Library write."
+}

@@ -1,0 +1,12 @@
+const {chromium}=require('C:/Users/caser/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('fs'),path=require('path');
+(async()=>{const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const c=await b.newContext({viewport:{width:640,height:480}}),p=await c.newPage();await p.addInitScript(()=>{window.__manual=true;window.requestAnimationFrame=()=>0;});await p.goto('http://127.0.0.1:4318/');await p.waitForFunction(()=>window.__game&&P.m.skin&&LV.mom.skin,null,{polling:50});const r=await p.evaluate(()=>{
+ SETTINGS.graphics='smooth';applyGraphics();const metrics=[],sample=label=>{renderer.render(scene,camera);metrics.push({label,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,materials:TOYS.length});};
+ for(const id of Object.keys(WEAPONS))if(!UNLOCKS.weapons.includes(id))UNLOCKS.weapons.push(id);
+ sample('start');for(let i=0;i<20;i++){equipWeapon('cloudcutter');renderer.render(scene,camera);}sample('20 same weapon');
+ for(let i=0;i<5;i++)for(const id of Object.keys(WEAPONS)){equipWeapon(id);equipLeft(id);renderer.render(scene,camera);}sample('5 full cycles');
+ for(let i=0;i<5;i++)for(const id of Object.keys(WEAPONS)){equipWeapon(id);equipLeft(id);renderer.render(scene,camera);}sample('10 full cycles');
+ loadChapter('ch3');G.mode='play';G.paused=false;G.cine=false;const obstacle=LV.colliders.find(o=>o.r===.57);P.x=obstacle.x+2;P.z=obstacle.z;P.y=0;cam.fx=P.x;cam.fz=P.z;cam.fy=1.2;cam.yaw=Math.PI/2;cam.pitch=.34;cam.dist=6.6;P.vx=P.vz=0;P.lock=null;updateCamera(.016);
+ const a=new THREE.Vector3(cam.fx,cam.fy+.25,cam.fz),v=camera.position.clone().sub(a),distance=v.length(),ray=new THREE.Raycaster(a,v.normalize(),.1,distance),solids=[];LV.root.updateMatrixWorld(true);LV.root.traverse(o=>{if(o.isMesh&&!o.isSkinnedMesh&&!o.material.transparent)solids.push(o)});const hits=ray.intersectObjects(solids,false);
+ return {metrics,camera:{position:camera.position.toArray(),obstacle,opaqueIntersections:hits.length,nearestHit:hits[0]?.distance,cameraDistance:distance}};
+});const dir=path.resolve('tests/evidence');fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,process.argv[2]||'resources.json'),JSON.stringify(r,null,2));console.log(JSON.stringify(r));await b.close();})().catch(e=>{console.error(e);process.exitCode=1});

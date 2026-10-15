@@ -1,0 +1,48 @@
+[
+  {
+    "variant": "candidate",
+    "sha256": "ecddecad24f46b1b80ef773e0fcd1b99bfce2e1a5fc7607002fcd79cc7367a6e",
+    "beforeSha256": "e0340cfbf6a866a480295713a15c9f4b2e1e1d51b6567b3009ee09555fe5f77a",
+    "changedBytes": 88240,
+    "changedExportVertices": 6395,
+    "maximumNormalizationError": 1.7881393432617188e-07,
+    "maximumSeamWeightDelta": 0,
+    "checks": {
+      "sameLength": true,
+      "sameJson": true,
+      "onlyTwoMaterialsJointWeightBytes": true,
+      "changesInsideMask": true,
+      "finiteWeights": true,
+      "normalized": true,
+      "nonnegative": true,
+      "valid39BoneIndices": true,
+      "sourceMapMatches": true,
+      "weldedSeamsContinuous": true,
+      "allRestGeometryNormalsUVsTexturesRigAndClipsByteIdentical": true
+    },
+    "passed": true
+  },
+  {
+    "variant": "lod",
+    "sha256": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e",
+    "beforeSha256": "c8eb6546733d62ed56d66b103210ebe48bcb4b82e472e4a59f1e1dc027dc5818",
+    "changedBytes": 41427,
+    "changedExportVertices": 3126,
+    "maximumNormalizationError": 1.7881393432617188e-07,
+    "maximumSeamWeightDelta": 0,
+    "checks": {
+      "sameLength": true,
+      "sameJson": true,
+      "onlyTwoMaterialsJointWeightBytes": true,
+      "changesInsideMask": true,
+      "finiteWeights": true,
+      "normalized": true,
+      "nonnegative": true,
+      "valid39BoneIndices": true,
+      "sourceMapMatches": true,
+      "weldedSeamsContinuous": true,
+      "allRestGeometryNormalsUVsTexturesRigAndClipsByteIdentical": true
+    },
+    "passed": true
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "board": "Stormbelly20-gameplay-comparison.png",
+  "sha256": "fc4a6681ba436266f3c36cf692b6d284a0517c1fdb55fa516eac7069e9ab73cc",
+  "sources": [
+    {
+      "path": "art/overhaul/stormbelly20/review/gameplay/before-desktop-000.png",
+      "sha256": "2f6f48960c0c96e203f9767b45bd27b6280bc32c0913e40a34106cf834d86d1a"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/review/gameplay/before-portrait-060.png",
+      "sha256": "8c4b58606788f7c4649a7d839b5daee0b9ca66d735e7f9b50c558b776bb074b3"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/review/gameplay/before-landscape-touch-110.png",
+      "sha256": "7bd4593291a3b844894f82c74cecd8584aeb1bd034f2e17d5e669dc08c698154"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/review/gameplay/after-desktop-000.png",
+      "sha256": "3b62f6497da1aa9a8d544b60d83886eb7640a3e42e4e6dec25a42ceb13d0f2b6"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/review/gameplay/after-portrait-060.png",
+      "sha256": "933c7c3fe333214e5a1c1db1b53068714142599eb1f5afd8dc3b5021cd6c554b"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/review/gameplay/after-landscape-touch-110.png",
+      "sha256": "3077bed8abcdced2c15d329f4223ab7d3dc622a1a000c362b695686ca6e15ab1"
+    }
+  ]
+}

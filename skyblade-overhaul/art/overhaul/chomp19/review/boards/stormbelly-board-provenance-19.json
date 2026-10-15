@@ -1,0 +1,46 @@
+[
+  {
+    "board": "Stormbelly19-assessment-body.png",
+    "sha256": "c169cfc07fc999fa5d1868ab3c7214365863beb27bf63a295855fb366b62820e",
+    "sources": [
+      {
+        "path": "art/references/concept_heavyweight.jpg",
+        "sha256": "c5d7840e646a474895f84321a01b5d9b1a2d5ade559ddd69257aceac0e1fcb81"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/stormbelly/lod-current-idle-front-body.png",
+        "sha256": "3fa8e3b946627b5cf44f58b9ed4b92f015779178b36dcc9846f7ad297cdfe651"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/stormbelly/lod-current-idle-side-body.png",
+        "sha256": "d4f18f490f58ebbed0b808ef2a05d59a87d60e5db49443d983cf6793f64f857c"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/stormbelly/lod-current-idle-three-quarter-body.png",
+        "sha256": "e34af26b988f5a25f3e2638ff32a9a9a750ab66efda5ce904d0a564644937e05"
+      }
+    ]
+  },
+  {
+    "board": "Stormbelly19-assessment-face.png",
+    "sha256": "5b8208c3360cea2a6c284acbf1d024c5cdf1d5482a1967d88e0081681cd16247",
+    "sources": [
+      {
+        "path": "art/references/concept_heavyweight.jpg",
+        "sha256": "c5d7840e646a474895f84321a01b5d9b1a2d5ade559ddd69257aceac0e1fcb81"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/stormbelly/lod-current-idle-front-face.png",
+        "sha256": "4a90949ca0586f3b345f769dd45b19be241112c3cf60e5e4b289ce3794055291"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/stormbelly/lod-current-idle-side-face.png",
+        "sha256": "f40ad382a67c57e61b7fbcd0f951985815f4eb544c19dc2d7c49970cb02e3bea"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/stormbelly/lod-current-idle-three-quarter-face.png",
+        "sha256": "d33359110937186efddb676d24e22ad0fe45a1659ccdb48afce4e81c005b6c0a"
+      }
+    ]
+  }
+]

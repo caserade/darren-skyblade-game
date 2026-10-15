@@ -1,0 +1,80 @@
+{
+  "result": {
+    "box": {
+      "min": [
+        -2.7537067532539368,
+        -0.0016506685519218772,
+        -4.398930072784424
+      ],
+      "max": [
+        2.7537067532539368,
+        5.673293493423462,
+        1.437940001487732
+      ]
+    },
+    "stats": {
+      "meshes": 63,
+      "skinned": 3,
+      "triangles": 20402
+    },
+    "clips": [
+      {
+        "name": "idle",
+        "duration": 2.4000000953674316
+      },
+      {
+        "name": "walk",
+        "duration": 1.2000000476837158
+      },
+      {
+        "name": "turn",
+        "duration": 1
+      },
+      {
+        "name": "hit",
+        "duration": 0.44999998807907104
+      },
+      {
+        "name": "stagger",
+        "duration": 1.600000023841858
+      },
+      {
+        "name": "recover",
+        "duration": 0.800000011920929
+      },
+      {
+        "name": "death",
+        "duration": 2.200000047683716
+      },
+      {
+        "name": "flyIdle",
+        "duration": 0.800000011920929
+      },
+      {
+        "name": "takeoff",
+        "duration": 1
+      },
+      {
+        "name": "land",
+        "duration": 0.6000000238418579
+      },
+      {
+        "name": "attackWindup",
+        "duration": 0.8999999761581421
+      },
+      {
+        "name": "attack",
+        "duration": 0.6000000238418579
+      },
+      {
+        "name": "tailWindup",
+        "duration": 0.699999988079071
+      },
+      {
+        "name": "tailWhip",
+        "duration": 0.5
+      }
+    ]
+  },
+  "errors": []
+}

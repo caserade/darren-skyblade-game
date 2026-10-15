@@ -1,0 +1,30 @@
+[
+  {
+    "variant": "candidate",
+    "source": "heavyweight\\source\\heavyweight-runtime-candidate.blend",
+    "sourceSha256": "45a64c28b9ac353e54b8935af18e49bf9fe62c2b070fc5c14d2fd7455302c129",
+    "output": "stormbelly20\\source\\heavyweight-candidate.blend",
+    "outputSha256": "bcd6b8b79afad0622f9c4187542da71b861fea85856cd58e516dd2be1015e785",
+    "matchedVertices": 5215,
+    "mappedPositions": 5215,
+    "missingSavedPositions": 0,
+    "maximumMatchDistance": 0,
+    "rigClipsWeightsUvTopologyUnchanged": true,
+    "acceptedSourceUnchanged": true,
+    "passed": true
+  },
+  {
+    "variant": "lod",
+    "source": "heavyweight\\source\\heavyweight-lod.blend",
+    "sourceSha256": "cdf94da0d596694085eaceb4cb7b15e6b7b911d615bbbb253e4790b0b278873f",
+    "output": "stormbelly20\\source\\heavyweight-lod.blend",
+    "outputSha256": "9ea4d611a1fb744045e86db86109f34efc3fdc3bd63525fe97d7708443b452ee",
+    "matchedVertices": 2399,
+    "mappedPositions": 2399,
+    "missingSavedPositions": 0,
+    "maximumMatchDistance": 0,
+    "rigClipsWeightsUvTopologyUnchanged": true,
+    "acceptedSourceUnchanged": true,
+    "passed": true
+  }
+]

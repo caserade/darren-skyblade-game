@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "changedBufferViews": [
+    7,
+    74
+  ],
+  "onlyBaseColorImagesChanged": true,
+  "allAccessorsExact": 1239,
+  "allOtherMetadataExact": true,
+  "clipsUnchanged": 14,
+  "baselineSha256": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e",
+  "assetSha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+  "bytesBefore": 3075520,
+  "bytesAfter": 3894596
+}

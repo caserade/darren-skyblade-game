@@ -1,0 +1,25 @@
+{
+  "state": {
+    "skin": true,
+    "mom": true,
+    "materials": [
+      {
+        "name": "Darren",
+        "roughness": 0.94,
+        "clearcoat": 0,
+        "texture": true
+      },
+      {
+        "name": "Mom",
+        "roughness": 0.94,
+        "clearcoat": 0,
+        "texture": true
+      }
+    ],
+    "chapter": "ch1"
+  },
+  "errors": [],
+  "warnings": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

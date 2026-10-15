@@ -1,0 +1,127 @@
+{
+  "info": {
+    "bones": [
+      {
+        "name": "head",
+        "pos": [
+          -0.1573484654913703,
+          4.41001,
+          0.20698178762275454
+        ]
+      },
+      {
+        "name": "jaw",
+        "pos": [
+          -0.25417829040913664,
+          4.33001,
+          0.33435519539060343
+        ]
+      },
+      {
+        "name": "tail6",
+        "pos": [
+          3.345786860916224,
+          0.47001,
+          -2.4183073173855236
+        ]
+      },
+      {
+        "name": "wing1L",
+        "pos": [
+          0.5286647297720759,
+          2.89001,
+          -0.10056641335464814
+        ]
+      },
+      {
+        "name": "wing2L",
+        "pos": [
+          1.2340519268801042,
+          3.35,
+          -0.00398017129047315
+        ]
+      },
+      {
+        "name": "wing3L",
+        "pos": [
+          1.6989892730585665,
+          4.05,
+          0.16104486962310705
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "",
+        "color": "1077b8",
+        "map": false
+      },
+      {
+        "name": "skydrake_skin",
+        "color": "ffffff",
+        "map": true
+      },
+      {
+        "name": "",
+        "color": "486b98",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "030635",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "ffffff",
+        "map": true
+      },
+      {
+        "name": "",
+        "color": "ab5904",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "fff6e6",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "ffdea4",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "020411",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "030525",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "020314",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "040b33",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "040939",
+        "map": false
+      },
+      {
+        "name": "",
+        "color": "040926",
+        "map": false
+      }
+    ]
+  },
+  "errors": []
+}

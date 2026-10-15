@@ -1,0 +1,14 @@
+{
+  "fixedRoi": [
+    300,
+    690,
+    720,
+    810
+  ],
+  "darkMouthPixels": {
+    "before": 5913,
+    "after": 5913
+  },
+  "reductionFraction": 0.0,
+  "limit": "Heuristic dark burgundy mask in a fixed rendered mouth crop, under identical camera/light/idle time. It measures reduced dark opening, not tooth contact or reference likeness."
+}

@@ -1,0 +1,17 @@
+{
+  "ref": "index",
+  "copiedFilesVerified": 870,
+  "releaseFilesVerified": 92,
+  "acceptedBlenderFiles": [
+    "art/overhaul/chomp19/source/chomprex-candidate.blend",
+    "art/overhaul/chomp19/source/chomprex-lod.blend",
+    "art/overhaul/skydrake15/source/skydrake-candidate.blend",
+    "art/overhaul/skydrake22/source/skydrake-lod.blend",
+    "art/overhaul/skydrake23/source/skydrake-lod.blend",
+    "art/overhaul/stormbelly20/source/heavyweight-candidate.blend",
+    "art/overhaul/stormbelly20/source/heavyweight-lod.blend"
+  ],
+  "existingRepositoryFilesUnchanged": 103,
+  "mismatches": [],
+  "passed": true
+}

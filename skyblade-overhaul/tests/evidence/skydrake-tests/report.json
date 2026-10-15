@@ -1,0 +1,401 @@
+{
+  "passed": 46,
+  "total": 46,
+  "checks": [
+    {
+      "name": "Only one added roster type; original 15 definitions remain",
+      "pass": true
+    },
+    {
+      "name": "One Sky Drake is placed only in the existing Gale Spires den",
+      "pass": true
+    },
+    {
+      "name": "Sky Drake drops only existing resources",
+      "pass": true
+    },
+    {
+      "name": "Rig has all 14 supplied clips and 3 skinned meshes",
+      "pass": true
+    },
+    {
+      "name": "Multiple instances animate independent skeletons",
+      "pass": true
+    },
+    {
+      "name": "Instances share cached geometry and materials",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through idle",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through walk",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through turn",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through hit",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through stagger",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through recover",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through death",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through flyIdle",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through takeoff",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through land",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through attackWindup",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through attack",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through tailWindup",
+      "pass": true
+    },
+    {
+      "name": "Finite skinned deformation through tailWhip",
+      "pass": true
+    },
+    {
+      "name": "Ground tail attack starts with a visible warning",
+      "pass": true
+    },
+    {
+      "name": "Tail warning lasts 0.7 seconds without early damage",
+      "pass": true
+    },
+    {
+      "name": "Tail damage waits for its animation hit marker",
+      "pass": true
+    },
+    {
+      "name": "Tail sweep damages a grounded target at impact",
+      "pass": true
+    },
+    {
+      "name": "Tail sweep hits at most once and enters recovery",
+      "pass": true
+    },
+    {
+      "name": "Jumping above the tail sweep avoids damage",
+      "pass": true
+    },
+    {
+      "name": "Ground cycle starts takeoff",
+      "pass": true
+    },
+    {
+      "name": "Takeoff reaches flight height and begins circling",
+      "pass": true
+    },
+    {
+      "name": "Circling waits five seconds before its swoop warning",
+      "pass": true
+    },
+    {
+      "name": "Swoop marker matches the locked landing target on the ground",
+      "pass": true
+    },
+    {
+      "name": "Swoop warning lasts 0.9 seconds and does not track a dodging player",
+      "pass": true
+    },
+    {
+      "name": "Swoop reaches its marked target and misses a player outside it",
+      "pass": true
+    },
+    {
+      "name": "Landing and recovery return to ground combat",
+      "pass": true
+    },
+    {
+      "name": "Swoop damages a grounded player at its landing circle",
+      "pass": true
+    },
+    {
+      "name": "Landing never repeats the swoop hit",
+      "pass": true
+    },
+    {
+      "name": "Leaving the island cancels circling into a safe landing",
+      "pass": true
+    },
+    {
+      "name": "Heavy stagger cancels the swoop telegraph and begins descent",
+      "pass": true
+    },
+    {
+      "name": "Pause freezes attack timer, animation and damage",
+      "pass": true
+    },
+    {
+      "name": "Dialogue freezes the Sky Drake encounter",
+      "pass": true
+    },
+    {
+      "name": "Defeat immediately hides the attack warning",
+      "pass": true
+    },
+    {
+      "name": "Defeat cleans the cloned animation and skeleton resources",
+      "pass": true
+    },
+    {
+      "name": "Repeated encounters leave a stable geometry and texture count",
+      "pass": true
+    },
+    {
+      "name": "Gale Spires naturally spawns exactly one Sky Drake and five Gustlings",
+      "pass": true
+    },
+    {
+      "name": "Existing den respawn waits after the whole encounter is defeated",
+      "pass": true
+    },
+    {
+      "name": "Existing respawn brings back exactly one Sky Drake",
+      "pass": true
+    },
+    {
+      "name": "Returning to Story keeps Sky Drake out of the chapter roster",
+      "pass": true
+    }
+  ],
+  "clipBounds": [
+    {
+      "name": "idle",
+      "min": [
+        -1.576142505721713,
+        0.01101944409310807,
+        -4.139075941850229
+      ],
+      "max": [
+        1.576142505721713,
+        4.7094000638582845,
+        1.455853878761392
+      ]
+    },
+    {
+      "name": "walk",
+      "min": [
+        -1.6276504917089847,
+        0.062331039238884056,
+        -4.25305499468495
+      ],
+      "max": [
+        1.7877536925655837,
+        4.699118100613151,
+        1.4586913232935288
+      ]
+    },
+    {
+      "name": "turn",
+      "min": [
+        -2.0729164207159876,
+        0.06233103923888406,
+        -4.25305499468495
+      ],
+      "max": [
+        1.787695383629551,
+        4.719173038793016,
+        1.3862633262063278
+      ]
+    },
+    {
+      "name": "hit",
+      "min": [
+        -1.576142505721713,
+        0.011019444093108177,
+        -3.9062939554459244
+      ],
+      "max": [
+        1.606460064086728,
+        5.0449316996635485,
+        1.4144588558283384
+      ]
+    },
+    {
+      "name": "stagger",
+      "min": [
+        -1.5769868910421103,
+        -0.03738426421058347,
+        -4.08398396716488
+      ],
+      "max": [
+        1.7000557544071402,
+        4.5917615417394595,
+        1.6696751307707478
+      ]
+    },
+    {
+      "name": "recover",
+      "min": [
+        -1.576142505721713,
+        0.011019444093108177,
+        -4.01763444900559
+      ],
+      "max": [
+        1.576142505721713,
+        4.726618649663124,
+        1.6272142815171806
+      ]
+    },
+    {
+      "name": "death",
+      "min": [
+        -1.587278728001674,
+        0.011019444093108177,
+        -4.027618408203125
+      ],
+      "max": [
+        1.6257136876134628,
+        4.7248020982989996,
+        1.4383542599174113
+      ]
+    },
+    {
+      "name": "flyIdle",
+      "min": [
+        -2.9927315565075814,
+        0.4554741336743307,
+        -4.247853544002546
+      ],
+      "max": [
+        2.9927315565075814,
+        4.7743731826487785,
+        1.2638522914225025
+      ]
+    },
+    {
+      "name": "takeoff",
+      "min": [
+        -2.44755888700822,
+        0.011019444093108177,
+        -4.08111924182874
+      ],
+      "max": [
+        2.44755888700822,
+        5.239388715595867,
+        1.458010823967267
+      ]
+    },
+    {
+      "name": "land",
+      "min": [
+        -2.8074197306867914,
+        -0.007550522365687623,
+        -3.950460462842387
+      ],
+      "max": [
+        2.8074197306867914,
+        4.7094000638582845,
+        1.458376976045257
+      ]
+    },
+    {
+      "name": "attackWindup",
+      "min": [
+        -2.6680751176401674,
+        0.013449906352952401,
+        -4.050407244374465
+      ],
+      "max": [
+        2.6680751176401674,
+        5.319832619100777,
+        1.3784446716308594
+      ]
+    },
+    {
+      "name": "attack",
+      "min": [
+        -1.458940548746102,
+        0.57932710647583,
+        -4.12470430842418
+      ],
+      "max": [
+        1.6038512092982535,
+        4.522261670545111,
+        1.801366643252298
+      ]
+    },
+    {
+      "name": "tailWindup",
+      "min": [
+        -2.787311121838216,
+        0.011019444093108142,
+        -4.323961889846019
+      ],
+      "max": [
+        1.7582355078571554,
+        4.72736362741673,
+        1.6836247472200019
+      ]
+    },
+    {
+      "name": "tailWhip",
+      "min": [
+        -2.794102203085826,
+        0.01101944409310807,
+        -4.283164645119551
+      ],
+      "max": [
+        3.4977839514612175,
+        4.712005797283755,
+        1.7071374964165846
+      ]
+    }
+  ],
+  "cycles": [
+    {
+      "geometries": 106,
+      "textures": 15
+    },
+    {
+      "geometries": 106,
+      "textures": 15
+    },
+    {
+      "geometries": 106,
+      "textures": 15
+    },
+    {
+      "geometries": 106,
+      "textures": 15
+    },
+    {
+      "geometries": 106,
+      "textures": 15
+    },
+    {
+      "geometries": 106,
+      "textures": 15
+    }
+  ],
+  "errors": []
+}

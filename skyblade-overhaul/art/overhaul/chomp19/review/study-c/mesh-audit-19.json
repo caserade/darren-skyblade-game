@@ -1,0 +1,42 @@
+[
+  {
+    "variant": "candidate",
+    "sha256": "3db0a5a603df50e8c40c7ebfa1556a098dd84f0931a665691b2ebbe89002f48e",
+    "checks": {
+      "onlyPositionBoundsMetadataChanged": true,
+      "allOtherBufferViewsIdentical": true,
+      "rigClipsWeightsUvIndicesMaterialsTexturesIdentical": true,
+      "finitePositionsAndUnitNormals": true,
+      "noCollapsedOrReversedRestTriangles": true,
+      "groundAndHeightUnchanged": true
+    },
+    "passed": true,
+    "triangles": 61789,
+    "bones": 29,
+    "clips": 12,
+    "minimumTriangleAreaRatio": 0.7986566424369812,
+    "minimumRestNormalCosine": 0.9473231434822083,
+    "maximumNormalLengthError": 1.1920928955078125e-07,
+    "reversedTriangles": []
+  },
+  {
+    "variant": "lod",
+    "sha256": "67c2e1671d25e58f5570e933b67d65c286fccf7139c0e0f11ade15677b754c6e",
+    "checks": {
+      "onlyPositionBoundsMetadataChanged": true,
+      "allOtherBufferViewsIdentical": true,
+      "rigClipsWeightsUvIndicesMaterialsTexturesIdentical": true,
+      "finitePositionsAndUnitNormals": true,
+      "noCollapsedOrReversedRestTriangles": true,
+      "groundAndHeightUnchanged": true
+    },
+    "passed": true,
+    "triangles": 33983,
+    "bones": 29,
+    "clips": 12,
+    "minimumTriangleAreaRatio": 0.7761622667312622,
+    "minimumRestNormalCosine": 0.6613704562187195,
+    "maximumNormalLengthError": 1.1920928955078125e-07,
+    "reversedTriangles": []
+  }
+]

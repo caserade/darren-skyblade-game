@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-14",
+  "suite": "Local browser tests/runtime.js",
+  "passed": 39,
+  "total": 39,
+  "consoleErrors": [],
+  "coverage": ["original chapter loading", "Stormglass progression and checkpoint reload", "enemy telegraphs and animation transforms", "Wardling directional defense", "Warden phases, weak spots and kneeling", "warned lightning and evasion", "updraft flight refill", "crafting and completion saves", "pause and dialogue freeze", "landmark checkpoint clearance", "scenery batching and cleanup"],
+  "visualReview": ["idle and windup model poses", "Lantern Landing", "Shattered Observatory", "Warden arena"],
+  "limits": "Programmatic runtime regression checks and visual inspection, not a complete manual playthrough or physical phone/gamepad certification."
+}

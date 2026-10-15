@@ -1,0 +1,152 @@
+{
+  "runs": [
+    {
+      "difficulty": "easy",
+      "simulatedSeconds": 120,
+      "states": [
+        "spawn",
+        "chase",
+        "wind",
+        "atk",
+        "rec",
+        "takeoff",
+        "circle",
+        "land"
+      ],
+      "attacks": [
+        "tail",
+        "swoop"
+      ],
+      "maxRadius": 8.890002574008951,
+      "maxY": 6.679999998467551,
+      "enemyCount": 21
+    },
+    {
+      "difficulty": "normal",
+      "simulatedSeconds": 120,
+      "states": [
+        "spawn",
+        "chase",
+        "wind",
+        "atk",
+        "rec",
+        "takeoff",
+        "circle",
+        "land"
+      ],
+      "attacks": [
+        "tail",
+        "swoop"
+      ],
+      "maxRadius": 9.788102357370276,
+      "maxY": 6.679999441179781,
+      "enemyCount": 21
+    },
+    {
+      "difficulty": "hard",
+      "simulatedSeconds": 120,
+      "states": [
+        "spawn",
+        "chase",
+        "wind",
+        "atk",
+        "rec",
+        "takeoff",
+        "circle",
+        "land"
+      ],
+      "attacks": [
+        "tail",
+        "swoop"
+      ],
+      "maxRadius": 9.34438974707342,
+      "maxY": 6.67999949952269,
+      "enemyCount": 21
+    }
+  ],
+  "checks": [
+    {
+      "name": "easy: six-member den survives a two-minute run without duplication",
+      "pass": true
+    },
+    {
+      "name": "easy: every grounded/flight phase is reached naturally",
+      "pass": true
+    },
+    {
+      "name": "easy: both attacks occur naturally",
+      "pass": true
+    },
+    {
+      "name": "easy: positions, camera and health remain finite",
+      "pass": true
+    },
+    {
+      "name": "easy: creature stays over its home island",
+      "pass": true
+    },
+    {
+      "name": "normal: six-member den survives a two-minute run without duplication",
+      "pass": true
+    },
+    {
+      "name": "normal: every grounded/flight phase is reached naturally",
+      "pass": true
+    },
+    {
+      "name": "normal: both attacks occur naturally",
+      "pass": true
+    },
+    {
+      "name": "normal: positions, camera and health remain finite",
+      "pass": true
+    },
+    {
+      "name": "normal: creature stays over its home island",
+      "pass": true
+    },
+    {
+      "name": "hard: six-member den survives a two-minute run without duplication",
+      "pass": true
+    },
+    {
+      "name": "hard: every grounded/flight phase is reached naturally",
+      "pass": true
+    },
+    {
+      "name": "hard: both attacks occur naturally",
+      "pass": true
+    },
+    {
+      "name": "hard: positions, camera and health remain finite",
+      "pass": true
+    },
+    {
+      "name": "hard: creature stays over its home island",
+      "pass": true
+    },
+    {
+      "name": "Actual Q key locks the Sky Drake",
+      "pass": true
+    },
+    {
+      "name": "Actual flight controls work while targeting Sky Drake",
+      "pass": true
+    },
+    {
+      "name": "Actual attack input works while flying at the Sky Drake",
+      "pass": true
+    },
+    {
+      "name": "Actual pause freezes the live Sky Drake",
+      "pass": true
+    },
+    {
+      "name": "Actual Escape resumes the encounter",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "passed": 20,
+  "total": 20
+}

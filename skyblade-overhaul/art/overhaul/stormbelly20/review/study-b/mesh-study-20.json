@@ -1,0 +1,68 @@
+[
+  {
+    "variant": "candidate",
+    "sourceSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121",
+    "candidateSha256": "fdb085a0298bb68306a9539aa2c93731f18db04fe1deba13478c9c003d0f849b",
+    "changedVertices": 7003,
+    "bodyBelowFaceUnchanged": true,
+    "maximumDisplacement": 0.23900836834269162,
+    "minimumJacobianDeterminant": 0.6964333719336843,
+    "boundsBefore": [
+      [
+        -1.7712546586990356,
+        -0.1016049012541771,
+        -3.392000198364258
+      ],
+      [
+        1.7712546586990356,
+        4.499090194702148,
+        1.399999976158142
+      ]
+    ],
+    "boundsAfter": [
+      [
+        -1.7712546586990356,
+        -0.1016049012541771,
+        -3.392000198364258
+      ],
+      [
+        1.7712546586990356,
+        4.467555046081543,
+        1.377939224243164
+      ]
+    ]
+  },
+  {
+    "variant": "lod",
+    "sourceSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb",
+    "candidateSha256": "9bb82db1dcf10d589f43a51150463881cccf62a9c935c93dac4685c6bf95afd5",
+    "changedVertices": 3572,
+    "bodyBelowFaceUnchanged": true,
+    "maximumDisplacement": 0.23900836834269162,
+    "minimumJacobianDeterminant": 0.6964333719336843,
+    "boundsBefore": [
+      [
+        -1.7711431980133057,
+        -0.10150960087776184,
+        -3.3920164108276367
+      ],
+      [
+        1.7711431980133057,
+        4.499090194702148,
+        1.3999998569488525
+      ]
+    ],
+    "boundsAfter": [
+      [
+        -1.7711431980133057,
+        -0.10150960087776184,
+        -3.3920164108276367
+      ],
+      [
+        1.7711431980133057,
+        4.467555046081543,
+        1.377939224243164
+      ]
+    ]
+  }
+]

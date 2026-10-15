@@ -1,0 +1,120 @@
+{
+  "commit": "90dce67e9d0ac24f18eb0995d88be338365aeae7",
+  "trackedFiles": 4049,
+  "trackedBytes": 2321026950,
+  "largest": [
+    {
+      "path": "art/overhaul/heavyweight/review/Stormbelly-straight-08.gif",
+      "bytes": 10153235,
+      "gitBlob": "bf3fcb1018a91cbb12b49940a9dbcb15918302d1"
+    },
+    {
+      "path": "art/overhaul/heavyweight/review/Stormbelly-turn-08.gif",
+      "bytes": 10136704,
+      "gitBlob": "d883b8ab4ad078ed782b637e0b349d283f5afb43"
+    },
+    {
+      "path": "art/overhaul/heavyweight/review/Stormbelly-stop-resume-08.gif",
+      "bytes": 10110499,
+      "gitBlob": "e44eafee563f5436cca24d34811c50192d258b9a"
+    },
+    {
+      "path": "art/overhaul/heavyweight/review/Stormbelly-stationary-turn-08.gif",
+      "bytes": 9908785,
+      "gitBlob": "5ef1b8ffda5a6bc50437d17812b369d249fea0b1"
+    },
+    {
+      "path": "art/overhaul/heavyweight/export/heavyweight-candidate.glb",
+      "bytes": 9531784,
+      "gitBlob": "000215d9f86a1741d9b143fcef3edc497d5d008b"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/export/heavyweight-candidate.glb",
+      "bytes": 9531784,
+      "gitBlob": "24e1d07cd77b64c4876c5fd5fd642a82447ba237"
+    },
+    {
+      "path": "art/overhaul/heavyweight/source/heavyweight-pre-gait.blend",
+      "bytes": 8680515,
+      "gitBlob": "e0eb9a6a6298fb4bf4db93ff7c2213ab3a7e4470"
+    },
+    {
+      "path": "art/overhaul/heavyweight/source/heavyweight-uv-bake-source.blend",
+      "bytes": 8601038,
+      "gitBlob": "59c2621ee052b3e9ec5d0031b90ca5b2402aebc3"
+    },
+    {
+      "path": "art/overhaul/chomp18/export/chomprex-candidate.glb",
+      "bytes": 8551208,
+      "gitBlob": "d144e27162d00e472cc9a6d8be499e401cd25edc"
+    },
+    {
+      "path": "art/overhaul/chomp19/export/chomprex-candidate.glb",
+      "bytes": 8551208,
+      "gitBlob": "40e835ccfc6569e8c643b1df63eb73351ca2d8bb"
+    },
+    {
+      "path": "art/overhaul/chomprex/export/chomprex-candidate.glb",
+      "bytes": 8551204,
+      "gitBlob": "31ebc5245f79e136a76b3539abf072c1d4a2356c"
+    },
+    {
+      "path": "dist/assets/chomprex.glb",
+      "bytes": 8551204,
+      "gitBlob": "31ebc5245f79e136a76b3539abf072c1d4a2356c"
+    },
+    {
+      "path": "art/overhaul/stormbelly20/source/heavyweight-candidate.blend",
+      "bytes": 8298767,
+      "gitBlob": "8fe6240c7145be6b23b93c71841cff4ce5b3bce1"
+    },
+    {
+      "path": "art/overhaul/heavyweight/source/heavyweight-runtime-candidate.blend",
+      "bytes": 8298265,
+      "gitBlob": "c0a92f02ce98c870d25a0fbd4abec6877d87a4a6"
+    },
+    {
+      "path": "art/overhaul/chomp18/release/dist/assets/stormbelly-rc15.glb",
+      "bytes": 8161560,
+      "gitBlob": "394cb0f8788afda28d1025fd3e0ac8ee3c4b5cbe"
+    }
+  ],
+  "over50MiB": [],
+  "over100MiB": [],
+  "secretScan": {
+    "textFiles": 1521,
+    "patterns": [
+      "private_key",
+      "github_token",
+      "aws_key",
+      "openai_key",
+      "credential_url",
+      "signed_url"
+    ],
+    "hits": [],
+    "limit": "Targeted static patterns; not a guarantee that every possible secret is detected."
+  },
+  "ignoredFiles": 3122,
+  "ignoredExamples": [
+    "art/overhaul/chomp18/review/gameplay/after-desktop-060.png",
+    "art/overhaul/chomp18/review/gameplay/after-desktop-095.png",
+    "art/overhaul/chomp18/review/gameplay/after-desktop-110.png",
+    "art/overhaul/chomp18/review/gameplay/after-desktop-130.png",
+    "art/overhaul/chomp18/review/gameplay/after-desktop-180.png",
+    "art/overhaul/chomp18/review/gameplay/after-desktop-300.png",
+    "art/overhaul/chomp18/review/gameplay/after-landscape-touch-000.png",
+    "art/overhaul/chomp18/review/gameplay/after-landscape-touch-060.png",
+    "art/overhaul/chomp18/review/gameplay/after-landscape-touch-095.png",
+    "art/overhaul/chomp18/review/gameplay/after-landscape-touch-130.png",
+    "art/overhaul/chomp18/review/gameplay/after-landscape-touch-180.png",
+    "art/overhaul/chomp18/review/gameplay/after-landscape-touch-300.png",
+    "art/overhaul/chomp18/review/gameplay/after-portrait-000.png",
+    "art/overhaul/chomp18/review/gameplay/after-portrait-095.png",
+    "art/overhaul/chomp18/review/gameplay/after-portrait-110.png",
+    "art/overhaul/chomp18/review/gameplay/after-portrait-130.png",
+    "art/overhaul/chomp18/review/gameplay/after-portrait-180.png",
+    "art/overhaul/chomp18/review/gameplay/after-portrait-300.png",
+    "art/overhaul/chomp18/review/gameplay/before-desktop-060.png",
+    "art/overhaul/chomp18/review/gameplay/before-desktop-095.png"
+  ]
+}

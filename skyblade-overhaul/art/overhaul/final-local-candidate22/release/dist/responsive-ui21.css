@@ -1,0 +1,105 @@
+/* Existing HUD and controls: safe-area offsets without moving world-space bars. */
+:root {
+  --ui-safe-top: env(safe-area-inset-top, 0px);
+  --ui-safe-right: env(safe-area-inset-right, 0px);
+  --ui-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ui-safe-left: env(safe-area-inset-left, 0px);
+  --ui-top: max(10px, var(--ui-safe-top));
+  --ui-right: max(10px, var(--ui-safe-right));
+  --ui-bottom: max(10px, var(--ui-safe-bottom));
+  --ui-left: max(10px, var(--ui-safe-left));
+}
+.plate { left: var(--ui-left); top: var(--ui-top); }
+#obj { left: var(--ui-left); }
+#menu { inset: var(--ui-safe-top) var(--ui-safe-right) var(--ui-safe-bottom) var(--ui-safe-left); }
+#touch { inset: var(--ui-safe-top) var(--ui-safe-right) var(--ui-safe-bottom) var(--ui-safe-left); }
+#pauseBtn { top: var(--ui-top); right: var(--ui-right); min-height: 44px; }
+#musBtn { top: var(--ui-top); right: calc(var(--ui-right) + 74px); min-height: 44px; }
+#musBtn, #pauseBtn, #prompt { z-index: 4; }
+#prompt { min-height: 44px; }
+#skills { left: var(--ui-left); bottom: var(--ui-bottom); }
+.sk { display: flex; align-items: center; gap: 6px; padding: 6px 10px; }
+.sk kbd { position: static; white-space: nowrap; }
+#talk { max-height: calc(100% - var(--ui-top) - var(--ui-bottom) - 70px); overflow-y: auto; box-sizing: border-box; }
+.pclose { min-width: 44px; min-height: 44px; flex-shrink: 0; }
+.ptab { min-height: 44px; flex-shrink: 0; }
+.pbody { min-width: 0; }
+.pstripe { min-width: 0; }
+@media (max-width: 600px) {
+  .phead { gap: 8px; padding: 6px 10px; }
+  .ptitle { min-width: 0; gap: 6px; flex-wrap: wrap; }
+  .ptitle b { font-size: 17px; letter-spacing: .12em; }
+  .ptitle span { font-size: 10px; letter-spacing: .16em; }
+}
+body.touch #pauseBtn { right: var(--ui-right) !important; width: 48px; padding: 4px; }
+body.touch #musBtn { right: calc(var(--ui-right) + 54px); width: 64px; padding: 4px; }
+body.touch #tLock, body.touch #tStyle { top: 60px; width: 48px; height: 48px; }
+body.touch #tLock { right: 10px; }
+body.touch #tStyle { right: 64px; }
+body.touch .tb { width: 48px; height: 48px; font-size: 11px; box-sizing: border-box; }
+body.touch #tLight { right: 64px; bottom: 10px; width: 56px; height: 56px; font-size: 14px; }
+body.touch #tJump { right: 128px; bottom: 10px; }
+body.touch #tDash { right: 10px; bottom: 10px; }
+body.touch #tHeavy { right: 68px; bottom: 76px; }
+body.touch #tHeart { right: 128px; bottom: 76px; }
+body.touch #tS1 { right: 10px; bottom: 76px; }
+body.touch #tS2 { right: 68px; bottom: 130px; }
+body.touch #tFly { right: 128px; bottom: 130px; }
+body.touch #stick { width: 88px; height: 88px; margin: -44px 0 0 -44px; left: 64px; bottom: 10px; box-sizing: border-box; }
+body.touch #stick i { width: 44px; height: 44px; margin: -22px; }
+body.touch #prompt { left: calc(var(--ui-left) + 112px); right: calc(var(--ui-right) + 188px); bottom: var(--ui-bottom); width: auto; min-height: 44px; transform: none; font-size: 11px; padding: 6px; letter-spacing: 0; }
+@media (orientation: portrait) and (max-width: 600px) {
+  body.touch #boss, body.touch #tgt { top: calc(var(--ui-top) + 114px); left: calc(var(--ui-left) + 144px); right: var(--ui-right); width: auto; transform: none; }
+  body.touch #obj { top: calc(var(--ui-top) + 174px); width: 128px; max-width: 128px; box-sizing: border-box; }
+  body.touch #boss .bn { font-size: 14px; }
+  body.touch #tgt .lbl { font-size: 11px; }
+  body.touch #prompt { left: var(--ui-left); right: var(--ui-right); bottom: calc(var(--ui-bottom) + 190px); }
+  body.touch #ctr { top: calc(var(--ui-top) + 172px); right: var(--ui-right); max-width: calc(100% - var(--ui-left) - var(--ui-right) - 150px); max-height: 110px; overflow-y: auto; pointer-events: auto; }
+  body.touch #combo { right: var(--ui-right); top: 36%; }
+  body.touch #style { right: var(--ui-right); top: 45%; width: 88px; }
+}
+@media (orientation: portrait) and (max-width: 600px) and (max-height: 650px) {
+  body.touch #obj { max-height: 116px; overflow-y: auto; pointer-events: auto; touch-action: pan-y; }
+  body.touch #ctr { max-height: 32px; }
+  body.touch #combo { top: calc(var(--ui-top) + 210px); }
+  body.touch #combo b, body.touch #style b { font-size: 26px; }
+  body.touch #combo span { font-size: 10px; }
+  body.touch #style { top: calc(var(--ui-top) + 256px); }
+  body.touch #style span { font-size: 11px; }
+}
+@media (orientation: landscape) and (max-height: 540px) {
+  .plate { width: 140px; display: grid; grid-template-columns: 80px 52px; gap: 3px 8px; }
+  .plate .nm { grid-column: 1 / -1; font-size: 16px; }
+  .plate > .bar:nth-child(2), .plate > .bar:nth-child(3) { grid-column: 1 / -1; }
+  .plate > .bar:nth-child(2) { height: 11px; }
+  .plate > .bar:nth-child(3) { height: 6px; }
+  .plate .lbl { display: block; grid-row: 4; font-size: 10px; line-height: 12px; letter-spacing: 0; white-space: nowrap; }
+  .plate > .lbl:nth-child(4) { grid-column: 1; }
+  .plate > .lbl:nth-child(6) { grid-column: 2; }
+  .plate #dhB { grid-row: 5; grid-column: 1; height: 6px; }
+  .plate #flB { grid-row: 5; grid-column: 2; height: 6px; }
+  .plate .wpn { grid-column: 1 / -1; font-size: 10px; line-height: 13px; letter-spacing: 0; }
+  #boss, #tgt { left: calc(var(--ui-left) + 156px); right: calc(var(--ui-right) + 132px); top: var(--ui-top); width: auto; transform: none; }
+  body:not(.touch) #boss, body:not(.touch) #tgt { right: calc(var(--ui-right) + 164px); }
+  #boss .bn { font-size: 14px; }
+  #boss .bar { height: 10px; }
+  #tgt .lbl { font-size: 11px; }
+  #cry { font-size: 10px; }
+  #obj { top: calc(var(--ui-top) + 110px); width: 140px; max-width: 140px; max-height: 76px; overflow-y: auto; padding: 5px 7px; box-sizing: border-box; pointer-events: auto; touch-action: pan-y; z-index: 2; }
+  #objT { font-size: 11px; line-height: 1.25; }
+  #obj .lbl { font-size: 9px; }
+  #objC { font-size: 11px; }
+  #combo { top: calc(var(--ui-top) + 54px); right: calc(var(--ui-right) + 188px); }
+  #combo b { font-size: 26px; }
+  #combo span { font-size: 10px; }
+  #style { top: calc(var(--ui-top) + 104px); right: calc(var(--ui-right) + 188px); width: 76px; }
+  #style b { font-size: 26px; }
+  #style span { font-size: 11px; }
+  body.touch #ctr { top: auto; bottom: calc(var(--ui-bottom) + 58px); left: calc(var(--ui-left) + 150px); right: calc(var(--ui-right) + 188px); max-width: none; max-height: 48px; overflow-y: auto; pointer-events: auto; font-size: 10px; line-height: 1.3; }
+  body.touch #talk { top: calc(var(--ui-top) + 54px); bottom: auto; width: calc(100% - var(--ui-left) - var(--ui-right) - 40px); }
+  #talkT { font-size: 14px; }
+  .keys { display: block; }
+  .phead { padding: 4px 10px 4px 20px; }
+  .ptitle b { font-size: 17px; }
+  .ptitle span { font-size: 11px; }
+}

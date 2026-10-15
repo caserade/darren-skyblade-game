@@ -1,0 +1,60 @@
+Darren: Skyblade Hunt - accepted local Candidate23
+
+Decision: accept the bounded shoulder-color repair, then stop automated art edits.
+Candidate22 remains the rollback. Publication is held. No Site changes were made.
+This is an incremental repair; the creatures do not fully match the supplied art.
+
+Diagnosis and repair
+The pale shoulder blotches persisted in unlit albedo and disappeared in clay.
+They were baked color contamination, not a reason to repeat skin-weight trials.
+An object-space feathered mask corrects two existing color maps. The chest plates
+and all decoded pixels outside the local mask/gutters are preserved exactly.
+All 1,239 GLB accessors, 14 clips and every non-color buffer view are byte-identical.
+The lossless PNG maps add 819,076 bytes (about 0.78 MiB); no FPS benefit is claimed.
+Blender 5.2.2 LTS saved and reopened the editable source with exact packed images
+and unchanged weights. The original Candidate22 source/export were not modified.
+
+Verification of Candidate23
+250 runtime/repair checks in fresh desktop and touch-emulated profiles passed.
+Four deterministic ground/flight combat runs passed 16 checks; 132 captures saved.
+Eight normal-frame keyboard/movement/pause/resume checks passed.
+The 46-file release manifest is exact; only the SkyDrake GLB changed vs Candidate22.
+This is not a physical-controller/phone test, full playthrough or GPU benchmark.
+Candidate22's larger recovery/soak/deformation suite remains baseline evidence;
+it was not rerun or counted as fresh Candidate23 coverage.
+
+Concrete authored-art handoff
+SkyDrake: white eye globes protrude beyond the lids; muzzle/eyelid contours remain
+rounder and less angular than the turnaround. Membranes are thin planar panels,
+and the tail is straighter/more horizontal. Elbow/hip compression and the soft
+shoulder material transition remain. Fixing those requires deliberate surface
+and joint-loop edits plus a consistent color/normal bake, followed by pose review.
+The full-resolution Candidate22 A/B/C experiments are rejected; do not promote
+them or repeat broad weight diffusion. Use accepted full-resolution SkyDrake15.
+Chomp19: broad muzzle/forehead, wrinkles and tooth spacing remain approximate.
+Stormbelly20: eye expression, lower jaw/lip and surface grooves remain approximate.
+
+Blender is installed and sufficient for all of that work; no missing tool or
+missing reference blocks it. The remaining constraint is authored shape quality
+and validation, not approval. No new character design decision is needed: the
+supplied turnarounds remain the target. Recommended next separate art session:
+manually reshape SkyDrake's eye sockets/lids and muzzle against front/side views,
+accept those silhouettes early, then address joint topology and rebake. Preserve
+the rig/clip contract and retest all 14 clips before replacing the playable asset.
+Do not combine that larger sculpt with another blind weight/texture sweep.
+
+Editable sources, relative to skyblade-current
+art/overhaul/skydrake23/source/skydrake-lod.blend (accepted reduced texture repair)
+art/overhaul/skydrake15/source/skydrake-candidate.blend (accepted full-resolution)
+art/overhaul/chomp19/source/chomprex-candidate.blend and chomprex-lod.blend
+art/overhaul/stormbelly20/source/heavyweight-candidate.blend and heavyweight-lod.blend
+art/references/ (original supplied turnarounds; present, not invented)
+art/overhaul/skydrake23/review/SkyDrake23-before-after.png (current repair)
+art/overhaul/skydrake22/review/boards/SkyDrake22-reference-comparison.png
+  (unchanged silhouette defects; its shoulder color predates Candidate23)
+
+Local play: extract this ZIP into a new folder, run node serve.cjs with Node.js
+installed, then open http://127.0.0.1:4330/ in a separate browser profile for saves.
+The server binds only locally; stop with Ctrl+C. Do not open index.html directly.
+Existing live URL: https://darren-skyblade-reach.gosplekaiju.chatgpt.site
+Exact project: appgprj_6acf0e7886908191820064ec6fa5afa0. No publication in this pass.

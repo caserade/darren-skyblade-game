@@ -1,0 +1,580 @@
+{
+  "repair": {
+    "passed": 44,
+    "total": 46,
+    "results": [
+      {
+        "name": "Enter in Settings does not start or reset the game",
+        "pass": true
+      },
+      {
+        "name": "Tab stays in the active panel and moves focus",
+        "pass": true
+      },
+      {
+        "name": "Blur clears action queue, touch movement, camera deltas and buffered action",
+        "pass": true
+      },
+      {
+        "name": "Touch stick accepts movement",
+        "pass": true
+      },
+      {
+        "name": "Lost touch capture releases movement",
+        "pass": true
+      },
+      {
+        "name": "Pause clears held and queued combat input",
+        "pass": true
+      },
+      {
+        "name": "Releasing one device preserves another held action",
+        "pass": true
+      },
+      {
+        "name": "Last device release clears held action",
+        "pass": true
+      },
+      {
+        "name": "Simulated controller action is held",
+        "pass": true
+      },
+      {
+        "name": "Controller disconnect releases held actions and edges",
+        "pass": true
+      },
+      {
+        "name": "Controller D-pad navigates visible menu controls",
+        "pass": true
+      },
+      {
+        "name": "Controller adjusts focused settings slider",
+        "pass": true
+      },
+      {
+        "name": "Controller Back closes panel and preserves pause",
+        "pass": true
+      },
+      {
+        "name": "Controller Back resumes from pause",
+        "pass": true
+      },
+      {
+        "name": "Escape closes Settings without unpausing combat",
+        "pass": false,
+        "error": "Error: Assertion failed\n    at check (http://127.0.0.1:4318/?repair=1:122:55)\n    at http://127.0.0.1:4318/?repair=1:144:52\n    at http://127.0.0.1:4318/?repair=1:167:3"
+      },
+      {
+        "name": "Direct damage is suppressed during dialogue",
+        "pass": true
+      },
+      {
+        "name": "Hostile shockwaves freeze throughout dialogue",
+        "pass": true
+      },
+      {
+        "name": "Ending/transition timer freezes while paused",
+        "pass": false,
+        "error": "Error: Assertion failed\n    at check (http://127.0.0.1:4318/?repair=1:122:55)\n    at http://127.0.0.1:4318/?repair=1:147:67\n    at http://127.0.0.1:4318/?repair=1:167:3"
+      },
+      {
+        "name": "Ending timer resumes exactly once",
+        "pass": true
+      },
+      {
+        "name": "Completed transition is not repeated",
+        "pass": true
+      },
+      {
+        "name": "Quit cancels stale ending callbacks",
+        "pass": true
+      },
+      {
+        "name": "Chapter switch cancels stale ending callbacks",
+        "pass": true
+      },
+      {
+        "name": "Malformed checkpoint handled: {\"cp\":999,\"cleared\":\"broken\",\"taken\":5,\"t\":\"oops\"}",
+        "pass": true
+      },
+      {
+        "name": "Malformed checkpoint handled: {\"cp\":-3,\"cleared\":null,\"taken\":null}",
+        "pass": true
+      },
+      {
+        "name": "Malformed checkpoint handled: {\"cp\":1.4}",
+        "pass": true
+      },
+      {
+        "name": "Malformed checkpoint handled: []",
+        "pass": true
+      },
+      {
+        "name": "Malformed checkpoint handled: null",
+        "pass": true
+      },
+      {
+        "name": "Malformed checkpoint handled: \"bad\"",
+        "pass": true
+      },
+      {
+        "name": "Invalid JSON checkpoint does not crash title",
+        "pass": true
+      },
+      {
+        "name": "Legacy checkpoint and elapsed time survive Continue",
+        "pass": true
+      },
+      {
+        "name": "Pre-repair save is preserved verbatim in recovery backup",
+        "pass": true
+      },
+      {
+        "name": "Repeated saves retain the original recovery value",
+        "pass": true
+      },
+      {
+        "name": "Storage failure returns false without replacing the old checkpoint",
+        "pass": true
+      },
+      {
+        "name": "Fall recovery returns to finite safe coordinates",
+        "pass": true
+      },
+      {
+        "name": "Repeated retry restores health and avoids duplicate hostiles 0",
+        "pass": true
+      },
+      {
+        "name": "Repeated retry restores health and avoids duplicate hostiles 1",
+        "pass": true
+      },
+      {
+        "name": "Repeated retry restores health and avoids duplicate hostiles 2",
+        "pass": true
+      },
+      {
+        "name": "Repeated retry restores health and avoids duplicate hostiles 3",
+        "pass": true
+      },
+      {
+        "name": "Gem pickup at exact player center does not create NaN",
+        "pass": true
+      },
+      {
+        "name": "Creature transforms finite 0 true",
+        "pass": true
+      },
+      {
+        "name": "Creature transforms finite 0 false",
+        "pass": true
+      },
+      {
+        "name": "Creature transforms finite 1 true",
+        "pass": true
+      },
+      {
+        "name": "Creature transforms finite 1 false",
+        "pass": true
+      },
+      {
+        "name": "Creature transforms finite 2 true",
+        "pass": true
+      },
+      {
+        "name": "Creature transforms finite 2 false",
+        "pass": true
+      },
+      {
+        "name": "Repeated creature construction reuses geometry cache",
+        "pass": true
+      }
+    ]
+  },
+  "qa": {
+    "passed": 61,
+    "total": 61,
+    "results": [
+      {
+        "name": "All game scripts loaded",
+        "pass": true
+      },
+      {
+        "name": "ch1 initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "ch2 initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "adv initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "ch3 initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "Chapter 3 has four islands, five lifts and three beacons",
+        "pass": true
+      },
+      {
+        "name": "Future islands remain locked",
+        "pass": true
+      },
+      {
+        "name": "Bell tower, moving orrery and cloth banners are built",
+        "pass": true
+      },
+      {
+        "name": "Static scenery is batched into fewer than 18 draw meshes",
+        "pass": true
+      },
+      {
+        "name": "Checkpoints remain clear of new landmark collisions",
+        "pass": true
+      },
+      {
+        "name": "Cloth and orrery animation changes rendered geometry",
+        "pass": true
+      },
+      {
+        "name": "Pause freezes added scenery animation",
+        "pass": true
+      },
+      {
+        "name": "Dialogue freezes added scenery animation",
+        "pass": true
+      },
+      {
+        "name": "Pause freezes atmosphere",
+        "pass": true
+      },
+      {
+        "name": "Dialogue freezes atmosphere",
+        "pass": true
+      },
+      {
+        "name": "Contact shadow pool stays bounded",
+        "pass": true
+      },
+      {
+        "name": "Performance mode disables heavy effects",
+        "pass": true
+      },
+      {
+        "name": "High detail restores shadows and atmosphere",
+        "pass": true
+      },
+      {
+        "name": "Updraft lifts Darren and restores flight energy",
+        "pass": true
+      },
+      {
+        "name": "Gale wave has three Stormlings and two Gustlings",
+        "pass": true
+      },
+      {
+        "name": "Selected Stormbelly spawns in Gale Gardens",
+        "pass": true
+      },
+      {
+        "name": "Stomp warning precedes damage",
+        "pass": true
+      },
+      {
+        "name": "Pause freezes selected enemy attack",
+        "pass": true
+      },
+      {
+        "name": "Dialogue freezes selected enemy attack",
+        "pass": true
+      },
+      {
+        "name": "Jumping avoids Stormbelly stomp",
+        "pass": true
+      },
+      {
+        "name": "Grounded player inside stomp takes damage",
+        "pass": true
+      },
+      {
+        "name": "Stomp exposes a recovery window",
+        "pass": true
+      },
+      {
+        "name": "Stormling windup folds its articulated crescent wings",
+        "pass": true
+      },
+      {
+        "name": "Stormling fires three projectiles and recovers",
+        "pass": true
+      },
+      {
+        "name": "Clearing Gale unlocks the Observatory bridge",
+        "pass": true
+      },
+      {
+        "name": "Selected Chomp Rex spawns in Observatory",
+        "pass": true
+      },
+      {
+        "name": "Rex arrow warns before charge damage",
+        "pass": true
+      },
+      {
+        "name": "Committed charge moves forward and sideways dodge avoids bite",
+        "pass": true
+      },
+      {
+        "name": "Rex bite damages at most once per charge",
+        "pass": true
+      },
+      {
+        "name": "Rex recovers after its short charge",
+        "pass": true
+      },
+      {
+        "name": "Selected enemy poses remain finite",
+        "pass": true
+      },
+      {
+        "name": "Defeated enemies hide their attack warnings",
+        "pass": true
+      },
+      {
+        "name": "Wardling windup plants its legs and raises its shields",
+        "pass": true
+      },
+      {
+        "name": "Wardling blocks frontal attacks",
+        "pass": true
+      },
+      {
+        "name": "Wardling takes full damage from the rear",
+        "pass": true
+      },
+      {
+        "name": "Wardling is vulnerable during recovery",
+        "pass": true
+      },
+      {
+        "name": "Checkpoint reload retains both cleared arenas",
+        "pass": true
+      },
+      {
+        "name": "Warden spawns with three breakable parts",
+        "pass": true
+      },
+      {
+        "name": "Warden has an animated segmented halo and articulated legs",
+        "pass": true
+      },
+      {
+        "name": "All attack and recovery animation states keep finite transforms",
+        "pass": true
+      },
+      {
+        "name": "Warden enters phase two below 60 percent",
+        "pass": true
+      },
+      {
+        "name": "Lightning warns before it deals damage",
+        "pass": true
+      },
+      {
+        "name": "Lightning bolt is absent during warning",
+        "pass": true
+      },
+      {
+        "name": "Leaving the lightning circle avoids damage",
+        "pass": true
+      },
+      {
+        "name": "Lightning strike creates a visible finite bolt",
+        "pass": true
+      },
+      {
+        "name": "Lightning cleanup removes bolt from scene",
+        "pass": true
+      },
+      {
+        "name": "Lightning column damages an airborne player inside it",
+        "pass": true
+      },
+      {
+        "name": "Warden enters phase three below 25 percent",
+        "pass": true
+      },
+      {
+        "name": "Breaking both arm crystals makes the Warden kneel",
+        "pass": true
+      },
+      {
+        "name": "Broken Warden crystals remain hidden while kneeling",
+        "pass": true
+      },
+      {
+        "name": "Crafting refuses insufficient resources",
+        "pass": true
+      },
+      {
+        "name": "Stormsaber recipe consumes exact materials once",
+        "pass": true
+      },
+      {
+        "name": "Defeating Warden completes and saves Chapter 3",
+        "pass": true
+      },
+      {
+        "name": "Field guide and concept image are present",
+        "pass": true
+      },
+      {
+        "name": "Leaving Chapter 3 restores original sky and clears hazards",
+        "pass": true
+      },
+      {
+        "name": "Leaving Chapter 3 releases added scenery references",
+        "pass": true
+      }
+    ]
+  },
+  "quality": {
+    "passed": 17,
+    "total": 17,
+    "results": [
+      {
+        "name": "Generated limestone texture loaded",
+        "pass": true
+      },
+      {
+        "name": "Texture dimensions support mipmaps",
+        "pass": true
+      },
+      {
+        "name": "Tone mapping and bounded exposure active",
+        "pass": true
+      },
+      {
+        "name": "Stone uses both color and relief maps",
+        "pass": true
+      },
+      {
+        "name": "Wood, cloth and metal use distinct textures",
+        "pass": true
+      },
+      {
+        "name": "ch1 renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "ch1 uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "ch2 renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "ch2 uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "adv renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "adv uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "ch3 renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "ch3 uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "Darren and Mom have matte character materials",
+        "pass": true
+      },
+      {
+        "name": "Apron uses woven cloth with a matte finish",
+        "pass": true
+      },
+      {
+        "name": "Steady rendering creates no extra GPU resources",
+        "pass": true
+      },
+      {
+        "name": "Repeated Stormglass reloads release old geometry",
+        "pass": true
+      }
+    ],
+    "metrics": [
+      {
+        "chapter": "ch1",
+        "calls": 312,
+        "triangles": 306394,
+        "textures": 10
+      },
+      {
+        "chapter": "ch2",
+        "calls": 587,
+        "triangles": 422578,
+        "textures": 10
+      },
+      {
+        "chapter": "adv",
+        "calls": 701,
+        "triangles": 359319,
+        "textures": 10
+      },
+      {
+        "chapter": "ch3",
+        "calls": 326,
+        "triangles": 336169,
+        "textures": 14
+      },
+      {
+        "resourceStart": {
+          "textures": 18,
+          "geometries": 82
+        },
+        "resourceEnd": {
+          "textures": 18,
+          "geometries": 82
+        }
+      },
+      {
+        "renderSubmissionMedianMs": 3.1000000089406967,
+        "renderSubmissionP95Ms": 621.5,
+        "note": "CPU render submission only; not a device FPS guarantee"
+      },
+      {
+        "chapterReloadGeometries": [
+          82,
+          82,
+          82,
+          82
+        ]
+      }
+    ]
+  },
+  "probes": {
+    "enterInSettings": {
+      "mode": "title",
+      "panelHidden": false
+    },
+    "blur": {
+      "queue": [],
+      "touchX": 0,
+      "cameraX": 0
+    },
+    "disconnectedPadHeld": false
+  },
+  "errors": []
+}

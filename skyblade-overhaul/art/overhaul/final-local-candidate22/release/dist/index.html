@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Darren: Skyblade Hunt</title>
+<!--
+    Darren: Skyblade Hunt (Story Chapters 1-2 and Adventure: Cloud Utopia). Open this file in a web browser (Chrome or Edge) to play.
+  It needs an internet connection the first time, for the three.js library.
+  Story, level, enemies and move numbers: data/game_data.js.  How everything fits: README_FOR_AI.md
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Lilita+One&family=Nunito:wght@600;800&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="expansion.css">
+<link rel="stylesheet" href="polish.css">
+<style>html,body{margin:0;height:100%}[hidden]{display:none!important}</style>
+<div id="game" inert>
+  <canvas id="c" tabindex="0" aria-label="Darren: Skyblade Hunt game view"></canvas>
+  <div id="hud" hidden>
+    <div class="plate">
+      <div class="nm">Darren</div>
+      <div class="bar"><i id="hpF"></i></div>
+      <div class="bar sm"><i id="stF"></i></div>
+      <div class="lbl">Dragon Heart</div>
+      <div class="bar sm" id="dhB"><i id="dhF"></i></div>
+      <div class="lbl">Flight</div>
+      <div class="bar sm" id="flB"><i id="flF"></i></div>
+      <div class="wpn" id="wpnN">Emberfang</div>
+    </div>
+    <div id="boss" hidden><div class="bn" id="bossN">Grumblepeak</div><div class="bar"><i id="bossF"></i></div><div id="cry"></div></div>
+    <div id="tgt" hidden><div class="lbl" id="tgtN"></div><div class="bar sm"><i id="tgtF"></i></div></div>
+    <div id="banner"><b id="banB"></b><span id="banS"></span></div>
+    <div id="combo"><b id="comboN">0</b><span>HITS</span></div>
+    <div id="style" data-r="D"><b id="styR">D</b><span id="styN">Dandy</span><div class="bar sm"><i id="styF"></i></div></div>
+    <div id="ebars"></div>
+    <div id="cnt" hidden><span id="cntT"></span></div>
+    <div id="ctr" hidden></div>
+    <button id="prompt" type="button" hidden><kbd>E</kbd> Open the Skyforge</button>
+    <div id="skills">
+      <div class="sk"><kbd>1</kbd><em>Blaze Wheel</em><i id="cd1"></i></div>
+      <div class="sk"><kbd>2</kbd><em>Flame Breath</em><i id="cd2"></i></div>
+    </div>
+    <div id="nums"></div>
+    <div id="flash"></div>
+    <div id="fade"></div>
+    <div id="obj" hidden><div class="lbl">Objective</div><div id="objT"></div><div id="objC"></div></div>
+    <div id="talk" hidden role="dialog" aria-live="polite"><div id="talkN"></div><p id="talkT"></p><span id="talkMore" aria-hidden="true">&#9660;</span></div>
+    <button id="musBtn" type="button">Music on</button>
+    <button id="pauseBtn" type="button">Pause</button>
+    <div id="touch" hidden>
+      <div id="stickZone"><div id="stick"><i id="knob"></i></div></div>
+      <div id="camZone"></div>
+      <button class="tb" id="tLight" type="button" data-a="light"><span>Slash</span></button>
+      <button class="tb" id="tHeavy" type="button" data-a="heavy"><span>Heavy</span></button>
+      <button class="tb" id="tJump" type="button" data-a="jump"><span>Jump</span></button>
+      <button class="tb" id="tDash" type="button" data-a="dash"><span>Dash</span></button>
+      <button class="tb" id="tS1" type="button" data-a="s1"><i id="tcd1"></i><span>Wheel</span></button>
+      <button class="tb" id="tS2" type="button" data-a="s2"><i id="tcd2"></i><span>Fire</span></button>
+      <button class="tb" id="tHeart" type="button" data-a="heart"><span>Heart</span></button>
+      <button class="tb" id="tLock" type="button" data-a="lock"><span>Lock</span></button>
+      <button class="tb" id="tFly" type="button" data-a="fly"><span>Fly</span></button>
+      <button class="tb" id="tStyle" type="button" data-a="style"><span>Style</span></button>
+    </div>
+  </div>
+  <div id="menu">
+    <div class="card">
+      <h1 class="logo"><b>Darren</b><span id="mSub">Skyblade Hunt</span></h1>
+      <div class="modes" id="modePick" role="tablist" aria-label="Game mode">
+        <button type="button" class="mode on" data-mode="story" role="tab"><b>Story</b><span>Chapters</span></button>
+        <button type="button" class="mode" data-mode="adventure" role="tab"><b>Adventure</b><span>Cloud Utopia</span></button>
+      </div>
+      <p class="chap" id="mChap">Chapter 1: The Trail to Cloudroost Peak</p>
+      <p class="tag" id="mTag">Ruffy didn't come home last night.</p>
+      <p id="result" hidden></p>
+      <div class="chaps" id="chapPick" role="group" aria-label="Chapter"></div>
+      <div class="btns"><button class="go" id="startBtn" type="button">Start Chapter 1</button><button class="go alt" id="contBtn" type="button" hidden>Continue</button></div>
+      <div class="btns sub"><button class="go opt" id="optBtn" type="button"><b>Hangar</b> Loadout · Forge · Moves · Settings</button><button class="go opt" id="quitBtn" type="button" hidden>Quit to title</button></div>
+      <details class="keys">
+        <summary>Controls</summary>
+        <div class="kgrid">
+          <div><h3>Keyboard</h3><p><u>WASD</u> move · <u>Mouse</u> camera<br><u>J</u> / click: Slash (R-arm) · <u>K</u> / right-click: Heavy (L-arm)<br><u>Space</u> jump, double jump, hold to glide<br><u>V</u> fly (hold <u>Space</u> to climb, <u>C</u> to dive) · <u>Shift</u> Wing Dash<br><u>Q</u> lock on, again on a boss to focus a weak spot<br><u>T</u> Classic / Twin Arms · <u>R</u> switch weapon<br><u>1</u> <u>2</u> skills · <u>F</u> Dragon Heart · <u>E</u> use · <u>N</u> map · <u>P</u> hangar / pause</p></div>
+          <div><h3>Controller</h3><p><u>X</u> Slash / R-arm · <u>Y</u> Heavy / L-arm<br><u>A</u> jump (hold to climb when flying) · <u>B</u> Wing Dash<br><u>D-pad up</u> fly · <u>LT</u> dive · <u>D-pad left</u> style · <u>D-pad right</u> weapon<br><u>D-pad down</u> use · <u>Back</u> map<br><u>LB+X</u> <u>LB+Y</u> skills · <u>LB+RB</u> Dragon Heart<br><u>R3</u> lock on · <u>Start</u> pause</p></div>
+          <div><h3>Tricks</h3><p>Slash, slash, <u>Heavy</u> launches. <u>Heavy</u> at other points of a string gives other finishers.<br>Dash through a hit at the last moment for slow motion and a counter.<br>Beat enemies and break crystals for <u>parts</u>; craft weapons and armor in the Hangar.</p></div>
+        </div>
+      </details>
+    </div>
+    <div id="panel" hidden role="dialog" aria-label="Skyforge Hangar">
+      <header class="phead"><div class="ptitle"><b>SKYFORGE</b><span>HANGAR</span></div><div class="pstripe" aria-hidden="true"></div><button type="button" class="pclose" id="panelClose" aria-label="Close">&#10005;</button></header>
+      <div class="pmain">
+        <nav class="ptabs" id="ptabs" role="tablist"></nav>
+        <div class="pbody" id="pBody"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="mobile-ui15.css"><link rel="stylesheet" href="responsive-ui21.css"><div id="startup16" role="status" data-state="loading" style="position:fixed;inset:0;z-index:200000;display:grid;place-content:center;text-align:center;gap:18px;padding:24px;background:#13232d;color:#fff;font:18px system-ui,sans-serif">
+<p id="startupMessage16">Loading Darren: Skyblade Hunt…</p><button id="startupRetry16" type="button" hidden onclick="location.reload()" style="padding:14px 24px;justify-self:center;font:700 18px system-ui,sans-serif">Retry</button></div><link rel="preload" as="script" href="vendor/three.min.js"><link rel="preload" as="script" href="vendor/GLTFLoader.js"><link rel="preload" as="script" href="data/game_data.js"><link rel="preload" as="script" href="data/chapter2.js"><link rel="preload" as="script" href="data/forge.js"><link rel="preload" as="script" href="data/adventure.js"><link rel="preload" as="script" href="data/stormglass.js"><link rel="preload" as="script" href="assets/darren_model.js"><link rel="preload" as="script" href="assets/music.js"><link rel="preload" as="script" href="src/core.js"><link rel="preload" as="script" href="src/models.js"><link rel="preload" as="script" href="src/props.js"><link rel="preload" as="script" href="src/skin.js"><link rel="preload" as="script" href="src/weapons.js"><link rel="preload" as="script" href="src/forge.js"><link rel="preload" as="script" href="src/arms.js"><link rel="preload" as="script" href="src/combat.js"><link rel="preload" as="script" href="src/adventure.js"><link rel="preload" as="script" href="src/stormglass-art.js"><link rel="preload" as="script" href="src/stormglass-world.js"><link rel="preload" as="script" href="src/stormglass.js"><link rel="preload" as="script" href="src/polish.js"><link rel="preload" as="script" href="src/toon-enemies.js"><link rel="preload" as="script" href="src/skydrake.js"><link rel="preload" as="script" href="src/chomprex.js"><link rel="preload" as="script" href="src/level.js"><link rel="preload" as="script" href="src/menu.js"><link rel="preload" as="script" href="src/fieldguide.js"><link rel="preload" as="script" href="src/skydrake-rc15.js"><link rel="preload" as="script" href="src/stormbelly-rc15.js"><link rel="preload" as="script" href="src/camera-rc15.js"><script id="startupModules16" type="application/json">["vendor/three.min.js", "vendor/GLTFLoader.js", "data/game_data.js", "data/chapter2.js", "data/forge.js", "data/adventure.js", "data/stormglass.js", "assets/darren_model.js", "assets/music.js", "src/core.js", "src/models.js", "src/props.js", "src/skin.js", "src/weapons.js", "src/forge.js", "src/arms.js", "src/combat.js", "src/adventure.js", "src/stormglass-art.js", "src/stormglass-world.js", "src/stormglass.js", "src/polish.js", "src/toon-enemies.js", "src/skydrake.js", "src/chomprex.js", "src/level.js", "src/menu.js", "src/fieldguide.js", "src/skydrake-rc15.js", "src/stormbelly-rc15.js", "src/camera-rc15.js"]</script><script src="src/boot16.js" onerror="document.getElementById('startup16').dataset.state='error';document.getElementById('startupMessage16').textContent='The game could not finish loading. Please retry.';document.getElementById('startupRetry16').hidden=false"></script></body></html>

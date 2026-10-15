@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "state": {
+    "mode": "play",
+    "finite": true
+  },
+  "errors": [],
+  "servedAssetSha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+  "scope": "Isolated GitHub staging copy, own included launcher, fresh Chromium profile, actual Start button."
+}

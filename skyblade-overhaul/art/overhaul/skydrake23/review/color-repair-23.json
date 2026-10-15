@@ -1,0 +1,19 @@
+{
+  "baselineSha256": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e",
+  "candidateSha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+  "materials": [
+    {
+      "material": "skydrake_skin",
+      "changedPixels": 1974,
+      "totalPixels": 1048576,
+      "outsideMaskExact": true
+    },
+    {
+      "material": "SkyDrake shoulder retopology",
+      "changedPixels": 12820,
+      "totalPixels": 262144,
+      "outsideMaskExact": true
+    }
+  ],
+  "method": "Object-space feathered shoulder mask; remove pale color contamination while retaining blue variation. Lossless PNG. No normal/geometry/weight/animation changes."
+}

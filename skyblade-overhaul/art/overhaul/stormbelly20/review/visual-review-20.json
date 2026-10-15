@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-10-15T09:34:54.222273+00:00",
+  "decision": "Retain conservative candidate: modest eyelid coverage, rounder/shorter chin and backward horn sweep. Reject broad eye/socket rotations.",
+  "observations": [
+    "Reference face front/profile/three-quarter pixels inspected. Eye/iris orientation remains a substantial mismatch, especially profile.",
+    "No new visible jaw/horn breakup in sampled stomp windup, stagger and head-following death sequences. Existing large mouth opening and separate-looking jaw/cheek join remain.",
+    "Full/reduced horn orbit at eight yaw angles and two elevations shows attached roots and continuous swept-tip silhouette. Small low-poly shading differences remain.",
+    "Gameplay changes are subtle at normal camera distance; landscape HUD crowding is unchanged and deferred.",
+    "Widened, head-following side and three-quarter sequences for existing slamWindup, slam and stompImpact show no new horn/neck-spine contact in the sampled poses. Existing open-jaw styling remains approximate."
+  ],
+  "boards": [
+    {
+      "file": "Stormbelly20-face-comparison.png",
+      "sha256": "5f53bc2ed7799c7cb27daf2d391f272dba7cc0532d15617db6602153093e17b5"
+    },
+    {
+      "file": "Stormbelly20-gameplay-comparison.png",
+      "sha256": "fc4a6681ba436266f3c36cf692b6d284a0517c1fdb55fa516eac7069e9ab73cc"
+    },
+    {
+      "file": "Stormbelly20-expression-stompWindup.png",
+      "sha256": "db7cb689b4b2f7d6786f6c3bc9645e81fdf8bf79231ce56fe0e5c6e51b384ffc"
+    },
+    {
+      "file": "Stormbelly20-expression-stagger.png",
+      "sha256": "a91cee7e1e7232d0ec62be9d1185c569e7154843a927dcb38cb36c5c650f4ece"
+    },
+    {
+      "file": "Stormbelly20-expression-death.png",
+      "sha256": "3ae3a69abf11e8c0063dd9fa7e392d8b0f108ba0b05697b9daa88ab6ea478c2c"
+    },
+    {
+      "file": "Stormbelly20-horn-orbit-candidate.png",
+      "sha256": "7c1ec027a6f82c51942752c682d65e5c3fb27ef1aa786ab80be90219bee78ef0"
+    },
+    {
+      "file": "Stormbelly20-horn-orbit-lod.png",
+      "sha256": "05f77896ccd3a68e1cf2e40186e5c62dade691450dedd9dadc7856ea20fe963e"
+    },
+    {
+      "file": "Stormbelly20-body-comparison.png",
+      "sha256": "c93148bd13dd3e89ecded3010c26d3a52c9c057d564c2b8abb30c458c49fbf60"
+    },
+    {
+      "file": "Stormbelly20-attack-extremes-slamWindup.png",
+      "sha256": "26988a04660bb138f87e30dbf120280209b9f7ead31212a4b60989d22b6da3fe"
+    },
+    {
+      "file": "Stormbelly20-attack-extremes-slam.png",
+      "sha256": "d53cf3a7cfef0c31c3d002908e7139f3627f9ba2cc8e01f3935734dc4fdda974"
+    },
+    {
+      "file": "Stormbelly20-attack-extremes-stompImpact.png",
+      "sha256": "e527200f49b51513c3a0af20c61a310f83168e7403e6d71f3dd9d63c4f349984"
+    }
+  ],
+  "limits": "Human-visible rendered sample inspection by the assistant, not exhaustive intersection detection or a likeness score."
+}

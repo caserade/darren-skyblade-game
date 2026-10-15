@@ -1,0 +1,148 @@
+{
+  "baseCommit": "76980ac58298cecd25c41eb3c1a2b43c13d57b40",
+  "testedSourceHashes": {
+    "level.js": "4f6d682d6a4820c58c2d936c7d9ac1b98f8a533790449f2dbee9bc49470cec7d",
+    "combat.js": "169e0a9dd8272f800e3ae14da2ca6ef0e70d2a121264e8d5b6117682c7c95f98",
+    "skydrake.js": "0fb96882984165dc5c2037ba9aa04ede1bc1548ccd35c83689865b3127288869"
+  },
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "Unmodified 2400 HP SkyDrake is defeated through actual J-key damage",
+      "pass": true,
+      "strikes": 172
+    },
+    {
+      "name": "All five reward gems are collected",
+      "pass": true
+    },
+    {
+      "name": "Existing feather/cloud/plate drops have the exact expected counts",
+      "pass": true
+    },
+    {
+      "name": "Existing Feather Harvest contract completes and gives its normal reward",
+      "pass": true
+    },
+    {
+      "name": "Defeated rig is disposed and player remains finite",
+      "pass": true
+    },
+    {
+      "name": "Reward inventory survives a complete page reload",
+      "pass": true
+    },
+    {
+      "name": "Completed contract survives reload without duplicate rewards",
+      "pass": true
+    },
+    {
+      "name": "Unrecognized legacy save field is preserved",
+      "pass": true
+    },
+    {
+      "name": "No SkyDrake-specific save key was created",
+      "pass": true
+    }
+  ],
+  "strikes": 172,
+  "samples": [
+    {
+      "hp": 2385.8885164051085,
+      "state": "chase",
+      "playerState": "move"
+    },
+    {
+      "hp": 2103.811855945528,
+      "state": "land",
+      "playerState": "move"
+    },
+    {
+      "hp": 1828.3087765957466,
+      "state": "circle",
+      "playerState": "move"
+    },
+    {
+      "hp": 1548.2963581175836,
+      "state": "circle",
+      "playerState": "move"
+    },
+    {
+      "hp": 1270.654738036893,
+      "state": "takeoff",
+      "playerState": "move"
+    },
+    {
+      "hp": 986.6293904040411,
+      "state": "wind",
+      "playerState": "move"
+    },
+    {
+      "hp": 703.352343737538,
+      "state": "rec",
+      "playerState": "move"
+    },
+    {
+      "hp": 428.11717255903613,
+      "state": "chase",
+      "playerState": "move"
+    },
+    {
+      "hp": 148.75689445724544,
+      "state": "wind",
+      "playerState": "move"
+    }
+  ],
+  "before": {
+    "parts": {
+      "feather": 13,
+      "cloud": 4,
+      "plate": 5,
+      "coil": 2
+    },
+    "contracts": {
+      "active": [],
+      "prog": {
+        "c_feathers": 0
+      },
+      "done": {
+        "c_feathers": 1
+      }
+    },
+    "sentinel": "retained",
+    "gems": 0,
+    "disposed": true,
+    "keys": [
+      "darrenSkyblade.unlocks",
+      "darrenSkyblade.unlocks.recovery"
+    ],
+    "saveKey": "darrenSkyblade.unlocks",
+    "finite": true
+  },
+  "after": {
+    "parts": {
+      "feather": 13,
+      "cloud": 4,
+      "plate": 5,
+      "coil": 2
+    },
+    "contracts": {
+      "active": [],
+      "prog": {
+        "c_feathers": 0
+      },
+      "done": {
+        "c_feathers": 1
+      }
+    },
+    "sentinel": "retained",
+    "keys": [
+      "darrenSkyblade.unlocks",
+      "darrenSkyblade.unlocks.recovery"
+    ],
+    "saveKey": "darrenSkyblade.unlocks"
+  },
+  "errors": [],
+  "note": "Isolated deterministic browser profile. Actual J-key attacks; fixture positions track the enemy and player invulnerability is enabled. This verifies damage, rewards and save integration, not combat balance or a manual playthrough."
+}

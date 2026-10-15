@@ -1,0 +1,53 @@
+{
+  "types": [
+    "puff",
+    "gust",
+    "bolt",
+    "thorn",
+    "bark",
+    "snow",
+    "boss",
+    "knot",
+    "titan",
+    "node",
+    "stormling",
+    "wardling",
+    "tempest",
+    "stormbelly",
+    "chomprex"
+  ],
+  "cycles": [
+    {
+      "cycle": 0,
+      "geometries": 91,
+      "textures": 13,
+      "materials": 123,
+      "sceneChildren": 100,
+      "disposedBossMaterials": 12
+    },
+    {
+      "cycle": 1,
+      "geometries": 91,
+      "textures": 13,
+      "materials": 123,
+      "sceneChildren": 100,
+      "disposedBossMaterials": 24
+    },
+    {
+      "cycle": 2,
+      "geometries": 91,
+      "textures": 13,
+      "materials": 123,
+      "sceneChildren": 100,
+      "disposedBossMaterials": 36
+    },
+    {
+      "cycle": 3,
+      "geometries": 91,
+      "textures": 13,
+      "materials": 123,
+      "sceneChildren": 100,
+      "disposedBossMaterials": 48
+    }
+  ]
+}

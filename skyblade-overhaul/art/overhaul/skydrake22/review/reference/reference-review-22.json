@@ -1,0 +1,49 @@
+{
+  "scope": "Matched neutral/idle cameras, lights and scale. Supplied art is a different pose/projection and is compared separately. No rest-shape or color changes in Candidate22.",
+  "hashes": {
+    "skydrake15/export/skydrake-lod.glb": "c8eb6546733d62ed56d66b103210ebe48bcb4b82e472e4a59f1e1dc027dc5818",
+    "skydrake22/export/skydrake-lod.glb": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e"
+  },
+  "records": [
+    {
+      "view": "front",
+      "kind": "before",
+      "file": "before-front.png"
+    },
+    {
+      "view": "front",
+      "kind": "after",
+      "file": "after-front.png"
+    },
+    {
+      "view": "side",
+      "kind": "before",
+      "file": "before-side.png"
+    },
+    {
+      "view": "side",
+      "kind": "after",
+      "file": "after-side.png"
+    },
+    {
+      "view": "back",
+      "kind": "before",
+      "file": "before-back.png"
+    },
+    {
+      "view": "back",
+      "kind": "after",
+      "file": "after-back.png"
+    },
+    {
+      "view": "three-quarter",
+      "kind": "before",
+      "file": "before-three-quarter.png"
+    },
+    {
+      "view": "three-quarter",
+      "kind": "after",
+      "file": "after-three-quarter.png"
+    }
+  ]
+}

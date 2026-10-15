@@ -1,0 +1,49 @@
+{
+  "decision": "Accept only reduced trial C in Candidate22. Full experiments are not promoted.",
+  "reviewedImages": [
+    {
+      "file": "boards/SkyDrake22-deformation-before-after.png",
+      "sha256": "f67176c6c48692f3498c4cc0b73c6d37d63cfd78ebec136d60a0295a05a9ec5b"
+    },
+    {
+      "file": "boards/SkyDrake22-reference-comparison.png",
+      "sha256": "1df8e964122c6d025164a70df43d3931f3dabbe4200fc758252d8542440ef6ec"
+    },
+    {
+      "file": "boards/SkyDrake22-gameplay-comparison.png",
+      "sha256": "85b509506878ed943be45e5942869cff724b85d3a86c0e81a1e1275cab8b2c9a"
+    },
+    {
+      "file": "boards/contact-sheet-main-22.png",
+      "sha256": "b1b171ce55e0ae3bbc80ee41933a3fa2ec27527dcabc9a7ee3544e80a9f98eda"
+    },
+    {
+      "file": "boards/contact-sheet-back-22.png",
+      "sha256": "662f5fd4f3e3e0324b61516162557f6ef80df1a522580aeb916eb33dbf74272f"
+    },
+    {
+      "file": "boards/contact-sheet-opposite-22.png",
+      "sha256": "e78b3574a25bdcd19f9e7f7b537172bfd62656c46871b490f4b7330a86d5573f"
+    },
+    {
+      "file": "poses-a-full-clay/before-turn.png",
+      "sha256": "e874a12a6934bf04ee3092508286a274085a0104b478fcdb2768631128d0d1c1"
+    },
+    {
+      "file": "poses-a-full-clay/after-turn.png",
+      "sha256": "dff600ca71f68b8d9c6dd848d21886a3c8ddf09d3a97549f75c4e7de2ca69e6c"
+    },
+    {
+      "file": "poses-a-full-clay/after-flyIdle.png",
+      "sha256": "fcec7026ca77f5ac17f4d407537aa70b2ed1ced043e7380b32d44860a6e3d954"
+    }
+  ],
+  "observations": [
+    "Reduced chest/shoulder contour is smoother during attack and windup, with less abrupt pinching beside the neck.",
+    "Front, opposite and back contact sheets show ordinary clips retain the existing silhouette; textured shoulder patches and elbow folding remain visible.",
+    "Reference pixels were inspected directly. Protruding eye whites, muzzle/lid shapes, simplified wing membranes and straight tail profile still differ; no rest-shape likeness change is claimed.",
+    "Production ground/flight comparison keeps root/camera/action timing matched. The full-page real-loop screenshot is supplemental, not a matched comparison.",
+    "Full-resolution A adds a compressed stagger triangle; full C adds a compressed turn triangle. Those trials remain unaccepted despite improved stretch metrics."
+  ],
+  "limits": "Curated stills and contact sheets supplement sampled numerical checks. They do not prove absence of all self-intersection, all camera angles or all physical-device faults."
+}

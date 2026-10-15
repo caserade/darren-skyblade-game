@@ -1,0 +1,665 @@
+{
+  "decision": "Select trial C for the playable reduced mesh: all local/neck peak and local P99 stretch measures improve across all 14 clips. Retain full trial A as an UNACCEPTED working experiment only: it improves local stretch but introduces an extra compressed stagger triangle (peak 2 versus 1 baseline) and a 0.12% neck-stretch increase in tailWhip. Full C also introduces a compressed turn triangle. Preserve SkyDrake15 full as the accepted full-resolution fallback. Trial B is rejected. Raw poses reviewed separately.",
+  "variants": [
+    {
+      "variant": "candidate",
+      "selectedTrial": "a",
+      "acceptedForRelease": false,
+      "assetSha256": "ecddecad24f46b1b80ef773e0fcd1b99bfce2e1a5fc7607002fcd79cc7367a6e",
+      "clips": [
+        {
+          "clip": "attack",
+          "all": {
+            "before": 4.313248854734066,
+            "after": 3.64644184420113
+          },
+          "local": {
+            "before": 4.313248854734066,
+            "after": 3.64644184420113
+          },
+          "neck": {
+            "before": 4.313248854734066,
+            "after": 2.6240770740159203
+          },
+          "localP99": {
+            "before": 1.7712778615508167,
+            "after": 1.4988878455252288
+          },
+          "collapsedTriangles": {
+            "before": 2,
+            "after": 0
+          }
+        },
+        {
+          "clip": "attackWindup",
+          "all": {
+            "before": 4.0709538729626,
+            "after": 3.0075260720986723
+          },
+          "local": {
+            "before": 4.0709538729626,
+            "after": 2.8549440080243373
+          },
+          "neck": {
+            "before": 3.3098346716966964,
+            "after": 1.9137900930944387
+          },
+          "localP99": {
+            "before": 1.5375669319460197,
+            "after": 1.3469011998247966
+          },
+          "collapsedTriangles": {
+            "before": 3,
+            "after": 0
+          }
+        },
+        {
+          "clip": "death",
+          "all": {
+            "before": 3.5626128481411388,
+            "after": 2.120222244156505
+          },
+          "local": {
+            "before": 3.5626128481411388,
+            "after": 2.120222244156505
+          },
+          "neck": {
+            "before": 2.6594244560126907,
+            "after": 1.585312184267415
+          },
+          "localP99": {
+            "before": 1.4031635476669986,
+            "after": 1.2389866237453444
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "flyIdle",
+          "all": {
+            "before": 2.3431490793291556,
+            "after": 2.3431490793291556
+          },
+          "local": {
+            "before": 1.7523144883041601,
+            "after": 1.7272641413712875
+          },
+          "neck": {
+            "before": 1.3245599065730964,
+            "after": 1.2420757167531933
+          },
+          "localP99": {
+            "before": 1.1629949834899265,
+            "after": 1.115502682125991
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "hit",
+          "all": {
+            "before": 3.7089911473975943,
+            "after": 1.9746260437992997
+          },
+          "local": {
+            "before": 3.7089911473975943,
+            "after": 1.9746260437992997
+          },
+          "neck": {
+            "before": 2.2425049676969517,
+            "after": 1.5363105529322738
+          },
+          "localP99": {
+            "before": 1.3921145229665897,
+            "after": 1.2600211535960721
+          },
+          "collapsedTriangles": {
+            "before": 1,
+            "after": 1
+          }
+        },
+        {
+          "clip": "idle",
+          "all": {
+            "before": 1.7263596488357795,
+            "after": 1.1991663947448745
+          },
+          "local": {
+            "before": 1.7263596488357795,
+            "after": 1.1991663947448745
+          },
+          "neck": {
+            "before": 1.219770984091875,
+            "after": 1.1456010647699262
+          },
+          "localP99": {
+            "before": 1.1128862131980501,
+            "after": 1.0654712147859229
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "land",
+          "all": {
+            "before": 2.156788532965576,
+            "after": 2.156788532965576
+          },
+          "local": {
+            "before": 1.6664420402827282,
+            "after": 1.5135629846429668
+          },
+          "neck": {
+            "before": 1.1739768738330587,
+            "after": 1.0902107456871504
+          },
+          "localP99": {
+            "before": 1.1394821193583724,
+            "after": 1.0927812003182693
+          },
+          "collapsedTriangles": {
+            "before": 1,
+            "after": 0
+          }
+        },
+        {
+          "clip": "recover",
+          "all": {
+            "before": 1.9808856989678936,
+            "after": 1.6251972247157893
+          },
+          "local": {
+            "before": 1.9808856989678936,
+            "after": 1.6251972247157893
+          },
+          "neck": {
+            "before": 1.9808856989678936,
+            "after": 1.6251972247157893
+          },
+          "localP99": {
+            "before": 1.143795691994411,
+            "after": 1.0978070700301126
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "stagger",
+          "all": {
+            "before": 2.898310276490819,
+            "after": 2.509457712312328
+          },
+          "local": {
+            "before": 2.898310276490819,
+            "after": 2.509457712312328
+          },
+          "neck": {
+            "before": 2.5670153351252476,
+            "after": 2.1780842909971554
+          },
+          "localP99": {
+            "before": 1.4132677658496107,
+            "after": 1.2536243905313826
+          },
+          "collapsedTriangles": {
+            "before": 1,
+            "after": 2
+          }
+        },
+        {
+          "clip": "tailWhip",
+          "all": {
+            "before": 3.2013653063977765,
+            "after": 2.589303598491628
+          },
+          "local": {
+            "before": 3.2013653063977765,
+            "after": 2.5631900599349304
+          },
+          "neck": {
+            "before": 2.5601071564015423,
+            "after": 2.5631900599349304
+          },
+          "localP99": {
+            "before": 1.621926846886145,
+            "after": 1.5066078901543831
+          },
+          "collapsedTriangles": {
+            "before": 35,
+            "after": 14
+          }
+        },
+        {
+          "clip": "tailWindup",
+          "all": {
+            "before": 3.0830219472675147,
+            "after": 2.5310742680028655
+          },
+          "local": {
+            "before": 3.0830219472675147,
+            "after": 2.2999423838950412
+          },
+          "neck": {
+            "before": 2.1705997275126547,
+            "after": 1.8956928596398281
+          },
+          "localP99": {
+            "before": 1.601311427535367,
+            "after": 1.468553384359631
+          },
+          "collapsedTriangles": {
+            "before": 23,
+            "after": 10
+          }
+        },
+        {
+          "clip": "takeoff",
+          "all": {
+            "before": 2.6277819295700446,
+            "after": 2.6277819295700446
+          },
+          "local": {
+            "before": 1.745557489950525,
+            "after": 1.7098216025891229
+          },
+          "neck": {
+            "before": 1.1739768738330587,
+            "after": 1.0902107456871504
+          },
+          "localP99": {
+            "before": 1.1576065129286661,
+            "after": 1.1086305332242952
+          },
+          "collapsedTriangles": {
+            "before": 1,
+            "after": 0
+          }
+        },
+        {
+          "clip": "turn",
+          "all": {
+            "before": 2.336413635431596,
+            "after": 1.998536057357591
+          },
+          "local": {
+            "before": 2.336413635431596,
+            "after": 1.998536057357591
+          },
+          "neck": {
+            "before": 1.7428521781697008,
+            "after": 1.5227611112193171
+          },
+          "localP99": {
+            "before": 1.3324592961434951,
+            "after": 1.2494925496865634
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "walk",
+          "all": {
+            "before": 2.761268051200213,
+            "after": 2.761268051200213
+          },
+          "local": {
+            "before": 2.3096181743342443,
+            "after": 1.7556208079130537
+          },
+          "neck": {
+            "before": 1.7466027797098418,
+            "after": 1.271975638790211
+          },
+          "localP99": {
+            "before": 1.1945673890128479,
+            "after": 1.1273617230604787
+          },
+          "collapsedTriangles": {
+            "before": 1,
+            "after": 0
+          }
+        }
+      ]
+    },
+    {
+      "variant": "lod",
+      "selectedTrial": "c",
+      "acceptedForRelease": true,
+      "assetSha256": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e",
+      "clips": [
+        {
+          "clip": "attack",
+          "all": {
+            "before": 4.177292876045905,
+            "after": 3.356267468757115
+          },
+          "local": {
+            "before": 4.177292876045905,
+            "after": 1.9457466786311115
+          },
+          "neck": {
+            "before": 2.855181799891117,
+            "after": 1.671293771583153
+          },
+          "localP99": {
+            "before": 1.6094372943230828,
+            "after": 1.3849273789512722
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "attackWindup",
+          "all": {
+            "before": 4.0709538729626,
+            "after": 2.764508560665748
+          },
+          "local": {
+            "before": 4.0709538729626,
+            "after": 1.853725503672967
+          },
+          "neck": {
+            "before": 2.291056512911188,
+            "after": 1.4774997209254062
+          },
+          "localP99": {
+            "before": 1.4797775514268323,
+            "after": 1.3199162686232084
+          },
+          "collapsedTriangles": {
+            "before": 1,
+            "after": 0
+          }
+        },
+        {
+          "clip": "death",
+          "all": {
+            "before": 3.5626128481411388,
+            "after": 1.9915832169429455
+          },
+          "local": {
+            "before": 3.5626128481411388,
+            "after": 1.7028532994485968
+          },
+          "neck": {
+            "before": 1.9712778217133664,
+            "after": 1.4570730940251866
+          },
+          "localP99": {
+            "before": 1.3727022614198559,
+            "after": 1.2458873693217551
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "flyIdle",
+          "all": {
+            "before": 2.27349929250318,
+            "after": 2.27349929250318
+          },
+          "local": {
+            "before": 1.708991583144965,
+            "after": 1.3492987897299416
+          },
+          "neck": {
+            "before": 1.305499214286207,
+            "after": 1.2065901316552334
+          },
+          "localP99": {
+            "before": 1.1550873431066133,
+            "after": 1.1199658560276635
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "hit",
+          "all": {
+            "before": 3.7089911473975943,
+            "after": 1.8080987786566405
+          },
+          "local": {
+            "before": 3.7089911473975943,
+            "after": 1.8080987786566405
+          },
+          "neck": {
+            "before": 1.848584007108934,
+            "after": 1.5272928275971887
+          },
+          "localP99": {
+            "before": 1.3425752254836227,
+            "after": 1.2781524823541746
+          },
+          "collapsedTriangles": {
+            "before": 2,
+            "after": 0
+          }
+        },
+        {
+          "clip": "idle",
+          "all": {
+            "before": 1.7263596488357795,
+            "after": 1.2229178499607252
+          },
+          "local": {
+            "before": 1.7263596488357795,
+            "after": 1.2229178499607252
+          },
+          "neck": {
+            "before": 1.1687156292387262,
+            "after": 1.1266940253155948
+          },
+          "localP99": {
+            "before": 1.106042663904678,
+            "after": 1.077991234133761
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "land",
+          "all": {
+            "before": 2.156788532965576,
+            "after": 2.156788532965576
+          },
+          "local": {
+            "before": 1.6664420402827282,
+            "after": 1.2832279418290473
+          },
+          "neck": {
+            "before": 1.129605137942083,
+            "after": 1.0841656471587082
+          },
+          "localP99": {
+            "before": 1.129498456982548,
+            "after": 1.1031617217388567
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "recover",
+          "all": {
+            "before": 1.7044010087725934,
+            "after": 1.5174721866015306
+          },
+          "local": {
+            "before": 1.7044010087725934,
+            "after": 1.5174721866015306
+          },
+          "neck": {
+            "before": 1.7044010087725934,
+            "after": 1.5174721866015306
+          },
+          "localP99": {
+            "before": 1.1367954311088697,
+            "after": 1.1058190493999593
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "stagger",
+          "all": {
+            "before": 2.898310276490819,
+            "after": 1.9562124974182609
+          },
+          "local": {
+            "before": 2.898310276490819,
+            "after": 1.9562124974182609
+          },
+          "neck": {
+            "before": 2.414127398213311,
+            "after": 1.9562124974182609
+          },
+          "localP99": {
+            "before": 1.3339913073218763,
+            "after": 1.242436743413488
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "tailWhip",
+          "all": {
+            "before": 2.558555328278378,
+            "after": 2.557218166081411
+          },
+          "local": {
+            "before": 2.543057708594552,
+            "after": 1.9984468291778197
+          },
+          "neck": {
+            "before": 1.748487855883097,
+            "after": 1.6993886620831122
+          },
+          "localP99": {
+            "before": 1.464022675152456,
+            "after": 1.390888098711707
+          },
+          "collapsedTriangles": {
+            "before": 12,
+            "after": 6
+          }
+        },
+        {
+          "clip": "tailWindup",
+          "all": {
+            "before": 2.5364388752248015,
+            "after": 2.5351311714506033
+          },
+          "local": {
+            "before": 2.0644144215395577,
+            "after": 1.9774487742162166
+          },
+          "neck": {
+            "before": 1.7526741094322342,
+            "after": 1.5621279214241321
+          },
+          "localP99": {
+            "before": 1.4510299506440945,
+            "after": 1.373810225199814
+          },
+          "collapsedTriangles": {
+            "before": 9,
+            "after": 2
+          }
+        },
+        {
+          "clip": "takeoff",
+          "all": {
+            "before": 2.6277819295700446,
+            "after": 2.6277819295700446
+          },
+          "local": {
+            "before": 1.7026931224634676,
+            "after": 1.3450465702482348
+          },
+          "neck": {
+            "before": 1.129605137942083,
+            "after": 1.0841465996355149
+          },
+          "localP99": {
+            "before": 1.1511964353223478,
+            "after": 1.1172537929361985
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "turn",
+          "all": {
+            "before": 1.969203048664314,
+            "after": 1.719653056906822
+          },
+          "local": {
+            "before": 1.969203048664314,
+            "after": 1.6549953829345954
+          },
+          "neck": {
+            "before": 1.5848947825001056,
+            "after": 1.216381004922721
+          },
+          "localP99": {
+            "before": 1.2802509810479703,
+            "after": 1.2067411018150436
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        },
+        {
+          "clip": "walk",
+          "all": {
+            "before": 2.4846885079110184,
+            "after": 2.4846885079110184
+          },
+          "local": {
+            "before": 1.972038706098149,
+            "after": 1.3215999422008162
+          },
+          "neck": {
+            "before": 1.5875935016129856,
+            "after": 1.1420901411303113
+          },
+          "localP99": {
+            "before": 1.1648638555442854,
+            "after": 1.1257424247020675
+          },
+          "collapsedTriangles": {
+            "before": 0,
+            "after": 0
+          }
+        }
+      ]
+    }
+  ]
+}

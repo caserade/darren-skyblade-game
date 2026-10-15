@@ -1,0 +1,199 @@
+{
+  "passed": 48,
+  "total": 48,
+  "checks": [
+    {
+      "name": "title loadout cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title forge cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title parts cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title contracts cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title map cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title moves cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title settings cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title guide cycle 0",
+      "pass": true
+    },
+    {
+      "name": "title loadout cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title forge cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title parts cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title contracts cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title map cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title moves cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title settings cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title guide cycle 1",
+      "pass": true
+    },
+    {
+      "name": "title loadout cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title forge cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title parts cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title contracts cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title map cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title moves cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title settings cycle 2",
+      "pass": true
+    },
+    {
+      "name": "title guide cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause loadout cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause forge cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause parts cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause contracts cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause map cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause moves cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause settings cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause guide cycle 0",
+      "pass": true
+    },
+    {
+      "name": "pause loadout cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause forge cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause parts cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause contracts cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause map cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause moves cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause settings cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause guide cycle 1",
+      "pass": true
+    },
+    {
+      "name": "pause loadout cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause forge cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause parts cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause contracts cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause map cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause moves cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause settings cycle 2",
+      "pass": true
+    },
+    {
+      "name": "pause guide cycle 2",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

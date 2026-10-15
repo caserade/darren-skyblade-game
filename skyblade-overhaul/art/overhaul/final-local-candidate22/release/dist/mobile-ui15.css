@@ -1,0 +1,9 @@
+/* Existing HUD kept readable beside the portrait combat view. */
+@media (max-width: 520px) and (orientation: portrait) {
+  body.touch .plate { width: 96px; }
+  body.touch .plate .wpn { font-size: 10px; line-height: 1.15; }
+  body.touch .plate .lbl { font-size: 10px; letter-spacing: .02em; white-space: nowrap; }
+  body.touch #tgt, body.touch #boss { left: auto; right: var(--gut); top: 78px; transform: none; width: calc(100% - 144px); }
+  body.touch #obj { top: 180px; max-width: 128px; padding: 6px 8px; }
+  body.touch #objT { font-size: 12px; }
+}

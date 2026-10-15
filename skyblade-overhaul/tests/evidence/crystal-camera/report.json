@@ -1,0 +1,55 @@
+{
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "name": "Unconstrained camera ray intersects the actual harvest-crystal mesh",
+      "pass": true
+    },
+    {
+      "name": "Near crystal cuts away without pushing the camera inside Darren",
+      "pass": true
+    },
+    {
+      "name": "Flying above the authored visual height does not retract the camera",
+      "pass": true
+    },
+    {
+      "name": "A farther crystal retracts the camera while retaining a safe view distance",
+      "pass": true
+    },
+    {
+      "name": "Twenty camera crossings restore the crystal without sticking or drift",
+      "pass": true
+    },
+    {
+      "name": "Mined crystals immediately stop obstructing the camera",
+      "pass": true
+    },
+    {
+      "name": "A focus exactly inside the crystal remains finite",
+      "pass": true
+    },
+    {
+      "name": "Harvest hitbox and health remain unchanged",
+      "pass": true
+    }
+  ],
+  "before": {
+    "camera": [
+      0,
+      1.2,
+      -6
+    ],
+    "intersections": 4
+  },
+  "after": {
+    "camera": [
+      0,
+      1.2,
+      -6
+    ],
+    "intersections": 0
+  },
+  "errors": []
+}

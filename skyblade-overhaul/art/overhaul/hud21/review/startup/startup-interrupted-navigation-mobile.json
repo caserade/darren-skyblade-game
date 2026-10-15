@@ -1,0 +1,524 @@
+{
+  "scenario": "interrupted-navigation",
+  "mobile": true,
+  "checks": [
+    {
+      "name": "Pending chapter script cannot start a partial game",
+      "pass": true
+    },
+    {
+      "name": "Pending startup preserves saved bytes",
+      "pass": true
+    },
+    {
+      "name": "Keyboard cannot enter while startup is pending",
+      "pass": true
+    },
+    {
+      "name": "Interrupted document is replaced",
+      "pass": true
+    },
+    {
+      "name": "All required chapters initialized once",
+      "pass": true
+    },
+    {
+      "name": "Selected chapter restored correctly",
+      "pass": true
+    },
+    {
+      "name": "All31 scripts finish once in order",
+      "pass": true
+    },
+    {
+      "name": "Ready screen unblocks title",
+      "pass": true
+    },
+    {
+      "name": "Unrelated storage preserved",
+      "pass": true
+    },
+    {
+      "name": "Startup and retry do not overwrite saved bytes",
+      "pass": true
+    },
+    {
+      "name": "Chapter3 contains its actual14 pillar colliders",
+      "pass": true
+    },
+    {
+      "name": "Actual title button enters correct chapter and checkpoint",
+      "pass": true
+    },
+    {
+      "name": "Continue restores elapsed time",
+      "pass": true
+    },
+    {
+      "name": "No unexpected execution errors",
+      "pass": true
+    }
+  ],
+  "before": {
+    "chapters": [
+      "ch1"
+    ],
+    "game": false,
+    "inert": true,
+    "save": "{\"cp\":1,\"cleared\":[],\"taken\":[],\"t\":125}",
+    "expected": "{\"cp\":1,\"cleared\":[],\"taken\":[],\"t\":125}",
+    "status": "loading"
+  },
+  "after": {
+    "chapter": "ch3",
+    "chapters": [
+      "ch1",
+      "ch2",
+      "ch3"
+    ],
+    "pillars": 14,
+    "loaded": [
+      "vendor/three.min.js",
+      "vendor/GLTFLoader.js",
+      "data/game_data.js",
+      "data/chapter2.js",
+      "data/forge.js",
+      "data/adventure.js",
+      "data/stormglass.js",
+      "assets/darren_model.js",
+      "assets/music.js",
+      "src/core.js",
+      "src/models.js",
+      "src/props.js",
+      "src/skin.js",
+      "src/weapons.js",
+      "src/forge.js",
+      "src/arms.js",
+      "src/combat.js",
+      "src/adventure.js",
+      "src/stormglass-art.js",
+      "src/stormglass-world.js",
+      "src/stormglass.js",
+      "src/polish.js",
+      "src/toon-enemies.js",
+      "src/skydrake.js",
+      "src/chomprex.js",
+      "src/level.js",
+      "src/menu.js",
+      "src/fieldguide.js",
+      "src/skydrake-rc15.js",
+      "src/stormbelly-rc15.js",
+      "src/camera-rc15.js"
+    ],
+    "inert": false,
+    "overlayHidden": true,
+    "save": "{\"cp\":1,\"cleared\":[],\"taken\":[],\"t\":125}",
+    "sentinel": "preserve",
+    "mode": "title"
+  },
+  "errors": [],
+  "network": [
+    {
+      "event": "response",
+      "file": "/",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/style.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/expansion.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/polish.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/mobile-ui15.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/responsive-ui21.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/game_data.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/vendor/GLTFLoader.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/adventure.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/forge.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/stormglass.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/vendor/three.min.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/darren_model.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/core.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/models.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/props.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/skin.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/weapons.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/forge.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/arms.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/music.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormglass-art.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/adventure.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormglass-world.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormglass.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/polish.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/combat.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/toon-enemies.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/skydrake.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/chomprex.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/fieldguide.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/menu.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/level.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/skydrake-rc15.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormbelly-rc15.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/camera-rc15.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/boot16.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/style.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/expansion.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/polish.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/mobile-ui15.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/responsive-ui21.css",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/game_data.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/vendor/GLTFLoader.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/chapter2.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/stormglass.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/adventure.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/data/forge.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/vendor/three.min.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/darren_model.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/core.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/models.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/props.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/skin.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/music.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/weapons.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/forge.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/arms.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/adventure.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormglass-art.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormglass-world.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormglass.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/polish.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/combat.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/toon-enemies.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/skydrake.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/chomprex.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/level.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/fieldguide.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/menu.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/skydrake-rc15.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/stormbelly-rc15.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/camera-rc15.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/src/boot16.js",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/textures/weathered-limestone.webp",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/skydrake.glb",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/chomprex.glb",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/skydrake-rc15.glb",
+      "status": 200
+    },
+    {
+      "event": "response",
+      "file": "/assets/stormbelly-rc15.glb",
+      "status": 200
+    }
+  ],
+  "routeErrors": [],
+  "passed": true
+}

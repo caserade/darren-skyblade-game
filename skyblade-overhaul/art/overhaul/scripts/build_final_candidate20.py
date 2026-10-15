@@ -1,0 +1,7 @@
+from pathlib import Path
+import hashlib,json,shutil
+root=Path(__file__).resolve().parents[3];base=root/'art/overhaul/chomp19/release';out=root/'art/overhaul/final-local-candidate20/release';source=root/'art/overhaul/stormbelly20/export/heavyweight-lod.glb'
+shutil.copytree(base,out,dirs_exist_ok=True);shutil.copy2(source,out/'dist/assets/stormbelly-rc15.glb')
+files={p.relative_to(out).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.rglob('*')) if p.is_file() and p.name!='manifest.json'};changed=[p for p in files if (out/p).read_bytes()!=(base/p).read_bytes()];assert changed==['dist/assets/stormbelly-rc15.glb']
+assets={name:{'source':path,'sha256':hashlib.sha256((root/path).read_bytes()).hexdigest()} for name,path in [('Chomp19','art/overhaul/chomp19/export/chomprex-lod.glb'),('Stormbelly20','art/overhaul/stormbelly20/export/heavyweight-lod.glb'),('SkyDrake15','art/overhaul/skydrake15/export/skydrake-lod.glb')]}
+manifest={'project_id':'appgprj_6acf0e7886908191820064ec6fa5afa0','status':'FINAL CONSOLIDATED LOCAL CANDIDATE; publication held; art remains approximate','base_app_commit':'7280c025bb821b4a97022b30e926653958585c86','variant':'Chomp19 + Stormbelly20 + accepted SkyDrake15, on RC16 startup-safe app','changed_files_from_chomp19':changed,'accepted_assets':assets,'files':files};(out/'manifest.json').write_text(json.dumps(manifest,indent=2));print(json.dumps({'files':len(files),'changed':changed,'manifestSha256':hashlib.sha256((out/'manifest.json').read_bytes()).hexdigest()}))

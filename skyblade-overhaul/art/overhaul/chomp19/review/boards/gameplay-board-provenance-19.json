@@ -1,0 +1,30 @@
+{
+  "board": "Chomp19-gameplay-comparison.png",
+  "sha256": "759be6b7a15aaae303737449cb5aa31cb9661dbcfe6dca01ef920449ca9282d7",
+  "sources": [
+    {
+      "path": "art/overhaul/chomp19/review/gameplay/before-desktop-000.png",
+      "sha256": "eff4eda8f48b3088a2f2b79c36299576b2308126dc55587c460927a746bc5a01"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/gameplay/before-portrait-060.png",
+      "sha256": "7345c28c5c0a0824906be91989c55632e577f0b94c5224d3cdb5e9be3326b83a"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/gameplay/before-landscape-touch-110.png",
+      "sha256": "cd6c8320b3c12219d06aeb7f3670fdfea44e6998234d014a02511fab627aa2f1"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/gameplay/after-desktop-000.png",
+      "sha256": "2a2108543c5b861d820187e936cc7f1abcb8ebefea512d618053f2f2dcd93059"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/gameplay/after-portrait-060.png",
+      "sha256": "818088392169242c48cda1a33158c053ae019d5dd43b9c910a30950fd087c893"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/gameplay/after-landscape-touch-110.png",
+      "sha256": "051b9384f03c846e0985a06380accd7503b0d49b6057093f1343d7d5c4f80070"
+    }
+  ]
+}

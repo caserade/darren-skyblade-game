@@ -1,0 +1,134 @@
+{
+  "scope": "Fresh desktop Chromium profile; actual Start button, normal requestAnimationFrame loop, Playwright keyboard a/d/Escape events and unchanged production camera. One isolated invulnerable Stormbelly fixture; no manual update calls. Not physical hardware, FPS or full-playthrough coverage.",
+  "wallSeconds": 9.95,
+  "packageManifestSha256": "efad8f993d8e949cbecac0a00a4982d5982cd67069155f56e7640308b99c75c1",
+  "assetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+  "initial": {
+    "player": [
+      63,
+      0,
+      -33
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.9175
+    ],
+    "camera": [
+      63,
+      2.6289439860144697,
+      -27.3913662978661
+    ],
+    "paused": false,
+    "mode": "play",
+    "time": 1.2539999999999998,
+    "clip": "idle",
+    "state": "chase",
+    "finite": true
+  },
+  "moved": {
+    "player": [
+      63,
+      0,
+      -33
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.9175
+    ],
+    "camera": [
+      63,
+      2.5184449473384616,
+      -27.491458554772514
+    ],
+    "paused": false,
+    "mode": "play",
+    "time": 1.8559999999999997,
+    "clip": "idle",
+    "state": "chase",
+    "finite": true
+  },
+  "pausedA": {
+    "player": [
+      63,
+      0,
+      -33
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.9175
+    ],
+    "camera": [
+      63,
+      2.4722473231842383,
+      -27.534821127456954
+    ],
+    "paused": true,
+    "mode": "play",
+    "time": 4.682800000000006,
+    "clip": "idle",
+    "state": "chase",
+    "finite": true
+  },
+  "pausedB": {
+    "player": [
+      63,
+      0,
+      -33
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.9175
+    ],
+    "camera": [
+      63,
+      2.4722473231842383,
+      -27.534821127456954
+    ],
+    "paused": true,
+    "mode": "play",
+    "time": 4.682800000000006,
+    "clip": "idle",
+    "state": "chase",
+    "finite": true
+  },
+  "resumed": {
+    "player": [
+      63,
+      0,
+      -33
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.9175
+    ],
+    "camera": [
+      63,
+      2.4720859423662214,
+      -27.534974233356795
+    ],
+    "paused": false,
+    "mode": "play",
+    "time": 8.692499999994064,
+    "clip": "idle",
+    "state": "chase",
+    "finite": true
+  },
+  "errors": [],
+  "checks": {
+    "normalLoopAdvanced": true,
+    "keyboardMovedPlayer": false,
+    "pauseStopsPlayer": true,
+    "pauseStopsEnemy": true,
+    "resumedPlay": true,
+    "finite": true,
+    "noPageErrors": true
+  },
+  "passed": false,
+  "diagnosis": "The initial fixture entered the existing archive arrival dialogue after setup. Movement and enemy AI correctly stayed blocked while cinematic dialogue was active. This is a test sequencing error, not a game regression. The corrected test dismisses the dialogue through four actual UI clicks; all eight checks pass in realtime-smoke-20.json.",
+  "supersededBy": "realtime-smoke-20.json"
+}

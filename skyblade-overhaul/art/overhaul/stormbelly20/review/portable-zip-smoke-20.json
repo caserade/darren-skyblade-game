@@ -1,0 +1,16 @@
+{
+  "scope": "Extracted final ZIP, its included Node launcher, actual startup and Start Chapter 1 button in a fresh desktop Chromium profile. Real animation loop; no manual simulation override. No physical-device or full-playthrough claim.",
+  "zipSha256": "be6794889e992204a4613d3e363b0e6a44db3d12f127fcc2ca4c778a71735d48",
+  "manifestSha256": "efad8f993d8e949cbecac0a00a4982d5982cd67069155f56e7640308b99c75c1",
+  "servedAssetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+  "state": {
+    "mode": "play",
+    "finite": true,
+    "storageKeys": [
+      "darrenSkyblade.unlocks",
+      "darrenSkyblade.unlocks.recovery"
+    ]
+  },
+  "errors": [],
+  "passed": true
+}

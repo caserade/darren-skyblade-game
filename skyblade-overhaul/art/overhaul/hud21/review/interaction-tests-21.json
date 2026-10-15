@@ -1,0 +1,1380 @@
+{
+  "packageManifestSha256": "c54c72e760eefcfd3ec96b0adda410c93aedf0ed009e508eff4208133be07634",
+  "scope": "18 repeated viewport/orientation changes while joystick/keyboard input is held, actual pointer-click menu navigation, and synthetic Gamepad API samples exercising the production pollPad path. Fresh touch-emulated browser profile; no physical controller/phone coverage.",
+  "checks": [
+    {
+      "name": "resize 0 844x390 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 0 844x390 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 0 844x390",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 844x390 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 0 844x390",
+      "pass": true,
+      "detail": {
+        "x": 772,
+        "y": 22,
+        "right": 816,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 0 844x390",
+      "pass": true
+    },
+    {
+      "name": "resize 0 568x320 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 0 568x320 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 0 568x320",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 568x320 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 0 568x320",
+      "pass": true,
+      "detail": {
+        "x": 496,
+        "y": 22,
+        "right": 540,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 0 568x320",
+      "pass": true
+    },
+    {
+      "name": "resize 0 320x568 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 0 320x568 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 0 320x568",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 320x568 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 0 320x568",
+      "pass": true,
+      "detail": {
+        "x": 248,
+        "y": 24,
+        "right": 292,
+        "bottom": 68,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 0 320x568",
+      "pass": true
+    },
+    {
+      "name": "resize 0 740x360 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 0 740x360 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 0 740x360",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 740x360 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 0 740x360",
+      "pass": true,
+      "detail": {
+        "x": 624,
+        "y": 22,
+        "right": 668,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 0 740x360",
+      "pass": true
+    },
+    {
+      "name": "resize 0 390x844 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 0 390x844 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 0 390x844",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 390x844 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 0 390x844",
+      "pass": true,
+      "detail": {
+        "x": 318,
+        "y": 68,
+        "right": 362,
+        "bottom": 112,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 0 390x844",
+      "pass": true
+    },
+    {
+      "name": "resize 0 1440x900 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 0 1440x900 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 0 1440x900",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 0 1440x900 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 0 1440x900",
+      "pass": true,
+      "detail": {
+        "x": 1364,
+        "y": 28,
+        "right": 1408,
+        "bottom": 72,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 0 1440x900",
+      "pass": true
+    },
+    {
+      "name": "resize 1 844x390 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 1 844x390 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 1 844x390",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 844x390 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 1 844x390",
+      "pass": true,
+      "detail": {
+        "x": 772,
+        "y": 22,
+        "right": 816,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 1 844x390",
+      "pass": true
+    },
+    {
+      "name": "resize 1 568x320 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 1 568x320 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 1 568x320",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 568x320 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 1 568x320",
+      "pass": true,
+      "detail": {
+        "x": 496,
+        "y": 22,
+        "right": 540,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 1 568x320",
+      "pass": true
+    },
+    {
+      "name": "resize 1 320x568 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 1 320x568 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 1 320x568",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 320x568 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 1 320x568",
+      "pass": true,
+      "detail": {
+        "x": 248,
+        "y": 24,
+        "right": 292,
+        "bottom": 68,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 1 320x568",
+      "pass": true
+    },
+    {
+      "name": "resize 1 740x360 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 1 740x360 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 1 740x360",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 740x360 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 1 740x360",
+      "pass": true,
+      "detail": {
+        "x": 624,
+        "y": 22,
+        "right": 668,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 1 740x360",
+      "pass": true
+    },
+    {
+      "name": "resize 1 390x844 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 1 390x844 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 1 390x844",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 390x844 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 1 390x844",
+      "pass": true,
+      "detail": {
+        "x": 318,
+        "y": 68,
+        "right": 362,
+        "bottom": 112,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 1 390x844",
+      "pass": true
+    },
+    {
+      "name": "resize 1 1440x900 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 1 1440x900 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 1 1440x900",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 1 1440x900 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 1 1440x900",
+      "pass": true,
+      "detail": {
+        "x": 1364,
+        "y": 28,
+        "right": 1408,
+        "bottom": 72,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 1 1440x900",
+      "pass": true
+    },
+    {
+      "name": "resize 2 844x390 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 2 844x390 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 2 844x390",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 844x390 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 2 844x390",
+      "pass": true,
+      "detail": {
+        "x": 772,
+        "y": 22,
+        "right": 816,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 2 844x390",
+      "pass": true
+    },
+    {
+      "name": "resize 2 568x320 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 2 568x320 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 2 568x320",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 568x320 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 2 568x320",
+      "pass": true,
+      "detail": {
+        "x": 496,
+        "y": 22,
+        "right": 540,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 2 568x320",
+      "pass": true
+    },
+    {
+      "name": "resize 2 320x568 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 2 320x568 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 2 320x568",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 320x568 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 2 320x568",
+      "pass": true,
+      "detail": {
+        "x": 248,
+        "y": 24,
+        "right": 292,
+        "bottom": 68,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 2 320x568",
+      "pass": true
+    },
+    {
+      "name": "resize 2 740x360 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 2 740x360 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 2 740x360",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 740x360 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 2 740x360",
+      "pass": true,
+      "detail": {
+        "x": 624,
+        "y": 22,
+        "right": 668,
+        "bottom": 66,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 2 740x360",
+      "pass": true
+    },
+    {
+      "name": "resize 2 390x844 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 2 390x844 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 2 390x844",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 390x844 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 2 390x844",
+      "pass": true,
+      "detail": {
+        "x": 318,
+        "y": 68,
+        "right": 362,
+        "bottom": 112,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 2 390x844",
+      "pass": true
+    },
+    {
+      "name": "resize 2 1440x900 releases active input",
+      "pass": true,
+      "detail": {
+        "moving": false,
+        "held": false,
+        "queue": 0,
+        "stick": [
+          "",
+          "",
+          ""
+        ],
+        "knob": "",
+        "mode": "play",
+        "save": "preserve"
+      }
+    },
+    {
+      "name": "resize 2 1440x900 preserves mode/storage",
+      "pass": true
+    },
+    {
+      "name": "pause button 2 1440x900",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 0",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 1",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 2",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 3",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 4",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 5",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 6",
+      "pass": true
+    },
+    {
+      "name": "Hangar tab 2 1440x900 7",
+      "pass": true
+    },
+    {
+      "name": "Hangar close target 2 1440x900",
+      "pass": true,
+      "detail": {
+        "x": 1364,
+        "y": 28,
+        "right": 1408,
+        "bottom": 72,
+        "w": 44,
+        "h": 44,
+        "hit": true
+      }
+    },
+    {
+      "name": "resume 2 1440x900",
+      "pass": true
+    },
+    {
+      "name": "Gamepad activity switches existing hints",
+      "pass": true
+    },
+    {
+      "name": "Neutral connected pad does not steal keyboard hints",
+      "pass": true
+    },
+    {
+      "name": "Simulated Start opens pause",
+      "pass": true
+    },
+    {
+      "name": "Simulated A activates focused Resume",
+      "pass": true
+    },
+    {
+      "name": "Pad axis activity switches hints",
+      "pass": true
+    },
+    {
+      "name": "Disconnect restores keyboard hints and clears axes",
+      "pass": true
+    },
+    {
+      "name": "Touch changes interaction hint to Tap",
+      "pass": true
+    },
+    {
+      "name": "Touch release clears action",
+      "pass": true
+    },
+    {
+      "name": "No browser execution errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "shots": [
+    "resize-narrow-hangar-21.png"
+  ],
+  "errors": [],
+  "passed": true
+}

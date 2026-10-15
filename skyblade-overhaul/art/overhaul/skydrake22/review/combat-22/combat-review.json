@@ -1,0 +1,3513 @@
+{
+  "scope": "Actual updateEnemy, updatePlayer, animDarren and existing lock-on updateCamera at 60Hz. Fixed procedural-scene seed, enemy hover phase and per-frame RNG seed, so asset UUID allocation cannot change gameplay random choices. Controlled ground-tail and flight attack cycles, invulnerable player in isolated browser profiles; not physical input or a playthrough.",
+  "records": [
+    {
+      "kind": "before",
+      "checkpoint": 15,
+      "variant": "lod",
+      "scenario": "ground",
+      "assetSha256": "c8eb6546733d62ed56d66b103210ebe48bcb4b82e472e4a59f1e1dc027dc5818",
+      "states": [
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            4.435833431488033,
+            46.6878248410239
+          ],
+          "file": "before-ground-000-wind.png"
+        },
+        {
+          "frame": 10,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.13163214367922,
+            44.84898775179643
+          ],
+          "file": "before-ground-010-wind.png"
+        },
+        {
+          "frame": 20,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 20,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.331871259223078,
+            43.99478019751128
+          ],
+          "file": "before-ground-020-wind.png"
+        },
+        {
+          "frame": 30,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 30,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.577538042468154,
+            44.22908692692302
+          ],
+          "file": "before-ground-030-wind.png"
+        },
+        {
+          "frame": 40,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 40,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.670214028794712,
+            44.32261944594815
+          ],
+          "file": "before-ground-040-wind.png"
+        },
+        {
+          "frame": 42,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.679990833723297,
+            44.33248661034784
+          ],
+          "file": "before-ground-042-atk.png"
+        },
+        {
+          "frame": 44,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.687995404585168,
+            44.34056516128754
+          ],
+          "file": "before-ground-044-atk.png"
+        },
+        {
+          "frame": 48,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.699914617223603,
+            44.352594534019985
+          ],
+          "file": "before-ground-048-atk.png"
+        },
+        {
+          "frame": 52,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7079043043881095,
+            44.36065806370378
+          ],
+          "file": "before-ground-052-atk.png"
+        },
+        {
+          "frame": 56,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.713259951856029,
+            44.366063209292626
+          ],
+          "file": "before-ground-056-atk.png"
+        },
+        {
+          "frame": 60,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.716849949713277,
+            44.36968638673257
+          ],
+          "file": "before-ground-060-atk.png"
+        },
+        {
+          "frame": 64,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.719256397242216,
+            44.37211507520091
+          ],
+          "file": "before-ground-064-atk.png"
+        },
+        {
+          "frame": 68,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.720869487260595,
+            44.37374307376682
+          ],
+          "file": "before-ground-068-atk.png"
+        },
+        {
+          "frame": 72,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7219507738359745,
+            44.374834353840455
+          ],
+          "file": "before-ground-072-rec.png"
+        },
+        {
+          "frame": 126,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72413936432808,
+            44.377043171787314
+          ],
+          "file": "before-ground-126-chase.png"
+        },
+        {
+          "frame": 212,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149292294777,
+            44.377053191510555
+          ],
+          "file": "before-ground-212-wind.png"
+        },
+        {
+          "frame": 220,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 8,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149293301478,
+            44.37705319252656
+          ],
+          "file": "before-ground-220-wind.png"
+        },
+        {
+          "frame": 230,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149293820723,
+            44.37705319305061
+          ],
+          "file": "before-ground-230-wind.png"
+        },
+        {
+          "frame": 240,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 28,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294011742,
+            44.37705319324339
+          ],
+          "file": "before-ground-240-wind.png"
+        },
+        {
+          "frame": 250,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 38,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294082014,
+            44.37705319331431
+          ],
+          "file": "before-ground-250-wind.png"
+        },
+        {
+          "frame": 254,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294095497,
+            44.37705319332792
+          ],
+          "file": "before-ground-254-atk.png"
+        },
+        {
+          "frame": 256,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7241492941004655,
+            44.377053193332934
+          ],
+          "file": "before-ground-256-atk.png"
+        },
+        {
+          "frame": 260,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294107866,
+            44.3770531933404
+          ],
+          "file": "before-ground-260-atk.png"
+        },
+        {
+          "frame": 264,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294112825,
+            44.377053193345404
+          ],
+          "file": "before-ground-264-atk.png"
+        },
+        {
+          "frame": 268,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294116149,
+            44.37705319334876
+          ],
+          "file": "before-ground-268-atk.png"
+        },
+        {
+          "frame": 272,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294118378,
+            44.37705319335101
+          ],
+          "file": "before-ground-272-atk.png"
+        },
+        {
+          "frame": 276,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294119873,
+            44.37705319335252
+          ],
+          "file": "before-ground-276-atk.png"
+        },
+        {
+          "frame": 280,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294120876,
+            44.37705319335353
+          ],
+          "file": "before-ground-280-atk.png"
+        },
+        {
+          "frame": 284,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294121547,
+            44.37705319335421
+          ],
+          "file": "before-ground-284-rec.png"
+        },
+        {
+          "frame": 338,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7241492941229035,
+            44.37705319335558
+          ],
+          "file": "before-ground-338-chase.png"
+        },
+        {
+          "frame": 424,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-424-wind.png"
+        },
+        {
+          "frame": 430,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-430-wind.png"
+        },
+        {
+          "frame": 440,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 16,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-440-wind.png"
+        },
+        {
+          "frame": 450,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-450-wind.png"
+        },
+        {
+          "frame": 460,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 36,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-460-wind.png"
+        },
+        {
+          "frame": 466,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-466-atk.png"
+        },
+        {
+          "frame": 468,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-468-atk.png"
+        },
+        {
+          "frame": 472,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-472-atk.png"
+        },
+        {
+          "frame": 476,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-476-atk.png"
+        },
+        {
+          "frame": 480,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-480-atk.png"
+        },
+        {
+          "frame": 484,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-484-atk.png"
+        },
+        {
+          "frame": 488,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-488-atk.png"
+        },
+        {
+          "frame": 492,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-492-atk.png"
+        },
+        {
+          "frame": 496,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-496-rec.png"
+        },
+        {
+          "frame": 550,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "before-ground-550-chase.png"
+        }
+      ],
+      "pageErrors": [],
+      "checks": {
+        "noRuntimeErrors": true,
+        "attackReached": true,
+        "warningReached": true,
+        "finite": true
+      }
+    },
+    {
+      "kind": "before",
+      "checkpoint": 15,
+      "variant": "lod",
+      "scenario": "flight",
+      "assetSha256": "c8eb6546733d62ed56d66b103210ebe48bcb4b82e472e4a59f1e1dc027dc5818",
+      "states": [
+        "takeoff",
+        "circle",
+        "wind",
+        "atk",
+        "land",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "takeoff",
+          "clip": "takeoff",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            32
+          ],
+          "camera": [
+            42,
+            4.452391159231364,
+            46.59312878135511
+          ],
+          "file": "before-flight-000-takeoff.png"
+        },
+        {
+          "frame": 60,
+          "state": "circle",
+          "clip": "flyIdle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            6.5,
+            32
+          ],
+          "camera": [
+            42,
+            10.675680597284071,
+            49.37434768326291
+          ],
+          "file": "before-flight-060-circle.png"
+        },
+        {
+          "frame": 360,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 0,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            42.82410456817699,
+            10.95027717075724,
+            26.071397813265072
+          ],
+          "file": "before-flight-360-wind.png"
+        },
+        {
+          "frame": 370,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 10,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            43.764029766216964,
+            10.97348434732936,
+            26.173594355419347
+          ],
+          "file": "before-flight-370-wind.png"
+        },
+        {
+          "frame": 380,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 20,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.196967474081006,
+            11.01664261883051,
+            26.14578540837086
+          ],
+          "file": "before-flight-380-wind.png"
+        },
+        {
+          "frame": 390,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 30,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.38699542915211,
+            11.034525677561092,
+            26.14110583690956
+          ],
+          "file": "before-flight-390-wind.png"
+        },
+        {
+          "frame": 400,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 40,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.469365980545156,
+            11.041795237129254,
+            26.140947081255852
+          ],
+          "file": "before-flight-400-wind.png"
+        },
+        {
+          "frame": 410,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 50,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.50482499424139,
+            11.04473971113731,
+            26.141384392285932
+          ],
+          "file": "before-flight-410-wind.png"
+        },
+        {
+          "frame": 414,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 0,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.51247268105567,
+            11.045348214126534,
+            26.141538749136032
+          ],
+          "file": "before-flight-414-atk.png"
+        },
+        {
+          "frame": 416,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 2,
+          "root": [
+            40.8857889619057,
+            6.3141263183310405,
+            42.66726051066979
+          ],
+          "camera": [
+            44.516358116826105,
+            11.041925201462016,
+            26.140165965341517
+          ],
+          "file": "before-flight-416-atk.png"
+        },
+        {
+          "frame": 420,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 6,
+          "root": [
+            40.95904159070775,
+            5.899010747229692,
+            42.36041639405136
+          ],
+          "camera": [
+            44.53474823702384,
+            10.988997872551167,
+            26.118531504346052
+          ],
+          "file": "before-flight-420-atk.png"
+        },
+        {
+          "frame": 424,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 10,
+          "root": [
+            41.08781200133872,
+            5.169281269609426,
+            41.821016736416865
+          ],
+          "camera": [
+            44.570788943053984,
+            10.832085301245549,
+            26.082296159857982
+          ],
+          "file": "before-flight-424-atk.png"
+        },
+        {
+          "frame": 428,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 14,
+          "root": [
+            41.2535942665223,
+            4.229809187643216,
+            41.12658005143831
+          ],
+          "camera": [
+            44.61857054635258,
+            10.54558814108064,
+            26.066376595268828
+          ],
+          "file": "before-flight-428-atk.png"
+        },
+        {
+          "frame": 432,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 18,
+          "root": [
+            41.43788245898219,
+            3.1854658035040337,
+            40.35462485278774
+          ],
+          "camera": [
+            44.66709021861272,
+            10.12835771604545,
+            26.110915480628933
+          ],
+          "file": "before-flight-432-atk.png"
+        },
+        {
+          "frame": 436,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 22,
+          "root": [
+            41.62217065144207,
+            2.1411224193648506,
+            39.58266965413716
+          ],
+          "camera": [
+            44.72917277173985,
+            9.632444492627991,
+            26.086884872943443
+          ],
+          "file": "before-flight-436-atk.png"
+        },
+        {
+          "frame": 440,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 26,
+          "root": [
+            41.78795291662565,
+            1.2016503373986414,
+            38.88823296915861
+          ],
+          "camera": [
+            44.810424735814024,
+            9.114183574903507,
+            25.904843569737864
+          ],
+          "file": "before-flight-440-atk.png"
+        },
+        {
+          "frame": 444,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 30,
+          "root": [
+            41.91672332725662,
+            0.4719208597783746,
+            38.34883331152411
+          ],
+          "camera": [
+            44.93022823954429,
+            8.570067945247033,
+            25.509254648470666
+          ],
+          "file": "before-flight-444-atk.png"
+        },
+        {
+          "frame": 448,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 34,
+          "root": [
+            41.989975956058665,
+            0.056805288677026056,
+            38.04198919490568
+          ],
+          "camera": [
+            44.983729094693786,
+            8.021904200280812,
+            25.35646920309894
+          ],
+          "file": "before-flight-448-atk.png"
+        },
+        {
+          "frame": 450,
+          "state": "land",
+          "clip": "land",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.971172744781256,
+            7.765790099808795,
+            25.43537289914224
+          ],
+          "file": "before-flight-450-land.png"
+        },
+        {
+          "frame": 486,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.256906755251066,
+            5.988926497466876,
+            28.54289846408712
+          ],
+          "file": "before-flight-486-rec.png"
+        },
+        {
+          "frame": 540,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.15189439197051,
+            5.830896539930666,
+            28.986026622281486
+          ],
+          "file": "before-flight-540-chase.png"
+        }
+      ],
+      "pageErrors": [],
+      "checks": {
+        "noRuntimeErrors": true,
+        "attackReached": true,
+        "warningReached": true,
+        "finite": true
+      }
+    },
+    {
+      "kind": "after",
+      "checkpoint": 22,
+      "variant": "lod",
+      "scenario": "ground",
+      "assetSha256": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e",
+      "states": [
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            4.435833431488033,
+            46.6878248410239
+          ],
+          "file": "after-ground-000-wind.png"
+        },
+        {
+          "frame": 10,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.13163214367922,
+            44.84898775179643
+          ],
+          "file": "after-ground-010-wind.png"
+        },
+        {
+          "frame": 20,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 20,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.331871259223078,
+            43.99478019751128
+          ],
+          "file": "after-ground-020-wind.png"
+        },
+        {
+          "frame": 30,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 30,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.577538042468154,
+            44.22908692692302
+          ],
+          "file": "after-ground-030-wind.png"
+        },
+        {
+          "frame": 40,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 40,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.670214028794712,
+            44.32261944594815
+          ],
+          "file": "after-ground-040-wind.png"
+        },
+        {
+          "frame": 42,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.679990833723297,
+            44.33248661034784
+          ],
+          "file": "after-ground-042-atk.png"
+        },
+        {
+          "frame": 44,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.687995404585168,
+            44.34056516128754
+          ],
+          "file": "after-ground-044-atk.png"
+        },
+        {
+          "frame": 48,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.699914617223603,
+            44.352594534019985
+          ],
+          "file": "after-ground-048-atk.png"
+        },
+        {
+          "frame": 52,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7079043043881095,
+            44.36065806370378
+          ],
+          "file": "after-ground-052-atk.png"
+        },
+        {
+          "frame": 56,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.713259951856029,
+            44.366063209292626
+          ],
+          "file": "after-ground-056-atk.png"
+        },
+        {
+          "frame": 60,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.716849949713277,
+            44.36968638673257
+          ],
+          "file": "after-ground-060-atk.png"
+        },
+        {
+          "frame": 64,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.719256397242216,
+            44.37211507520091
+          ],
+          "file": "after-ground-064-atk.png"
+        },
+        {
+          "frame": 68,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.720869487260595,
+            44.37374307376682
+          ],
+          "file": "after-ground-068-atk.png"
+        },
+        {
+          "frame": 72,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7219507738359745,
+            44.374834353840455
+          ],
+          "file": "after-ground-072-rec.png"
+        },
+        {
+          "frame": 126,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72413936432808,
+            44.377043171787314
+          ],
+          "file": "after-ground-126-chase.png"
+        },
+        {
+          "frame": 212,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149292294777,
+            44.377053191510555
+          ],
+          "file": "after-ground-212-wind.png"
+        },
+        {
+          "frame": 220,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 8,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149293301478,
+            44.37705319252656
+          ],
+          "file": "after-ground-220-wind.png"
+        },
+        {
+          "frame": 230,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149293820723,
+            44.37705319305061
+          ],
+          "file": "after-ground-230-wind.png"
+        },
+        {
+          "frame": 240,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 28,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294011742,
+            44.37705319324339
+          ],
+          "file": "after-ground-240-wind.png"
+        },
+        {
+          "frame": 250,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 38,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294082014,
+            44.37705319331431
+          ],
+          "file": "after-ground-250-wind.png"
+        },
+        {
+          "frame": 254,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294095497,
+            44.37705319332792
+          ],
+          "file": "after-ground-254-atk.png"
+        },
+        {
+          "frame": 256,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7241492941004655,
+            44.377053193332934
+          ],
+          "file": "after-ground-256-atk.png"
+        },
+        {
+          "frame": 260,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294107866,
+            44.3770531933404
+          ],
+          "file": "after-ground-260-atk.png"
+        },
+        {
+          "frame": 264,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294112825,
+            44.377053193345404
+          ],
+          "file": "after-ground-264-atk.png"
+        },
+        {
+          "frame": 268,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294116149,
+            44.37705319334876
+          ],
+          "file": "after-ground-268-atk.png"
+        },
+        {
+          "frame": 272,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294118378,
+            44.37705319335101
+          ],
+          "file": "after-ground-272-atk.png"
+        },
+        {
+          "frame": 276,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294119873,
+            44.37705319335252
+          ],
+          "file": "after-ground-276-atk.png"
+        },
+        {
+          "frame": 280,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294120876,
+            44.37705319335353
+          ],
+          "file": "after-ground-280-atk.png"
+        },
+        {
+          "frame": 284,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294121547,
+            44.37705319335421
+          ],
+          "file": "after-ground-284-rec.png"
+        },
+        {
+          "frame": 338,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7241492941229035,
+            44.37705319335558
+          ],
+          "file": "after-ground-338-chase.png"
+        },
+        {
+          "frame": 424,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-424-wind.png"
+        },
+        {
+          "frame": 430,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-430-wind.png"
+        },
+        {
+          "frame": 440,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 16,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-440-wind.png"
+        },
+        {
+          "frame": 450,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-450-wind.png"
+        },
+        {
+          "frame": 460,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 36,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-460-wind.png"
+        },
+        {
+          "frame": 466,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-466-atk.png"
+        },
+        {
+          "frame": 468,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-468-atk.png"
+        },
+        {
+          "frame": 472,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-472-atk.png"
+        },
+        {
+          "frame": 476,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-476-atk.png"
+        },
+        {
+          "frame": 480,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-480-atk.png"
+        },
+        {
+          "frame": 484,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-484-atk.png"
+        },
+        {
+          "frame": 488,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-488-atk.png"
+        },
+        {
+          "frame": 492,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-492-atk.png"
+        },
+        {
+          "frame": 496,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-496-rec.png"
+        },
+        {
+          "frame": 550,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "after-ground-550-chase.png"
+        }
+      ],
+      "pageErrors": [],
+      "checks": {
+        "noRuntimeErrors": true,
+        "attackReached": true,
+        "warningReached": true,
+        "finite": true
+      }
+    },
+    {
+      "kind": "after",
+      "checkpoint": 22,
+      "variant": "lod",
+      "scenario": "flight",
+      "assetSha256": "9fd180b983d07638dbbb224ccc18d1d42d1fd6ff4453f1c763b0ca841ace5c3e",
+      "states": [
+        "takeoff",
+        "circle",
+        "wind",
+        "atk",
+        "land",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "takeoff",
+          "clip": "takeoff",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            32
+          ],
+          "camera": [
+            42,
+            4.452391159231364,
+            46.59312878135511
+          ],
+          "file": "after-flight-000-takeoff.png"
+        },
+        {
+          "frame": 60,
+          "state": "circle",
+          "clip": "flyIdle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            6.5,
+            32
+          ],
+          "camera": [
+            42,
+            10.675680597284071,
+            49.37434768326291
+          ],
+          "file": "after-flight-060-circle.png"
+        },
+        {
+          "frame": 360,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 0,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            42.82410456817699,
+            10.95027717075724,
+            26.071397813265072
+          ],
+          "file": "after-flight-360-wind.png"
+        },
+        {
+          "frame": 370,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 10,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            43.764029766216964,
+            10.97348434732936,
+            26.173594355419347
+          ],
+          "file": "after-flight-370-wind.png"
+        },
+        {
+          "frame": 380,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 20,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.196967474081006,
+            11.01664261883051,
+            26.14578540837086
+          ],
+          "file": "after-flight-380-wind.png"
+        },
+        {
+          "frame": 390,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 30,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.38699542915211,
+            11.034525677561092,
+            26.14110583690956
+          ],
+          "file": "after-flight-390-wind.png"
+        },
+        {
+          "frame": 400,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 40,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.469365980545156,
+            11.041795237129254,
+            26.140947081255852
+          ],
+          "file": "after-flight-400-wind.png"
+        },
+        {
+          "frame": 410,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 50,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.50482499424139,
+            11.04473971113731,
+            26.141384392285932
+          ],
+          "file": "after-flight-410-wind.png"
+        },
+        {
+          "frame": 414,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 0,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.51247268105567,
+            11.045348214126534,
+            26.141538749136032
+          ],
+          "file": "after-flight-414-atk.png"
+        },
+        {
+          "frame": 416,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 2,
+          "root": [
+            40.8857889619057,
+            6.3141263183310405,
+            42.66726051066979
+          ],
+          "camera": [
+            44.516358116826105,
+            11.041925201462016,
+            26.140165965341517
+          ],
+          "file": "after-flight-416-atk.png"
+        },
+        {
+          "frame": 420,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 6,
+          "root": [
+            40.95904159070775,
+            5.899010747229692,
+            42.36041639405136
+          ],
+          "camera": [
+            44.53474823702384,
+            10.988997872551167,
+            26.118531504346052
+          ],
+          "file": "after-flight-420-atk.png"
+        },
+        {
+          "frame": 424,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 10,
+          "root": [
+            41.08781200133872,
+            5.169281269609426,
+            41.821016736416865
+          ],
+          "camera": [
+            44.570788943053984,
+            10.832085301245549,
+            26.082296159857982
+          ],
+          "file": "after-flight-424-atk.png"
+        },
+        {
+          "frame": 428,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 14,
+          "root": [
+            41.2535942665223,
+            4.229809187643216,
+            41.12658005143831
+          ],
+          "camera": [
+            44.61857054635258,
+            10.54558814108064,
+            26.066376595268828
+          ],
+          "file": "after-flight-428-atk.png"
+        },
+        {
+          "frame": 432,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 18,
+          "root": [
+            41.43788245898219,
+            3.1854658035040337,
+            40.35462485278774
+          ],
+          "camera": [
+            44.66709021861272,
+            10.12835771604545,
+            26.110915480628933
+          ],
+          "file": "after-flight-432-atk.png"
+        },
+        {
+          "frame": 436,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 22,
+          "root": [
+            41.62217065144207,
+            2.1411224193648506,
+            39.58266965413716
+          ],
+          "camera": [
+            44.72917277173985,
+            9.632444492627991,
+            26.086884872943443
+          ],
+          "file": "after-flight-436-atk.png"
+        },
+        {
+          "frame": 440,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 26,
+          "root": [
+            41.78795291662565,
+            1.2016503373986414,
+            38.88823296915861
+          ],
+          "camera": [
+            44.810424735814024,
+            9.114183574903507,
+            25.904843569737864
+          ],
+          "file": "after-flight-440-atk.png"
+        },
+        {
+          "frame": 444,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 30,
+          "root": [
+            41.91672332725662,
+            0.4719208597783746,
+            38.34883331152411
+          ],
+          "camera": [
+            44.93022823954429,
+            8.570067945247033,
+            25.509254648470666
+          ],
+          "file": "after-flight-444-atk.png"
+        },
+        {
+          "frame": 448,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 34,
+          "root": [
+            41.989975956058665,
+            0.056805288677026056,
+            38.04198919490568
+          ],
+          "camera": [
+            44.983729094693786,
+            8.021904200280812,
+            25.35646920309894
+          ],
+          "file": "after-flight-448-atk.png"
+        },
+        {
+          "frame": 450,
+          "state": "land",
+          "clip": "land",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.971172744781256,
+            7.765790099808795,
+            25.43537289914224
+          ],
+          "file": "after-flight-450-land.png"
+        },
+        {
+          "frame": 486,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.256906755251066,
+            5.988926497466876,
+            28.54289846408712
+          ],
+          "file": "after-flight-486-rec.png"
+        },
+        {
+          "frame": 540,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.15189439197051,
+            5.830896539930666,
+            28.986026622281486
+          ],
+          "file": "after-flight-540-chase.png"
+        }
+      ],
+      "pageErrors": [],
+      "checks": {
+        "noRuntimeErrors": true,
+        "attackReached": true,
+        "warningReached": true,
+        "finite": true
+      }
+    },
+    {
+      "kind": "full",
+      "checkpoint": 22,
+      "variant": "candidate",
+      "scenario": "ground",
+      "assetSha256": "ecddecad24f46b1b80ef773e0fcd1b99bfce2e1a5fc7607002fcd79cc7367a6e",
+      "states": [
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            4.435833431488033,
+            46.6878248410239
+          ],
+          "file": "full-ground-000-wind.png"
+        },
+        {
+          "frame": 10,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.13163214367922,
+            44.84898775179643
+          ],
+          "file": "full-ground-010-wind.png"
+        },
+        {
+          "frame": 20,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 20,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.331871259223078,
+            43.99478019751128
+          ],
+          "file": "full-ground-020-wind.png"
+        },
+        {
+          "frame": 30,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 30,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.577538042468154,
+            44.22908692692302
+          ],
+          "file": "full-ground-030-wind.png"
+        },
+        {
+          "frame": 40,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 40,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.670214028794712,
+            44.32261944594815
+          ],
+          "file": "full-ground-040-wind.png"
+        },
+        {
+          "frame": 42,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.679990833723297,
+            44.33248661034784
+          ],
+          "file": "full-ground-042-atk.png"
+        },
+        {
+          "frame": 44,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.687995404585168,
+            44.34056516128754
+          ],
+          "file": "full-ground-044-atk.png"
+        },
+        {
+          "frame": 48,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.699914617223603,
+            44.352594534019985
+          ],
+          "file": "full-ground-048-atk.png"
+        },
+        {
+          "frame": 52,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7079043043881095,
+            44.36065806370378
+          ],
+          "file": "full-ground-052-atk.png"
+        },
+        {
+          "frame": 56,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.713259951856029,
+            44.366063209292626
+          ],
+          "file": "full-ground-056-atk.png"
+        },
+        {
+          "frame": 60,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.716849949713277,
+            44.36968638673257
+          ],
+          "file": "full-ground-060-atk.png"
+        },
+        {
+          "frame": 64,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.719256397242216,
+            44.37211507520091
+          ],
+          "file": "full-ground-064-atk.png"
+        },
+        {
+          "frame": 68,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.720869487260595,
+            44.37374307376682
+          ],
+          "file": "full-ground-068-atk.png"
+        },
+        {
+          "frame": 72,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7219507738359745,
+            44.374834353840455
+          ],
+          "file": "full-ground-072-rec.png"
+        },
+        {
+          "frame": 126,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72413936432808,
+            44.377043171787314
+          ],
+          "file": "full-ground-126-chase.png"
+        },
+        {
+          "frame": 212,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149292294777,
+            44.377053191510555
+          ],
+          "file": "full-ground-212-wind.png"
+        },
+        {
+          "frame": 220,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 8,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149293301478,
+            44.37705319252656
+          ],
+          "file": "full-ground-220-wind.png"
+        },
+        {
+          "frame": 230,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149293820723,
+            44.37705319305061
+          ],
+          "file": "full-ground-230-wind.png"
+        },
+        {
+          "frame": 240,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 28,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294011742,
+            44.37705319324339
+          ],
+          "file": "full-ground-240-wind.png"
+        },
+        {
+          "frame": 250,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 38,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294082014,
+            44.37705319331431
+          ],
+          "file": "full-ground-250-wind.png"
+        },
+        {
+          "frame": 254,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294095497,
+            44.37705319332792
+          ],
+          "file": "full-ground-254-atk.png"
+        },
+        {
+          "frame": 256,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7241492941004655,
+            44.377053193332934
+          ],
+          "file": "full-ground-256-atk.png"
+        },
+        {
+          "frame": 260,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294107866,
+            44.3770531933404
+          ],
+          "file": "full-ground-260-atk.png"
+        },
+        {
+          "frame": 264,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294112825,
+            44.377053193345404
+          ],
+          "file": "full-ground-264-atk.png"
+        },
+        {
+          "frame": 268,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294116149,
+            44.37705319334876
+          ],
+          "file": "full-ground-268-atk.png"
+        },
+        {
+          "frame": 272,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294118378,
+            44.37705319335101
+          ],
+          "file": "full-ground-272-atk.png"
+        },
+        {
+          "frame": 276,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294119873,
+            44.37705319335252
+          ],
+          "file": "full-ground-276-atk.png"
+        },
+        {
+          "frame": 280,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294120876,
+            44.37705319335353
+          ],
+          "file": "full-ground-280-atk.png"
+        },
+        {
+          "frame": 284,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.724149294121547,
+            44.37705319335421
+          ],
+          "file": "full-ground-284-rec.png"
+        },
+        {
+          "frame": 338,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.7241492941229035,
+            44.37705319335558
+          ],
+          "file": "full-ground-338-chase.png"
+        },
+        {
+          "frame": 424,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-424-wind.png"
+        },
+        {
+          "frame": 430,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-430-wind.png"
+        },
+        {
+          "frame": 440,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 16,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-440-wind.png"
+        },
+        {
+          "frame": 450,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-450-wind.png"
+        },
+        {
+          "frame": 460,
+          "state": "wind",
+          "clip": "tailWindup",
+          "enemyTime": 36,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-460-wind.png"
+        },
+        {
+          "frame": 466,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-466-atk.png"
+        },
+        {
+          "frame": 468,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 2,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-468-atk.png"
+        },
+        {
+          "frame": 472,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 6,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-472-atk.png"
+        },
+        {
+          "frame": 476,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 10,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-476-atk.png"
+        },
+        {
+          "frame": 480,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 14,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-480-atk.png"
+        },
+        {
+          "frame": 484,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 18,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-484-atk.png"
+        },
+        {
+          "frame": 488,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 22,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-488-atk.png"
+        },
+        {
+          "frame": 492,
+          "state": "atk",
+          "clip": "tailWhip",
+          "enemyTime": 26,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-492-atk.png"
+        },
+        {
+          "frame": 496,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-496-rec.png"
+        },
+        {
+          "frame": 550,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            35.1
+          ],
+          "camera": [
+            42,
+            5.72414929412291,
+            44.377053193355586
+          ],
+          "file": "full-ground-550-chase.png"
+        }
+      ],
+      "pageErrors": [],
+      "checks": {
+        "noRuntimeErrors": true,
+        "attackReached": true,
+        "warningReached": true,
+        "finite": true
+      }
+    },
+    {
+      "kind": "full",
+      "checkpoint": 22,
+      "variant": "candidate",
+      "scenario": "flight",
+      "assetSha256": "ecddecad24f46b1b80ef773e0fcd1b99bfce2e1a5fc7607002fcd79cc7367a6e",
+      "states": [
+        "takeoff",
+        "circle",
+        "wind",
+        "atk",
+        "land",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "takeoff",
+          "clip": "takeoff",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            32
+          ],
+          "camera": [
+            42,
+            4.452391159231364,
+            46.59312878135511
+          ],
+          "file": "full-flight-000-takeoff.png"
+        },
+        {
+          "frame": 60,
+          "state": "circle",
+          "clip": "flyIdle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            6.5,
+            32
+          ],
+          "camera": [
+            42,
+            10.675680597284071,
+            49.37434768326291
+          ],
+          "file": "full-flight-060-circle.png"
+        },
+        {
+          "frame": 360,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 0,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            42.82410456817699,
+            10.95027717075724,
+            26.071397813265072
+          ],
+          "file": "full-flight-360-wind.png"
+        },
+        {
+          "frame": 370,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 10,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            43.764029766216964,
+            10.97348434732936,
+            26.173594355419347
+          ],
+          "file": "full-flight-370-wind.png"
+        },
+        {
+          "frame": 380,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 20,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.196967474081006,
+            11.01664261883051,
+            26.14578540837086
+          ],
+          "file": "full-flight-380-wind.png"
+        },
+        {
+          "frame": 390,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 30,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.38699542915211,
+            11.034525677561092,
+            26.14110583690956
+          ],
+          "file": "full-flight-390-wind.png"
+        },
+        {
+          "frame": 400,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 40,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.469365980545156,
+            11.041795237129254,
+            26.140947081255852
+          ],
+          "file": "full-flight-400-wind.png"
+        },
+        {
+          "frame": 410,
+          "state": "wind",
+          "clip": "attackWindup",
+          "enemyTime": 50,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.50482499424139,
+            11.04473971113731,
+            26.141384392285932
+          ],
+          "file": "full-flight-410-wind.png"
+        },
+        {
+          "frame": 414,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 0,
+          "root": [
+            40.87576491796437,
+            6.3709316070080675,
+            42.70924970557547
+          ],
+          "camera": [
+            44.51247268105567,
+            11.045348214126534,
+            26.141538749136032
+          ],
+          "file": "full-flight-414-atk.png"
+        },
+        {
+          "frame": 416,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 2,
+          "root": [
+            40.8857889619057,
+            6.3141263183310405,
+            42.66726051066979
+          ],
+          "camera": [
+            44.516358116826105,
+            11.041925201462016,
+            26.140165965341517
+          ],
+          "file": "full-flight-416-atk.png"
+        },
+        {
+          "frame": 420,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 6,
+          "root": [
+            40.95904159070775,
+            5.899010747229692,
+            42.36041639405136
+          ],
+          "camera": [
+            44.53474823702384,
+            10.988997872551167,
+            26.118531504346052
+          ],
+          "file": "full-flight-420-atk.png"
+        },
+        {
+          "frame": 424,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 10,
+          "root": [
+            41.08781200133872,
+            5.169281269609426,
+            41.821016736416865
+          ],
+          "camera": [
+            44.570788943053984,
+            10.832085301245549,
+            26.082296159857982
+          ],
+          "file": "full-flight-424-atk.png"
+        },
+        {
+          "frame": 428,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 14,
+          "root": [
+            41.2535942665223,
+            4.229809187643216,
+            41.12658005143831
+          ],
+          "camera": [
+            44.61857054635258,
+            10.54558814108064,
+            26.066376595268828
+          ],
+          "file": "full-flight-428-atk.png"
+        },
+        {
+          "frame": 432,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 18,
+          "root": [
+            41.43788245898219,
+            3.1854658035040337,
+            40.35462485278774
+          ],
+          "camera": [
+            44.66709021861272,
+            10.12835771604545,
+            26.110915480628933
+          ],
+          "file": "full-flight-432-atk.png"
+        },
+        {
+          "frame": 436,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 22,
+          "root": [
+            41.62217065144207,
+            2.1411224193648506,
+            39.58266965413716
+          ],
+          "camera": [
+            44.72917277173985,
+            9.632444492627991,
+            26.086884872943443
+          ],
+          "file": "full-flight-436-atk.png"
+        },
+        {
+          "frame": 440,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 26,
+          "root": [
+            41.78795291662565,
+            1.2016503373986414,
+            38.88823296915861
+          ],
+          "camera": [
+            44.810424735814024,
+            9.114183574903507,
+            25.904843569737864
+          ],
+          "file": "full-flight-440-atk.png"
+        },
+        {
+          "frame": 444,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 30,
+          "root": [
+            41.91672332725662,
+            0.4719208597783746,
+            38.34883331152411
+          ],
+          "camera": [
+            44.93022823954429,
+            8.570067945247033,
+            25.509254648470666
+          ],
+          "file": "full-flight-444-atk.png"
+        },
+        {
+          "frame": 448,
+          "state": "atk",
+          "clip": "attack",
+          "enemyTime": 34,
+          "root": [
+            41.989975956058665,
+            0.056805288677026056,
+            38.04198919490568
+          ],
+          "camera": [
+            44.983729094693786,
+            8.021904200280812,
+            25.35646920309894
+          ],
+          "file": "full-flight-448-atk.png"
+        },
+        {
+          "frame": 450,
+          "state": "land",
+          "clip": "land",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.971172744781256,
+            7.765790099808795,
+            25.43537289914224
+          ],
+          "file": "full-flight-450-land.png"
+        },
+        {
+          "frame": 486,
+          "state": "rec",
+          "clip": "recover",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.256906755251066,
+            5.988926497466876,
+            28.54289846408712
+          ],
+          "file": "full-flight-486-rec.png"
+        },
+        {
+          "frame": 540,
+          "state": "chase",
+          "clip": "idle",
+          "enemyTime": 0,
+          "root": [
+            42,
+            0,
+            38
+          ],
+          "camera": [
+            44.15189439197051,
+            5.830896539930666,
+            28.986026622281486
+          ],
+          "file": "full-flight-540-chase.png"
+        }
+      ],
+      "pageErrors": [],
+      "checks": {
+        "noRuntimeErrors": true,
+        "attackReached": true,
+        "warningReached": true,
+        "finite": true
+      }
+    }
+  ],
+  "passed": true
+}

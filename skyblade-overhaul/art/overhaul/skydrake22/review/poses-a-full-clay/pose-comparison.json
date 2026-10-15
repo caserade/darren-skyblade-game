@@ -1,0 +1,211 @@
+{
+  "scope": "Same authored clip time, camera, light and scale. Raw mesh deformation close-ups; ordinary labels describe common clips, not a full playthrough.",
+  "assets": [
+    {
+      "asset": "skydrake15/export/skydrake-candidate.glb",
+      "sha256": "e0340cfbf6a866a480295713a15c9f4b2e1e1d51b6567b3009ee09555fe5f77a"
+    },
+    {
+      "asset": "skydrake22/trials/a/skydrake-candidate.glb",
+      "sha256": "ecddecad24f46b1b80ef773e0fcd1b99bfce2e1a5fc7607002fcd79cc7367a6e"
+    }
+  ],
+  "shots": [
+    {
+      "clip": "idle",
+      "fraction": 0.5,
+      "scope": "ordinary",
+      "kind": "before",
+      "file": "before-idle.png"
+    },
+    {
+      "clip": "idle",
+      "fraction": 0.5,
+      "scope": "ordinary",
+      "kind": "after",
+      "file": "after-idle.png"
+    },
+    {
+      "clip": "walk",
+      "fraction": 0.25,
+      "scope": "ordinary",
+      "kind": "before",
+      "file": "before-walk.png"
+    },
+    {
+      "clip": "walk",
+      "fraction": 0.25,
+      "scope": "ordinary",
+      "kind": "after",
+      "file": "after-walk.png"
+    },
+    {
+      "clip": "flyIdle",
+      "fraction": 0.25,
+      "scope": "ordinary",
+      "kind": "before",
+      "file": "before-flyIdle.png"
+    },
+    {
+      "clip": "flyIdle",
+      "fraction": 0.25,
+      "scope": "ordinary",
+      "kind": "after",
+      "file": "after-flyIdle.png"
+    },
+    {
+      "clip": "land",
+      "fraction": 0.5,
+      "scope": "transition",
+      "kind": "before",
+      "file": "before-land.png"
+    },
+    {
+      "clip": "land",
+      "fraction": 0.5,
+      "scope": "transition",
+      "kind": "after",
+      "file": "after-land.png"
+    },
+    {
+      "clip": "attack",
+      "fraction": 0.925,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-attack.png"
+    },
+    {
+      "clip": "attack",
+      "fraction": 0.925,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-attack.png"
+    },
+    {
+      "clip": "hit",
+      "fraction": 0.25,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-hit.png"
+    },
+    {
+      "clip": "hit",
+      "fraction": 0.25,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-hit.png"
+    },
+    {
+      "clip": "tailWhip",
+      "fraction": 0.55,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-tailWhip.png"
+    },
+    {
+      "clip": "tailWhip",
+      "fraction": 0.55,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-tailWhip.png"
+    },
+    {
+      "clip": "death",
+      "fraction": 0.625,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-death.png"
+    },
+    {
+      "clip": "death",
+      "fraction": 0.625,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-death.png"
+    },
+    {
+      "clip": "turn",
+      "fraction": 0.5,
+      "scope": "ordinary",
+      "kind": "before",
+      "file": "before-turn.png"
+    },
+    {
+      "clip": "turn",
+      "fraction": 0.5,
+      "scope": "ordinary",
+      "kind": "after",
+      "file": "after-turn.png"
+    },
+    {
+      "clip": "stagger",
+      "fraction": 0.4,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-stagger.png"
+    },
+    {
+      "clip": "stagger",
+      "fraction": 0.4,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-stagger.png"
+    },
+    {
+      "clip": "recover",
+      "fraction": 0.5,
+      "scope": "transition",
+      "kind": "before",
+      "file": "before-recover.png"
+    },
+    {
+      "clip": "recover",
+      "fraction": 0.5,
+      "scope": "transition",
+      "kind": "after",
+      "file": "after-recover.png"
+    },
+    {
+      "clip": "takeoff",
+      "fraction": 0.5,
+      "scope": "transition",
+      "kind": "before",
+      "file": "before-takeoff.png"
+    },
+    {
+      "clip": "takeoff",
+      "fraction": 0.5,
+      "scope": "transition",
+      "kind": "after",
+      "file": "after-takeoff.png"
+    },
+    {
+      "clip": "attackWindup",
+      "fraction": 0.825,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-attackWindup.png"
+    },
+    {
+      "clip": "attackWindup",
+      "fraction": 0.825,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-attackWindup.png"
+    },
+    {
+      "clip": "tailWindup",
+      "fraction": 0.999999,
+      "scope": "extreme",
+      "kind": "before",
+      "file": "before-tailWindup.png"
+    },
+    {
+      "clip": "tailWindup",
+      "fraction": 0.999999,
+      "scope": "extreme",
+      "kind": "after",
+      "file": "after-tailWindup.png"
+    }
+  ]
+}

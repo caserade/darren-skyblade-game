@@ -1,0 +1,54 @@
+{
+  "board": "Chomp19-motion-contact.png",
+  "sha256": "74ef84865ca39dc956dc1d7748522b2ceab53901dd3e2e62a296977a3510b55a",
+  "sources": [
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-idle.png",
+      "sha256": "fc9cf31ddc0b468a424998d5566d4af77367d8e050d382fec472ac687757f3fd"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-walk.png",
+      "sha256": "738e1eedb992bb75475a2f068191cd6a72a2831bff76c04dbe293c638e447e9d"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-turn.png",
+      "sha256": "9782a546c78543c17fe00566e792f2adbac07a30c893301c30047f1abca9ec99"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-biteWindup.png",
+      "sha256": "16900fc9a372a7bda9ad7ae8cef87cd4d258e538d4152d61df762d9d6c4a1ae4"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-bite.png",
+      "sha256": "dd215836287604a68a13b35a1f865948222ecba21b4e4c804d05bcbef47262e5"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-chargeWindup.png",
+      "sha256": "50a68ceb058f63b39a0715f7b364be2555b7794b746ddb86602142e8c8ab9b15"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-charge.png",
+      "sha256": "9943d915a1fc9c27218b1405cb468f307012de7436577581bb71bb1b2fa08251"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-hit.png",
+      "sha256": "58d2596c9267d04a4718df94dfbfdc9ff0eaa56863e16dc69d81ea746a07cfb6"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-stagger.png",
+      "sha256": "4672e8f16d5fa47acfc51c0ad1e92f80c07321c439d78aaa9c511ef35a6e4e53"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-recover.png",
+      "sha256": "ddba85c474cd4b914d3c80ba18385a4e56c046ed7ba758e57dfe00d321ee9c39"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-recovery.png",
+      "sha256": "eeab33dbc4a2bdc2e9dd04fa8f6b23364f69ed716971b92600ce7070c2f491f6"
+    },
+    {
+      "path": "art/overhaul/chomp19/review/motion/lod-death.png",
+      "sha256": "fe044c37670f26a306e8004f59328a6e67dbb71665cd96dcc1c698a5f6e1afaf"
+    }
+  ]
+}

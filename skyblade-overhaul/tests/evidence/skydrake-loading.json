@@ -1,0 +1,97 @@
+{
+  "passed": 18,
+  "total": 18,
+  "checks": [
+    {
+      "scenario": "delayed",
+      "name": "noInvisibleEnemy",
+      "pass": true
+    },
+    {
+      "scenario": "delayed",
+      "name": "canPause",
+      "pass": true
+    },
+    {
+      "scenario": "delayed",
+      "name": "noRequestStorm",
+      "pass": true
+    },
+    {
+      "scenario": "delayed",
+      "name": "Late load does not spawn enemies after quitting",
+      "pass": true
+    },
+    {
+      "scenario": "delayed",
+      "name": "Recovered load yields one complete den without duplicates",
+      "pass": true
+    },
+    {
+      "scenario": "delayed",
+      "name": "Expected bounded asset request count",
+      "pass": true
+    },
+    {
+      "scenario": "network failure",
+      "name": "noInvisibleEnemy",
+      "pass": true
+    },
+    {
+      "scenario": "network failure",
+      "name": "canPause",
+      "pass": true
+    },
+    {
+      "scenario": "network failure",
+      "name": "noRequestStorm",
+      "pass": true
+    },
+    {
+      "scenario": "network failure",
+      "name": "Late load does not spawn enemies after quitting",
+      "pass": true
+    },
+    {
+      "scenario": "network failure",
+      "name": "Recovered load yields one complete den without duplicates",
+      "pass": true
+    },
+    {
+      "scenario": "network failure",
+      "name": "Expected bounded asset request count",
+      "pass": true
+    },
+    {
+      "scenario": "invalid model",
+      "name": "noInvisibleEnemy",
+      "pass": true
+    },
+    {
+      "scenario": "invalid model",
+      "name": "canPause",
+      "pass": true
+    },
+    {
+      "scenario": "invalid model",
+      "name": "noRequestStorm",
+      "pass": true
+    },
+    {
+      "scenario": "invalid model",
+      "name": "Late load does not spawn enemies after quitting",
+      "pass": true
+    },
+    {
+      "scenario": "invalid model",
+      "name": "Recovered load yields one complete den without duplicates",
+      "pass": true
+    },
+    {
+      "scenario": "invalid model",
+      "name": "Expected bounded asset request count",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

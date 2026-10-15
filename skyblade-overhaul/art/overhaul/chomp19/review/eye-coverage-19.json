@@ -1,0 +1,44 @@
+{
+  "views": {
+    "front": {
+      "roi": [
+        280,
+        320,
+        730,
+        445
+      ],
+      "ivoryEyePixels": {
+        "before": 1821,
+        "after": 1717
+      },
+      "reductionFraction": 0.057111477210323947
+    },
+    "side": {
+      "roi": [
+        315,
+        330,
+        510,
+        440
+      ],
+      "ivoryEyePixels": {
+        "before": 5565,
+        "after": 4893
+      },
+      "reductionFraction": 0.12075471698113205
+    },
+    "three-quarter": {
+      "roi": [
+        380,
+        340,
+        620,
+        445
+      ],
+      "ivoryEyePixels": {
+        "before": 3042,
+        "after": 2761
+      },
+      "reductionFraction": 0.09237343852728463
+    }
+  },
+  "method": "Fixed same-camera idle crops; thresholded ivory eye-white pixels only. This measures visible coverage under fixed lighting, not socket anatomy or likeness. Eye/iris component vertex positions themselves are unchanged."
+}

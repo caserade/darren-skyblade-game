@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "reopened": true,
+  "packedImagesExact": [
+    "skin-color.png",
+    "shoulder-color.png"
+  ],
+  "weightsUnchanged": true,
+  "blender": "5.2.2 LTS"
+}

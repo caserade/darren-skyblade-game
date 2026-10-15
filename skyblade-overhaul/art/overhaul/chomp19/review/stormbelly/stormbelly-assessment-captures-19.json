@@ -1,0 +1,203 @@
+{
+  "scope": "Read-only current checkpoint08 Stormbelly exports. Fixed orthographic cameras/lights. Authored clips shown without production foot-placement correction; these are art inspection captures, not new gameplay/gait certification. Supplied reference pose/projection differs.",
+  "records": [
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "front",
+      "crop": "body",
+      "file": "candidate-current-idle-front-body.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "front",
+      "crop": "face",
+      "file": "candidate-current-idle-front-face.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "side",
+      "crop": "body",
+      "file": "candidate-current-idle-side-body.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "side",
+      "crop": "face",
+      "file": "candidate-current-idle-side-face.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "candidate-current-idle-three-quarter-body.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "three-quarter",
+      "crop": "face",
+      "file": "candidate-current-idle-three-quarter-face.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "stompWindup",
+      "f": 0.95,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "candidate-current-stompWindup-three-quarter-body.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "heavyWalk",
+      "f": 0.5,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "candidate-current-heavyWalk-three-quarter-body.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "candidate",
+      "kind": "current",
+      "clip": "stagger",
+      "f": 0.5,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "candidate-current-stagger-three-quarter-body.png",
+      "triangles": 56852,
+      "assetSha256": "b8bcc310d618c5b21b8e3063c1746ceb0d25e105c9f1af4ba83bc62fa31a0121"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "front",
+      "crop": "body",
+      "file": "lod-current-idle-front-body.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "front",
+      "crop": "face",
+      "file": "lod-current-idle-front-face.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "side",
+      "crop": "body",
+      "file": "lod-current-idle-side-body.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "side",
+      "crop": "face",
+      "file": "lod-current-idle-side-face.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "lod-current-idle-three-quarter-body.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "idle",
+      "f": 0.125,
+      "view": "three-quarter",
+      "crop": "face",
+      "file": "lod-current-idle-three-quarter-face.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "stompWindup",
+      "f": 0.95,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "lod-current-stompWindup-three-quarter-body.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "heavyWalk",
+      "f": 0.5,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "lod-current-heavyWalk-three-quarter-body.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    },
+    {
+      "variant": "lod",
+      "kind": "current",
+      "clip": "stagger",
+      "f": 0.5,
+      "view": "three-quarter",
+      "crop": "body",
+      "file": "lod-current-stagger-three-quarter-body.png",
+      "triangles": 31268,
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb"
+    }
+  ]
+}

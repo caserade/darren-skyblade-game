@@ -1,0 +1,102 @@
+{
+  "reference": {
+    "foregroundBoxInInput": [
+      13,
+      7,
+      308,
+      610
+    ],
+    "heightPixels": 603,
+    "widthPixels": 295,
+    "widthOverHeight": 0.4892205638474295,
+    "frontWidthsByFractionFromTop": {
+      "0.1": 0.18739635157545606,
+      "0.15": 0.26533996683250416,
+      "0.25": 0.25538971807628524,
+      "0.35": 0.1890547263681592,
+      "0.5": 0.3250414593698176,
+      "0.6": 0.45107794361525705,
+      "0.7": 0.4577114427860697,
+      "0.85": 0.296849087893864
+    },
+    "heuristicIrisCenters": [
+      [
+        118.39189189189189,
+        64.75675675675676
+      ],
+      [
+        173.72151898734177,
+        65.17721518987342
+      ]
+    ],
+    "irisCenterSeparationOverHeight": 0.09175725886475934,
+    "irisPixels": 153
+  },
+  "before": {
+    "foregroundBoxInInput": [
+      340,
+      159,
+      660,
+      815
+    ],
+    "heightPixels": 656,
+    "widthPixels": 320,
+    "widthOverHeight": 0.4878048780487805,
+    "frontWidthsByFractionFromTop": {
+      "0.1": 0.25152439024390244,
+      "0.15": 0.26371951219512196,
+      "0.25": 0.2149390243902439,
+      "0.35": 0.1798780487804878,
+      "0.5": 0.3353658536585366,
+      "0.6": 0.4557926829268293,
+      "0.7": 0.4725609756097561,
+      "0.85": 0.375
+    },
+    "heuristicIrisCenters": [
+      [
+        106.98770491803279,
+        78.24180327868852
+      ],
+      [
+        220.39555555555555,
+        78.27555555555556
+      ]
+    ],
+    "irisCenterSeparationOverHeight": 0.1728778210937847,
+    "irisPixels": 469
+  },
+  "after": {
+    "foregroundBoxInInput": [
+      340,
+      159,
+      660,
+      815
+    ],
+    "heightPixels": 656,
+    "widthPixels": 320,
+    "widthOverHeight": 0.4878048780487805,
+    "frontWidthsByFractionFromTop": {
+      "0.1": 0.25152439024390244,
+      "0.15": 0.27439024390243905,
+      "0.25": 0.21646341463414634,
+      "0.35": 0.1798780487804878,
+      "0.5": 0.3353658536585366,
+      "0.6": 0.4557926829268293,
+      "0.7": 0.4725609756097561,
+      "0.85": 0.375
+    },
+    "heuristicIrisCenters": [
+      [
+        106.26086956521739,
+        76.68599033816425
+      ],
+      [
+        221.3548387096774,
+        76.6236559139785
+      ]
+    ],
+    "irisCenterSeparationOverHeight": 0.1754481236958232,
+    "irisPixels": 393
+  },
+  "method": "Largest connected saturated/dark reference foreground and difference-from-background model masks. Height-normalized front silhouette widths and heuristic gold-iris centers in upper 6.5%-14% of body height. Measurements are diagnostics, not a likeness score; pose, projection and lighting differ. Inspect the actual boards."
+}

@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-14",
+  "approvedConcepts": [
+    "2 Stormbelly",
+    "4 Chomp Rex"
+  ],
+  "gameplay": {
+    "passed": 61,
+    "total": 61
+  },
+  "resources": {
+    "passed": 17,
+    "total": 17,
+    "steadyTextures": [
+      18,
+      18
+    ],
+    "steadyGeometry": [
+      72,
+      72
+    ],
+    "chapterReloadGeometry": [
+      72,
+      72,
+      72,
+      72
+    ]
+  },
+  "static": {
+    "passed": 55,
+    "total": 55,
+    "distMiB": 3.81
+  },
+  "visual": [
+    "Darren and Mom front and side",
+    "Selected enemies front, side and windup",
+    "Observatory with compact limestone texture"
+  ],
+  "fixes": [
+    "Removed original GLB clearcoat",
+    "Replaced apron hemisphere with woven cloth panels",
+    "Compressed full-resolution runtime images",
+    "Corrected final-chapter test to await completion rather than assume timer scheduling",
+    "Scoped matte material assertion to character skin rather than weapon accessories"
+  ],
+  "limits": "Programmatic mechanics checks and browser visual reviews; not a full manual playthrough or physical phone/gamepad certification. Enemies are procedural 3D adaptations of the concept art."
+}

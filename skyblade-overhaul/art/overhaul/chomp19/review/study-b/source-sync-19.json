@@ -1,0 +1,30 @@
+[
+  {
+    "variant": "candidate",
+    "source": "chomp18\\source\\chomprex-candidate.blend",
+    "sourceSha256": "6472ef345411c6ebeb909717a61c6a6d3af9d2e3e5c4a7c6374a685f0fc70cf2",
+    "output": "chomp19\\source\\chomprex-candidate.blend",
+    "outputSha256": "9f71a5a4fa559b1f933e7ecda5771328046f23624508c3f934052d56f738d998",
+    "matchedVertices": 6734,
+    "mappedPositions": 6734,
+    "missingSavedPositions": 0,
+    "maximumMatchDistance": 0,
+    "rigClipsWeightsUvTopologyUnchanged": true,
+    "acceptedSourceUnchanged": true,
+    "passed": true
+  },
+  {
+    "variant": "lod",
+    "source": "chomp18\\source\\chomprex-lod.blend",
+    "sourceSha256": "e4231026c3588a480317457f49fdfa7885c1bd83136a63a956b3c7e035bdc2a3",
+    "output": "chomp19\\source\\chomprex-lod.blend",
+    "outputSha256": "6b00c0133a2e768ff6466800424c4f76dbe6b261306969e61b217bd4b5d92228",
+    "matchedVertices": 3700,
+    "mappedPositions": 3700,
+    "missingSavedPositions": 0,
+    "maximumMatchDistance": 0,
+    "rigClipsWeightsUvTopologyUnchanged": true,
+    "acceptedSourceUnchanged": true,
+    "passed": true
+  }
+]

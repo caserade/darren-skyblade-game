@@ -1,0 +1,72 @@
+{
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "Start and dialogue advance through actual browser keyboard events",
+      "pass": true
+    },
+    {
+      "name": "W moves Darren",
+      "pass": true
+    },
+    {
+      "name": "J starts a light attack",
+      "pass": true
+    },
+    {
+      "name": "Holding K enters the heavy charge pose",
+      "pass": true
+    },
+    {
+      "name": "Releasing K starts the heavy attack",
+      "pass": true
+    },
+    {
+      "name": "Long K hold releases the charged finisher",
+      "pass": true
+    },
+    {
+      "name": "Space jumps",
+      "pass": true
+    },
+    {
+      "name": "Shift starts a dodge",
+      "pass": true
+    },
+    {
+      "name": "V toggles flight",
+      "pass": true
+    },
+    {
+      "name": "P pauses play",
+      "pass": true
+    },
+    {
+      "name": "Tab focus remains inside Settings",
+      "pass": true
+    },
+    {
+      "name": "Escape closes Settings while preserving pause",
+      "pass": true
+    },
+    {
+      "name": "Second Escape resumes play",
+      "pass": true
+    },
+    {
+      "name": "Q locks an existing encounter target",
+      "pass": true
+    },
+    {
+      "name": "Combat input works after chapter transition",
+      "pass": true
+    },
+    {
+      "name": "Later encounter remains finite",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "note": "Playwright keyboard events with deterministic game stepping; later encounters use isolated fixtures. No physical controller, phone, or full manual playthrough."
+}

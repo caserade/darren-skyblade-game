@@ -1,0 +1,70 @@
+[
+  {
+    "board": "Chomp19-face-comparison.png",
+    "sha256": "21a91b361d949be28da9fe6504eb2321dd2ee4ca4f69aed8d1281f82e4a451b7",
+    "sources": [
+      {
+        "path": "art/references/concept_chomprex.jpg",
+        "sha256": "2ce54cd1c0a0ef7170cd5e1f7f92edbc8b42938fb6f16bbd299c76a59403b918"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-before-idle-front-face.png",
+        "sha256": "a27568afcaf022e5c5e34946f9a8574645f2190a2a995c48195586c19c258d1a"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-after-idle-front-face.png",
+        "sha256": "2a2644709a462ef734e4829c591bc082aa593a90a9fe23ab7529c3b72715e9b2"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-before-idle-side-face.png",
+        "sha256": "e004de1028c69e67ea7b301b6cc0488ad5ee91127f9b787464e9a3c6180daca5"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-after-idle-side-face.png",
+        "sha256": "8e6dbcb145dabff7f9707142f06f7a2cd807fd696364f3921577762d67c3aaef"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-before-idle-three-quarter-face.png",
+        "sha256": "e06c49edc4d1cd9af2f82b7a4c1e6e642a547639ef08c2392b73213b12b44adb"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-after-idle-three-quarter-face.png",
+        "sha256": "291220cc7959f77fcf066334c8aacc92cd690f0a515673b5a285b2a985300f34"
+      }
+    ]
+  },
+  {
+    "board": "Chomp19-body-comparison.png",
+    "sha256": "c4d8f8ac573952c77e20c6ca18270d8c1745ec677cb9dbececbcf99f35374944",
+    "sources": [
+      {
+        "path": "art/references/concept_chomprex.jpg",
+        "sha256": "2ce54cd1c0a0ef7170cd5e1f7f92edbc8b42938fb6f16bbd299c76a59403b918"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-before-idle-front-body.png",
+        "sha256": "bfab734f27489a2196dcf7899db3a81913dca5f91ca6fd32b8369eb47522abc5"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-after-idle-front-body.png",
+        "sha256": "64f1158f623936b0da32ce5911bf8957a0372a7df9f0f55448ed32e55b4bf69d"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-before-idle-side-body.png",
+        "sha256": "8f1a463cbf9617fa89a84ef58e8405def155f45c1710df0105030cc6d645551f"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-after-idle-side-body.png",
+        "sha256": "a621770ccffa375c6cd6bd7bcf94190cc0812ccf20d6f940366c921d2e3b732f"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-before-idle-three-quarter-body.png",
+        "sha256": "b42ca640b224cd3efc6d96fb94ea7790e9c0c5be356a3663b246d621351c7121"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/matched/lod-after-idle-three-quarter-body.png",
+        "sha256": "4cdeb995c4b93e0079dabc74b53548bf76b0aca388ca8ea58c120594f75f63ff"
+      }
+    ]
+  }
+]

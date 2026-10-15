@@ -1,0 +1,10 @@
+.concept-sheet{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #78eee166;margin:16px 0}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.guide-card{padding:18px;background:#162b38;border:1px solid #467581;border-radius:12px}
+.guide-card small{color:#8de9dc;text-transform:uppercase;font-size:11px;letter-spacing:.1em}
+.guide-card h5{font-size:21px;color:#fff0c9;margin:8px 0}
+.guide-card p{line-height:1.6;font-size:14px;margin:0;color:#e0eceb}
+.guide-link{display:inline-block;margin:20px 0;color:#90f0e1}
+#chapPick{flex-wrap:wrap}#chapPick button{flex:1 1 135px}
+.ptabs{flex-wrap:wrap}.go.opt{font-size:14px}.btns.sub{flex-wrap:wrap}
+@media(max-width:600px){.guide-grid{grid-template-columns:1fr}.guide-card{padding:13px}.pbody{padding:12px}}

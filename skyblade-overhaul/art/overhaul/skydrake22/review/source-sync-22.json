@@ -1,0 +1,74 @@
+[
+  {
+    "variant": "candidate",
+    "sha256": "2ea2f097c07276eebd6bbfee1c663ebe3a8796b70563b8272409059dbf9086c7",
+    "matchedSourceVertices": 5730,
+    "matchedPositions": 5730,
+    "expectedPositions": 5730,
+    "maximumWeightDelta": 2.9785719002362043e-08,
+    "bones": 39,
+    "images": [
+      {
+        "name": "shoulder-color.jpg.001",
+        "packed": true,
+        "size": [
+          512,
+          512
+        ]
+      },
+      {
+        "name": "skydrake-surface-color.jpg",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "name": "skydrake-surface-normal.jpg",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "variant": "lod",
+    "sha256": "44329903930021b5eb8f465f9f6c15e144ed38c9414301c6861c5a021beb3285",
+    "matchedSourceVertices": 2627,
+    "matchedPositions": 2627,
+    "expectedPositions": 2627,
+    "maximumWeightDelta": 2.974653512399783e-08,
+    "bones": 39,
+    "images": [
+      {
+        "name": "shoulder-color.jpg.001",
+        "packed": true,
+        "size": [
+          512,
+          512
+        ]
+      },
+      {
+        "name": "skydrake-lod-surface-color.jpg",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "name": "skydrake-lod-surface-normal.jpg",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ]
+      }
+    ],
+    "passed": true
+  }
+]

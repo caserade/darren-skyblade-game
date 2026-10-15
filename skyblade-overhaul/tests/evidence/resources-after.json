@@ -1,0 +1,44 @@
+{
+  "metrics": [
+    {
+      "label": "start",
+      "geometries": 29,
+      "textures": 10,
+      "materials": 66
+    },
+    {
+      "label": "20 same weapon",
+      "geometries": 29,
+      "textures": 10,
+      "materials": 71
+    },
+    {
+      "label": "5 full cycles",
+      "geometries": 29,
+      "textures": 10,
+      "materials": 140
+    },
+    {
+      "label": "10 full cycles",
+      "geometries": 29,
+      "textures": 10,
+      "materials": 140
+    }
+  ],
+  "camera": {
+    "position": [
+      -5.074096812809687,
+      1.7866371881333116,
+      -5.73723028602922
+    ],
+    "obstacle": {
+      "x": -6.019651332621864,
+      "z": -5.73723028602922,
+      "r": 0.57,
+      "height": 3.8,
+      "camera": true
+    },
+    "opaqueIntersections": 0,
+    "cameraDistance": 1.1050662301818124
+  }
+}

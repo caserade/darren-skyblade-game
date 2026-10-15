@@ -1,0 +1,54 @@
+[
+  {
+    "board": "Skyblade21-HUD-before-after.png",
+    "sha256": "f9d85a0d189d3096f6ef24b5be5e771a9130adcdadb807479d7ca70f89960e51",
+    "sources": [
+      {
+        "path": "art/overhaul/hud21/review/layout/before-landscape-combat.png",
+        "sha256": "be5149315895792017b6a521b3964cbf0db805dee88e0abffa3c9981a504aefe"
+      },
+      {
+        "path": "art/overhaul/hud21/review/layout/before-narrow-landscape-boss.png",
+        "sha256": "9d0151c3c0a5d1f96e88731b1f6630b92e3af963dc7f9d89cee21eea2c427c9a"
+      },
+      {
+        "path": "art/overhaul/hud21/review/layout/before-safe-portrait-combat.png",
+        "sha256": "bbed6786cda1eedf117d745e46162adaa823c91c12714b3e4b97c03ddea1bdb4"
+      },
+      {
+        "path": "art/overhaul/hud21/review/layout/after-landscape-combat.png",
+        "sha256": "47081935eb458371bb6e623e04f0e9da2220d6ab09fecf985d6a82f020de994b"
+      },
+      {
+        "path": "art/overhaul/hud21/review/layout/after-narrow-landscape-boss.png",
+        "sha256": "3f415bffc1ad6613267ebc80ea58ce85001d41ef6e99a3c98e807eccb95ee1a8"
+      },
+      {
+        "path": "art/overhaul/hud21/review/layout/after-safe-portrait-combat.png",
+        "sha256": "612e30e46e4fbef686f59f1d1e753c460127c2856d97e5c657bbfb5e04121d34"
+      }
+    ]
+  },
+  {
+    "board": "Skyblade21-accepted-Chomp-before-after.png",
+    "sha256": "21a91b361d949be28da9fe6504eb2321dd2ee4ca4f69aed8d1281f82e4a451b7",
+    "sources": [
+      {
+        "path": "art/overhaul/chomp19/review/boards/Chomp19-face-comparison.png",
+        "sha256": "21a91b361d949be28da9fe6504eb2321dd2ee4ca4f69aed8d1281f82e4a451b7"
+      }
+    ],
+    "note": "Previously accepted art evidence, preserved unchanged in Candidate21; not a new character change."
+  },
+  {
+    "board": "Skyblade21-accepted-Stormbelly-before-after.png",
+    "sha256": "5f53bc2ed7799c7cb27daf2d391f272dba7cc0532d15617db6602153093e17b5",
+    "sources": [
+      {
+        "path": "art/overhaul/stormbelly20/review/boards/Stormbelly20-face-comparison.png",
+        "sha256": "5f53bc2ed7799c7cb27daf2d391f272dba7cc0532d15617db6602153093e17b5"
+      }
+    ],
+    "note": "Previously accepted art evidence, preserved unchanged in Candidate21; not a new character change."
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "variants": [
+    {
+      "variant": "candidate",
+      "assetSha256": "e6c35e6cf0a70a06c94aa3167e105ab4b4c093895ab90c827c4b7ad097c34b0d",
+      "checks": {
+        "bodyBelowFaceUnchanged": true,
+        "eyeIrisPupilCatchlightComponentsUnchanged": true,
+        "rearCrownsUnchanged": true,
+        "allChangedVerticesWithinFace": true
+      },
+      "unchangedRearCrowns": 14,
+      "unchangedEyeComponents": 8,
+      "passed": true
+    },
+    {
+      "variant": "lod",
+      "assetSha256": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e",
+      "checks": {
+        "bodyBelowFaceUnchanged": true,
+        "eyeIrisPupilCatchlightComponentsUnchanged": true,
+        "rearCrownsUnchanged": true,
+        "allChangedVerticesWithinFace": true
+      },
+      "unchangedRearCrowns": 14,
+      "unchangedEyeComponents": 8,
+      "passed": true
+    }
+  ],
+  "openMouthCheekPixelCheck": {
+    "before": [
+      {
+        "roi": [
+          300,
+          445,
+          370,
+          585
+        ],
+        "ivoryPixels": 0
+      },
+      {
+        "roi": [
+          630,
+          445,
+          705,
+          585
+        ],
+        "ivoryPixels": 0
+      }
+    ],
+    "after": [
+      {
+        "roi": [
+          300,
+          445,
+          370,
+          585
+        ],
+        "ivoryPixels": 0
+      },
+      {
+        "roi": [
+          630,
+          445,
+          705,
+          585
+        ],
+        "ivoryPixels": 0
+      }
+    ]
+  },
+  "scope": "Rear 14 crowns and all eight eye components remain exactly Chomp18. Body below face unchanged. Fixed maximum-windup front gold-cheek crops check the regression caught in study C; this is not an exhaustive intersection test.",
+  "passed": true
+}

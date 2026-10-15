@@ -1,0 +1,44 @@
+[
+  {
+    "variant": "candidate",
+    "sourceSha256": "11947ed9f9840f471adbf3b51e5c5c9e06e19183c4cbf3e375f6e71bdceacb14",
+    "candidateSha256": "e6c35e6cf0a70a06c94aa3167e105ab4b4c093895ab90c827c4b7ad097c34b0d",
+    "changedVertices": 7022,
+    "changedBounds": [
+      [
+        -0.6220403909683228,
+        3.3477816581726074,
+        0.7221522331237793
+      ],
+      [
+        0.6216787695884705,
+        4.394621849060059,
+        1.9518734216690063
+      ]
+    ],
+    "maximumDisplacement": 0.03874712279997078,
+    "minimumJacobianDeterminant": 0.8070198522735538,
+    "bodyBelowFaceIdentical": true
+  },
+  {
+    "variant": "lod",
+    "sourceSha256": "a43f529fe534dbcb105f62da9c72b907d5d82c816c174853eb10eef6404a0ec2",
+    "candidateSha256": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e",
+    "changedVertices": 4455,
+    "changedBounds": [
+      [
+        -0.6220188736915588,
+        3.3477964401245117,
+        0.7258903980255127
+      ],
+      [
+        0.6218748092651367,
+        4.394621849060059,
+        1.9522603750228882
+      ]
+    ],
+    "maximumDisplacement": 0.03874254121757113,
+    "minimumJacobianDeterminant": 0.808702766406052,
+    "bodyBelowFaceIdentical": true
+  }
+]

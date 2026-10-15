@@ -1,0 +1,71 @@
+{
+  "project_id": "appgprj_6acf0e7886908191820064ec6fa5afa0",
+  "status": "FINAL LOCAL CANDIDATE23; publication held; art remains approximate",
+  "base_app_commit": "6b81733468018f58605379038f97a361a9180944",
+  "variant": "Candidate22 plus local SkyDrake shoulder color correction",
+  "accepted_assets": {
+    "Chomp19": {
+      "source": "art/overhaul/chomp19/export/chomprex-lod.glb",
+      "sha256": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e"
+    },
+    "Stormbelly20": {
+      "source": "art/overhaul/stormbelly20/export/heavyweight-lod.glb",
+      "sha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05"
+    },
+    "SkyDrake23": {
+      "source": "art/overhaul/skydrake23/export/skydrake-lod.glb",
+      "sha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e"
+    }
+  },
+  "files": {
+    ".openai/hosting.json": "a0cec85268bb4503f9144d802c4a7ef0bfa5aa40d107a4e390766a484a033ef8",
+    "dist/assets/chomprex.glb": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e",
+    "dist/assets/darren_model.js": "36e17d6c114addd259160e869216b8e268203f103680faa77835a7b916b9dab0",
+    "dist/assets/music.js": "276e240152aa39337b3adc6186fb7bef5949f857c4c568154dfbbfe3d11a26ae",
+    "dist/assets/skydrake-rc15.glb": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+    "dist/assets/skydrake.glb": "732a4695ad8f960c95cb7aad8e9624b737fe8fc6bea3f37a1ba602cdd49f8762",
+    "dist/assets/stormbelly-rc15.glb": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+    "dist/assets/stormglass-concept.webp": "cb3f6637e2db39b4c28ab66badc69a8b745a9724d04e747327be3354508b34f4",
+    "dist/assets/textures/weathered-limestone.webp": "59d0112d801a7b3a78eb234b69115978625e2201cc64805726ac6832728f2107",
+    "dist/data/adventure.js": "cf2782601f8e1977416f35b635f4665e1ca07b582450594a85d6fbcba0f693ea",
+    "dist/data/chapter2.js": "bf054857d080a801cd1a92262fa6acb3098b9321e7be49f9dfb691f1a1cb6ec0",
+    "dist/data/forge.js": "9b0106e2bad8b425cbbf930e7b0f142388fd4bc0a5ba97aa30e24e07bfce16cc",
+    "dist/data/game_data.js": "668c28cf05c0c4e09eb9b063cecacbcba3ba83f9f656e2a248c0ab43420b3ffc",
+    "dist/data/stormglass.js": "ce8bb4415a31afd185d8a97fb702b96cc3f4e671e5d7f636e3e69770d455df6b",
+    "dist/expansion.css": "f1384daaabfab8e529b16e0ed0fe00bc5dde21817288cdcd5828ac7f30e5967f",
+    "dist/index.html": "60f89946e789e74735adf6310888a191757b96b8136511f7bc189994374328bb",
+    "dist/mobile-ui15.css": "1f684dcad99a10dc22c365732cff2e8fd36af044201b9a5f5d1a47cc650d5d0f",
+    "dist/polish.css": "b8b6765628462c23d76c004c1a8529e0bd77c79c126fb53afc9db02b3401e3a0",
+    "dist/responsive-ui21.css": "7314f2bcb59243df308b36b836a21a4b25fb13c418d614a0cf009b5e5ac2899e",
+    "dist/src/adventure.js": "3f32349e09fb8899d81e660c17a34891184d254b4ce7bc6cfc10e0b7bdc84474",
+    "dist/src/arms.js": "194dd6002991b896d3d129739a055bda42412c99fea393d0538babb856c067dc",
+    "dist/src/boot16.js": "7c4da6b4f9773e69af17a408274230801ff428df8cff4b57924ee6b550b2569d",
+    "dist/src/camera-rc15.js": "b7e835b647a496b473f0ad274f4410c3474973c092b84bb259842af5992bb497",
+    "dist/src/chomprex.js": "a9ec248c4562d49c7dd0d8912e7ab3b42d93383b297a0475825f85597386bb3e",
+    "dist/src/combat.js": "169e0a9dd8272f800e3ae14da2ca6ef0e70d2a121264e8d5b6117682c7c95f98",
+    "dist/src/core.js": "2890e462e55c79bd7d8397ee0a9fc022929ff603c71e08359cd293d971898bed",
+    "dist/src/fieldguide.js": "9ec2ed9a69802eb6036009c0d4346b69b3fc4592a6da7df9fa412b88bf5ed194",
+    "dist/src/forge.js": "a84fd99ca278ddd10eaa895f3a122edcc1903cfcdb78f16ee26463f0c3a042aa",
+    "dist/src/level.js": "045336e80d27f69605fd630cb9bef96cbfa03391dee4487af56caf9c9d3332fe",
+    "dist/src/menu.js": "15bdc49a794a68c5598919a0956d2eb75c4af134380b2440d195f561e38afe07",
+    "dist/src/models.js": "2398e436ec18abb33c98c87b32b133d081ebfbe6f53426e1a2c98752a7c12e15",
+    "dist/src/polish.js": "7a22d34d796cf27402a5f899ca4b866b80fbf39ee570788efb5c856936ea6e4f",
+    "dist/src/props.js": "c1850239d0a7a4310801b4e0e19971818ee642459ab7682b880edef3a8f57152",
+    "dist/src/skin.js": "1631b5803ed29dbd8fe09b91b4b5fda3b615fc1661931207a5d6242f0de201f6",
+    "dist/src/skydrake-rc15.js": "a4bedc2b893b34fc904d9e2012f32ce3f9f6b88571cc016f2e0c193fb4add171",
+    "dist/src/skydrake.js": "0fb96882984165dc5c2037ba9aa04ede1bc1548ccd35c83689865b3127288869",
+    "dist/src/stormbelly-rc15.js": "5021259460a30c90cbee6f34c2a43432d84f7da52445af25e3a06bab494594f7",
+    "dist/src/stormglass-art.js": "3a10d6538f746def39edba62806b798c858e914fe2616192b83b6ba5b3e17612",
+    "dist/src/stormglass-world.js": "37ed3f4b21b862bcd53a55f6c5bc1d2ceaa7f11214f4753bd577428ffbb7bb71",
+    "dist/src/stormglass.js": "5a067f819e2f85da6ec28295c3ff73eaaf791eab37a1150c4deaa8f032c50dae",
+    "dist/src/toon-enemies.js": "10993077c3bd7354139be1de8ffad83f834e001a0cdd4323fb19135fbd30024b",
+    "dist/src/weapons.js": "182b2506ec8d0fb869ef8c92aa66764b00f3fa5a010c5ace1815091fcacd9cd9",
+    "dist/style.css": "b49631e4dec0caddc755500088030b5832b961d09a80117978da959c94534fc8",
+    "dist/vendor/GLTFLoader.js": "430707158b6a8a61e7b185f07166eef12607f2016a7d2b99463e17fafe5dc561",
+    "dist/vendor/THREE-LICENSE.txt": "abe364d9a4939d4c0bae8c091c26f9e576381729f329f0d23fd428b752b71a84",
+    "dist/vendor/three.min.js": "7ae04663bb431808bc025280122162029ea3a354efc5fcca8bd8f95d1a1933e9"
+  },
+  "changed_files_from_candidate21": [
+    "dist/assets/skydrake-rc15.glb"
+  ]
+}

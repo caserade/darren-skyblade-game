@@ -1,0 +1,46 @@
+{
+  "accepted": true,
+  "reason": "Pale shoulder blotches reduced in matched idle/attack views from both sides and production gameplay; pale ventral plates retained. Some soft surface transition remains.",
+  "inspected": [
+    "diagnose-idle-original.png",
+    "diagnose-idle-albedo.png",
+    "diagnose-idle-clay.png",
+    "trial-idle-original.png",
+    "trial-idle-albedo.png",
+    "trial-attack-original.png",
+    "trial-attack-albedo.png",
+    "opposite-after-idle-original.png",
+    "opposite-after-attack-original.png",
+    "combat-23/before-ground-048-atk.png",
+    "combat-23/after-ground-048-atk.png",
+    "combat-23/after-flight-420-atk.png"
+  ],
+  "boardSources": [
+    {
+      "path": "art/overhaul/skydrake23/review/diagnose-idle-original.png",
+      "sha256": "ccecd2b95f0cb1fe65cfb29b402f52b239856d99eba6b64ddae7d9743ff9e039"
+    },
+    {
+      "path": "art/overhaul/skydrake23/review/trial-idle-original.png",
+      "sha256": "f901980b942442851a18386c4b37b2d257b0817cd6b485847e17f52635e23678"
+    },
+    {
+      "path": "art/overhaul/skydrake23/review/opposite-before-attack-original.png",
+      "sha256": "6908a0aaa5fde5f7f56b403b89b2bfd90a1905a7d753e6427568bd744b2fc1a1"
+    },
+    {
+      "path": "art/overhaul/skydrake23/review/opposite-after-attack-original.png",
+      "sha256": "de25a52998a168266d175c1f7f76c64a872d60b35b4d4c05ddbbc3879713f214"
+    },
+    {
+      "path": "art/overhaul/skydrake23/review/combat-23/before-ground-048-atk.png",
+      "sha256": "a20b794a5af9ac1934c156bedcd22896722de3f8fbb6db4ae07d264a9a264861"
+    },
+    {
+      "path": "art/overhaul/skydrake23/review/combat-23/after-ground-048-atk.png",
+      "sha256": "0e2e04974615cf3d896ed833947123bf341752ff4d96e59e369367017ec5e251"
+    }
+  ],
+  "reference": "art/references/concept_skydrake.jpg",
+  "referenceSha256": "38a2292062ae90083be69566ddda0d8dfcb17d77b9aacd1b381bd0f29165d363"
+}

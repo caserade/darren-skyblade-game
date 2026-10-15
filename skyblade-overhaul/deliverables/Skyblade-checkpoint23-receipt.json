@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "baselineCommit": "6b81733468018f58605379038f97a361a9180944",
+  "manifestSha256": "6687a6f947c7bee3b4452b7517ab0232d637a669ff8076a05913e3a7ff03049e",
+  "assetSha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+  "changedFiles": [
+    "dist/assets/skydrake-rc15.glb"
+  ],
+  "freshChecks": 274,
+  "publication": "held; no write",
+  "reportSha256": "3af84312b474cde48fbb2a59b5575a7f2a103c6604d63f2de5e759242c3c5659",
+  "zipSha256": "81db9af107454023d8628f518333f6476cddc66bb191f8ba2c3a545ca1f080de",
+  "zip": "C:\\Users\\caser\\Documents\\Codex\\2026-10-14\\task\\Skyblade-Final-Local-Candidate23.zip",
+  "commit": "90dce67e9d0ac24f18eb0995d88be338365aeae7",
+  "implementationCommit": "1ce5ac8ac4f21fbd9a732ca1e8c39699cecb23d0",
+  "gitManifestFiles": 46,
+  "gitManifestExact": true,
+  "clean": true,
+  "portableZipSmoke": true,
+  "library": "Approval rejected before helper execution; no upload"
+}

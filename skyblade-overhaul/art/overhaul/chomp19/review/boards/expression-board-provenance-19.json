@@ -1,0 +1,308 @@
+[
+  {
+    "board": "Chomp19-expression-biteWindup.png",
+    "sha256": "a38557e56b900dfd84ac00ad531b288adab5d40ea78d3751ea6fa1c44ab1ecda",
+    "sources": [
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-000-front-face.png",
+        "sha256": "3888c54a8bfdab02bd5e47f2a5bf5a13206527cc0093c42eca06bf20cd8b00dc"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-200-front-face.png",
+        "sha256": "3f5c32b3d3e355be09af3b12a8a12ec59e8b1e9d21bcc3ca3c58893fed355c89"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-400-front-face.png",
+        "sha256": "c49580e430927767f6b9e6207777b6576fccd18f24f7a7c4b3382f878020811b"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-600-front-face.png",
+        "sha256": "d4e072ec6698942661de5d64a8e66d11393c9a3515db3a3d7675b460e2fba534"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-800-front-face.png",
+        "sha256": "7ce1cea483671190c30cbdb2457db15ed9df31bbdf817fc1e039d07ff7d96eea"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-999-front-face.png",
+        "sha256": "d4a02a7a4e4110e1d78b4cd65e99bc6950fc1bb97035e0a3853dbe7c67945574"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-000-front-face.png",
+        "sha256": "ef469cc00f44e886a20f44872d7ed611b395199e20ab124fb6d869c71560c41e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-200-front-face.png",
+        "sha256": "e2ce68a4b66efe5a41e8c17797e505a0bb3c48f16cb0ad4885844ca3db0d9dd4"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-400-front-face.png",
+        "sha256": "7bcb4af2b3acba441d5fe9129436c0c3cbf91b465654d833cad7fca90016fc20"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-600-front-face.png",
+        "sha256": "625678b8bae533c4cef9f9bf9e3f681b3674815dea01d567451e74252442f006"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-800-front-face.png",
+        "sha256": "a004e877a39136560ce84a095b606fc5b986788e38a66ff96a673e694dcda485"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-999-front-face.png",
+        "sha256": "d221c8a5739010d69fc2bc0daaee35bdd1677a7b19f2f531ac8b9cee2621eb64"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-000-three-quarter-face.png",
+        "sha256": "491fe5d0f9db0edf646a74070a2def68f0c61572ff8c9fe3544372ea1b3ee0da"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-200-three-quarter-face.png",
+        "sha256": "fe3d4a79eff138d7a9ea474cdff91bca09589f3a0218b1f4d0d2b7dafad8e91b"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-400-three-quarter-face.png",
+        "sha256": "1db81ffe6318c8738af23c71382bdad65b7a8f7b4a3ee5d49c6a303f1b143f25"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-600-three-quarter-face.png",
+        "sha256": "7eb6ebfa7c026461c2213a131c24ff2739178e411d2206ded33a5b760703fe62"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-800-three-quarter-face.png",
+        "sha256": "7a5829a9504cc8813dea9f51835728cde2dd8863c4c46294bf2ac40530d37acc"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-biteWindup-999-three-quarter-face.png",
+        "sha256": "0d0aaad2075935a54224ff7b5611ec41e309809224b531acac7eb91f9722c2db"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-000-three-quarter-face.png",
+        "sha256": "d70becdd770b292f9ed37f1a0b69a5088e0de1c78a2766a5e104554df5e4d988"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-200-three-quarter-face.png",
+        "sha256": "aaea4a424f4ca155888785e587df7bf1e9fa60681b3e2997ee55dab316b1027d"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-400-three-quarter-face.png",
+        "sha256": "d9c483e88d720c01397b78697d990986da3b8cfbcff5f522e4dd59b0563df395"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-600-three-quarter-face.png",
+        "sha256": "60a8bd30d120f82e788947bdf3c768839d32e404e2f7ad87433496dfa0f1b5b0"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-800-three-quarter-face.png",
+        "sha256": "1b09cc86938be35a88ddaeec93f9d89b93b50ea3404bf18a663ac8f06187918a"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-biteWindup-999-three-quarter-face.png",
+        "sha256": "991540beaab889806e6509aa806591f5c6988b6c658640867dc2d65bafaf7ef0"
+      }
+    ]
+  },
+  {
+    "board": "Chomp19-expression-bite.png",
+    "sha256": "c5cd286ad73b77da7c65a1be835c5b12358a21b3e8c52258fe1e4e6d28075ef9",
+    "sources": [
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-000-front-face.png",
+        "sha256": "7e96f11f3553e859d82c2e576ba4431060bb153c69f8c21c0557c4d95c3f2b8e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-200-front-face.png",
+        "sha256": "f1a3795b221418c790c48281b710c155def5f17675953ebd5b7e798b87fa22a0"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-400-front-face.png",
+        "sha256": "3e670f629725b2c6c8c6b28bec42dc506864f495628ca9d1372cabcea3633dfb"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-600-front-face.png",
+        "sha256": "0c5b0451b7e68e1e9dce1080aa299644b0b017128e012614b45b3de88011a058"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-800-front-face.png",
+        "sha256": "1a1377ffcaff7170fb1bee264a927521afc5fb220a25f9b4ec6f4d8831f8b22d"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-999-front-face.png",
+        "sha256": "d55065ab00f9f2f56fa3519d669d2b3de8c7421e02d285288bae5228d74f88bf"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-000-front-face.png",
+        "sha256": "53347ad4c17b398b97e94d1fa903c7723903396dfe0a9a82d153c9011d6ee598"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-200-front-face.png",
+        "sha256": "39f16fb7110d4f32cefdff0d7cd57f9d850511be657864e0a51951f6ed94447e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-400-front-face.png",
+        "sha256": "e2439c9b69e0ce6028e6fcc975894e773db26401e9c03345accad565e26a8f45"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-600-front-face.png",
+        "sha256": "be859c5bc91ca20ec357469b7a8e57623d97cf5f4e153bf9a7072cdf07555cd3"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-800-front-face.png",
+        "sha256": "db4baab54500b334c1ab87794dddcd89d2530b820e0a33057466279656a69bbb"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-999-front-face.png",
+        "sha256": "c57a45f46d7c1873a94c53b549a48fa28f437287cfa6d342b6b1ef286fb11a2a"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-000-three-quarter-face.png",
+        "sha256": "c8e6c1d24f0155d519f57e558e358750aff4ab12810b1aa19faaa26bc67d76ae"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-200-three-quarter-face.png",
+        "sha256": "e56d81129691bdb14c4f3b1aaeb58c52055e0f0460cee0f6f15d53f9a704c637"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-400-three-quarter-face.png",
+        "sha256": "aa0c03a717895473c6cc2397b4dab57977d478d3603d0cd5fff815917a40738a"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-600-three-quarter-face.png",
+        "sha256": "c455fc124af6d01592d2c14c163c5c949a279e183d6a93ea4c75e1ce91f1b1d2"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-800-three-quarter-face.png",
+        "sha256": "3541886cedbad64893e83e952f7ddc8b4ba2741c441625476acd7407a8062fd1"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-bite-999-three-quarter-face.png",
+        "sha256": "0cc5c28b05cc6b60da3fa9394bef374c503cf31508c86d594be7a8ba09acb8d3"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-000-three-quarter-face.png",
+        "sha256": "4a2843c94fb87b0e8242ee0ee01a3defd2970c7eb08f9cb8e37dd7e9c0f9d97e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-200-three-quarter-face.png",
+        "sha256": "b3bd61ec571d9467485a5e90f7d832dd21efdabd5c99d01edd8762f5899473e1"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-400-three-quarter-face.png",
+        "sha256": "217974dd8923569384769f39168f9554269921f2d94b53d699f6024fcdbd1a27"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-600-three-quarter-face.png",
+        "sha256": "d467a6f9ebbde2f7cc0731676b0162723b7650822b752be63a37de5f282922ac"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-800-three-quarter-face.png",
+        "sha256": "ac4411d2323e06a7a35af4edeaf43dfb8c317a27b81db6811b07c23c80f9168e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-bite-999-three-quarter-face.png",
+        "sha256": "52b758bb4f950d910e9ab690307106439d22e61a3bb93dcba21a12761e4482b7"
+      }
+    ]
+  },
+  {
+    "board": "Chomp19-expression-stagger.png",
+    "sha256": "e5484ab8a79d30c555907ce3f14d5859aa1eb7df43eb28845ba0e6f3cf95d6d3",
+    "sources": [
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-000-front-face.png",
+        "sha256": "203357f04e3939fa443582f79064275a5a0233b63dd1780ed83dbae10585967d"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-200-front-face.png",
+        "sha256": "eedadb345b87e5b3729b47bc1c338d67752c059c56ea2b5b7bf86f3326b36018"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-400-front-face.png",
+        "sha256": "cb591a21625c1f56590ad031e2a78fd523169da25470c0263a13b4d140945920"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-600-front-face.png",
+        "sha256": "85bfe3d47856582898d2cbde3d823f154d8bad2bd4b3d6a42aca46e89adf3319"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-800-front-face.png",
+        "sha256": "56e933480a14b10f1240387b900a9a47477f15e1d9fe3076f474d318ee7f66d5"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-999-front-face.png",
+        "sha256": "9643f7daf232bd9aa08f128e5f90b632a69776b51ef154d165a28579cb833977"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-000-front-face.png",
+        "sha256": "643457bf53080d62105bd0b454319bf75f7c4589a764dc8cb5621f047d987bd9"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-200-front-face.png",
+        "sha256": "a76ecce838f743485bfbf876e032d075693edefbc923342fc1d42eec86577ef4"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-400-front-face.png",
+        "sha256": "853f1206effece3d1370dc5fbd6e9b50526326611bac0f9a284c0dc7d5d99b3d"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-600-front-face.png",
+        "sha256": "9647fbf845c270c6107d323d8633ae4a86497484fa05c1e61188ce2c23d6d42e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-800-front-face.png",
+        "sha256": "a2bddeb4b576eeb62503c42bca8f5d6255cf33a21763a698794bd133878de4b4"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-999-front-face.png",
+        "sha256": "3e641d477ac6d20b7be9be1cb62ea7059ed0bfaf7b33deeeddc3e6ba0ecf6d70"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-000-three-quarter-face.png",
+        "sha256": "f504c16b084ec9df71a231de6e49d830729ba5c5ec6164a013dd695925252e10"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-200-three-quarter-face.png",
+        "sha256": "e424cb65e0409912fafcff130576a3e7680570934dd5562c988d6c3cfada683e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-400-three-quarter-face.png",
+        "sha256": "5f9fe48245cec3bdcea1d4b9767a5d7accdea246d33427d122f08cd7055578f0"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-600-three-quarter-face.png",
+        "sha256": "02907a1c7abb7d73132e110767129b34cb3a3ee24fb75189879bafa959c1b9d0"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-800-three-quarter-face.png",
+        "sha256": "554a30b8b633e3d6d6cbda638c796f81ff2a78e134d1bc553d07aa0f88e97c1a"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-before-stagger-999-three-quarter-face.png",
+        "sha256": "6e1faa5c63404d4f60f3247feeaca989c1929b7a67dd8650af74fec906ec6488"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-000-three-quarter-face.png",
+        "sha256": "0de6a1375946822ead208eb970bd718c44ef524989ac636aace82cf97e65bcba"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-200-three-quarter-face.png",
+        "sha256": "2d2193b43f0622521918fb828ce86a0a62fdb94345d92f1d4be5e3929e13523e"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-400-three-quarter-face.png",
+        "sha256": "be2410c68e57f9291132087fe13c44575f7326f207a5fe25f2f586f4979a3b1f"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-600-three-quarter-face.png",
+        "sha256": "97542d40f871f69015414ceb715bdcd8a042284fa687ce1db6458b1c838b73f0"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-800-three-quarter-face.png",
+        "sha256": "e4d49de16edf2f03f52dd644fa95ffc1b18dbe8f1ee4b39483023720373023bd"
+      },
+      {
+        "path": "art/overhaul/chomp19/review/expression/lod-after-stagger-999-three-quarter-face.png",
+        "sha256": "1038361d22ae48ebf00058488d49c20d8583cc629256bd4f81f64fd4ff65e05c"
+      }
+    ]
+  }
+]

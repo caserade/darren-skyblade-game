@@ -1,0 +1,16 @@
+{
+  "date":"2026-10-14",
+  "pass1":{
+    "changes":"Material library, generated limestone, relief maps, lighting, clouds, character roughness",
+    "scan1":{"type":"Gameplay","passed":39,"total":39},
+    "scan2":{"type":"Visual","reviewed":["Enemy models after textures loaded","Stormglass terrain"],"result":"pass"},
+    "scan3":{"type":"Loading and resources","passed":14,"total":14,"note":"Initial sampling included asynchronous character loading; added a loading-complete warmup before resource comparison and reran successfully."}
+  },
+  "pass2":{
+    "changes":"Mist, pooled contact shadows, lightning bolts, secondary animation, menus, graphics controls, level geometry cleanup",
+    "scan1":{"type":"Gameplay and effects","passed":47,"total":47},
+    "scan2":{"type":"Visual and interface","reviewed":["Title and chapter selection at narrow window width","Hangar settings navigation and readable graphics options","Textured enemy model gallery"],"result":"pass"},
+    "scan3":{"type":"Loading, resources and static output","resourcePassed":15,"resourceTotal":15,"staticPassed":53,"staticTotal":53,"consoleErrors":[],"consoleWarnings":[],"steadyGeometryStart":56,"steadyGeometryEnd":56,"steadyTexturesStart":18,"steadyTexturesEnd":18,"repeatedChapterGeometryCounts":[56,56,56,56],"renderSubmissionMedianMs":1.2,"renderSubmissionP95Ms":1.5,"deployedOutputMiB":9.94}
+  },
+  "limits":"Programmatic gameplay regression tests and browser visual checks. CPU render-submission timings are not GPU frame-rate measurements. No complete manual playthrough or physical phone/gamepad certification claimed. Models retain their stylized geometry with more natural materials."
+}

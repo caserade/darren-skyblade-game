@@ -1,0 +1,87 @@
+[
+  {
+    "board": "SkyDrake22-deformation-before-after.png",
+    "sha256": "f67176c6c48692f3498c4cc0b73c6d37d63cfd78ebec136d60a0295a05a9ec5b",
+    "sources": [
+      {
+        "path": "art/overhaul/skydrake22/review/poses-c/before-attack.png",
+        "sha256": "95fcae11ed530a0ae1b04951d7cc982f64e84b93649739b3e59726821bfb11e8"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/poses-c/after-attack.png",
+        "sha256": "c0a018f7498ef238889846c66f678e28c5f584f32b7647c9b1f9d46c713725eb"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/poses-c-clay/before-attackWindup.png",
+        "sha256": "17f466345826d592381e657582a62c94d2be68358a86df4a0681fce791f173bb"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/poses-c-clay/after-attackWindup.png",
+        "sha256": "a09cf0a693e82ede5bd353f62d428053d4d4a48a39ba1f9c80bbe1eaca63126b"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/poses-c/before-tailWindup.png",
+        "sha256": "cd38c699369c0dc4e4f2aba3d33b4df7bee1e449174aef5e855f55bdc700e000"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/poses-c/after-tailWindup.png",
+        "sha256": "9d9058b965377457f265c9d5cf62b4dc31afa9b42dc2a33e1a3f796c929e8f48"
+      }
+    ],
+    "note": "Selected trial C reduced mesh. Metrics are maxima across all 41 samples in each clip, not necessarily the pictured instant."
+  },
+  {
+    "board": "SkyDrake22-reference-comparison.png",
+    "sha256": "1df8e964122c6d025164a70df43d3931f3dabbe4200fc758252d8542440ef6ec",
+    "sources": [
+      {
+        "path": "art/references/concept_skydrake.jpg",
+        "sha256": "38a2292062ae90083be69566ddda0d8dfcb17d77b9aacd1b381bd0f29165d363"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/reference/before-front.png",
+        "sha256": "1924e27e3a7ae0e21e6dabd02a2f3aadb13184a624e94051dcf17533532a2f89"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/reference/after-front.png",
+        "sha256": "9bce1ab9a79df9cdc4760bd13485611b84ea40b360332662637b38d55537159a"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/reference/before-side.png",
+        "sha256": "71b30999fffbacea2d66d3809b658ee2c2981de6c80e259d56996f3298e49c4e"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/reference/after-side.png",
+        "sha256": "f28c1b42af67020b4bb57c629041b20273c36a3f4451e8ff14dd8301643aee94"
+      }
+    ],
+    "note": "Reference crops are actual supplied pixels; render images are uniformly scaled, not warped."
+  },
+  {
+    "board": "SkyDrake22-gameplay-comparison.png",
+    "sha256": "85b509506878ed943be45e5942869cff724b85d3a86c0e81a1e1275cab8b2c9a",
+    "sources": [
+      {
+        "path": "art/overhaul/skydrake22/review/combat-22/before-ground-048-atk.png",
+        "sha256": "b3954b62bbf9e658e5cdc75418a86869f82f7564c8870c90c4f1ce0e9bd76efa"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/combat-22/after-ground-048-atk.png",
+        "sha256": "a20b794a5af9ac1934c156bedcd22896722de3f8fbb6db4ae07d264a9a264861"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/combat-22/before-flight-420-atk.png",
+        "sha256": "0346bfa7c6d70958b05d62bb6074df07d0d4a1cca06179c21904784efdafd096"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/combat-22/after-flight-420-atk.png",
+        "sha256": "514e31fec9f13ccc3630b0fe785bae5f060e57ef3a7b8b8a428e5b1015adfd8d"
+      },
+      {
+        "path": "art/overhaul/skydrake22/review/realtime-resumed-22.png",
+        "sha256": "78cc10918f43ea04adedb46ac7457802d9d70252fe498a8a1e44bd94b45713ad"
+      }
+    ],
+    "note": "Top rows are canvas-only matched review captures. Bottom is a full-page normal-loop screenshot; not a matched before/after scene."
+  }
+]

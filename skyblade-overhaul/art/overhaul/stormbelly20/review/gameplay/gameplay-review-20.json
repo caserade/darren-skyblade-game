@@ -1,0 +1,462 @@
+{
+  "scope": "Accepted Stormbelly versus final consolidated local candidate20 package, same deterministic scene seed and gameplay camera, no injected art adapters. Six fresh profiles, actual HUD, desktop/portrait/landscape touch emulation, 360 controlled update frames per run. Player invulnerable for repeatable captures. Not physical-device or full-playthrough coverage.",
+  "rows": [
+    {
+      "kind": "before",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "states": [
+        "idle",
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "idle",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-000.png"
+        },
+        {
+          "frame": 60,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-060.png"
+        },
+        {
+          "frame": 95,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-095.png"
+        },
+        {
+          "frame": 110,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-110.png"
+        },
+        {
+          "frame": 130,
+          "state": "atk",
+          "clip": "stompImpact",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-130.png"
+        },
+        {
+          "frame": 180,
+          "state": "rec",
+          "clip": "stompRecovery",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-180.png"
+        },
+        {
+          "frame": 300,
+          "state": "chase",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "before-desktop-300.png"
+        }
+      ],
+      "errors": [],
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb",
+      "passed": true
+    },
+    {
+      "kind": "before",
+      "viewport": {
+        "name": "portrait",
+        "width": 390,
+        "height": 844
+      },
+      "states": [
+        "idle",
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "idle",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-000.png"
+        },
+        {
+          "frame": 60,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-060.png"
+        },
+        {
+          "frame": 95,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-095.png"
+        },
+        {
+          "frame": 110,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-110.png"
+        },
+        {
+          "frame": 130,
+          "state": "atk",
+          "clip": "stompImpact",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-130.png"
+        },
+        {
+          "frame": 180,
+          "state": "rec",
+          "clip": "stompRecovery",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-180.png"
+        },
+        {
+          "frame": 300,
+          "state": "chase",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "before-portrait-300.png"
+        }
+      ],
+      "errors": [],
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb",
+      "passed": true
+    },
+    {
+      "kind": "before",
+      "viewport": {
+        "name": "landscape-touch",
+        "width": 844,
+        "height": 390
+      },
+      "states": [
+        "idle",
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "idle",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-000.png"
+        },
+        {
+          "frame": 60,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-060.png"
+        },
+        {
+          "frame": 95,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-095.png"
+        },
+        {
+          "frame": 110,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-110.png"
+        },
+        {
+          "frame": 130,
+          "state": "atk",
+          "clip": "stompImpact",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-130.png"
+        },
+        {
+          "frame": 180,
+          "state": "rec",
+          "clip": "stompRecovery",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-180.png"
+        },
+        {
+          "frame": 300,
+          "state": "chase",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "before-landscape-touch-300.png"
+        }
+      ],
+      "errors": [],
+      "assetSha256": "a1f6cf908af76a9fae755a60087d2744714e0b00ab6f1a2eed79c21a927f07fb",
+      "passed": true
+    },
+    {
+      "kind": "after",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "states": [
+        "idle",
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "idle",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-000.png"
+        },
+        {
+          "frame": 60,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-060.png"
+        },
+        {
+          "frame": 95,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-095.png"
+        },
+        {
+          "frame": 110,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-110.png"
+        },
+        {
+          "frame": 130,
+          "state": "atk",
+          "clip": "stompImpact",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-130.png"
+        },
+        {
+          "frame": 180,
+          "state": "rec",
+          "clip": "stompRecovery",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-180.png"
+        },
+        {
+          "frame": 300,
+          "state": "chase",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "after-desktop-300.png"
+        }
+      ],
+      "errors": [],
+      "assetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+      "passed": true
+    },
+    {
+      "kind": "after",
+      "viewport": {
+        "name": "portrait",
+        "width": 390,
+        "height": 844
+      },
+      "states": [
+        "idle",
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "idle",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-000.png"
+        },
+        {
+          "frame": 60,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-060.png"
+        },
+        {
+          "frame": 95,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-095.png"
+        },
+        {
+          "frame": 110,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-110.png"
+        },
+        {
+          "frame": 130,
+          "state": "atk",
+          "clip": "stompImpact",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-130.png"
+        },
+        {
+          "frame": 180,
+          "state": "rec",
+          "clip": "stompRecovery",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-180.png"
+        },
+        {
+          "frame": 300,
+          "state": "chase",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "after-portrait-300.png"
+        }
+      ],
+      "errors": [],
+      "assetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+      "passed": true
+    },
+    {
+      "kind": "after",
+      "viewport": {
+        "name": "landscape-touch",
+        "width": 844,
+        "height": 390
+      },
+      "states": [
+        "idle",
+        "wind",
+        "atk",
+        "rec",
+        "chase"
+      ],
+      "shots": [
+        {
+          "frame": 0,
+          "state": "idle",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-000.png"
+        },
+        {
+          "frame": 60,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-060.png"
+        },
+        {
+          "frame": 95,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-095.png"
+        },
+        {
+          "frame": 110,
+          "state": "wind",
+          "clip": "stompWindup",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-110.png"
+        },
+        {
+          "frame": 130,
+          "state": "atk",
+          "clip": "stompImpact",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-130.png"
+        },
+        {
+          "frame": 180,
+          "state": "rec",
+          "clip": "stompRecovery",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-180.png"
+        },
+        {
+          "frame": 300,
+          "state": "chase",
+          "clip": "idle",
+          "shot": true,
+          "finite": true,
+          "file": "after-landscape-touch-300.png"
+        }
+      ],
+      "errors": [],
+      "assetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

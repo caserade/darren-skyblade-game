@@ -1,0 +1,1056 @@
+{
+  "name": "lod-desktop",
+  "variant": "lod",
+  "mobile": false,
+  "simulatedEncounterSeconds": 300,
+  "reloads": 10,
+  "cycles": [
+    {
+      "cycle": 0,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1000}",
+      "travelId": "haven",
+      "resources": {
+        "geometries": 76,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 1,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1001}",
+      "travelId": "fields",
+      "resources": {
+        "geometries": 78,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 2,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1002}",
+      "travelId": "spires",
+      "resources": {
+        "geometries": 87,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 3,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1003}",
+      "travelId": "mesa",
+      "resources": {
+        "geometries": 69,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 4,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1004}",
+      "travelId": "wastes",
+      "resources": {
+        "geometries": 74,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 5,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1005}",
+      "travelId": "frost",
+      "resources": {
+        "geometries": 82,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 6,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1006}",
+      "travelId": "barkwood",
+      "resources": {
+        "geometries": 72,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 7,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1007}",
+      "travelId": "skyreach",
+      "resources": {
+        "geometries": 90,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 8,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1008}",
+      "travelId": "titan",
+      "resources": {
+        "geometries": 98,
+        "textures": 27
+      }
+    },
+    {
+      "cycle": 9,
+      "checks": [
+        {
+          "name": "Correct three candidate rigs",
+          "pass": true
+        },
+        {
+          "name": "Finite thirty-second encounter",
+          "pass": true
+        },
+        {
+          "name": "All encounter types attack",
+          "pass": true
+        },
+        {
+          "name": "All encounter types recover",
+          "pass": true
+        },
+        {
+          "name": "Pause freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Dialogue freezes encounter",
+          "pass": true
+        },
+        {
+          "name": "Clear releases all three mixers",
+          "pass": true
+        },
+        {
+          "name": "Existing waystone travel completes",
+          "pass": true
+        },
+        {
+          "name": "Movement after travel responds",
+          "pass": true
+        },
+        {
+          "name": "Focus interruption clears movement",
+          "pass": true
+        },
+        {
+          "name": "Actual save contains checkpoint and progression",
+          "pass": true
+        },
+        {
+          "name": "Unrelated storage survives",
+          "pass": true
+        },
+        {
+          "name": "Reload checkpoint",
+          "pass": true
+        },
+        {
+          "name": "Reload progress",
+          "pass": true
+        },
+        {
+          "name": "Reload time",
+          "pass": true
+        },
+        {
+          "name": "Reload bytes",
+          "pass": true
+        },
+        {
+          "name": "Reload sentinel",
+          "pass": true
+        }
+      ],
+      "states": {
+        "chomprex": [
+          "wind",
+          "atk",
+          "rec",
+          "chase",
+          "stun"
+        ],
+        "stormbelly": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ],
+        "skydrake": [
+          "chase",
+          "wind",
+          "atk",
+          "rec",
+          "stun"
+        ]
+      },
+      "transitions": 99,
+      "saveKey": "darrenSkyblade.ch3",
+      "saveRaw": "{\"cp\":1,\"cleared\":[\"home\"],\"taken\":[],\"t\":1009}",
+      "travelId": "haven",
+      "resources": {
+        "geometries": 76,
+        "textures": 27
+      }
+    }
+  ],
+  "errors": [],
+  "assets": {
+    "art/overhaul/final-local-candidate20/release/dist/assets/skydrake-rc15.glb": "c8eb6546733d62ed56d66b103210ebe48bcb4b82e472e4a59f1e1dc027dc5818",
+    "art/overhaul/final-local-candidate20/release/dist/assets/stormbelly-rc15.glb": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+    "art/overhaul/final-local-candidate20/release/dist/assets/chomprex.glb": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e"
+  },
+  "passed": true
+}

@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "manifestSha256": "c54c72e760eefcfd3ec96b0adda410c93aedf0ed009e508eff4208133be07634",
+  "baseCommit": "f9adbcc7b4c2dc6d3f4a430c2f19b01b3a713d27",
+  "changedFiles": [
+    "dist/index.html",
+    "dist/responsive-ui21.css",
+    "dist/src/core.js"
+  ],
+  "checks": {
+    "exact46FileManifest": true,
+    "onlyThreeUIFilesChanged": true,
+    "acceptedArtExact": true,
+    "projectIdentityPreserved": true,
+    "aggregate250": true,
+    "soak340": true,
+    "startup320": true,
+    "layout108Screens": true,
+    "interaction243": true,
+    "allTestsExactManifest": true,
+    "threeBoardsExactProvenance": true,
+    "fallbackArchivesUnchanged": true,
+    "priorSourceTreesUnchanged": true,
+    "syntax": true
+  },
+  "acceptedAssets": {
+    "Chomp19": {
+      "source": "art/overhaul/chomp19/export/chomprex-lod.glb",
+      "sha256": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e"
+    },
+    "Stormbelly20": {
+      "source": "art/overhaul/stormbelly20/export/heavyweight-lod.glb",
+      "sha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05"
+    },
+    "SkyDrake15": {
+      "source": "art/overhaul/skydrake15/export/skydrake-lod.glb",
+      "sha256": "c8eb6546733d62ed56d66b103210ebe48bcb4b82e472e4a59f1e1dc027dc5818"
+    }
+  },
+  "scope": "UI repair only; no publication. Browser-emulated touch/safe areas and synthetic Gamepad API; no physical hardware/full playthrough claim."
+}

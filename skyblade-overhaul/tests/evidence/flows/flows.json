@@ -1,0 +1,141 @@
+[
+  {
+    "name": "legacy inventory",
+    "result": {
+      "unlockKey": "darrenSkyblade.unlocks",
+      "weapons": [
+        "emberfang",
+        "cloudcutter"
+      ],
+      "done": [
+        "ch1"
+      ],
+      "parts": {
+        "feather": 22,
+        "plate": 7
+      },
+      "style": "twin",
+      "weapon": "cloudcutter",
+      "futureField": "preserve-me",
+      "recovery": true
+    },
+    "errors": []
+  },
+  {
+    "name": "malformed inventory/settings",
+    "result": {
+      "finite": true,
+      "values": [
+        1,
+        0,
+        100,
+        70,
+        1,
+        2.5
+      ],
+      "weapons": true,
+      "contracts": true,
+      "settings": {
+        "difficulty": "normal",
+        "sens": 1,
+        "invertY": false,
+        "music": 0,
+        "sfx": 100,
+        "graphics": "auto",
+        "shake": 70
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "storage unavailable",
+    "result": {
+      "mode": "play",
+      "saveFailed": true,
+      "finite": true
+    },
+    "errors": []
+  },
+  {
+    "name": "interrupted and completed endings",
+    "result": [
+      {
+        "pauseKeepsCage": true,
+        "timersRetained": true
+      },
+      {
+        "cancelled": true,
+        "chapter": "ch2",
+        "saveUnchanged": true
+      },
+      {
+        "completed": true,
+        "unlocked": true,
+        "timers": 0
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "fast travel repeated and interrupted",
+    "result": [
+      {
+        "id": "haven",
+        "accepted": true,
+        "ended": true,
+        "finite": true,
+        "savedWay": true
+      },
+      {
+        "id": "fields",
+        "accepted": true,
+        "ended": true,
+        "finite": true,
+        "savedWay": true
+      },
+      {
+        "id": "spires",
+        "accepted": true,
+        "ended": true,
+        "finite": true,
+        "savedWay": true
+      },
+      {
+        "cancelled": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "keyboard/menu actual events",
+    "result": {
+      "settings": {
+        "title": true,
+        "panel": true
+      },
+      "tab": true,
+      "escapeKeepsPause": true
+    },
+    "errors": []
+  },
+  {
+    "name": "portrait",
+    "result": {
+      "horizontalOverflow": false,
+      "panelWidth": 358,
+      "windowWidth": 390,
+      "closeVisible": true
+    },
+    "errors": []
+  },
+  {
+    "name": "landscape",
+    "result": {
+      "horizontalOverflow": false,
+      "panelWidth": 812,
+      "windowWidth": 844,
+      "closeVisible": true
+    },
+    "errors": []
+  }
+]

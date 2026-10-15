@@ -1,0 +1,68 @@
+{
+  "decision": "Keep localized Chomp facial refinement as isolated local candidate; art remains incomplete; publication held",
+  "baseAppCommit": "f1245351718970aca44732cc284777070c91e65a",
+  "manifestSha256": "93099ef280177eca2e34597bd3abcde7039c1f85ba18ae945f9423de7cd19d3e",
+  "checks": {
+    "exact45FileManifest": true,
+    "onlyChompAssetChanged": true,
+    "projectIdentityPreserved": true,
+    "packageUsesFinalReducedExport": true,
+    "meshAuditMatchesFinalExports": true,
+    "editableSourcesReopenedAndMatched": true,
+    "allMotionFiniteAndHashBound": true,
+    "facialMotionChangesWithinReviewedBounds": true,
+    "motionChangesWithinReviewedBounds": true,
+    "aggregate250": true,
+    "soak340": true,
+    "testsBindExactPackage": true,
+    "sixGameplayRunsHashBound": true,
+    "boardsAndOriginalInputsMatch": true,
+    "sealedRC16AndOtherAssetsUnchanged": true,
+    "sealedRC16ZipUnchanged": true,
+    "chomp18ZipUnchanged": true,
+    "chomp18TreeUnchanged": true,
+    "expression72CapturesHashBound": true,
+    "facialScopeAndCheekRegression": true
+  },
+  "details": {
+    "exportHashes": {
+      "candidate": "e6c35e6cf0a70a06c94aa3167e105ab4b4c093895ab90c827c4b7ad097c34b0d",
+      "lod": "871bfe22140b1740385cb9b1764919cd67ed964564f0bcf5135fa458b879f10e"
+    },
+    "changedPackageFiles": [
+      "dist/assets/chomprex.glb"
+    ],
+    "aggregateChecks": 250,
+    "repeatedFlowChecks": 340,
+    "sampledPoses": 1200,
+    "gameplayRuns": 6,
+    "syntaxChecked": [
+      "audit_chomp19.py",
+      "audit_chomp_face19.py",
+      "build_chomp_release19.py",
+      "compare_chomp_reference19.py",
+      "inspect_chomp_features19.py",
+      "make_chomp_expression_board19.py",
+      "make_chomp_gameplay_board19.py",
+      "make_stormbelly_assessment19.py",
+      "refine_chomp19.py",
+      "review_chomp19.cjs",
+      "review_chomp_expression19.cjs",
+      "review_chomp_gameplay19.cjs",
+      "review_stormbelly_assessment19.cjs",
+      "seal_chomp19.py",
+      "serve_chomp19.cjs",
+      "sync_chomp_sources19.py",
+      "test_chomp_motion19.cjs",
+      "test_chomp_release19.cjs",
+      "test_chomp_soak19.cjs",
+      "verify_chomp19.py"
+    ],
+    "maximumRelativeStretchChange": 0.0,
+    "maximumFacialRelativeStretchChange": 0.03540203512455786,
+    "maximumFacialRelativeP99Change": 0.0013205631340003077,
+    "maximumRelativeP99Change": 0.001100130761916951
+  },
+  "passed": true,
+  "limits": "No physical device/controller or full-playthrough claim. Small measured motion changes were reviewed visually; metrics are not proof against all self-intersection. Existing landscape HUD crowding persists unchanged."
+}

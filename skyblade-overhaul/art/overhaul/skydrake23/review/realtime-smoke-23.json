@@ -1,0 +1,144 @@
+{
+  "scope": "Fresh desktop Chromium profile; actual Start button, normal requestAnimationFrame loop, Playwright keyboard a/d/Escape events and unchanged production camera. One isolated invulnerable SkyDrake fixture; the spires arrival dialogue is dismissed through actual dialog clicks before movement; no manual update calls. Not physical hardware, FPS or full-playthrough coverage.",
+  "wallSeconds": 10.302,
+  "dialogueClicks": 0,
+  "packageManifestSha256": "6687a6f947c7bee3b4452b7517ab0232d637a669ff8076a05913e3a7ff03049e",
+  "assetSha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+  "initial": {
+    "player": [
+      42,
+      0,
+      38
+    ],
+    "enemy": [
+      42,
+      0,
+      34.115
+    ],
+    "camera": [
+      42,
+      5.77824184813899,
+      44.43164568314899
+    ],
+    "paused": false,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 0.9688999999999998,
+    "clip": "tailWindup",
+    "state": "wind",
+    "finite": true
+  },
+  "moved": {
+    "player": [
+      38.10102663655994,
+      0,
+      37.16533730862182
+    ],
+    "enemy": [
+      42,
+      0,
+      34.115
+    ],
+    "camera": [
+      34.02193422897694,
+      6.33140422041682,
+      43.14293170237288
+    ],
+    "paused": false,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 1.5711999999999984,
+    "clip": "tailWhip",
+    "state": "atk",
+    "finite": true
+  },
+  "pausedA": {
+    "player": [
+      41.29453726853822,
+      0,
+      40.388923491447876
+    ],
+    "enemy": [
+      41.65298486744834,
+      0,
+      36.94451769145426
+    ],
+    "camera": [
+      40.716774547120565,
+      5.977444794026527,
+      47.255582916745624
+    ],
+    "paused": true,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 4.414500000000003,
+    "clip": "tailWindup",
+    "state": "wind",
+    "finite": true
+  },
+  "pausedB": {
+    "player": [
+      41.29453726853822,
+      0,
+      40.388923491447876
+    ],
+    "enemy": [
+      41.65298486744834,
+      0,
+      36.94451769145426
+    ],
+    "camera": [
+      40.716774547120565,
+      5.977444794026527,
+      47.255582916745624
+    ],
+    "paused": true,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 4.414500000000003,
+    "clip": "tailWindup",
+    "state": "wind",
+    "finite": true
+  },
+  "resumed": {
+    "player": [
+      38.93634933545217,
+      0,
+      37.3737780245837
+    ],
+    "enemy": [
+      41.95032266981158,
+      0,
+      37.23240200175975
+    ],
+    "camera": [
+      39.597760589111985,
+      3.516611793486115,
+      37.268663041876145
+    ],
+    "paused": false,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 8.422799999997036,
+    "clip": "tailWindup",
+    "state": "wind",
+    "finite": true
+  },
+  "errors": [],
+  "checks": {
+    "dialogueDismissed": true,
+    "normalLoopAdvanced": true,
+    "keyboardMovedPlayer": true,
+    "pauseStopsPlayer": true,
+    "pauseStopsEnemy": true,
+    "resumedPlay": true,
+    "finite": true,
+    "noPageErrors": true
+  },
+  "passed": true
+}

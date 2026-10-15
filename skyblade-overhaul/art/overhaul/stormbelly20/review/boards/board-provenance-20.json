@@ -1,0 +1,70 @@
+[
+  {
+    "board": "Stormbelly20-face-comparison.png",
+    "sha256": "5f53bc2ed7799c7cb27daf2d391f272dba7cc0532d15617db6602153093e17b5",
+    "sources": [
+      {
+        "path": "art/references/concept_heavyweight.jpg",
+        "sha256": "c5d7840e646a474895f84321a01b5d9b1a2d5ade559ddd69257aceac0e1fcb81"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-before-idle-front-face.png",
+        "sha256": "4a90949ca0586f3b345f769dd45b19be241112c3cf60e5e4b289ce3794055291"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-after-idle-front-face.png",
+        "sha256": "6d4c345fd00caf86da79a90040fa4eeb980efe8567cde56177ec827d5056a8da"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-before-idle-side-face.png",
+        "sha256": "f40ad382a67c57e61b7fbcd0f951985815f4eb544c19dc2d7c49970cb02e3bea"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-after-idle-side-face.png",
+        "sha256": "03e813762febea11abe8cb2145f1c29177d8ad68d0280e4c3e51a511a92a8beb"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-before-idle-three-quarter-face.png",
+        "sha256": "d33359110937186efddb676d24e22ad0fe45a1659ccdb48afce4e81c005b6c0a"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-after-idle-three-quarter-face.png",
+        "sha256": "950fabcfec687d4b4e43cd463f33be1ac1f4427fd7d154d97a9ae0e310e5df33"
+      }
+    ]
+  },
+  {
+    "board": "Stormbelly20-body-comparison.png",
+    "sha256": "c93148bd13dd3e89ecded3010c26d3a52c9c057d564c2b8abb30c458c49fbf60",
+    "sources": [
+      {
+        "path": "art/references/concept_heavyweight.jpg",
+        "sha256": "c5d7840e646a474895f84321a01b5d9b1a2d5ade559ddd69257aceac0e1fcb81"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-before-idle-front-body.png",
+        "sha256": "3fa8e3b946627b5cf44f58b9ed4b92f015779178b36dcc9846f7ad297cdfe651"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-after-idle-front-body.png",
+        "sha256": "e787fdd689128cd584cf22d588faeb0038d14d7bec52b44134fa8baec2304831"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-before-idle-side-body.png",
+        "sha256": "d4f18f490f58ebbed0b808ef2a05d59a87d60e5db49443d983cf6793f64f857c"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-after-idle-side-body.png",
+        "sha256": "a885b36b21a8058f4c0050e530ba051d8a5242ac0eaee98e3d31378343c7d0c5"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-before-idle-three-quarter-body.png",
+        "sha256": "e34af26b988f5a25f3e2638ff32a9a9a750ab66efda5ce904d0a564644937e05"
+      },
+      {
+        "path": "art/overhaul/stormbelly20/review/matched/lod-after-idle-three-quarter-body.png",
+        "sha256": "20991146c00f14751d486df40f12fad32af103260fecb7aa03aa094d7c523a47"
+      }
+    ]
+  }
+]

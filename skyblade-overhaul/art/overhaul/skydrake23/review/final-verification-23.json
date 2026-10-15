@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "baselineCommit": "6b81733468018f58605379038f97a361a9180944",
+  "manifestSha256": "6687a6f947c7bee3b4452b7517ab0232d637a669ff8076a05913e3a7ff03049e",
+  "assetSha256": "f4e83252c3dd7fdaed5f0f81bf8e4b65ce0f71bb1c093d0b43a3a0d2e3cc188e",
+  "changedFiles": [
+    "dist/assets/skydrake-rc15.glb"
+  ],
+  "freshChecks": 274,
+  "publication": "held; no write",
+  "reportSha256": "3af84312b474cde48fbb2a59b5575a7f2a103c6604d63f2de5e759242c3c5659"
+}

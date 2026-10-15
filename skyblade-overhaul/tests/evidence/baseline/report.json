@@ -1,0 +1,390 @@
+{
+  "qa": {
+    "passed": 61,
+    "total": 61,
+    "results": [
+      {
+        "name": "All game scripts loaded",
+        "pass": true
+      },
+      {
+        "name": "ch1 initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "ch2 initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "adv initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "ch3 initializes with walkable spawn",
+        "pass": true
+      },
+      {
+        "name": "Chapter 3 has four islands, five lifts and three beacons",
+        "pass": true
+      },
+      {
+        "name": "Future islands remain locked",
+        "pass": true
+      },
+      {
+        "name": "Bell tower, moving orrery and cloth banners are built",
+        "pass": true
+      },
+      {
+        "name": "Static scenery is batched into fewer than 18 draw meshes",
+        "pass": true
+      },
+      {
+        "name": "Checkpoints remain clear of new landmark collisions",
+        "pass": true
+      },
+      {
+        "name": "Cloth and orrery animation changes rendered geometry",
+        "pass": true
+      },
+      {
+        "name": "Pause freezes added scenery animation",
+        "pass": true
+      },
+      {
+        "name": "Dialogue freezes added scenery animation",
+        "pass": true
+      },
+      {
+        "name": "Pause freezes atmosphere",
+        "pass": true
+      },
+      {
+        "name": "Dialogue freezes atmosphere",
+        "pass": true
+      },
+      {
+        "name": "Contact shadow pool stays bounded",
+        "pass": true
+      },
+      {
+        "name": "Performance mode disables heavy effects",
+        "pass": true
+      },
+      {
+        "name": "High detail restores shadows and atmosphere",
+        "pass": true
+      },
+      {
+        "name": "Updraft lifts Darren and restores flight energy",
+        "pass": true
+      },
+      {
+        "name": "Gale wave has three Stormlings and two Gustlings",
+        "pass": true
+      },
+      {
+        "name": "Selected Stormbelly spawns in Gale Gardens",
+        "pass": true
+      },
+      {
+        "name": "Stomp warning precedes damage",
+        "pass": true
+      },
+      {
+        "name": "Pause freezes selected enemy attack",
+        "pass": true
+      },
+      {
+        "name": "Dialogue freezes selected enemy attack",
+        "pass": true
+      },
+      {
+        "name": "Jumping avoids Stormbelly stomp",
+        "pass": true
+      },
+      {
+        "name": "Grounded player inside stomp takes damage",
+        "pass": true
+      },
+      {
+        "name": "Stomp exposes a recovery window",
+        "pass": true
+      },
+      {
+        "name": "Stormling windup folds its articulated crescent wings",
+        "pass": true
+      },
+      {
+        "name": "Stormling fires three projectiles and recovers",
+        "pass": true
+      },
+      {
+        "name": "Clearing Gale unlocks the Observatory bridge",
+        "pass": true
+      },
+      {
+        "name": "Selected Chomp Rex spawns in Observatory",
+        "pass": true
+      },
+      {
+        "name": "Rex arrow warns before charge damage",
+        "pass": true
+      },
+      {
+        "name": "Committed charge moves forward and sideways dodge avoids bite",
+        "pass": true
+      },
+      {
+        "name": "Rex bite damages at most once per charge",
+        "pass": true
+      },
+      {
+        "name": "Rex recovers after its short charge",
+        "pass": true
+      },
+      {
+        "name": "Selected enemy poses remain finite",
+        "pass": true
+      },
+      {
+        "name": "Defeated enemies hide their attack warnings",
+        "pass": true
+      },
+      {
+        "name": "Wardling windup plants its legs and raises its shields",
+        "pass": true
+      },
+      {
+        "name": "Wardling blocks frontal attacks",
+        "pass": true
+      },
+      {
+        "name": "Wardling takes full damage from the rear",
+        "pass": true
+      },
+      {
+        "name": "Wardling is vulnerable during recovery",
+        "pass": true
+      },
+      {
+        "name": "Checkpoint reload retains both cleared arenas",
+        "pass": true
+      },
+      {
+        "name": "Warden spawns with three breakable parts",
+        "pass": true
+      },
+      {
+        "name": "Warden has an animated segmented halo and articulated legs",
+        "pass": true
+      },
+      {
+        "name": "All attack and recovery animation states keep finite transforms",
+        "pass": true
+      },
+      {
+        "name": "Warden enters phase two below 60 percent",
+        "pass": true
+      },
+      {
+        "name": "Lightning warns before it deals damage",
+        "pass": true
+      },
+      {
+        "name": "Lightning bolt is absent during warning",
+        "pass": true
+      },
+      {
+        "name": "Leaving the lightning circle avoids damage",
+        "pass": true
+      },
+      {
+        "name": "Lightning strike creates a visible finite bolt",
+        "pass": true
+      },
+      {
+        "name": "Lightning cleanup removes bolt from scene",
+        "pass": true
+      },
+      {
+        "name": "Lightning column damages an airborne player inside it",
+        "pass": true
+      },
+      {
+        "name": "Warden enters phase three below 25 percent",
+        "pass": true
+      },
+      {
+        "name": "Breaking both arm crystals makes the Warden kneel",
+        "pass": true
+      },
+      {
+        "name": "Broken Warden crystals remain hidden while kneeling",
+        "pass": true
+      },
+      {
+        "name": "Crafting refuses insufficient resources",
+        "pass": true
+      },
+      {
+        "name": "Stormsaber recipe consumes exact materials once",
+        "pass": true
+      },
+      {
+        "name": "Defeating Warden completes and saves Chapter 3",
+        "pass": true
+      },
+      {
+        "name": "Field guide and concept image are present",
+        "pass": true
+      },
+      {
+        "name": "Leaving Chapter 3 restores original sky and clears hazards",
+        "pass": true
+      },
+      {
+        "name": "Leaving Chapter 3 releases added scenery references",
+        "pass": true
+      }
+    ]
+  },
+  "quality": {
+    "passed": 16,
+    "total": 17,
+    "results": [
+      {
+        "name": "Generated limestone texture loaded",
+        "pass": true
+      },
+      {
+        "name": "Texture dimensions support mipmaps",
+        "pass": true
+      },
+      {
+        "name": "Tone mapping and bounded exposure active",
+        "pass": true
+      },
+      {
+        "name": "Stone uses both color and relief maps",
+        "pass": true
+      },
+      {
+        "name": "Wood, cloth and metal use distinct textures",
+        "pass": true
+      },
+      {
+        "name": "ch1 renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "ch1 uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "ch2 renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "ch2 uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "adv renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "adv uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "ch3 renders within geometry budget",
+        "pass": true
+      },
+      {
+        "name": "ch3 uses detailed cliff materials",
+        "pass": true
+      },
+      {
+        "name": "Darren and Mom have matte character materials",
+        "pass": false
+      },
+      {
+        "name": "Apron uses woven cloth with a matte finish",
+        "pass": true
+      },
+      {
+        "name": "Steady rendering creates no extra GPU resources",
+        "pass": true
+      },
+      {
+        "name": "Repeated Stormglass reloads release old geometry",
+        "pass": true
+      }
+    ],
+    "metrics": [
+      {
+        "chapter": "ch1",
+        "calls": 314,
+        "triangles": 307026,
+        "textures": 10
+      },
+      {
+        "chapter": "ch2",
+        "calls": 585,
+        "triangles": 419474,
+        "textures": 10
+      },
+      {
+        "chapter": "adv",
+        "calls": 685,
+        "triangles": 346239,
+        "textures": 10
+      },
+      {
+        "chapter": "ch3",
+        "calls": 328,
+        "triangles": 336505,
+        "textures": 14
+      },
+      {
+        "resourceStart": {
+          "textures": 18,
+          "geometries": 82
+        },
+        "resourceEnd": {
+          "textures": 18,
+          "geometries": 82
+        }
+      },
+      {
+        "renderSubmissionMedianMs": 2.4000000059604645,
+        "renderSubmissionP95Ms": 1645.3999999910593,
+        "note": "CPU render submission only; not a device FPS guarantee"
+      },
+      {
+        "chapterReloadGeometries": [
+          82,
+          82,
+          82,
+          82
+        ]
+      }
+    ]
+  },
+  "probes": {
+    "enterInSettings": {
+      "mode": "play",
+      "panelHidden": true
+    },
+    "blur": {
+      "queue": [
+        "heavy"
+      ],
+      "touchX": 1,
+      "cameraX": 99
+    },
+    "disconnectedPadHeld": true
+  },
+  "errors": []
+}

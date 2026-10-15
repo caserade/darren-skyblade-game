@@ -1,0 +1,144 @@
+{
+  "scope": "Fresh desktop Chromium profile; actual Start button, normal requestAnimationFrame loop, Playwright keyboard a/d/Escape events and unchanged production camera. One isolated invulnerable Stormbelly fixture; the archive arrival dialogue is dismissed through actual dialog clicks before movement; no manual update calls. Not physical hardware, FPS or full-playthrough coverage.",
+  "wallSeconds": 10.77,
+  "dialogueClicks": 4,
+  "packageManifestSha256": "efad8f993d8e949cbecac0a00a4982d5982cd67069155f56e7640308b99c75c1",
+  "assetSha256": "bb3292e2a2c69ebbf4be7ff03e7b4bae9da73192c42b4461cdca16e84e855c05",
+  "initial": {
+    "player": [
+      63,
+      0,
+      -33
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.66900999999999
+    ],
+    "camera": [
+      63,
+      2.6872259509408822,
+      -26.829434754007536
+    ],
+    "paused": false,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 2.1067999999999985,
+    "clip": "stompWindup",
+    "state": "wind",
+    "finite": true
+  },
+  "moved": {
+    "player": [
+      59.117576470466176,
+      0,
+      -33.87553652755846
+    ],
+    "enemy": [
+      63,
+      0,
+      -36.66900999999999
+    ],
+    "camera": [
+      55.6307054610016,
+      2.7373296787417187,
+      -28.638409953863558
+    ],
+    "paused": false,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 2.708999999999999,
+    "clip": "stompWindup",
+    "state": "wind",
+    "finite": true
+  },
+  "pausedA": {
+    "player": [
+      66.30970106719022,
+      0,
+      -28.89395859254515
+    ],
+    "enemy": [
+      63.3830443768205,
+      0,
+      -35.23792070477009
+    ],
+    "camera": [
+      68.95493263119457,
+      2.7471716582951715,
+      -23.035974380849662
+    ],
+    "paused": true,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 5.5190000000000055,
+    "clip": "heavyWalk",
+    "state": "chase",
+    "finite": true
+  },
+  "pausedB": {
+    "player": [
+      66.30970106719022,
+      0,
+      -28.89395859254515
+    ],
+    "enemy": [
+      63.3830443768205,
+      0,
+      -35.23792070477009
+    ],
+    "camera": [
+      68.95493263119457,
+      2.7471716582951715,
+      -23.035974380849662
+    ],
+    "paused": true,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 5.5190000000000055,
+    "clip": "heavyWalk",
+    "state": "chase",
+    "finite": true
+  },
+  "resumed": {
+    "player": [
+      71.8031924817863,
+      0,
+      -25.80232786422453
+    ],
+    "enemy": [
+      64.94405153131954,
+      0,
+      -32.28485182323386
+    ],
+    "camera": [
+      76.36600543012152,
+      2.74717380648236,
+      -21.31269728272582
+    ],
+    "paused": false,
+    "mode": "play",
+    "cinematic": false,
+    "dialogue": null,
+    "time": 9.522999999997042,
+    "clip": "stompRecovery",
+    "state": "rec",
+    "finite": true
+  },
+  "errors": [],
+  "checks": {
+    "dialogueDismissed": true,
+    "normalLoopAdvanced": true,
+    "keyboardMovedPlayer": true,
+    "pauseStopsPlayer": true,
+    "pauseStopsEnemy": true,
+    "resumedPlay": true,
+    "finite": true,
+    "noPageErrors": true
+  },
+  "passed": true
+}

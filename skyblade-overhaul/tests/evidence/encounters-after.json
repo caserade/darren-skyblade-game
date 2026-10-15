@@ -1,0 +1,59 @@
+{
+  "types": [
+    "puff",
+    "gust",
+    "bolt",
+    "thorn",
+    "bark",
+    "snow",
+    "node",
+    "stormling",
+    "wardling",
+    "stormbelly",
+    "chomprex"
+  ],
+  "cycles": [
+    {
+      "cycle": 0,
+      "geometries": 80,
+      "textures": 13,
+      "materials": 120,
+      "sceneChildren": 100
+    },
+    {
+      "cycle": 1,
+      "geometries": 80,
+      "textures": 13,
+      "materials": 120,
+      "sceneChildren": 100
+    },
+    {
+      "cycle": 2,
+      "geometries": 80,
+      "textures": 13,
+      "materials": 120,
+      "sceneChildren": 100
+    },
+    {
+      "cycle": 3,
+      "geometries": 80,
+      "textures": 13,
+      "materials": 120,
+      "sceneChildren": 100
+    },
+    {
+      "cycle": 4,
+      "geometries": 80,
+      "textures": 13,
+      "materials": 120,
+      "sceneChildren": 100
+    },
+    {
+      "cycle": 5,
+      "geometries": 80,
+      "textures": 13,
+      "materials": 120,
+      "sceneChildren": 100
+    }
+  ]
+}
