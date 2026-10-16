@@ -317,12 +317,9 @@ function loadChapter(id) {
     // keep clouds out of the play space so the camera never flies through a billboard
     if (c.userData.y0 === undefined) c.userData.y0 = c.position.y;
     c.position.y = c.userData.y0;
-    if (
-      c.position.y > -18 &&
-      c.position.y < 30 &&
-      CH.level.islands.some(I => Math.hypot(c.position.x - I.x, c.position.z - I.z) < I.r + 45)
-    )
-      c.position.y = c.position.y > 6 ? rnd(32, 45) : rnd(-32, -22);
+    // high above any island Darren can fly over
+    if (c.position.y < 70 && CH.level.islands.some(I => Math.hypot(c.position.x - I.x, c.position.z - I.z) < I.r + 60))
+      c.position.y = rnd(70, 92);
   }
   placeHome();
   P.x = CH.level.start.x;
@@ -1832,7 +1829,12 @@ function tick(rdt) {
   ambTick(rdt);
   for (const c of world.clouds) {
     c.position.x += rdt * 0.6;
-    if (c.position.x > 240 + (c.userData.dx || 0)) c.position.x -= 480;
+    if (c.position.x > 320 + (c.userData.dx || 0)) c.position.x -= 640;
+    // never let a cloud fill the screen: fade it out as the camera gets close (flying high)
+    const d = c.position.distanceTo(camera.position),
+      k = Math.min(1, Math.max(0, (d - 45) / 50));
+    c.visible = k > 0.01;
+    if (c.visible) for (const sp of c.children) sp.material.opacity = sp.userData.op * k;
   }
   if (G.mode === 'play') updateHud();
   if (!window.__manual) renderFrame();

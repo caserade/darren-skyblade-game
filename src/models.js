@@ -942,12 +942,14 @@ function buildSky() {
     scene.add(g);
     far.push(g);
   });
+  // a few high, far clouds for the sky only; the low mist between the islands is the height fog (look.js)
   const clouds = [];
-  for (let i = 0; i < 26; i++) {
+  for (let i = 0; i < 16; i++) {
     const g = buildSoftCloud(),
       a = rnd(TAU),
-      r = rnd(60, 230);
-    g.position.set(Math.cos(a) * r, rnd(-25, 40), 90 + Math.sin(a) * r);
+      r = rnd(150, 320);
+    g.position.set(Math.cos(a) * r, rnd(52, 88), 90 + Math.sin(a) * r);
+    g.children.forEach(s => (s.userData.op = s.material.opacity * 0.8));
 
     g.userData.z = g.position.z;
     scene.add(g);

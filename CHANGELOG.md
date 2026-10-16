@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.5.1 — 2026-10-16 — Low volumetric fog instead of eye-level clouds
+
+- **Low fog between the islands.** A height fog now pools under and between the islands: thick below the island
+  tops, thin at Darren's height. The drops between islands and the island undersides melt into soft white mist,
+  while the view across an island stays clear. It is exponential height fog, worked out along each view ray in
+  every fogged material (it replaces three.js's fog chunks), with a puffy texture where the ray meets the layer.
+  Tuning lives in `LOWFOG` at the top of `src/look.js`.
+- **No more clouds in the way.** The 26 billboard cloud groups that floated at eye level, and drifted into the
+  play space, are now 16 high, far clouds (52-92 m up, 150-320 m out). They fade out as the camera gets close, so
+  flying up never fills the screen with a cloud.
+- The cloud sea far below is tinted to the same mist, so the fog and the sea read as one layer.
+
 ## 1.5.0 — 2026-10-15 — The merged edition (Claude version as the main game)
 
 Folded in everything new from the 15 October "Merged PC" copy, which combined this game with the hosted

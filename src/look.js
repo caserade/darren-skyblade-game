@@ -1,7 +1,75 @@
 /* LOOK: the semi-realistic rendering layer — procedural textures (grass, rock, bark, wood planks, fine bump),
-   the sky dome with sun, the sea of clouds under the islands, soft billboard clouds, and post-processing
+   low volumetric fog between the islands, the sky dome with sun, the sea of clouds under the islands, a few high
+   billboard clouds, and post-processing
    (HDR bloom, filmic tone mapping, colour grade, vignette). Graphics quality is SETTINGS.gfx: 'high' | 'low'.
    Loaded right after core.js; models.js and props.js use the textures. */
+
+/* ---------- low volumetric fog ----------
+   Instead of cloud billboards at eye level, a height fog pools under and between the islands: thick below the
+   island tops, thin at Darren's height, so the view across an island stays clear and the drops between islands
+   melt into soft white mist. It is exponential height fog, integrated along each view ray, with a puffy texture
+   taken where the ray meets the fog layer. It replaces three.js's fog chunks, so every fogged material shares it
+   (the usual distance fog, scene.fog, still works on top). Tuning: LOWFOG below. */
+const LOWFOG = {
+  top: -2.0, // metres: the density reference height (just under the island tops at 0)
+  fall: 0.17, // how fast the fog thins with height (per metre)
+  density: 0.0042, // density at `top`
+  max: 0.93, // strongest the fog can get (keeps a hint of what is below)
+};
+(function installLowFog() {
+  const f = v => (Number.isInteger(v) ? v.toFixed(1) : String(v));
+  T.ShaderChunk.fog_pars_vertex = `#ifdef USE_FOG
+  varying float fogDepth;
+  varying vec3 vFogWorld;
+#endif`;
+  // world position from the view-space position (works for skinned, instanced and sprite vertices alike)
+  T.ShaderChunk.fog_vertex = `#ifdef USE_FOG
+  fogDepth = - mvPosition.z;
+  vFogWorld = cameraPosition + vec3(dot(viewMatrix[0].xyz, mvPosition.xyz), dot(viewMatrix[1].xyz, mvPosition.xyz), dot(viewMatrix[2].xyz, mvPosition.xyz));
+#endif`;
+  T.ShaderChunk.fog_pars_fragment = `#ifdef USE_FOG
+  uniform vec3 fogColor;
+  varying float fogDepth;
+  varying vec3 vFogWorld;
+  #ifdef FOG_EXP2
+    uniform float fogDensity;
+  #else
+    uniform float fogNear;
+    uniform float fogFar;
+  #endif
+  float lowFogHash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  float lowFogNoise(vec2 p) {
+    vec2 i = floor(p), u = fract(p); u = u * u * (3.0 - 2.0 * u);
+    return mix(mix(lowFogHash(i), lowFogHash(i + vec2(1.0, 0.0)), u.x), mix(lowFogHash(i + vec2(0.0, 1.0)), lowFogHash(i + vec2(1.0, 1.0)), u.x), u.y);
+  }
+  // how much low fog lies between the camera and this point (0..1), and how bright its puffs are there
+  vec2 lowFog(vec3 cam, vec3 pw) {
+    vec3 rv = pw - cam;
+    float L = length(rv), ry = rv.y, b = ${f(LOWFOG.fall)};
+    float camH = clamp(cam.y - (${f(LOWFOG.top)}), -20.0, 60.0);
+    float k = b * ry;
+    float shape = abs(k) > 0.001 ? (1.0 - exp(-clamp(k, -30.0, 30.0))) / k : 1.0;
+    // puffy texture: sample where the ray crosses the layer a few metres under the island tops
+    float t = abs(ry) > 0.01 ? clamp(((${f(LOWFOG.top)}) - 3.0 - cam.y) / ry, 0.0, 1.0) : 1.0;
+    vec2 q = (cam.xz + rv.xz * t) * 0.045;
+    float n = lowFogNoise(q) * 0.6 + lowFogNoise(q * 2.7 + 7.0) * 0.4;
+    float amount = ${f(LOWFOG.density)} * L * exp(-b * camH) * shape * (0.65 + 0.7 * n);
+    return vec2(min(${f(LOWFOG.max)}, 1.0 - exp(-amount)), n);
+  }
+#endif`;
+  T.ShaderChunk.fog_fragment = `#ifdef USE_FOG
+  #ifdef FOG_EXP2
+    float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
+  #else
+    float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
+  #endif
+  gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
+  vec2 lowF = lowFog(cameraPosition, vFogWorld);
+  // the mist is the sky colour lifted towards white, brighter on its puffs
+  vec3 lowC = mix(fogColor, vec3(0.96, 0.97, 1.0), 0.45 + 0.3 * lowF.y);
+  gl_FragColor.rgb = mix( gl_FragColor.rgb, lowC, lowF.x );
+#endif`;
+})();
 
 /* ---------- procedural textures ---------- */
 function makeNoise(n, octaves, seed) {
@@ -301,7 +369,9 @@ function buildCloudSea() {
         float d=length(vW.xz-uCam.xz);
         float fade=1.0-smoothstep(260.0,520.0,d);
         vec3 c=mix(uHor,base,fade*0.85+0.15);
-        gl_FragColor=vec4(c,0.55+0.45*puff);
+        // seen through the low fog: lifted towards the same soft white mist (look.js LOWFOG)
+        c=mix(c,mix(uHor,vec3(0.96,0.97,1.0),0.55+0.25*puff),0.55);
+        gl_FragColor=vec4(c,0.7+0.3*puff);
         #include <tonemapping_fragment>
         #include <encodings_fragment>
       }`,

@@ -64,7 +64,7 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 | `assets/dumpling_art.js` | Dumpling's Hangar portraits (small images, made by `tools/make_dumpling_art.py`) |
 | `assets/music.js` | Michael's "Snowday Choir" loop, as base64 MP3 (`window.DARREN_MUSIC_B64`) |
 | `src/style.css` | All styling. Colours are CSS variables at the top (`--ember`, `--gold`, ...) |
-| `src/look.js` | Semi-realistic rendering: procedural textures (grass, rock, stone, bark, planks, snow), sky dome, cloud sea, soft clouds, post-processing (bloom, filmic grade, vignette), contact shadows, ambience (wind, birds, footsteps), the Graphics setting |
+| `src/look.js` | Semi-realistic rendering: the low height fog between the islands (`LOWFOG`), procedural textures (grass, rock, stone, bark, planks, snow), sky dome, cloud sea, soft clouds, post-processing (bloom, filmic grade, vignette), contact shadows, ambience (wind, birds, footsteps), the Graphics setting |
 | `src/core.js` | Renderer, scene, camera object, input (keyboard, mouse, touch, gamepad), sound effects |
 | `src/models.js` | Shared materials, placeholder toy Darren, enemies (incl. Barkling, Snowcap, Elite crown), both bosses, islands, trees, sky |
 | `src/props.js` | Mom's pose code, Ruffy (model and expressions), cottage, wood store, bridges, stones, barrier, cage, pickups, decorations |
