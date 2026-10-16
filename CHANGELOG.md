@@ -1,5 +1,12 @@
 # Changelog
 
+## Tools — 2026-10-16 — Tripo boss maker
+
+- `tools/tripo_make.cjs` and `Make Titanic Scion.cmd`: make a boss model with the Tripo 3D API on your own PC
+  (text or image to 3D, PBR textures, then Tripo's auto-rig when the shape allows). The key stays in
+  `tripo_key.txt` on the PC: it is only sent to Tripo's API, never printed, logged, committed or served.
+  It was tested end to end against a stand-in server; the first real run is Michael's.
+
 ## 1.5.1 — 2026-10-16 — Low volumetric fog instead of eye-level clouds
 
 - **Low fog between the islands.** A height fog now pools under and between the islands: thick below the island
