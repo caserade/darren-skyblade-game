@@ -127,6 +127,7 @@ function buildLadle() {
   return { g, base: grp(g, 0, 0, 0.85), tip: grp(g, 0, 0.1, 1.3), bladeMat };
 }
 function buildWeapon(id) {
+  if(id==='stormsaber')return buildRecolorBlade(0x78eee1,0x37bcce,1.15);
   if (id === 'cloudcutter') return buildCloudcutter();
   if (id === 'jellyblade') return buildJellyblade();
   if (id === 'ladle') return buildLadle();
@@ -219,12 +220,19 @@ function equipWeapon(id, announce) {
   saveUnlocks();
   const D = P.m;
   if (D && D.sword && D.sword.parent) {
+    // Keep a bounded model per owned weapon and hand. Reopening the forge or
+    // cycling equipment must not allocate another set of permanent materials.
+    const cache = D.weaponCache || (D.weaponCache = new Map());
     const old = D.sword,
-      w = buildWeapon(id);
-    w.g.position.copy(old.position);
-    w.g.scale.copy(old.scale);
-    old.parent.add(w.g);
-    old.parent.remove(old);
+      w = cache.get(id) || buildWeapon(id);
+    cache.set(id, w);
+    if (old !== w.g) {
+      w.g.position.copy(old.position);
+      w.g.scale.copy(old.scale);
+      w.g.rotation.set(0, 0, 0);
+      old.parent.add(w.g);
+      old.parent.remove(old);
+    }
     D.sword = w.g;
     D.sBase = w.base;
     D.sTip = w.tip;

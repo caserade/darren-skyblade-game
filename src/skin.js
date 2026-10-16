@@ -225,6 +225,29 @@ function boneSocket(B, x, y, z) {
   return s;
 }
 /* Mom: Darren's high-poly rigged model, a little bigger and rosier, with an apron and a flower */
+function buildClothApron() {
+  const g=new T.Group();
+  const cloth=buildClothApron.material||(buildClothApron.material=new T.MeshStandardMaterial({color:0xfff0d4,map:POLISH.textures.cloth,bumpMap:POLISH.textures.cloth,bumpScale:0.003,roughness:0.98,metalness:0,envMapIntensity:0.08,side:T.DoubleSide}));
+  const trim=buildClothApron.trim||(buildClothApron.trim=new T.MeshStandardMaterial({color:0xc57f91,roughness:0.98,envMapIntensity:0.08}));
+  function panel(width,height,y,z,material,pleat=0){
+    const geo=new T.PlaneGeometry(width,height,12,8),p=geo.attributes.position;
+    for(let i=0;i<p.count;i++){const x=p.getX(i),v=p.getY(i);p.setZ(i,z-0.11*Math.pow(x/(width/2),2)+Math.cos(x*60)*pleat*(0.5-v/height));}
+    geo.computeVertexNormals();const m=new T.Mesh(geo,material);m.position.y=y;m.castShadow=true;g.add(m);return m;
+  }
+  panel(0.49,0.36,-0.045,0.185,cloth,0.008);
+  panel(0.32,0.27,0.26,0.15,cloth);
+  panel(0.51,0.045,0.145,0.195,trim);
+  panel(0.49,0.022,-0.215,0.19,trim,0.008);
+  panel(0.15,0.115,-0.035,0.209,cloth);
+  panel(0.15,0.012,0.023,0.214,trim);
+  for(const s of [-1,1]){
+    const strap=mk(GEO.box,cloth,s*0.14,0.405,0.08,0.036,0.16,0.025);strap.rotation.x=-0.48;g.add(strap);
+    const tie=mk(GEO.box,trim,s*0.28,0.13,-0.05,0.035,0.04,0.38);tie.rotation.y=s*0.3;g.add(tie);
+    const loop=mk(GEO.mid,cloth,s*0.075,0.12,-0.28,0.085,0.045,0.018);loop.rotation.z=s*0.3;g.add(loop);
+    const ribbon=mk(GEO.box,cloth,s*0.045,0.04,-0.29,0.035,0.16,0.015);ribbon.rotation.z=s*0.25;g.add(ribbon);
+  }
+  return g;
+}
 const MOM_SHAPE = { scale: 1.16, tint: 0xffc4d0, apron: [0, 0.55, 0.19], flower: [0.2, 1.68, 0.12] };
 function buildMomSkinned(D) {
   const S = MOM_SHAPE;
@@ -246,11 +269,7 @@ function buildMomSkinned(D) {
   });
   // apron on the belly (rides the spine bone), flower behind the ear (rides the head)
   const ap = boneSocket(D.bones.spine, S.apron[0], S.apron[1], S.apron[2]);
-  const apM = mk(GEO.hemi, PROP.apron, 0, 0, 0, 0.21, 0.24, 0.09);
-  apM.rotation.x = PI / 2 + 0.1;
-  ap.add(apM);
-  ap.add(mk(GEO.cyl, PROP.apron, 0, 0.15, -0.21, 0.3, 0.035, 0.28)); // waist tie
-  ap.add(mk(GEO.mid, PROP.pink, 0, -0.04, 0.085, 0.06, 0.05, 0.02)); // pocket
+  ap.add(buildClothApron());
   const fl = boneSocket(D.bones.head, S.flower[0], S.flower[1], S.flower[2]);
   for (let i = 0; i < 5; i++) {
     const a = (i / 5) * TAU;
@@ -304,6 +323,7 @@ function buildGearwing(D) {
     m.roughness = 0.5;
     m.normalMap = lookTex('fine').normalMap;
     m.normalScale = new T.Vector2(0.25, 0.25);
+
     hueShift(m, 215, 0.75, 1.15);
     if (window.ENV_TEX) m.envMap = window.ENV_TEX;
     o.material = m;

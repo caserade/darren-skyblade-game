@@ -5,15 +5,17 @@ a Neopets look, and a Skyforge update inspired by mech hunting games like Daemon
 
 ## Play
 
-* **Easiest:** open `dist/DarrenSkyblade.html` in Chrome or Edge (one file, everything inside).
-* **From the source:** open `index.html` (it loads the files in `data/`, `assets/` and `src/`).
+* **On a PC:** double-click `Play Darren.cmd` (needs [Node.js LTS](https://nodejs.org)). It opens the game at
+  `http://127.0.0.1:4319/`, which keeps your save in one place. `Stop Darren.cmd` stops it.
+* **One file:** open `dist/DarrenSkyblade.html` in Chrome or Edge (everything inside, works offline).
 * **GitHub Pages:** Settings → Pages → deploy from the `main` branch, root folder. The game is `index.html`.
 
-An internet connection is needed the first time, for the three.js library.
+three.js and the fonts are bundled, so no internet connection is needed.
 
 ## What's in it
 
-* **Story mode:** Chapter 1, *The Trail to Cloudroost Peak*, and Chapter 2, *Firewood for Mom*.
+* **Story mode:** Chapter 1, *The Trail to Cloudroost Peak*, Chapter 2, *Firewood for Mom*, and Chapter 3,
+  *Stormglass Reach* (updraft rings, Stormlings, Wardlings, a young Stormbelly and Chomp Rex, and the Tempest Warden).
 * **Adventure: Cloud Utopia:** an open sky of islands with roaming enemies, resource crystals, waystones and a
   map with fast travel, contracts, the Skyforge and the Titanic Scion.
 * **Combat:** frame-based sword combos with Heavy branches, launchers, air strings, Wing Dash with perfect-dodge
@@ -28,7 +30,8 @@ An internet connection is needed the first time, for the three.js library.
 * **Big monsters in Cloud Utopia:** the Stormbelly Sky Drake (swoops from the sky), the Stormbelly Heavyweight
   (stomp shockwaves) and Chomp Rex (charge and bite). The Stormbellies eat snack bushes and grow through 7
   weight stages. New parts, armor, weapons and contracts come from them.
-* **Hangar menu:** Loadout, Forge, Parts, Contracts, Dumpling, Map, Moves and Settings (difficulty, camera, volume).
+* **Hangar menu:** Loadout, Forge, Parts, Contracts, Dumpling, Map, Moves, Field guide and Settings (difficulty,
+  camera, camera shake, volume, Graphics: Automatic / High detail / Performance). Menus work with a controller.
 
 ## Controls
 

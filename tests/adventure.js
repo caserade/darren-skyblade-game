@@ -320,13 +320,14 @@ const { chromium } = require('playwright-core');
           if (g.G.paused) g.G.paused = false;
           g.AD.ways.haven.lit = true;
           g.fastTravel('haven');
+          // the fade in and out run on game time (1.5): 0.9 s each
           setTimeout(() => {
-            window.T_(5);
+            window.T_(60);
             setTimeout(() => {
-              window.T_(5);
+              window.T_(60);
               res({ x: g.P.x.toFixed(1), z: g.P.z.toFixed(1), paused: g.G.paused, cine: g.G.cine });
-            }, 1000);
-          }, 1000);
+            }, 300);
+          }, 300);
         }),
     ),
   );

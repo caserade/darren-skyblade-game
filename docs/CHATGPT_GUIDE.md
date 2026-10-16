@@ -56,7 +56,7 @@ Paste this guide plus `README_FOR_AI.md` and the data file you want changed, the
 > ...in data/cast.js make the Stormbelly Heavyweight's stomp wind-up 1.3 seconds, its shockwave faster
 > (ring 30), and give the Heavyweight 8 more weight per bush eaten (perBush 0.25).
 
-**New story chapter** — see "Add Chapter 3" in README_FOR_AI.md.
+**New story chapter** — copy the shape of `data/stormglass.js` (Chapter 3) into a new `data/chapter4.js`; see "Add Chapter 3" in README_FOR_AI.md.
 
 ## Data cheat sheet
 
@@ -102,7 +102,7 @@ lrise aim aimL), `next` (Slash follow-up), `heavy` (Heavy branch), flags `kd lau
 
 | Want to change | File |
 | --- | --- |
-| Story text, chapter islands, fights | `data/game_data.js` (Chapter 1), `data/chapter2.js` |
+| Story text, chapter islands, fights | `data/game_data.js` (Chapter 1), `data/chapter2.js`, `data/stormglass.js` (Chapter 3) |
 | Parts, drops, weapons, armor, recipes, flight numbers | `data/forge.js` |
 | Cloud Utopia islands, dens, crystals, waystones, contracts | `data/adventure.js` |
 | Weapon 3D models | `src/weapons.js` |

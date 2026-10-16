@@ -3,8 +3,10 @@
 A 3D action game in the browser, in the style of Ragnarok Odyssey Ace with a Neopets look.
 Darren the red Shoyru crosses floating islands with his dog fox Ruffy.
 Two modes, picked on the title screen:
-* **Story**: Chapter 1, "The Trail to Cloudroost Peak" (rescue Ruffy from Grumblepeak) and Chapter 2,
-  "Firewood for Mom" (gather firewood in the snowy pines, beat Old Knotroot).
+* **Story**: Chapter 1, "The Trail to Cloudroost Peak" (rescue Ruffy from Grumblepeak), Chapter 2,
+  "Firewood for Mom" (gather firewood in the snowy pines, beat Old Knotroot) and Chapter 3, "Stormglass Reach"
+  (relight three sky beacons with updraft rings, Stormlings, Wardlings, a young Stormbelly and Chomp Rex, and the
+  Tempest Warden).
 * **Adventure: Cloud Utopia**: an open sky world inspired by mech hunting games like Daemon X Machina: Titanic Scion.
   Fly between islands, hunt roaming enemies and mine crystals for **parts**, take **contracts**, forge **weapons
   and armor** at the Skyforge, light waystones for fast travel, and beat the Titanic Scion.
@@ -12,8 +14,13 @@ Two modes, picked on the title screen:
 Everything Darren forges (weapons, armor) and his parts bag are shared by both modes.
 A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUIDE.md`.
 
-**To play:** double-click `index.html` (Chrome or Edge). It needs internet the first time to load three.js.
+**To play on a PC:** double-click `Play Darren.cmd` (needs Node.js LTS; it serves this folder on
+`http://127.0.0.1:4319/` and opens the browser; `Stop Darren.cmd` stops it). Or open `dist/DarrenSkyblade.html`.
+three.js, its add-ons and the fonts are bundled (`vendor/`, `assets/fonts/`), so no internet is needed.
 **To share one file:** run `python tools/build_single.py`; the result is `dist/DarrenSkyblade.html`.
+**This is the main version.** On 15 October a "Merged PC" copy combined this game with a hosted Sites version;
+its new content (Chapter 3, the field guide, input and save hardening, memory release, bundled libraries, the
+launcher) is folded in here (1.5.0). Where the two disagreed, this version's look and ids were kept.
 
 ---
 
@@ -21,13 +28,16 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 
 1. **No build step, no modules.** Every file is a plain `<script>` loaded by `index.html` in a fixed order and
    shares one global scope. Do not add `import`/`export`, npm packages or bundlers.
-2. **three.js r128** from cdnjs plus its `GLTFLoader` and post-processing files (r128 examples/js build, jsdelivr). Use the r128 API
+2. **three.js r128** (bundled in `vendor/`: `three.min.js`, `GLTFLoader` and the post-processing files from the r128
+   examples/js build; the claude.ai build swaps them for cdnjs/jsdelivr). Use the r128 API
    (`THREE.Geometry` no longer exists; use `BufferGeometry`). `T` is an alias for `THREE`.
 3. **Change content in `data/game_data.js` first.** Story text, level layout, zones, enemy HP, move frame data,
    player speeds and music volume all live there. Only touch `src/` when the behaviour itself must change.
-4. **Keep the load order** in `index.html`: `data/game_data.js`, `data/chapter2.js`, `data/forge.js`,
-   `data/adventure.js`, assets, then `core`, `look`, `models`, `props`, `skin`, `weapons`, `forge`, `arms`, `combat`,
-   `adventure`, `level`, `menu`. Later files may use anything defined in earlier ones.
+4. **Keep the load order** in `index.html`: `vendor/*`, `data/game_data.js`, `data/chapter2.js`, `data/forge.js`,
+   `data/adventure.js`, `data/stormglass.js`, `data/dumpling.js`, `data/cast.js`, assets, then `core`, `look`,
+   `models`, `props`, `skin`, `weapons`, `forge`, `arms`, `combat`, `adventure`, `stormglass-art`, `stormglass-world`,
+   `stormglass`, `polish`, `weight`, `dumpling`, `cast`, `stormglass-cast`, `level`, `menu`, `fieldguide`.
+   Later files may use anything defined in earlier ones.
    All files share one global scope, so two files must never declare the same `const` / `function` name.
 5. **All walkable ground is at height 0.** Islands are flat discs; bridges and stones connect them. A gap between
    islands is open sky, so falling in sends Darren back to his last safe spot.
@@ -45,6 +55,7 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `data/chapter2.js` | Chapter 2, "Firewood for Mom": its level, zones, story and ending (pushed onto `DATA.chapters`) |
 | `data/forge.js` | **Skyforge content**: parts, enemy drops, craftable weapons (blades, guns, bows, mortars), armor sets and pieces, recipes, Twin Arms moves, flight numbers |
 | `data/adventure.js` | **Cloud Utopia**: islands, links, dens, resource crystals, waystones, the forge, the Titan, contracts, dialogue |
+| `data/stormglass.js` | **Chapter 3, Stormglass Reach**: islands, bridges, updrafts, zones, story, Stormling / Wardling / Tempest Warden numbers and drops, the Stormsaber recipe |
 | `data/cast.js` | **Big monsters**: Sky Drake, Heavyweight, Chomp Rex: islands, health, poise, speed, attack timings and damage, weight stages, colours; their parts, drops, armor set, weapons, contracts and snack bushes |
 | `data/dumpling.js` | **Dumpling the cloud drake**: weight and belly numbers, Belly Bounce and trampoline numbers, snacks, bake recipes, snack bushes, snack drops, dialogue |
 | `assets/darren_model.js` | The rigged Darren model from Blender, as base64 (`window.DARREN_MODEL_B64`) |
@@ -63,6 +74,12 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `src/arms.js` | Twin Arms attacks, Darren's projectiles, boss weak-spot focus, flight |
 | `src/weight.js` | The 7 weight stages shared by Dumpling and the Stormbellies (`stageInfo`) |
 | `src/cast.js` | Big monsters: model building (eyes, lids, horns, spines, skinned wing membranes, teeth), the pose functions for every animation clip (`castPose`, `CAST_CLIPS`), their AI, belly jiggle, eating bushes, spawning on their islands |
+| `src/stormglass-art.js` | Chapter 3 enemy models: Stormling, Wardling, the Tempest Warden (crystals, cracks, moss, glowing cores) and their animation |
+| `src/stormglass-world.js` | Chapter 3 scenery: stone floors, arches, banners, beacons, updraft rings |
+| `src/stormglass.js` | Chapter 3 rules: updrafts refill flight, the Stormling's three-shot fan, the Warden's lightning circles, sky and fog |
+| `src/stormglass-cast.js` | Chapter 3's young Stormbelly (`youngbelly`) and young Chomp Rex (`youngrex`): the sculpted Cloud Utopia models at a smaller scale, amber warnings, one telegraphed attack each |
+| `src/polish.js` | Weathered stone, moss and gold textures for chapter 3 (cliffs, floor, lighting, mist), `applyGraphics()` for the three-way Graphics setting, `releaseLevelGeometry()` |
+| `src/fieldguide.js` | The Hangar's Field guide tab (Stormglass concept sheet and notes on every new creature) |
 | `src/dumpling.js` | Dumpling: builds his model (eyes, horns, fins, wings, cloud tufts, scarf), the belly / weight shader and jiggle spring, following and flying, feeding and digestion, Belly Bounce, trampoline, snack pickups and bushes, his oven, the HUD chip |
 | `src/adventure.js` | Cloud Utopia: dens, crystals, waystones, Gearwing and the Skyforge, contracts, the Titan, the map and fast travel |
 | `src/combat.js` | Effects (sparks, slash arcs, hit stars, warning marks, spikes), style rank, Darren's moves and state machine (`POSE`, `ATK`), damage, enemy AI with attack turns and poise, the shared boss AI |
@@ -70,7 +87,10 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `src/menu.js` | Title screen (Story / Adventure, chapter picker) and the Skyforge Hangar: Loadout, Forge, Parts, Contracts, Map, Moves, Settings |
 | `docs/CHATGPT_GUIDE.md` | Copy-paste prompts and a data cheat sheet for adding armor, weapons, contracts, islands |
 | `blender/darren_rig3.py` | Blender script that repairs, rigs, weights and animates Darren and exports `.blend/.fbx/.glb` |
-| `tools/build_single.py` | Inlines everything into one HTML file (`dist/`) |
+| `tools/build_single.py` | Inlines everything into one HTML file (`dist/`): scripts, CSS, fonts and images as data URIs |
+| `pc-server.cjs`, `Play Darren.cmd`, `Stop Darren.cmd` | The PC launcher: a tiny Node.js server for this folder on 127.0.0.1:4319 (game folders only) |
+| `vendor/` | three.js r128 and its add-ons (unchanged official files) |
+| `docs/reference/` | The Sites version's earlier Sky Drake rig and loader, kept for comparison only (not loaded by the game) |
 | `tools/sculpt_dumpling.py` | Sculpts Dumpling from smooth shapes and writes `assets/dumpling_model.js` (Python: numpy, scipy, scikit-image, pyfqmr) |
 | `tools/sculpt_lib.py`, `tools/sculpt_cast.py` | Sculpt the three monsters from smooth shapes (edit the `Part`s and paint functions, then run it) |
 | `tools/blender_import_cast.py` | Run in Blender on your PC: imports `models/*.glb` and saves editable `.blend` files |
@@ -78,7 +98,7 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 | `models/*.glb` | Rigged, animated exports of the three monsters (glTF 2.0, +Y up, facing +Z, metres) and `cast_animations.json` (clip durations, loops, event times) |
 | `tools/make_dumpling_art.py` | Builds the concept sheet `docs/art/dumpling_concept.png` and the portraits from `tests/dumpling_art.js` renders |
 | `tools/pack_assets.py` | Re-packs a new `darren.glb` or music file into `assets/*.js` |
-| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
+| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `story3.js` plays Chapter 3; `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
 
 ## How the game runs
 
@@ -162,11 +182,11 @@ combo follow-up lower `L1.cx`. Keep `cx <= st + ac + rc`.
 3. Add a zone in the right place in the chapter's `zones` with `island: 'lake'`, a `checkpoint` inside the island,
    `enemies`, `objective`, and optional `enter` / `clear` dialogue ids that exist in `DATA.story`.
 
-**Add Chapter 3.** Copy `data/chapter2.js` to `data/chapter3.js`, change `id`, `name`, `saveKey`, the islands
-(keep `home` at 0, 0 if Mom's house should be there), links, zones, story and ending, and add
-`<script src="data/chapter3.js"></script>` right after `chapter2.js` in `index.html`. It appears on the title
-screen automatically. Chapter options: `ruffy` ('caged' or 'follow'), `cage` (island id), `snowfall`,
-`woodpile`, `counter` ({ item, name }), `endingTalk`.
+**Add a new chapter (Chapter 4).** Chapter 3 is `data/stormglass.js`. Copy `data/chapter2.js` to `data/chapter4.js`,
+change `id`, `name`, `saveKey`, the islands (keep `home` at 0, 0 if Mom's house should be there), links, zones,
+story and ending, and add `<script src="data/chapter4.js"></script>` right after `stormglass.js` in `index.html`.
+It appears on the title screen automatically. Chapter options: `ruffy` ('caged' or 'follow'), `cage` (island id),
+`snowfall`, `woodpile`, `counter` ({ item, name }), `endingTalk`, `mom` (false keeps Mom at home), `updrafts`.
 
 **Add a new enemy type.** Write a `buildX()` model in `models.js` (return `root`, `b` body group and
 `shell: addShell(...)`), add an entry to `EDEF` in `combat.js`, and add its behaviour as a new `case` in
@@ -252,6 +272,24 @@ guns / bows / mortars, `shot`. Optional model: a `buildX()` in `src/weapons.js` 
   `tools/sculpt_cast.py`, which sets the count, size and inset.
 * To change a body: edit its function in `tools/sculpt_cast.py`, run `python3 tools/sculpt_cast.py <type>`,
   then `node tests/cast_export.js` to refresh the `.glb`.
+
+## Chapter 3: Stormglass Reach
+
+* Content is `data/stormglass.js` (pushed onto `DATA.chapters` like Chapter 2). It sets `mom: false`, so Mom stays
+  at home, and `updrafts`: cyan ring columns that lift Darren and refill flight (`updateStormglass()`).
+* Enemies: `stormling` (flies, flashes, fires three shards), `wardling` (front guard like a Thornback, breaks below
+  half health), `youngbelly` and `youngrex` (`src/stormglass-cast.js`), and the boss `tempest` (arm crystals, then
+  lightning circles below 60%, back core below 25%).
+* The young monsters use `buildCastModel()` with a wrapper group (`D.b`) so the shared enemy code can tilt and squash
+  them while `castPose()` drives the skeleton. Their ids are new on purpose: `heavyweight` and `chomprex` are the
+  Cloud Utopia monsters and their contracts.
+
+## Graphics setting
+
+* `SETTINGS.graphics`: `auto` (High on computers, Low on phones, and drops itself if frames run slow), `detail`
+  (High: bloom, filmic grade, dense grass, 30,000-triangle monsters close up) or `smooth` (Performance: no shadows,
+  pixel ratio 1, 10,000-triangle monsters). `gfxFor()` in `core.js` turns it into `SETTINGS.gfx` (`high` / `low`).
+* Saves from 1.4 that chose Low on a computer become Performance.
 
 ## Weight stages (all creatures)
 

@@ -246,6 +246,8 @@ function advUpdate(s, dt) {
   }
 }
 function spawnDen(id) {
+  // Defer this den until its shared creature rig loads; never spawn an invisible attacker.
+  if (ADV().dens[id].enemies.some(([type]) => EDEF[type].ready && !EDEF[type].ready())) return;
   const st = AD.dens[id],
     I = LV.islands[id];
   st.list = [];
@@ -353,7 +355,7 @@ function contractExplore(id) {
 function advBossDown(b) {
   bumpContracts(c => (c.type === 'titan' ? 1 : 0));
   AD.titanUp = false;
-  setTimeout(() => talk('titan_down'), 1200);
+  scheduleFlow(() => talk('titan_down'), 1200);
 }
 function contractObjective() {
   const a = UNLOCKS.contracts.active;

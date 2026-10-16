@@ -75,10 +75,41 @@ const TABS = [
   ['map', 'Map'],
   ['moves', 'Moves'],
   ['settings', 'Settings'],
+  ['guide', 'Field guide'],
 ];
 let panelTab = 'loadout',
   mapTimer = 0;
+let panelReturnFocus = null;
+function menuControls() {
+  const root = !$('panel').hidden ? $('panel') : $('menu');
+  return [...root.querySelectorAll('button,a[href],input,select')].filter(e => !e.disabled && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden');
+}
+function navigatePadMenu(button) {
+  if (button === 1) {
+    if (!$('panel').hidden) closePanel();
+    else if (G.mode === 'play' && G.paused) togglePause();
+    return;
+  }
+  const controls = menuControls();
+  if (!controls.length) return;
+  let active = document.activeElement, index = controls.indexOf(active);
+  if (index < 0) {
+    active = controls.includes($('contBtn')) ? $('contBtn') : controls.includes($('startBtn')) ? $('startBtn') : controls[0];
+    index = controls.indexOf(active);
+  }
+  if (button === 0) { active.focus(); active.click(); return; }
+  if (![12,13,14,15].includes(button)) return;
+  const direction = button === 12 || button === 14 ? -1 : 1;
+  if ((button === 14 || button === 15) && (active.type === 'range' || active.tagName === 'SELECT')) {
+    if (active.type === 'range') active.value = clamp(Number(active.value) + direction * (Number(active.step) || 1), Number(active.min), Number(active.max));
+    else active.selectedIndex = clamp(active.selectedIndex + direction, 0, active.options.length - 1);
+    active.dispatchEvent(new Event('input', {bubbles:true}));
+    active.dispatchEvent(new Event('change', {bubbles:true}));
+  } else controls[(index + direction + controls.length) % controls.length].focus();
+}
 function openPanel(tab) {
+  if ($('panel').hidden) panelReturnFocus = document.activeElement;
+  resetInput();
   panelTab = tab || panelTab;
   $('panel').hidden = false;
   const nav = $('ptabs');
@@ -104,25 +135,36 @@ function openPanel(tab) {
     map: fillMap,
     moves: fillMoves,
     settings: fillSettings,
+    guide: fillFieldGuide,
   })[panelTab](box);
+  const selected = nav.querySelector('[aria-selected="true"]');
+  if (selected) selected.focus();
 }
 function closePanel() {
   $('panel').hidden = true;
   clearInterval(mapTimer);
+  resetInput();
+  if (panelReturnFocus && panelReturnFocus.isConnected && panelReturnFocus.getClientRects().length) panelReturnFocus.focus();
 }
 $('panelClose').addEventListener('click', closePanel);
 $('optBtn').addEventListener('click', () => openPanel());
 addEventListener(
   'keydown',
   e => {
+    if (!$('panel').hidden && e.code === 'Tab') {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const controls = menuControls(), index = controls.indexOf(document.activeElement);
+      if (controls.length) controls[(index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+      return;
+    }
     if (
       !$('panel').hidden &&
-      (e.code === 'Escape' || ((e.code === 'KeyN' || e.code === 'Tab') && panelTab === 'map'))
+      (e.code === 'Escape' || (e.code === 'KeyN' && panelTab === 'map'))
     ) {
       e.preventDefault();
       e.stopImmediatePropagation();
       closePanel();
-      if (G.mode === 'play' && G.paused) togglePause();
     }
   },
   true,
@@ -690,6 +732,9 @@ function fillMoves(box) {
 
 /* Settings */
 function fillSettings(box) {
+  const visuals=section(box,'Visual quality'),choices=el('div','seg');
+  for(const [id,label] of [['auto','Automatic'],['detail','High detail'],['smooth','Performance']]){const b=el('button',(SETTINGS.graphics||'auto')===id?'on':'',label);b.type='button';b.setAttribute('aria-pressed',String((SETTINGS.graphics||'auto')===id));b.onclick=()=>{SETTINGS.graphics=id;applyGraphics();saveSettings();openPanel('settings');};choices.appendChild(b);}
+  visuals.appendChild(choices);visuals.appendChild(el('p','hint','Automatic balances detail and speed. High detail adds bloom and rich grass; Performance uses simpler models. Grass changes on the next level load.'));
   const d = section(box, 'Difficulty');
   const seg = el('div', 'seg');
   for (const id in DATA.difficulty) {
@@ -711,27 +756,6 @@ function fillSettings(box) {
       `Enemies hit ${Math.round(D.damage * 100)}% as hard, have ${Math.round(D.hp * 100)}% health, and up to ${D.attackers} attack at once.`,
     ),
   );
-  const gx = section(
-    box,
-    'Graphics',
-    'High: bloom, filmic colour, dense grass and soft shadows. Low: faster, for phones and older computers. Grass density changes when the next level loads.',
-  );
-  const gseg = el('div', 'seg');
-  for (const [id, name] of [
-    ['high', 'High'],
-    ['low', 'Low'],
-  ]) {
-    const b = el('button', SETTINGS.gfx === id ? 'on' : '', name);
-    b.type = 'button';
-    b.addEventListener('click', () => {
-      SETTINGS.gfx = id;
-      saveSettings();
-      setGfx(id);
-      openPanel('settings');
-    });
-    gseg.appendChild(b);
-  }
-  gx.appendChild(gseg);
   const s = section(box, 'Camera and sound');
   const slider = (label, key, min, max, step, fmt, apply) => {
     const r = el('div', 'srow'),
@@ -757,6 +781,7 @@ function fillSettings(box) {
     s.appendChild(r);
   };
   slider('Camera sensitivity', 'sens', 0.3, 2.5, 0.05, v => Math.round(v * 100) + '%');
+  slider('Camera shake', 'shake', 0, 100, 5, v => v + '%');
   const inv = el('label', 'chk'),
     cb = document.createElement('input');
   cb.type = 'checkbox';

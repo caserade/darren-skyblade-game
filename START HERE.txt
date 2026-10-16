@@ -1,0 +1,21 @@
+DARREN: SKYBLADE HUNT 1.5 - PC EDITION
+
+PLAY
+Double-click "Play Darren.cmd". Your browser opens the game at http://127.0.0.1:4319/
+(it needs Node.js LTS from nodejs.org; it is already on this PC).
+Double-click "Stop Darren.cmd" when you are finished.
+No Node.js? Open dist\DarrenSkyblade.html instead (one file, works offline; its save is separate).
+
+WHAT IS IN IT
+Story: Chapter 1 The Trail to Cloudroost Peak, Chapter 2 Firewood for Mom, Chapter 3 Stormglass Reach.
+Adventure: Cloud Utopia with Dumpling, the Sky Drake (Gale Spires), the Heavyweight (Sparkstone Mesa)
+and Chomp Rex (Thorn Wastes). Field guide: Hangar > Field guide.
+WASD move, mouse camera, J slash, K heavy, Space jump, V fly, Shift dash, Q lock on, E use, P Hangar.
+Controllers work in the menus too. Hangar > Settings > Graphics: Automatic, High detail or Performance.
+
+SAVES
+The game saves in the browser you play in, at http://127.0.0.1:4319/ . The earlier "Merged PC" copy used the
+same address, so its progress carries over. The claude.ai version keeps its own separate save.
+
+FOR AI HELPERS
+Read README_FOR_AI.md first. CHANGELOG.md lists every update.

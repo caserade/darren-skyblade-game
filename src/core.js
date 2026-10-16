@@ -38,6 +38,7 @@ try {
 renderer.outputEncoding = T.sRGBEncoding;
 renderer.toneMapping = T.ACESFilmicToneMapping; // look.js switches this when post-processing is on
 renderer.physicallyCorrectLights = false;
+
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = T.PCFSoftShadowMap;
 let pixelRatio = Math.min(window.devicePixelRatio || 1, COARSE ? 1.5 : 2);
@@ -81,23 +82,40 @@ const G = {
 /* ---------- settings and unlocks, remembered by the browser ---------- */
 function loadJSON(k) {
   try {
-    return JSON.parse(localStorage.getItem(k) || 'null') || {};
+    const value = JSON.parse(localStorage.getItem(k) || 'null');
+    return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
   } catch (_) {
     return {};
   }
 }
 function saveJSON(k, v) {
   try {
-    localStorage.setItem(k, JSON.stringify(v));
-  } catch (_) {}
+    const text = JSON.stringify(v), previous = localStorage.getItem(k);
+    // Keep the pre-repair value once, including malformed saves, before replacing it.
+    if (previous !== null && !localStorage.getItem(k + '.recovery')) {
+      try { localStorage.setItem(k + '.recovery', previous); } catch (_) {}
+    }
+    localStorage.setItem(k, text);
+    return true;
+  } catch (_) { return false; }
 }
 // Settings menu values: difficulty id, camera sensitivity (1 = normal), invert camera up/down, music and sound 0..100
 const SETTINGS = Object.assign(
-  { difficulty: 'normal', sens: 1, invertY: false, music: 70, sfx: 70 },
+  { difficulty: 'normal', sens: 1, invertY: false, music: 70, sfx: 70, graphics:'auto', shake:70 },
   loadJSON(DATA.meta.settingsKey),
 );
 // weapons found so far, the equipped weapon and finished chapters
 const UNLOCKS = Object.assign({ weapons: [], weapon: 'emberfang', done: [] }, loadJSON(DATA.meta.unlockKey));
+for (const key of ['weapons', 'done'])
+  UNLOCKS[key] = Array.isArray(UNLOCKS[key]) ? [...new Set(UNLOCKS[key].filter(x => typeof x === 'string'))] : [];
+for (const [key, lo, hi, fallback] of [['sens', 0.3, 2.5, 1], ['music', 0, 100, 70], ['sfx', 0, 100, 70], ['shake', 0, 100, 70]])
+  SETTINGS[key] = typeof SETTINGS[key] === 'number' && Number.isFinite(SETTINGS[key]) ? clamp(SETTINGS[key], lo, hi) : fallback;
+if (!DATA.difficulty[SETTINGS.difficulty]) SETTINGS.difficulty = 'normal';
+// graphics: Automatic (High on computers, Low on phones; drops itself if frames run slow), High detail, Performance.
+// Saves from 1.4 stored gfx 'low' as a choice on computers: keep it as Performance.
+if (!['auto', 'smooth', 'detail'].includes(SETTINGS.graphics)) SETTINGS.graphics = SETTINGS.gfx === 'low' && !COARSE ? 'smooth' : 'auto';
+const gfxFor = mode => (mode === 'detail' ? 'high' : mode === 'smooth' ? 'low' : COARSE ? 'low' : 'high');
+SETTINGS.invertY = SETTINGS.invertY === true;
 for (const id in DATA.weapons) if (DATA.weapons[id].start && UNLOCKS.weapons.indexOf(id) < 0) UNLOCKS.weapons.push(id);
 const DIFF = () => DATA.difficulty[SETTINGS.difficulty] || DATA.difficulty.normal;
 function saveSettings() {
@@ -109,12 +127,34 @@ function saveUnlocks() {
 
 /* ---------- input ---------- */
 const In = { mx: 0, my: 0, cdx: 0, cdy: 0, held: {}, q: [], camIdle: 9, tmx: 0, tmy: 0 };
-function press(a) {
-  In.q.push(a);
+const heldSources = new Map();
+function press(a, source = 'script') {
+  if (!heldSources.has(a)) heldSources.set(a, new Set());
+  heldSources.get(a).add(source);
+  if (In.q.length < 32) In.q.push(a);
   In.held[a] = true;
 }
-function release(a) {
-  In.held[a] = false;
+function release(a, source = 'script') {
+  const sources = heldSources.get(a);
+  if (sources) sources.delete(source);
+  In.held[a] = !!(sources && sources.size);
+}
+function resetInput() {
+  heldSources.clear();
+  for (const k in keys) keys[k] = false;
+  for (const k in In.held) In.held[k] = false;
+  In.q.length = 0;
+  In.mx = In.my = In.tmx = In.tmy = In.cdx = In.cdy = 0;
+  pad.mx = pad.my = pad.cx = pad.cy = 0;
+  padAct.fill(null);
+  dragging = false;
+  if (window.__game) {
+    P.buf = null;
+    // Losing focus or opening a menu cancels a held charge; it must not be
+    // interpreted as an intentional release attack on the next play frame.
+    if (P.st === 'charge') { P.st = 'move'; P.f = 0; }
+  }
+  dispatchEvent(new Event('gameinputreset'));
 }
 const KEY = {
   KeyJ: 'light',
@@ -141,32 +181,35 @@ const KEY = {
 };
 const keys = {};
 addEventListener('keydown', e => {
-  if (/^(Arrow|Space)/.test(e.code) && G.mode === 'play') e.preventDefault();
+  const inMenu = G.mode !== 'play' || G.paused || !$('panel').hidden;
+  if (!inMenu && /^(Arrow|Space)/.test(e.code)) e.preventDefault();
   if (e.repeat) return;
-  keys[e.code] = true;
+  if (!inMenu) keys[e.code] = true;
   if (e.code === 'KeyP' || e.code === 'Escape') {
+    if (!$('panel').hidden) { closePanel(); return; }
     togglePause();
     return;
   }
-  if (e.code === 'Enter' && (G.mode !== 'play' || G.paused)) {
-    $('startBtn').click();
+  if (e.code === 'Enter' && inMenu) {
+    // Native focused controls handle Enter. Never launch a new game behind a panel.
+    if (!$('panel').hidden || e.target.closest?.('button,input,select,a')) return;
+    e.preventDefault();
+    (!$('contBtn').hidden ? $('contBtn') : $('startBtn')).click();
     return;
   }
+  if (inMenu) return;
   const a = KEY[e.code];
   if (a && G.mode === 'play' && !G.paused) {
-    press(a);
+    press(a, 'key:' + e.code);
     e.preventDefault();
   }
 });
 addEventListener('keyup', e => {
   keys[e.code] = false;
   const a = KEY[e.code];
-  if (a) release(a);
+  if (a) release(a, 'key:' + e.code);
 });
-addEventListener('blur', () => {
-  for (const k in keys) keys[k] = false;
-  for (const k in In.held) In.held[k] = false;
-});
+addEventListener('blur', resetInput);
 
 let dragging = false;
 const MB = ['light', 'lock', 'heavy'];
@@ -181,13 +224,13 @@ canvas.addEventListener('mousedown', e => {
     } catch (_) {}
   }
   const a = MB[e.button];
-  if (a) press(a);
+  if (a) press(a, 'mouse:' + e.button);
   e.preventDefault();
 });
 addEventListener('mouseup', e => {
   dragging = false;
   const a = MB[e.button];
-  if (a) release(a);
+  if (a) release(a, 'mouse:' + e.button);
 });
 canvas.addEventListener('contextmenu', e => e.preventDefault());
 addEventListener('mousemove', e => {
@@ -202,7 +245,10 @@ document.addEventListener('pointerlockchange', () => {
 });
 let wasLocked = false;
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden && G.mode === 'play' && !G.paused) togglePause();
+  if (document.hidden) {
+    resetInput();
+    if (G.mode === 'play' && !G.paused) togglePause();
+  }
 });
 
 /* touch */
@@ -234,7 +280,7 @@ addEventListener(
     lx = 0,
     ly = 0;
   sz.addEventListener('pointerdown', e => {
-    if (sid !== null) return;
+    if (sid !== null || G.mode !== 'play' || G.paused || G.cine) return;
     sid = e.pointerId;
     ox = e.clientX;
     oy = e.clientY;
@@ -267,8 +313,9 @@ addEventListener(
   };
   sz.addEventListener('pointerup', sEnd);
   sz.addEventListener('pointercancel', sEnd);
+  sz.addEventListener('lostpointercapture', sEnd);
   cz.addEventListener('pointerdown', e => {
-    if (cid !== null) return;
+    if (cid !== null || G.mode !== 'play' || G.paused || G.cine) return;
     cid = e.pointerId;
     lx = e.clientX;
     ly = e.clientY;
@@ -288,22 +335,29 @@ addEventListener(
   };
   cz.addEventListener('pointerup', cEnd);
   cz.addEventListener('pointercancel', cEnd);
+  cz.addEventListener('lostpointercapture', cEnd);
+  addEventListener('gameinputreset', () => {
+    sid = cid = null;
+    knob.style.transform = '';
+    document.querySelectorAll('.tb.dn').forEach(b => b.classList.remove('dn'));
+  });
   document.querySelectorAll('.tb').forEach(b => {
     const a = b.dataset.a;
     b.addEventListener('pointerdown', e => {
       e.preventDefault();
       b.classList.add('dn');
-      if (G.mode === 'play' && !G.paused) press(a);
+      if (G.mode === 'play' && !G.paused) press(a, 'touch:' + a);
       try {
         b.setPointerCapture(e.pointerId);
       } catch (_) {}
     });
     const up = () => {
       b.classList.remove('dn');
-      release(a);
+      release(a, 'touch:' + a);
     };
     b.addEventListener('pointerup', up);
     b.addEventListener('pointercancel', up);
+    b.addEventListener('lostpointercapture', up);
     b.addEventListener('contextmenu', e => e.preventDefault());
   });
 })();
@@ -324,9 +378,11 @@ function pollPad() {
   } catch (_) {}
   if (!gp) {
     pad.mx = pad.my = pad.cx = pad.cy = 0;
+    padAct.forEach((a, i) => { if (a) release(a, 'pad:' + i); });
+    padAct.length = padPrev.length = 0;
     return;
   }
-  const dz = v => (Math.abs(v || 0) < 0.2 ? 0 : v),
+  const dz = v => (!Number.isFinite(v) || Math.abs(v) < 0.2 ? 0 : clamp(v, -1, 1)),
     b = i => !!(gp.buttons[i] && gp.buttons[i].pressed);
   pad.mx = dz(gp.axes[0]);
   pad.my = dz(gp.axes[1]);
@@ -354,15 +410,15 @@ function pollPad() {
     const now = b(i);
     if (now && !padPrev[i]) {
       if (a === 'pause') togglePause();
-      else if (G.mode !== 'play' || G.paused) {
-        if (i === 0) $('startBtn').click();
+      else if (G.mode !== 'play' || G.paused || !$('panel').hidden) {
+        if (window.navigatePadMenu) navigatePadMenu(i);
       } else if (a) {
-        press(a);
+        press(a, 'pad:' + i);
         padAct[i] = a;
       }
     }
     if (!now && padPrev[i] && padAct[i]) {
-      release(padAct[i]);
+      release(padAct[i], 'pad:' + i);
       padAct[i] = null;
     }
     padPrev[i] = now;

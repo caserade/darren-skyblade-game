@@ -1,5 +1,52 @@
 # Changelog
 
+## 1.5.0 — 2026-10-15 — The merged edition (Claude version as the main game)
+
+Folded in everything new from the 15 October "Merged PC" copy, which combined this game with the hosted
+Sites version. Where the two disagreed, this version's look, ids and saves were kept.
+
+**New from the merge**
+- **Chapter 3: Stormglass Reach.** Lantern Landing, Gale Gardens, the Shattered Observatory and the Eye of the
+  Storm. Cyan updraft rings lift Darren and refill flight. Stormlings fire a three-shard fan, Wardlings block
+  from the front, and the Tempest Warden has arm crystals, lightning circles and an exposed back core. New
+  parts (Stormglass, Tempest Core) and a new weapon, the **Stormsaber**.
+- **Field guide** in the Hangar, with the Stormglass concept sheet.
+- **Graphics: Automatic / High detail / Performance**, and a **Camera shake** slider.
+- **Controller menus:** the D-pad and A/B move through and press menu buttons; Tab cycles inside the Hangar.
+- **Sturdier saves and input:** damaged saves are repaired (with a one-time `.recovery` copy), keys can't get
+  stuck when the window loses focus, a held charge is cancelled by menus, and story timers pause with the game.
+- **Memory:** a monster's rig, textures and unique geometry are released when it dies, and a level's geometry
+  when it is unloaded. Weapons and enemy materials are cached instead of rebuilt.
+- **Camera:** it no longer pushes through Stormglass pillars or big enemies.
+- **Offline play:** three.js r128, its add-ons and the fonts are bundled (`vendor/`, `assets/fonts/`). The
+  single-file build inlines them, so `dist/DarrenSkyblade.html` works without internet.
+- **PC launcher:** `Play Darren.cmd` / `Stop Darren.cmd` serve the game folder on `127.0.0.1:4319` (game
+  folders only, never the network). It takes over from the old Merged PC launcher, and the save carries over.
+- Mom's new woven apron.
+
+**Kept from this version (where the merge had changed it)**
+- Cloud Utopia's Chomp Rex is `chomprex` again (the merge renamed it `castrex`). Saves from the merged copy are
+  converted automatically.
+- Chapter 3's Stormbelly and Chomp Rex were simple primitive models that shared those names. They are now
+  **young versions of the sculpted monsters** (`youngbelly`, `youngrex`), with the same amber warnings and timings.
+- Satin skin on Darren, Mom, Ruffy and Gearwing (the merge made them fully matte), faceted boss crystals, and the
+  original title-screen style.
+- The weathered stone textures, mist and warmer light now apply to Chapter 3 only. Chapters 1-2 and Cloud Utopia
+  keep their bright look, and the doubled contact shadows were removed.
+- Automatic graphics means High on computers (the merge always used Low), with the frame-rate safety net.
+  The distance LOD for the monsters stays on.
+
+**Fixes found while merging**
+- A resource crystal right behind Darren in Skyforge Haven blocked the whole view: it is now cut away whole.
+- Mom no longer appears on Chapter 3's first island.
+- Parts a chapter boss drops are now collected when the ending starts. Before, the ending cleared the gems
+  still in the air, so the Tempest Core could vanish and the Stormsaber could not be forged. Parts dropped
+  far from Darren after Grumblepeak and Old Knotroot were lost the same way.
+- Garbled characters in the field guide. The concept-sheet link is hidden in the single-file build, where
+  browsers block it.
+- Removed calls to Sky Drake functions that only existed in the Sites version.
+- New test: `tests/story3.js` plays Chapter 3 from start to finish.
+
 ## 1.4.3 — 2026-10-14 — Monster refinement pass
 
 - **Chomp Rex:** a new grin. The teeth are now chunky cartoon teeth (broad root, rounded tapered tip, convex

@@ -136,7 +136,7 @@ const { chromium } = require('playwright-core');
   await ev(() => window.T_(60));
   log('ending', await ev(() => { const g = window.__game; return { line: g.TALK.line, x: g.P.x.toFixed(1), z: g.P.z.toFixed(1), cnt: document.getElementById('cntT').textContent }; }));
   await ev(() => window.T_(60)); await snap('17_ending');
-  await ev(() => window.talkAll()); await p.waitForTimeout(900);
+  await ev(() => window.talkAll()); await p.waitForTimeout(900); await ev(() => window.T_(60)); // story flow timers run on game time (1.5)
   log('end card', await ev(() => { const g = window.__game; return { mode: g.G.mode, sub: document.getElementById('mSub').textContent, res: document.getElementById('result').textContent, done: g.UNLOCKS.done }; }));
   await ev(() => window.T_(5)); await snap('18_end_card');
   console.log(errs.length ? errs.slice(0, 10).join('\n') : 'no errors');

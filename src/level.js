@@ -5,6 +5,30 @@
    CH is one entry of DATA.chapters; loadChapter(id) switches chapters.
    ===================================================================== */
 let CH = DATA.chapters[0]; // the chapter being played (DATA.chapters, see data/game_data.js and data/chapter2.js)
+const flowTimers = [];
+function cancelFlow() {
+  flowTimers.length = 0;
+  $('fade').classList.remove('on');
+  TALK.q = [];
+  TALK.i = TALK.shown = 0;
+  TALK.line = TALK.done = null;
+  G.cine = false;
+  $('talk').hidden = true;
+}
+function scheduleFlow(done, milliseconds) {
+  flowTimers.push({ done, remaining: milliseconds / 1000, chapter: CH });
+}
+function updateFlow(dt) {
+  if (G.mode !== 'play' || G.paused) return;
+  for (const timer of [...flowTimers]) {
+    timer.remaining -= dt;
+    if (timer.remaining > 0) continue;
+    const i = flowTimers.indexOf(timer);
+    if (i < 0) continue;
+    flowTimers.splice(i, 1);
+    if (timer.chapter === CH) timer.done();
+  }
+}
 function chapterById(id) {
   if (DATA.adventure && id === DATA.adventure.id) return DATA.adventure;
   return DATA.chapters.find(c => c.id === id) || DATA.chapters[0];
@@ -180,8 +204,9 @@ function buildLevel() {
       }
     }
     // grass: instanced clumps of crossed blades that sway in the wind (see GRASS in look.js)
-    const N = Math.round(I.r * I.r * (SETTINGS.gfx === 'high' ? 6 : 2.2)),
+    const N = CH.id === 'ch3' ? 0 : Math.round(I.r * I.r * (SETTINGS.gfx === 'high' ? 6 : 2.2)),
       inst = new T.InstancedMesh(GRASS.geo, I.deco.indexOf('snow') >= 0 ? GRASS.matSnow : GRASS.mat, N),
+
       dd = new T.Object3D();
     for (let i = 0; i < N; i++) {
       const a = rnd(TAU),
@@ -248,8 +273,12 @@ function buildLevel() {
 }
 /* switch to another chapter: throw away the old level and build the new one */
 function loadChapter(id) {
+  cancelFlow();
+  resetInput();
+  clearEnemies();
   CH = chapterById(id);
-  if (LV.root) scene.remove(LV.root);
+  dumpHide(); // The companion's cached rig survives chapter changes.
+  if (LV.root) {releaseLevelGeometry(LV.root);scene.remove(LV.root);}
   LV.root = new T.Group();
   scene.add(LV.root);
   Object.assign(LV, {
@@ -267,6 +296,8 @@ function loadChapter(id) {
   clearGems();
   clearShots();
   buildLevel();
+  buildStormglass();
+  polishChapter();
   if (isAdventure()) advBuild();
   for (const Z of CH.zones) LV.zoneState[Z.id] = { state: 'idle', seen: false, named: false };
   // hide backdrop islands that would sit too close to this chapter's islands, and centre the clouds on it
@@ -301,7 +332,7 @@ function loadChapter(id) {
 function placeHome() {
   const home = LV.islands.home;
   if (LV.mom) {
-    LV.mom.root.visible = !!home;
+    LV.mom.root.visible = !!home && CH.mom !== false; // chapter 3 starts far from home: Mom stays there
     if (home) {
       LV.mom.root.position.set(home.x - 2.3, 0, home.z + 0.4);
       LV.mom.root.rotation.y = 1.2;
@@ -635,9 +666,9 @@ function levelConstrain() {
       dz = P.z - c.z,
       d = Math.hypot(dx, dz),
       m = c.r + 0.35;
-    if (d < m && d > 0.001 && P.y < 3) {
-      P.x = c.x + (dx / d) * m;
-      P.z = c.z + (dz / d) * m;
+    if (d < m && P.y < (c.height || 3)) {
+      P.x = c.x + (d > 0.001 ? dx / d : 1) * m;
+      P.z = c.z + (d > 0.001 ? dz / d : 0) * m;
     }
   }
 }
@@ -687,27 +718,35 @@ function checkpointAt(i) {
   LV.lastSafe = { x: Z.checkpoint[0], z: Z.checkpoint[1] };
 }
 function save() {
-  try {
-    localStorage.setItem(
-      CH.saveKey,
-      JSON.stringify({
+  return saveJSON(CH.saveKey, {
         cp: LV.cp,
         cleared: CH.zones.filter(z => LV.zoneState[z.id].state === 'cleared').map(z => z.id),
         taken: LV.pickups.filter(p => p.taken).map(p => p.id),
         t: G.stats.t,
-      }),
-    );
-  } catch (_) {}
+      });
 }
 function loadSave(ch) {
   try {
-    return JSON.parse(localStorage.getItem((ch || CH).saveKey) || 'null');
+    const chapter = ch || CH;
+    const value = JSON.parse(localStorage.getItem(chapter.saveKey) || 'null');
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+    return {
+      ...value,
+      cp: Number.isInteger(value.cp) ? clamp(value.cp, 0, chapter.zones.length - 1) : 0,
+      cleared: Array.isArray(value.cleared) ? value.cleared.filter(id => chapter.zones.some(z => z.id === id)) : [],
+      taken: Array.isArray(value.taken) ? value.taken.filter(id => typeof id === 'string') : [],
+      t: typeof value.t === 'number' && Number.isFinite(value.t) ? Math.max(0, value.t) : 0,
+    };
   } catch (_) {
     return null;
   }
 }
 function clearSave() {
   try {
+    const previous = localStorage.getItem(CH.saveKey);
+    if (previous !== null && !localStorage.getItem(CH.saveKey + '.recovery')) {
+      try { localStorage.setItem(CH.saveKey + '.recovery', previous); } catch (_) {}
+    }
     localStorage.removeItem(CH.saveKey);
   } catch (_) {}
 }
@@ -921,7 +960,7 @@ function bossEnding() {
   setObjective('');
   G.cine = true;
   TALK.line = null;
-  setTimeout(() => {
+  scheduleFlow(() => {
     const c = LV.cage;
     c.broken = true;
     c.shards.forEach(s => {
@@ -945,7 +984,7 @@ function bossEnding() {
     G.shake = 0.5;
     LV.ruffyMode = 'happy';
     LV.ruffyRun = true;
-    setTimeout(() => talk('boss_defeated', finale), 1300);
+    scheduleFlow(() => talk('boss_defeated', finale), 1300);
   }, 1500);
 }
 function finale() {
@@ -966,22 +1005,24 @@ function finale() {
     LV.ruffyFollow = false;
     LV.ruffyMode = 'happy';
     if (LV.woodStore) LV.woodStore.fill(1);
+    collectGems(); // parts the boss dropped are Darren's even if they were still in the air
     clearEnemies();
     cam.fx = P.x;
     cam.fz = P.z;
     cam.yaw = -1.1;
     Music.setMood(0);
-    fade(0, () => talk(CH.endingTalk || 'ending', () => setTimeout(endChapter, 600)));
+    fade(0, () => talk(CH.endingTalk || 'ending', () => scheduleFlow(endChapter, 600)));
   });
 }
 function fade(to, done) {
   const f = $('fade');
   f.classList.toggle('on', to > 0);
-  setTimeout(done, 900);
+  scheduleFlow(done, 900);
 }
 function endChapter() {
   G.mode = 'win';
   G.cine = false;
+  collectGems(); // anything still in the air when a chapter ends is Darren's
   clearSave();
   if (UNLOCKS.done.indexOf(CH.id) < 0) UNLOCKS.done.push(CH.id);
   saveUnlocks();
@@ -1010,7 +1051,13 @@ function endChapter() {
 }
 /* ---------- flow ---------- */
 function clearEnemies() {
-  G.enemies.forEach(e => scene.remove(e.m.root));
+  clearStormHazards();
+  G.enemies.forEach(e => {
+    scene.remove(e.m.root);
+    if(e.m.dispose)e.m.dispose();
+    // Weak-spot materials animate independently per boss and cannot be shared.
+    for (const part of Object.values(e.m.parts || {})) part.mat.dispose();
+  });
   G.enemies.length = 0;
   G.projs.forEach(p => scene.remove(p.m));
   G.projs.length = 0;
@@ -1082,6 +1129,8 @@ function resetWorld(saveData) {
   setObjective(obj);
 }
 function startGame(cont) {
+  cancelFlow();
+  resetInput();
   const sv = cont ? loadSave() : null;
   if (!cont) clearSave();
   G.mode = 'play';
@@ -1127,6 +1176,8 @@ function faint() {
   if (window.menuShown) menuShown();
 }
 function retry() {
+  cancelFlow();
+  resetInput();
   // remove the fight that was in progress and respawn at the checkpoint
   const cpZone = CH.zones[LV.cp];
   for (const Z of CH.zones) {
@@ -1173,6 +1224,7 @@ function retry() {
 }
 function togglePause() {
   if (G.mode !== 'play') return;
+  resetInput();
   G.paused = !G.paused;
   if (G.paused) {
     try {
@@ -1209,6 +1261,8 @@ function showTitle() {
 }
 /* pause menu: back to the title screen (progress, parts and gear are kept) */
 function quitToTitle() {
+  cancelFlow();
+  resetInput();
   if (G.mode === 'play' && !isAdventure()) save();
   G.paused = false;
   G.cine = false;
@@ -1422,6 +1476,9 @@ function updateCamera(rdt) {
     Math.max(fy - 1.5 + 0.5, fy + Math.sin(cam.pitch) * cam.dist),
     fz - cz * cam.dist * cp - sx * menuOff,
   );
+  // Pull in before stone pillars, harvest crystals and large enemy bodies. Height keeps flight
+  // above them clear, without raycasting the entire animated scene each frame.
+  if (G.mode === 'play') constrainCamera(fx, fy + 0.25, fz);
   G.shake = Math.max(0, G.shake - rdt * 1.8);
   // field-of-view kick on big hits
   const baseFov = camera.aspect < 1 ? 74 : 62;
@@ -1430,10 +1487,42 @@ function updateCamera(rdt) {
     camera.fov = baseFov + G.fovKick;
     camera.updateProjectionMatrix();
   }
-  const sh = G.shake * G.shake * 0.9;
+  const sh = G.shake * G.shake * 0.9 * (SETTINGS.shake/100);
   camera.position.x += rnd(-sh, sh);
   camera.position.y += rnd(-sh, sh);
   camera.lookAt(fx + cz * menuOff, fy + 0.25, fz - sx * menuOff);
+}
+
+function constrainCamera(x, y, z) {
+  const dx = camera.position.x - x, dy = camera.position.y - y, dz = camera.position.z - z;
+  const a = dx * dx + dz * dz;
+  if (a < 0.0001) return;
+  let limit = 1;
+  const clip = (cx, cz, radius, bottom, height, cutaway) => {
+    const ox = x - cx, oz = z - cz, r = radius + 0.22;
+    const b = 2 * (ox * dx + oz * dz), cc = ox * ox + oz * oz - r * r;
+    const disc = b * b - 4 * a * cc;
+    if (cutaway && cc <= 0 && y >= bottom - 0.2 && y <= bottom + height + 0.2) {
+      cutaway.visible = false;
+      return;
+    }
+    if (disc < 0 || cc <= 0) return;
+    const t = (-b - Math.sqrt(disc)) / (2 * a), h = y + dy * t;
+    if (t > 0 && t < limit && h >= bottom - 0.2 && h <= bottom + height + 0.2) {
+      // A crystal immediately behind Darren cannot safely pull the camera into his face.
+      // Temporarily cut away that foreground model, like the existing tree cutaway.
+      if (cutaway && t * Math.hypot(dx, dy, dz) < 2.4) cutaway.visible = false;
+      else limit = Math.max(0.05, t - 0.025);
+    }
+  };
+  for (const c of LV.colliders) if (c.camera) clip(c.x, c.z, c.r, 0, c.height);
+  for (const e of G.enemies) {
+    // a resource crystal right behind Darren is cut away whole (pedestal too), like the tree cutaway
+    if (e.d.static) e.m.root.visible = true;
+    if (e.alive && (e.d.static || e.h > 2.5))
+      clip(e.x, e.z, e.r * 1.15, e.y, Math.max(e.h, (e.d.cameraHeight || 0) * e.sc), e.d.static ? e.m.root : null);
+  }
+  if (limit < 1) camera.position.set(x + dx * limit, y + dy * limit, z + dz * limit);
 }
 
 /* ---------- per-frame world animation ---------- */
@@ -1623,6 +1712,7 @@ function tick(rdt) {
     renderFrame();
     return;
   }
+  updateFlow(rdt);
   let scale = 1;
   if (G.hitstop > 0) {
     G.hitstop -= rdt;
@@ -1667,9 +1757,11 @@ function tick(rdt) {
         if (isAdventure()) advUpdate(s, dt);
         for (let i = G.enemies.length - 1; i >= 0; i--) if (G.enemies[i].gone) G.enemies.splice(i, 1);
         updateProjs(s);
+        updateStormglass(dt);
       } else for (const e of G.enemies) if (e.d.boss && !e.alive) updateEnemy(e, s);
       for (const r of ringPool) {
         if (!r.on) continue;
+        if (G.cine && r.dmg) continue;
         r.life -= dt;
         r.r += r.vr * dt;
         r.m.scale.setScalar(r.r);
@@ -1717,9 +1809,10 @@ function tick(rdt) {
   }
   if (Snd.ctx) Music.tick();
   updateWorld(rdt, dt);
+  updatePolish(dt);
   animDarren(dt, rdt);
-  if (isAdventure()) animDumpling(rdt);
-  else if (DUMP.on) dumpHide();
+  if (isAdventure() && !G.paused && !G.cine) animDumpling(rdt);
+  else if (!isAdventure() && DUMP.on) dumpHide();
   updateFx(dt);
   snowP.update(rdt);
   sparks.update(dt);
@@ -1732,9 +1825,9 @@ function tick(rdt) {
   world.dome.position.copy(camera.position);
   world.sea.position.x = camera.position.x;
   world.sea.position.z = camera.position.z;
-  world.sea.material.uniforms.uT.value = G.time + performance.now() / 1000;
+  world.sea.material.uniforms.uT.value = G.time;
   world.sea.material.uniforms.uCam.value.copy(camera.position);
-  GRASS.uT.value = performance.now() / 1000;
+  GRASS.uT.value = G.time;
   updateBlobs();
   ambTick(rdt);
   for (const c of world.clouds) {
@@ -1748,9 +1841,10 @@ function tick(rdt) {
   if (slowN >= 90) {
     const avg = slowAcc / slowN;
     slowAcc = slowN = 0;
-    if (avg > 0.03) {
+    if (avg > 0.03 && (SETTINGS.graphics||'auto')==='auto') {
       if (POST.on && pixelRatio <= 1.25) setGfx('low');
       else if (pixelRatio > 1) {
+
         pixelRatio = Math.max(1, pixelRatio - 0.5);
         resize();
       } else if (renderer.shadowMap.enabled) {

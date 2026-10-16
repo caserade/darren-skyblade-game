@@ -430,7 +430,7 @@ function renderFrame() {
   if (POST.on) POST.composer.render();
   else renderer.render(scene, camera);
 }
-if (!SETTINGS.gfx) SETTINGS.gfx = COARSE ? 'low' : 'high';
+SETTINGS.gfx = gfxFor(SETTINGS.graphics);
 
 /* ---------- contact shadows: soft dark blobs that ground characters (on every quality level) ---------- */
 const BLOB_TEX = (function () {

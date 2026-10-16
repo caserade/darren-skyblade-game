@@ -1,6 +1,6 @@
 {
   "name": "darren-skyblade-game",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "private": true,
   "description": "Darren: Skyblade Hunt, a browser 3D action game. No build step: open index.html. These packages are only for the automated tests.",
   "scripts": {

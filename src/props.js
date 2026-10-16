@@ -53,10 +53,9 @@ function buildMom() {
   const D = buildDarren();
   D.sword.visible = false;
   D.root.scale.setScalar(1.22);
-  const ap = mk(GEO.hemi, PROP.apron, 0, 0.16, 0.12, 0.26, 0.3, 0.2);
-  ap.rotation.x = -PI / 2 - 0.12;
+  const ap = buildClothApron();
+  ap.position.set(0,0.16,0.19);
   D.body.add(ap);
-  D.body.add(mk(GEO.cyl, PROP.apron, 0, 0.44, 0.06, 0.29, 0.03, 0.26));
   const fl = grp(D.head, 0.25, 0.72, 0.1);
   for (let i = 0; i < 5; i++) {
     const a = (i / 5) * TAU;

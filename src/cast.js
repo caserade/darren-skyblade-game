@@ -480,6 +480,24 @@ function buildCastModel(type, opts) {
   }
   root.traverse(o => o.isMesh && (o.castShadow = true));
   buildWings(type, D, M, skeleton);
+  D.dispose = () => {
+    if (D.disposed) return;
+    D.disposed = true;
+    const sharedGeo = new Set([...Object.values(GEO), ...Object.values(CAST_GEO), ...Object.values(CAST_TOOTH)]);
+    const sharedTex = new Set(Object.values(CAST_TEX));
+    const geos = new Set(), mats = new Set(), textures = new Set(), rigs = new Set();
+    root.traverse(o => {
+      if (o.geometry && !sharedGeo.has(o.geometry)) geos.add(o.geometry);
+      if (o.skeleton) rigs.add(o.skeleton);
+      if (o.material) for (const m of Array.isArray(o.material) ? o.material : [o.material]) mats.add(m);
+    });
+    for (const l of Object.values(D.lodSet)) mats.add(l.mat);
+    for (const m of mats) {
+      for (const v of Object.values(m)) if (v && v.isTexture && !sharedTex.has(v) && v !== window.ENV_TEX) textures.add(v);
+      m.dispose();
+    }
+    geos.forEach(g => g.dispose()); textures.forEach(t => t.dispose()); rigs.forEach(s => s.dispose());
+  };
   return D;
 }
 
@@ -995,6 +1013,7 @@ function castUpdate(e, s) {
       if (k <= 0) {
         scene.remove(M.root);
         e.gone = true;
+        M.dispose();
       }
     }
     castAnimate(e, dt);

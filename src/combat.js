@@ -1229,7 +1229,7 @@ function perfectDodge() {
   burst(sparks, P.x, P.y + 0.8, P.z, 24, 5, 0.5, 0x7cd0ff, 0.4);
 }
 function damagePlayer(dmg, fx, fz, heavy) {
-  if (G.mode !== 'play' || P.st === 'dead') return false;
+  if (G.mode !== 'play' || G.paused || G.cine || P.st === 'dead') return false;
   if (P.st === 'dash' && P.f >= 2 && P.f <= 14) {
     if (!P.perfDone && P.f <= 11.5) perfectDodge();
     return false;
@@ -1940,7 +1940,7 @@ EDEF.titan = Object.assign({}, EDEF.boss, {
   }),
 });
 // resource crystals: they never move or attack; break them for parts
-EDEF.node = { name: 'Resource Crystal', hp: 60, r: 0.8, h: 1.5, w: 9, build: buildNode, sc: 1, static: true };
+EDEF.node = { name: 'Resource Crystal', hp: 60, r: 0.8, h: 1.5, cameraHeight: 2.6, w: 9, build: buildNode, sc: 1, static: true };
 for (const k in EDEF) if (DATA.enemies[k] && DATA.enemies[k].name) EDEF[k].name = DATA.enemies[k].name;
 const ATTACKING = { wind: 1, atk: 1, dig: 1, mark: 1 }; // states that hold an attack turn
 const PMAT = {
@@ -1949,6 +1949,7 @@ const PMAT = {
   feather: new T.MeshBasicMaterial({ color: 0x9ff2e4 }),
 };
 function spawnEnemy(type, x, z, o) {
+  if (EDEF[type].ready && !EDEF[type].ready()) return null;
   o = o || {};
   const d = EDEF[type],
     dd = DATA.enemies[type] || {},
@@ -2003,8 +2004,8 @@ function spawnEnemy(type, x, z, o) {
     (e.m.b || e.m.root).add(c);
     e.m.crown = c;
     const ring = new T.Mesh(
-      new T.RingGeometry(0.7, 0.95, 32),
-      new T.MeshBasicMaterial({ color: 0xffc93c, transparent: true, opacity: 0.55, depthWrite: false }),
+      GEO.eliteRing || (GEO.eliteRing = new T.RingGeometry(0.7, 0.95, 32)),
+      MAT.eliteRing || (MAT.eliteRing = new T.MeshBasicMaterial({ color: 0xffc93c, transparent: true, opacity: 0.55, depthWrite: false })),
     );
     ring.rotation.x = -PI / 2;
     ring.position.y = 0.04;
@@ -2014,6 +2015,7 @@ function spawnEnemy(type, x, z, o) {
   e.m.root.scale.setScalar(0.01);
   e.m.root.position.set(x, 0, z);
   scene.add(e.m.root);
+  if (d.monster) castInit(e);
   G.enemies.push(e);
   burst(puffs, x, 0.6, z, 10, 3, 0.5, elite ? 0xffe08a : 0xffffff, 0.9, { a: 0.6 });
   sfx('pop');
@@ -2050,6 +2052,7 @@ function token(e) {
 }
 function killEnemy(e) {
   e.alive = false;
+  if (e.m.warning) e.m.warning.visible = false;
   e.tok = false;
   e.under = false;
   e.dead = 0.01;
@@ -2076,7 +2079,7 @@ function killEnemy(e) {
 }
 function enemyTakeHit(e, dmg, A, nx, nz) {
   const d = e.d;
-  if (e.type === 'thorn' && !e.broken && e.st !== 'rec' && e.st !== 'stun' && e.st !== 'down') {
+  if ((e.type === 'thorn' || e.type === 'wardling') && !e.broken && e.st !== 'rec' && e.st !== 'stun' && e.st !== 'down') {
     const front = Math.abs(angDiff(e.face, Math.atan2(-nx, -nz))) < 1.25;
     if (front && !A.breath) {
       e.hp = Math.max(1, e.hp - dmg * 0.12);
@@ -2089,7 +2092,7 @@ function enemyTakeHit(e, dmg, A, nx, nz) {
   e.shown = 300;
   G.tgt = e;
   G.tgtT = 200;
-  if (e.type === 'thorn' && !e.broken && (e.hp < e.max * 0.5 || (A.breath && e.hp < e.max * 0.8))) {
+  if ((e.type === 'thorn' || e.type === 'wardling') && !e.broken && (e.hp < e.max * 0.5 || (A.breath && e.hp < e.max * 0.8))) {
     e.broken = true;
     e.m.spikes.forEach(s => (s.visible = false));
     burst(sparks, e.x, 1.6, e.z, 26, 8, 0.6, 0xfff0d6, 0.5, { g: 10 });
@@ -2270,10 +2273,13 @@ function updateEnemy(e, s) {
     return;
   }
   if (e.dead > 0) {
+    if (e.d.ai === 'young') animateYoung(e, dt);
+    if (e.type === 'stormling' || e.type === 'wardling') animateStormEnemy(e, dt);
     e.dead += s;
     const k = Math.max(0, 1 - e.dead / 16);
     M.root.scale.setScalar(e.sc * k * (1 + (1 - k) * 0.6));
     if (e.dead > 16) {
+      if (M.dispose) M.dispose();
       scene.remove(M.root);
       e.gone = true;
     }
@@ -2281,6 +2287,7 @@ function updateEnemy(e, s) {
   }
   if (e.d.boss) {
     updateBoss(e, s);
+    if (e.type === 'tempest') animateStormEnemy(e, dt);
     return;
   }
   if (e.d.static) {
@@ -2409,7 +2416,7 @@ function updateEnemy(e, s) {
       break;
     default:
       enemyBrain(e, s, dt, dist, ang, hover, turn, pAlive);
-      if (e.st === 'wind' && e.type !== 'bark') sq = 1 - Math.min(0.28, e.t * 0.008);
+      if (e.st === 'wind' && e.type !== 'bark' && e.d.ai !== 'young') sq = 1 - Math.min(0.28, e.t * 0.008);
       if (e.st === 'atk' && e.type === 'thorn') pitch = e.t * 0.35;
   }
   if (e.tok && !ATTACKING[e.st]) e.tok = false;
@@ -2448,14 +2455,14 @@ function updateEnemy(e, s) {
     M.fR.position.z = 0.05 - (mv ? Math.sin(tt) * 0.14 : 0);
     M.b.rotation.z = mv ? Math.sin(tt) * 0.09 : 0;
     M.cap.rotation.x = e.st === 'atk' ? 0.5 : e.type === 'snow' && e.st === 'wind' ? -0.4 : 0;
-  } else if (e.type === 'gust') {
+  } else if (e.type === 'gust' || e.type === 'stormling') {
     const fl = Math.sin(G.time * 22 + e.ph) * 0.7;
     M.wL.rotation.z = fl;
     M.wR.rotation.z = -fl;
   } else if (e.type === 'bolt') {
     M.tl.rotation.y = Math.sin(tt * 0.6) * 0.4;
     M.hd.rotation.x = e.st === 'wind' ? -0.4 : 0;
-  } else if (e.type === 'thorn') {
+  } else if (e.type === 'thorn' || e.type === 'wardling') {
     const sw = mv ? Math.sin(tt * 0.5) * 0.4 : 0;
     M.aL.rotation.x = sw;
     M.aR.rotation.x = -sw;
@@ -2470,6 +2477,8 @@ function updateEnemy(e, s) {
     M.rR.rotation.x = -sw;
     M.leaf.rotation.z = Math.sin(G.time * 3 + e.ph) * 0.2;
   }
+  if (e.type === 'stormling' || e.type === 'wardling') animateStormEnemy(e, dt);
+  if (e.d.ai === 'young') animateYoung(e, dt); // src/stormglass-cast.js
 }
 function enemyBrain(e, s, dt, dist, ang, hover, turn, pAlive) {
   e.cool -= s;
@@ -2484,7 +2493,9 @@ function enemyBrain(e, s, dt, dist, ang, hover, turn, pAlive) {
     e.z += Math.cos(sa) * k * sp * dt;
   };
   const ready = e.cool <= 0 && pAlive;
-  switch (e.type) {
+  if (e.type === 'stormling') return stormlingBrain(e, s, dt, dist, ang, hover, turn, pAlive); // src/stormglass.js
+  if (e.d.ai === 'young') return youngBrain(e, s, dt, dist, ang, hover, turn, pAlive); // src/stormglass-cast.js
+  switch (e.d.ai || e.type) {
     case 'puff':
       if (e.st === 'chase') {
         turn(6);

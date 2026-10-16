@@ -8,15 +8,35 @@ const PARTS = DATA.parts,
 const TUNE0 = Object.assign({}, TUNE); // the player's numbers before armor
 const GEAR = { def: 0, power: 0, flight: 0, noChill: 0 };
 // make sure the saved progress has every field (older saves don't)
-UNLOCKS.parts = UNLOCKS.parts || {};
-UNLOCKS.armor = UNLOCKS.armor || [];
+const savedObject = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+const savedIds = value => Array.isArray(value) ? [...new Set(value.filter(x => typeof x === 'string'))] : [];
+UNLOCKS.parts = savedObject(UNLOCKS.parts);
+for (const id in UNLOCKS.parts) {
+  const n = UNLOCKS.parts[id];
+  UNLOCKS.parts[id] = typeof n === 'number' && Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
+}
+UNLOCKS.armor = savedIds(UNLOCKS.armor);
 UNLOCKS.equip = Object.assign(
   { R: UNLOCKS.weapon || 'emberfang', L: null, head: null, body: null, arms: null, legs: null },
-  UNLOCKS.equip || {},
+  savedObject(UNLOCKS.equip),
 );
-UNLOCKS.style = UNLOCKS.style || 'classic';
-UNLOCKS.way = UNLOCKS.way || [];
-UNLOCKS.contracts = Object.assign({ active: [], prog: {}, done: {} }, UNLOCKS.contracts || {});
+UNLOCKS.style = UNLOCKS.style === 'twin' ? 'twin' : 'classic';
+UNLOCKS.way = savedIds(UNLOCKS.way);
+UNLOCKS.contracts = Object.assign({ active: [], prog: {}, done: {} }, savedObject(UNLOCKS.contracts));
+UNLOCKS.contracts.active = savedIds(UNLOCKS.contracts.active);
+UNLOCKS.contracts.prog = savedObject(UNLOCKS.contracts.prog);
+UNLOCKS.contracts.done = savedObject(UNLOCKS.contracts.done);
+// saves from the 15 October "Merged PC" copy called the Cloud Utopia Chomp Rex 'castrex': it is 'chomprex' again
+if (UNLOCKS.contracts.active.includes('castrex')) UNLOCKS.contracts.active = [...new Set(UNLOCKS.contracts.active.map(id => (id === 'castrex' ? 'chomprex' : id)))];
+for (const field of ['prog', 'done'])
+  if ('castrex' in UNLOCKS.contracts[field]) {
+    UNLOCKS.contracts[field].chomprex = Math.max(UNLOCKS.contracts[field].chomprex || 0, UNLOCKS.contracts[field].castrex || 0);
+    delete UNLOCKS.contracts[field].castrex;
+  }
+for (const field of ['prog', 'done']) for (const id in UNLOCKS.contracts[field]) {
+  const n = UNLOCKS.contracts[field][id];
+  UNLOCKS.contracts[field][id] = typeof n === 'number' && Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
+}
 
 /* ---------- parts bag ---------- */
 function partCount(id) {
@@ -69,9 +89,10 @@ function updateGems(dt) {
     if (g.t > 0.5 && d < 7 && P.st !== 'dead') {
       // magnet
       const sp = 14 / Math.max(0.4, d);
-      g.vx = damp(g.vx, (dx / d) * sp, 10, dt);
-      g.vy = damp(g.vy, (dy / d) * sp, 10, dt);
-      g.vz = damp(g.vz, (dz / d) * sp, 10, dt);
+      const safeD = Math.max(d, 0.001);
+      g.vx = damp(g.vx, (dx / safeD) * sp, 10, dt);
+      g.vy = damp(g.vy, (dy / safeD) * sp, 10, dt);
+      g.vz = damp(g.vz, (dz / safeD) * sp, 10, dt);
     } else {
       g.vy -= 18 * dt;
       g.vx = damp(g.vx, 0, 1.5, dt);
@@ -97,6 +118,14 @@ function updateGems(dt) {
       }
     }
   }
+}
+// give Darren every part still in the air (used when a chapter ends, so nothing a boss dropped is lost)
+function collectGems() {
+  for (const g of G.gems) {
+    scene.remove(g.m);
+    addPart(g.id, 1);
+  }
+  G.gems.length = 0;
 }
 function clearGems() {
   G.gems.forEach(g => scene.remove(g.m));
@@ -327,6 +356,7 @@ function updateWeaponChip() {
 }
 /* the L-arm weapon (Twin Arms): built into the left-hand socket of the rigged model */
 function equipLeft(id) {
+  if (id && (!WEAPONS[id] || !UNLOCKS.weapons.includes(id))) id = null;
   P.weaponL = id || null;
   const D = P.m;
   if (!D || !D.sockL) return;
@@ -334,7 +364,9 @@ function equipLeft(id) {
   D.swordL = null;
   D.sBaseL = D.sTipL = null;
   if (!id) return;
-  const w = buildWeapon(id);
+  const cache = D.leftWeaponCache || (D.leftWeaponCache = new Map());
+  const w = cache.get(id) || buildWeapon(id);
+  cache.set(id, w);
   D.sockL.add(w.g);
   D.swordL = w.g;
   D.sBaseL = w.base;

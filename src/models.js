@@ -329,7 +329,7 @@ function buildGustling() {
     wR = grp(b, -0.36, 0.1, -0.05);
   wL.add(mk(GEO.hi, MAT.tealLt, 0.22, 0, 0, 0.28, 0.05, 0.17));
   wR.add(mk(GEO.hi, MAT.tealLt, -0.22, 0, 0, 0.28, 0.05, 0.17));
-  const tl = new T.Mesh(new T.TorusGeometry(0.2, 0.06, 12, 24, PI * 1.5), MAT.teal);
+  const tl = new T.Mesh(GEO.gustTail || (GEO.gustTail = new T.TorusGeometry(0.2, 0.06, 12, 24, PI * 1.5)), MAT.teal);
   tl.position.set(0, -0.05, -0.5);
   tl.rotation.y = PI / 2;
   tl.castShadow = true;
@@ -426,7 +426,7 @@ function buildBoss() {
   rk(torso, 0.6, 3.1, -0.5, 0.7, 0.4, 0.8, MAT.moss, 1);
   const head = grp(torso, 0, 3.0, 0.7);
   rk(head, 0, 0, 0, 0.85, 0.75, 0.85, MAT.stoneD, 0.9);
-  const eyeM = new T.MeshBasicMaterial({ color: 0xffb040 });
+  const eyeM = MAT.bossEyes || (MAT.bossEyes = new T.MeshBasicMaterial({ color: 0xffb040 }));
   head.add(mk(GEO.mid, eyeM, 0.3, 0.05, 0.72, 0.12, 0.09, 0.08));
   head.add(mk(GEO.mid, eyeM, -0.3, 0.05, 0.72, 0.12, 0.09, 0.08));
   const parts = {};
@@ -461,11 +461,11 @@ function buildBoss() {
 }
 
 /* Snowcap: a frosty Puffcap that throws snowballs */
-const SNOWCAP_M = { cap: toy(0x7cc6f2), spot: toy(0xffffff), body: toy(0xeaf6ff) };
+const SNOWCAP_M = { cap: toy(0x7cc6f2), spot: toy(0xffffff), body: toy(0xeaf6ff), scarf: toy(0xff6a5c) };
 function buildSnowcap() {
   const M = buildPuffcap(SNOWCAP_M.cap, SNOWCAP_M.spot, SNOWCAP_M.body);
   // a little scarf and a snowball in hand
-  const sc = new T.Mesh(new T.TorusGeometry(0.33, 0.07, 10, 24), toy(0xff6a5c));
+  const sc = new T.Mesh(GEO.snowScarf || (GEO.snowScarf = new T.TorusGeometry(0.33, 0.07, 10, 24)), SNOWCAP_M.scarf);
   sc.rotation.x = PI / 2;
   sc.position.y = 0.6;
   M.b.add(sc);
@@ -524,7 +524,7 @@ function buildBarkling() {
 function buildCrown() {
   const g = new T.Group(),
     m = MAT.gold;
-  const band = new T.Mesh(new T.CylinderGeometry(0.2, 0.18, 0.1, 20, 1, true), m);
+  const band = new T.Mesh(GEO.crownBand || (GEO.crownBand = new T.CylinderGeometry(0.2, 0.18, 0.1, 20, 1, true)), m);
   band.castShadow = true;
   g.add(band);
   for (let i = 0; i < 5; i++) {
@@ -539,10 +539,12 @@ function buildCrown() {
 function buildKnotroot() {
   const root = new T.Group(),
     b = grp(root);
-  const bark = toy(0x7a4e2c, { roughness: 0.6, clearcoat: 0.2 }),
-    barkD = flat(0x5a3820),
-    moss = flat(0x5b9a4a),
-    leafM = flat(0x4fae52);
+  const materials = buildKnotroot.materials || (buildKnotroot.materials = {
+    bark: toy(0x7a4e2c, { roughness: 0.6, clearcoat: 0.2 }), barkD: flat(0x5a3820),
+    moss: flat(0x5b9a4a), leafM: flat(0x4fae52), ring: toy(0xd8b07a, {roughness:0.5}),
+    innerRing: toy(0xd8b07a), eyes: new T.MeshBasicMaterial({color:0xd8ff7a})
+  });
+  const {bark, barkD, moss, leafM} = materials;
   const sapMat = () =>
     new T.MeshStandardMaterial({
       color: 0xc8ff5a,
@@ -566,9 +568,9 @@ function buildKnotroot() {
     torso.add(mk(GEO.box, barkD, Math.cos(a) * 1.55, 1.4 + rnd(-0.4, 0.4), Math.sin(a) * 1.45, 0.18, 2.4, 0.3));
   }
   // flat top with rings, moss and a crown of leaves
-  torso.add(mk(GEO.cyl, toy(0xd8b07a, { roughness: 0.5 }), 0, 2.86, 0, 1.5, 0.06, 1.4));
+  torso.add(mk(GEO.cyl, materials.ring, 0, 2.86, 0, 1.5, 0.06, 1.4));
   torso.add(mk(GEO.cyl, barkD, 0, 2.9, 0, 1.0, 0.04, 0.95));
-  torso.add(mk(GEO.cyl, toy(0xd8b07a), 0, 2.93, 0, 0.5, 0.04, 0.48));
+  torso.add(mk(GEO.cyl, materials.innerRing, 0, 2.93, 0, 0.5, 0.04, 0.48));
   const leaves = grp(torso, 0, 3.0, -0.3);
   for (let i = 0; i < 9; i++) {
     const a = (i / 9) * TAU,
@@ -581,7 +583,7 @@ function buildKnotroot() {
   torso.add(mk(GEO.rock, moss, -1.2, 0.8, 0.5, 0.5, 0.3, 0.5));
   // face
   const head = grp(torso, 0, 1.8, 1.35);
-  const eyeM = new T.MeshBasicMaterial({ color: 0xd8ff7a });
+  const eyeM = materials.eyes;
   for (const s of [1, -1]) {
     head.add(mk(GEO.mid, MAT.black, s * 0.5, 0, 0, 0.32, 0.26, 0.12));
     head.add(mk(GEO.mid, eyeM, s * 0.5, 0, 0.08, 0.15, 0.12, 0.06));
@@ -622,10 +624,10 @@ function buildKnotroot() {
 
 /* the Titanic Scion: Grumblepeak's build with violet crystals and darker, purple-grey stone */
 function buildTitan() {
-  const M = buildBoss(),
-    stone = flat(0x6f6880),
-    stoneD = flat(0x4f4860),
-    moss = flat(0x7a5aa8);
+  const M = buildBoss();
+  const {stone,stoneD,moss} = buildTitan.materials || (buildTitan.materials = {
+    stone:flat(0x6f6880),stoneD:flat(0x4f4860),moss:flat(0x7a5aa8)
+  });
   M.root.traverse(o => {
     if (!o.isMesh) return;
     if (o.material === MAT.stone) o.material = stone;
@@ -656,15 +658,17 @@ function buildTitan() {
 }
 /* resource crystal (Cloud Utopia): break it for parts. o.part picks the colour */
 function buildNode(o) {
-  const col = new T.Color((DATA.parts[(o && o.part) || 'ember'] || { color: '#ff8a1e' }).color),
-    m = new T.MeshStandardMaterial({
+  const col = new T.Color((DATA.parts[(o && o.part) || 'ember'] || { color: '#ff8a1e' }).color);
+  const cache = buildNode.materials || (buildNode.materials = new Map());
+  const m = cache.get(col.getHex()) || new T.MeshStandardMaterial({
       color: col,
       emissive: col,
       emissiveIntensity: 0.45,
       roughness: 0.2,
       flatShading: true,
-    }),
-    root = new T.Group(),
+    });
+  cache.set(col.getHex(),m);
+  const root = new T.Group(),
     b = grp(root);
   b.add(mk(GEO.rock0, MAT.stoneD, 0, 0.2, 0, 0.9, 0.4, 0.8));
   for (let i = 0; i < 6; i++) {
@@ -944,11 +948,13 @@ function buildSky() {
       a = rnd(TAU),
       r = rnd(60, 230);
     g.position.set(Math.cos(a) * r, rnd(-25, 40), 90 + Math.sin(a) * r);
+
     g.userData.z = g.position.z;
     scene.add(g);
     clouds.push(g);
   }
-  return { sun, far, clouds, dome, sea, hemi };
+  return { sun, far, clouds, dome, sea, hemi, rim };
+
 }
 
 /* ---------- grass and rocks shared by every level ---------- */
