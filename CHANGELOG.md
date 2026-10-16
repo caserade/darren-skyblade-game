@@ -1,5 +1,13 @@
 # Changelog
 
+## Tools — 2026-10-16 — Meshy AI boss maker
+
+- `tools/meshy_make.cjs` and `Make Titanic Scion.cmd`: make a boss model with the Meshy AI API on your own PC
+  (text or image to 3D, remeshed to 100,000 triangles, 2K PBR textures, then Meshy's auto-rig and walk / run
+  clips when the shape is two-legged). The key stays in `meshy_key.txt` on the PC: it is only sent to Meshy's
+  API, never to download links, and never printed, logged, committed or served. Tested end to end against a
+  stand-in server; the first real run is Michael's. (Replaces the Tripo tool, which was removed.)
+
 ## 1.5.1 — 2026-10-16 — Low volumetric fog instead of eye-level clouds
 
 - **Low fog between the islands.** A height fog now pools under and between the islands: thick below the island

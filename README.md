@@ -33,6 +33,23 @@ three.js and the fonts are bundled, so no internet connection is needed.
 * **Hangar menu:** Loadout, Forge, Parts, Contracts, Dumpling, Map, Moves, Field guide and Settings (difficulty,
   camera, camera shake, volume, Graphics: Automatic / High detail / Performance). Menus work with a controller.
 
+## Making boss models with Meshy AI (optional)
+
+The game can use [Meshy](https://docs.meshy.ai)'s text/image-to-3D API to make better boss models.
+The calls run on your own PC, with your own key:
+
+1. Put your Meshy API key in a file called `meshy_key.txt` in this folder (just the key, one line). It is never
+   uploaded to GitHub (`.gitignore`) and the game's local server never serves it.
+2. Double-click `Make Titanic Scion.cmd`. It sends the description in `tools/meshy/scion.txt` (shape, then
+   PBR textures, then Meshy's auto-rig for two-legged characters) and saves everything in `models/meshy/scion/`:
+   `model.glb`, the texture maps, `rigged.glb` with `walking.glb` / `running.glb` if it could be rigged, a preview
+   picture and `info.json` (task ids and credits used).
+3. Tell Claude it's done: the model is then brought into the game (game-size LODs, the boss's crystal weak spots,
+   its skeleton and moves).
+
+Other bosses: `node tools/meshy_make.cjs --name <boss> --prompt-file <file>` or `--image <concept.png>`
+(add `--hd` for finer geometry, `--texture 4k` for sharper maps; both cost more credits).
+
 ## Controls
 
 Keyboard: WASD move · mouse camera · J / click Slash (R-arm) · K / right-click Heavy (L-arm) · Space jump ·

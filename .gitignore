@@ -4,3 +4,5 @@ dist/test.html
 dist/_check.js
 dist/artifact.html
 __pycache__/
+meshy_key.txt
+models/meshy/
