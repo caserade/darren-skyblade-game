@@ -1,7 +1,0 @@
-A colossal stone golem titan boss for a cute, stylized fantasy action game (soft Pixar / Neopets look).
-Hulking rounded body built from carved grey-violet boulders with soft green moss patches and cracks,
-a small head sunk between huge rounded shoulders, two glowing amber eyes under a heavy angry stone brow,
-very long thick arms ending in giant boulder fists, short sturdy legs with flat stone feet.
-Large glowing violet crystal clusters grow out of both forearms, and a crown of violet crystal spikes rises from its upper back.
-Standing in a neutral A-pose, arms away from the body, full body, symmetric, front view, plain light background, clean game-ready model.
-negative: text, letters, pedestal, base, ground plane, scenery, multiple characters, weapons, armor, cape

@@ -87,7 +87,6 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 | `src/menu.js` | Title screen (Story / Adventure, chapter picker) and the Skyforge Hangar: Loadout, Forge, Parts, Contracts, Map, Moves, Settings |
 | `docs/CHATGPT_GUIDE.md` | Copy-paste prompts and a data cheat sheet for adding armor, weapons, contracts, islands |
 | `blender/darren_rig3.py` | Blender script that repairs, rigs, weights and animates Darren and exports `.blend/.fbx/.glb` |
-| `tools/tripo_make.cjs`, `tools/tripo/*.txt`, `Make Titanic Scion.cmd` | Generates boss models with the Tripo 3D API on Michael's PC (key in `tripo_key.txt`, never committed or served). Output: `models/tripo/<name>/` (git-ignored raw files) |
 | `tools/build_single.py` | Inlines everything into one HTML file (`dist/`): scripts, CSS, fonts and images as data URIs |
 | `pc-server.cjs`, `Play Darren.cmd`, `Stop Darren.cmd` | The PC launcher: a tiny Node.js server for this folder on 127.0.0.1:4319 (game folders only) |
 | `vendor/` | three.js r128 and its add-ons (unchanged official files) |

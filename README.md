@@ -33,21 +33,6 @@ three.js and the fonts are bundled, so no internet connection is needed.
 * **Hangar menu:** Loadout, Forge, Parts, Contracts, Dumpling, Map, Moves, Field guide and Settings (difficulty,
   camera, camera shake, volume, Graphics: Automatic / High detail / Performance). Menus work with a controller.
 
-## Making boss models with Tripo (optional)
-
-The game can use [Tripo](https://developers.tripo3d.com)'s text/image-to-3D API to make boss models.
-The calls run on your own PC, with your own key:
-
-1. Put your Tripo API key in a file called `tripo_key.txt` in this folder (just the key, one line). It is never
-   uploaded to GitHub (`.gitignore`) and the game's local server never serves it.
-2. Double-click `Make Titanic Scion.cmd`. It sends the prompt in `tools/tripo/scion.txt`, waits a few minutes,
-   and saves `models/tripo/scion/model.glb` (textured), `rigged.glb` (Tripo's skeleton, if it can rig the shape),
-   a preview image and `info.json` (task ids and credits used).
-3. Tell Claude it's done: the model is then brought into the game (game-size LODs, the boss's crystal weak spots,
-   its skeleton and moves).
-
-Other bosses: `node tools/tripo_make.cjs --name <boss> --prompt-file <file>` or `--image <concept.png>`.
-
 ## Controls
 
 Keyboard: WASD move · mouse camera · J / click Slash (R-arm) · K / right-click Heavy (L-arm) · Space jump ·
