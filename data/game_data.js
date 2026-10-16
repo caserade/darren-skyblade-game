@@ -15,7 +15,7 @@ window.DARREN_DATA = {
   meta: {
     title: 'Darren',
     subtitle: 'Skyblade Hunt',
-    version: '1.5.1',
+    version: '1.5.2',
     settingsKey: 'darrenSkyblade.settings', // browser slot for the Settings menu
     unlockKey: 'darrenSkyblade.unlocks', // browser slot for unlocked weapons and finished chapters
   },
@@ -517,11 +517,14 @@ window.DARREN_DATA = {
   },
 
   /* ---------------- difficulty (picked in Settings) ----------------
-     damage: how hard enemies hit, hp: enemy health, attackers: how many enemies may attack at the same time. */
+     damage: how hard enemies hit, hp: enemy health, attackers: how many enemies may attack at the same time.
+     bossDamage / bossHp: the same for the chapter bosses, the Titan and the Cloud Utopia monsters.
+     Normal is tuned so the whole game can be played through (checked by tests/balance.js), while bosses
+     still need you to watch their wind-ups and dodge. */
   difficulty: {
-    easy: { name: 'Easy', damage: 0.55, hp: 0.8, attackers: 1 },
-    normal: { name: 'Normal', damage: 1, hp: 1, attackers: 2 },
-    hard: { name: 'Hard', damage: 1.45, hp: 1.25, attackers: 3 },
+    easy: { name: 'Easy', damage: 0.5, hp: 0.75, bossDamage: 0.28, bossHp: 0.45, attackers: 1 },
+    normal: { name: 'Normal', damage: 0.8, hp: 0.9, bossDamage: 0.38, bossHp: 0.6, attackers: 2 },
+    hard: { name: 'Hard', damage: 1.4, hp: 1.2, bossDamage: 1.25, bossHp: 1.15, attackers: 3 },
   },
 
   /* ---------------- style rank ----------------

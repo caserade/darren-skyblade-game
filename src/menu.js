@@ -753,7 +753,7 @@ function fillSettings(box) {
     el(
       'span',
       'hint',
-      `Enemies hit ${Math.round(D.damage * 100)}% as hard, have ${Math.round(D.hp * 100)}% health, and up to ${D.attackers} attack at once.`,
+      `Enemies hit ${Math.round(D.damage * 100)}% as hard and have ${Math.round(D.hp * 100)}% health; bosses and big monsters hit ${Math.round((D.bossDamage || D.damage) * 100)}% as hard with ${Math.round((D.bossHp || D.hp) * 100)}% health. Up to ${D.attackers} enemies attack at once.`,
     ),
   );
   const s = section(box, 'Camera and sound');

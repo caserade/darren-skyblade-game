@@ -686,7 +686,8 @@ function levelEnemyAtEdge(e) {
   return I ? Math.hypot(e.x - I.x, e.z - I.z) > I.r - e.r - 1 : false;
 }
 function playerFell() {
-  P.hp -= TUNE.fallDamage;
+  const fall = Math.round(TUNE.fallDamage * DIFF().damage); // falling off follows the difficulty like any hit
+  P.hp -= fall;
   flash('red', 10);
   sfx('hurt');
   const p = LV.lastSafe;
@@ -705,7 +706,7 @@ function playerFell() {
     P.st = 'dead';
     P.f = 0;
     G.endT = 90;
-  } else floatText(P.x, 3, P.z, '-' + TUNE.fallDamage, 'hurt');
+  } else floatText(P.x, 3, P.z, '-' + fall, 'hurt');
 }
 
 /* ---------- checkpoints and saving ---------- */

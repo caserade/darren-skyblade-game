@@ -99,7 +99,7 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 | `models/*.glb` | Rigged, animated exports of the three monsters (glTF 2.0, +Y up, facing +Z, metres) and `cast_animations.json` (clip durations, loops, event times) |
 | `tools/make_dumpling_art.py` | Builds the concept sheet `docs/art/dumpling_concept.png` and the portraits from `tests/dumpling_art.js` renders |
 | `tools/pack_assets.py` | Re-packs a new `darren.glb` or music file into `assets/*.js` |
-| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `story3.js` plays Chapter 3; `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
+| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `story3.js` plays Chapter 3; `balance.js` is the difficulty check (a bot plays every fight); `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
 
 ## How the game runs
 
@@ -161,6 +161,11 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 **Make a fight harder or easier.** Change a zone's `enemies`, e.g. `[['puff', 8], ['gust', 3], ['bolt', 1, 'elite']]`,
 or an enemy's `hp` / `poise` in `DATA.enemies`. Types: `puff`, `gust`, `bolt`, `thorn`, `bark` (Barkling),
 `snow` (Snowcap). Bosses: `boss` (Grumblepeak), `knot` (Old Knotroot). Whole-game difficulty: `DATA.difficulty`.
+  Each level has `damage` / `hp` for ordinary enemies and `bossDamage` / `bossHp` for bosses, the Titan and the
+  Cloud Utopia monsters (a boss's weak spots scale with `bossHp`). Normal is checked with `tests/balance.js`: a
+  plain "average player" bot (walks in, mashes combos, jumps at fliers and shockwaves, backs off and dodges on
+  wind-ups, never uses skills, flight or Dragon Heart) must clear every zone and boss. After a tuning change, run
+  `node tests/balance.js` (or `ch1` / `ch2` / `ch3` / `adv`) and keep every fight `cleared` with few or no deaths.
 
 **Add a combo branch.** Give a move a `heavy: '<move id>'` (or a `next`) and add that move to `DATA.moves`
 with a `pose` from the `POSE` table, a `label` and an `input` text. Add its id to `DATA.moveList` so it shows in

@@ -5,7 +5,7 @@ function fillFieldGuide(box) {
   intro.appendChild(el('p','hint','Visual development concept. Stormlings, Wardlings and the Warden are built from simpler shapes in the game; the young Stormbelly and Chomp Rex use the sculpted Cloud Utopia models.'));
   const entries=[
     ['Updraft rings','Travel','Enter a cyan ring column to rise and refill flight energy. V toggles flight; hold Space to climb. Rings do not bypass locked story bridges.'],
-    ['Stormling','Flying attacker · 100 base HP','Flashes for 0.8 seconds, then fires a fan of three crystal shards. Sidestep the fan and close the distance during its recovery.'],
+    ['Stormling','Flying attacker · 100 base HP','Flashes for 0.8 seconds, then fires a fan of three crystal shards. Sidestep the fan; after firing it sinks low for a moment, the time to strike.'],
     ['Wardling','Guarded charger · 240 base HP','Its front blocks most damage. Circle behind it, use a breath attack, or punish the long recovery after its charge. Its guard breaks below half health.'],
     ['Young Stormbelly','Heavy dragon · 360 base HP','In Gale Gardens, its amber circle warns for 1.1 seconds before a stomp. Jump over the impact or leave the circle, then attack during its long recovery.'],
     ['Young Chomp Rex','Charging dinosaur · 260 base HP','In the Observatory, its amber arrow warns for 0.8 seconds before a short charge and bite. Dodge sideways after it commits, then attack while it catches its breath.'],

@@ -906,6 +906,9 @@ function startAttack(n, wid) {
   P.curW = wid || P.weapon;
   P.armSide = 'R';
   const A = weaponMove(n, P.curW) || ATK[n];
+  // an air attack cancelled into the next one before landing a hit still counts as a whiff
+  // (otherwise mashing in the air keeps hopping Darren upward forever)
+  if (P.st === 'attack' && P.atk && P.atk.air && !P.hitConfirm) P.airWhiff++;
   P.atk = A;
   P.name = n;
   P.last = n;
@@ -927,7 +930,9 @@ function startAttack(n, wid) {
   }
   P.face = dir;
   if (A.air) {
-    P.vy = Math.max(P.vy, P.airWhiff < 3 ? 2.6 : -2);
+    // the little hop that keeps air strings alive, but never higher than 3 m above the target (or the ground)
+    const ceiling = (t ? Math.max(0, t.y) + Math.min(t.h || 2, 3) : 0) + 3;
+    P.vy = Math.max(P.vy, P.airWhiff < 3 && P.y < ceiling ? 2.6 : -2);
   }
   if (n === 'BW') P.cd1 = DATA.skills.blazeWheelCooldown;
   if (n === 'FB') P.cd2 = DATA.skills.flameBreathCooldown;
@@ -942,6 +947,8 @@ function can(k) {
     const A = P.atk,
       end = A.st + A.ac + A.rc;
     if ((k === 'dash' || k === 'jump') && P.hitConfirm && P.f >= A.st && !A.skill) return true;
+    // a whiffed swing can still be dodged or jumped out of once its active frames are over
+    if ((k === 'dash' || k === 'jump') && P.f >= A.st + A.ac && !A.skill && !A.dodgeOnly) return true;
     if (A.dodgeOnly) return k === 'dash' || (k === 'heavy' && A.heavy) ? P.f >= A.cx : P.f >= end - 6;
     return P.f >= A.cx;
   }
@@ -1271,8 +1278,10 @@ function damagePlayer(dmg, fx, fz, heavy) {
   if (heavy) {
     P.st = 'down';
     P.f = 0;
-    P.vx = (dx / d) * 8;
-    P.vz = (dz / d) * 8;
+    // knocked flat, but never thrown off the island: shorten the slide when it would carry Darren over the edge
+    const kb = groundAt(P.x + (dx / d) * 4.5, P.z + (dz / d) * 4.5) ? 8 : groundAt(P.x + (dx / d) * 1.5, P.z + (dz / d) * 1.5) ? 2.5 : 0;
+    P.vx = (dx / d) * kb;
+    P.vz = (dz / d) * kb;
     P.vy = 7.5;
     P.onG = false;
   } else {
@@ -1929,8 +1938,9 @@ const EDEF = {
 // the Titanic Scion (Cloud Utopia): a bigger, tougher Grumblepeak with violet crystals
 EDEF.titan = Object.assign({}, EDEF.boss, {
   name: 'Titanic Grumblepeak',
-  hp: 9000,
+  hp: 6500,
   sc: 1.35,
+  dmgMul: 0.85, // its swings are huge and wide: each one hits a little softer than Grumblepeak's
   build: buildTitan,
   cfg: Object.assign({}, EDEF.boss.cfg, {
     summon: 'gust',
@@ -1955,7 +1965,8 @@ function spawnEnemy(type, x, z, o) {
     dd = DATA.enemies[type] || {},
     EL = DATA.elite,
     elite = !!o.elite && !d.boss,
-    hp0 = Math.round((dd.hp || d.hp) * DIFF().hp * (elite ? EL.hp : 1)),
+    big = !!(d.boss || d.monster), // bosses and the Cloud Utopia monsters have their own difficulty numbers
+    hp0 = Math.round((dd.hp || d.hp) * (big ? DIFF().bossHp || DIFF().hp : DIFF().hp) * (elite ? EL.hp : 1)),
     sc = d.sc * (elite ? EL.size : 1),
     e = {
       type,
@@ -1973,7 +1984,7 @@ function spawnEnemy(type, x, z, o) {
       r: d.r * sc,
       h: d.h * sc,
       elite,
-      dm: DIFF().damage * (elite ? EL.damage : 1),
+      dm: (big ? DIFF().bossDamage || DIFF().damage : DIFF().damage) * (elite ? EL.damage : 1) * (d.dmgMul || 1),
       poise: (dd.poise || 0) + (elite ? EL.poise : 0),
       st: 'spawn',
       t: 0,
@@ -1998,6 +2009,8 @@ function spawnEnemy(type, x, z, o) {
       shown: 0,
     };
   e.poiseV = e.poise;
+  // a boss's weak spots scale with its health, so breaking them takes the same share of the fight on every difficulty
+  if (d.boss && e.m.parts) for (const k in e.m.parts) e.m.parts[k].hp = Math.round(e.m.parts[k].hp * (DIFF().bossHp || DIFF().hp));
   if (elite) {
     const c = buildCrown();
     c.position.y = d.h * (type === 'gust' ? 0.95 : 1.0) + 0.02;
@@ -2082,9 +2095,11 @@ function enemyTakeHit(e, dmg, A, nx, nz) {
   if ((e.type === 'thorn' || e.type === 'wardling') && !e.broken && e.st !== 'rec' && e.st !== 'stun' && e.st !== 'down') {
     const front = Math.abs(angDiff(e.face, Math.atan2(-nx, -nz))) < 1.25;
     if (front && !A.breath) {
-      e.hp = Math.max(1, e.hp - dmg * 0.12);
+      // the shield takes most of the hit; keep hammering it and the guard cracks at half health
+      e.hp = Math.max(1, e.hp - dmg * 0.25);
       e.flash = 3;
-      return 0;
+      if (e.hp >= e.max * 0.5) return 0;
+      dmg = 0; // this hit cracked the guard (already counted above)
     }
   }
   e.hp -= dmg;

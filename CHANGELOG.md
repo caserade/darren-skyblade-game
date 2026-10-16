@@ -1,5 +1,40 @@
 # Changelog
 
+## 1.5.2 — 2026-10-16 — Easier, fair difficulty (everything can be played through)
+
+Tuned with a new playtest bot (`tests/balance.js`): a plain "average player" that walks in, mashes combos, jumps at
+fliers and shockwaves and dodges when an attack starts. It never uses skills, flight or Dragon Heart. On Normal it
+now clears every story zone, every boss and every Cloud Utopia monster. The bosses still bring it low.
+
+| Fight (Normal) | Before | Now |
+| --- | --- | --- |
+| Grumblepeak (Ch 1) | 2 min 42 s, knocked out 3 times | 1 min 33 s, no knockouts (77 HP left) |
+| Old Knotroot (Ch 2) | 1 min 32 s, knocked out once | 58 s, no knockouts |
+| Gale Gardens / Observatory (Ch 3) | could not be cleared | 32 s / 46 s, no knockouts |
+| Tempest Warden (Ch 3) | 2 min 19 s, knocked out 4 times | 1 min 22 s, no knockouts |
+| Sky Drake / Heavyweight / Chomp Rex | knocked out 1-5 times | 41 s / 75 s / 55 s, no knockouts |
+| Titanic Scion | 5 min, knocked out 7 times | 2 min 16 s, knocked out once (the toughest optional fight) |
+
+- **Difficulty numbers:** Normal enemies hit 80% as hard with 90% health. Bosses, the Titan and the big monsters
+  have their own numbers: 38% damage and 60% health on Normal, with weak spots scaled to match. Easy and Hard
+  were adjusted to fit around it. Settings shows both pairs.
+- **Fairer fights:**
+  - A whiffed swing can be dodged or jumped out of once its active frames are over.
+  - A knockdown never throws Darren off the island.
+  - Fall damage follows the difficulty.
+  - Heavyweight: softer stomp (28) and belly slam (18), a slightly longer slam wind-up, and a slower shockwave
+    you can see coming and jump.
+  - Chomp Rex: softer charge (30) and bite (20), with a slightly longer bite wind-up.
+  - Titan: 6,500 health, with slightly softer swings.
+- **Chapter 3 fixes:**
+  - Stormlings hover low enough for a jump attack, only back away when Darren is right under them, and sink
+    after firing so you can punish them. Their shards are softer and they fire less often.
+  - A Wardling's front guard takes 25% of a hit instead of 12%, and front hits can now crack it, so they can
+    always be beaten.
+- **Bug fixes:**
+  - Mashing attack in the air could carry Darren upward forever (he reached 49 m against Chomp Rex).
+  - The Heavyweight's stomp shockwave ignored the difficulty setting.
+
 ## Tools — 2026-10-16 — Meshy AI boss maker
 
 - `tools/meshy_make.cjs` and `Make Titanic Scion.cmd`: make a boss model with the Meshy AI API on your own PC

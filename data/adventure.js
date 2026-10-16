@@ -319,5 +319,5 @@ window.DARREN_DATA.adventure = {
 };
 window.DARREN_DATA.speakers.gear = { name: 'Gearwing', color: '#8fd8ff' };
 window.DARREN_DATA.speakers.titan = { name: 'Titanic Scion', color: '#b49aff' };
-window.DARREN_DATA.enemies.titan = { name: 'Titanic Grumblepeak', hp: 9000 };
+window.DARREN_DATA.enemies.titan = { name: 'Titanic Grumblepeak', hp: 6500 };
 window.DARREN_DATA.enemies.node = { name: 'Resource Crystal', hp: 60, poise: 999 };

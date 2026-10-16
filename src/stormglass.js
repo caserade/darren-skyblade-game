@@ -7,17 +7,22 @@ EDEF.tempest={...EDEF.boss,name:'Tempest Warden',hp:3600,build:buildTempest,cfg:
 function stormlingBrain(e,s,dt,dist,ang,hover,turn,pAlive) {
   e.cool-=s;
   if(e.st==='chase') {
-    turn(4);e.y=damp(e.y,hover+0.5,3,dt);
-    const velocity=dist>9?2.5:dist<6?-2:0;e.x+=Math.sin(ang)*velocity*dt;e.z+=Math.cos(ang)*velocity*dt;
+    // hovers at Gustling height (a jump attack reaches it) and only backs off when Darren is right under it
+    turn(4);e.y=damp(e.y,hover-0.2,3,dt);
+    const velocity=dist>9?2.5:dist<3.2?-1.1:0;e.x+=Math.sin(ang)*velocity*dt;e.z+=Math.cos(ang)*velocity*dt;
     if(e.cool<=0&&pAlive&&dist<16&&token(e)){e.st='wind';e.t=0;e.wind=true;}
   } else if(e.st==='wind') {
     if(e.t<28)turn(4);
     if(e.t>=48){
       const dy=P.y+0.8-e.y,vy=clamp(dy/Math.max(1,dist)*10,-6,6);
-      for(const a of [-0.25,0,0.25]) spawnProj(e.x,e.y+0.4,e.z,Math.sin(e.face+a)*10,vy,Math.cos(e.face+a)*10,{r:0.23,dmg:12*e.dm,mat:'feather'});
+      for(const a of [-0.25,0,0.25]) spawnProj(e.x,e.y+0.4,e.z,Math.sin(e.face+a)*10,vy,Math.cos(e.face+a)*10,{r:0.23,dmg:9*e.dm,mat:'feather'});
       e.st='rec';e.t=0;e.wind=false;sfx('swing',1);
     }
-  } else if(e.st==='rec'&&e.t>=64){e.st='chase';e.t=0;e.cool=110;}
+  } else if(e.st==='rec'){
+    // spent after the fan: it sinks low for a moment, the opening to punish it
+    e.y=damp(e.y,1.1,4,dt);
+    if(e.t>=80){e.st='chase';e.t=0;e.cool=140;}
+  }
 }
 function buildStormglass() {
   disposeStormScenery();

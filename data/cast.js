@@ -71,8 +71,8 @@
       respawn: 240,
       colors: { body: '#2e6694', lid: '#1f4a72', eye: '#ffc23a', horn: '#c99a4a', wing: '#4f86b4', bone: '#1b3c5e', spine: '#1d3260', fang: '#fff3dc' },
       attacks: {
-        stomp: { wind: 1.1, dmg: 38, r: 3.2, ring: 26, rec: 1.9 },
-        slam: { wind: 0.6, dmg: 28, r: 2.6, rec: 1.1 }, // close-range belly slam
+        stomp: { wind: 1.1, dmg: 28, r: 3.2, ring: 20, rec: 1.9 }, // ring: shockwave speed (x0.6 m/s), slow enough to see and jump
+        slam: { wind: 0.7, dmg: 18, r: 2.6, rec: 1.1 }, // close-range belly slam
       },
       weight: {
         start: 0.3,
@@ -97,8 +97,8 @@
       respawn: 240,
       colors: { body: '#6b3560', lid: '#4a2244', eye: '#f2c84a', spine: '#2a1f2a', tooth: '#fff6e0' },
       attacks: {
-        charge: { wind: 0.8, dmg: 36, speed: 15, time: 1.0, rec: 1.2 },
-        bite: { wind: 0.45, dmg: 30, r: 3.4, rec: 0.8 },
+        charge: { wind: 0.8, dmg: 30, speed: 15, time: 1.0, rec: 1.2 },
+        bite: { wind: 0.5, dmg: 20, r: 3.4, rec: 0.9 },
       },
     },
   };

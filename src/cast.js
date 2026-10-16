@@ -1257,7 +1257,7 @@ function castUpdate(e, s) {
       if (e.t > R.stomp.wind) {
         castSet(e, 'stomp', 'stompImpact');
         const rr = R.stomp.r * rMul;
-        ring(e.x, 0.12, e.z, 0.6, R.stomp.ring * 0.6, 1.5, 0xffd08a, castDamage(e, 'stomp') * 0.6);
+        ring(e.x, 0.12, e.z, 0.6, R.stomp.ring * 0.6, 1.5, 0xffd08a, castDamage(e, 'stomp') * 0.6 * (e.dm || 1)); // the shockwave follows the difficulty too
         dust(e.x, e.z, 30);
         sfx('slam');
         G.shake = Math.max(G.shake || 0, 0.8);
