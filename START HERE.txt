@@ -1,6 +1,12 @@
 DARREN: SKYBLADE HUNT - PC EDITION
 
-PLAY
+PLAY (WINDOWS APP)
+The folder "Darren Skyblade App" next to this one holds "Darren Skyblade.exe": double-click it.
+Nothing else to install. It checks GitHub for updates (Claude's channel and the ChatGPT channel)
+when it starts and every hour; see Hangar > Update. Game > Import a ChatGPT zip installs a zip
+from ChatGPT. Windows may warn the first time (unsigned app): More info > Run anyway.
+
+PLAY (BROWSER)
 Double-click "Play Darren.cmd". Your browser opens the game at http://127.0.0.1:4319/
 (it needs Node.js LTS from nodejs.org; it is already on this PC).
 Double-click "Stop Darren.cmd" when you are finished.
