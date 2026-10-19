@@ -1748,3 +1748,5 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,s
 /* ---- Windows app: update notice on the title screen ---- */
 .updnote{margin:6px 0 0;color:#ffe08a;font-weight:700;font-size:14px;text-shadow:0 1px 4px #0008}
 .updnote[hidden]{display:none}
+.savebox{width:100%;min-height:90px;margin:8px 0;padding:8px;font:12px/1.4 monospace;color:#dfe9ec;background:#0f1d27;border:1px solid #467581;border-radius:8px;resize:vertical}
+.savebox[hidden]{display:none}

@@ -23,31 +23,44 @@ function saveDataExport() {
   a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 }
-function saveDataImport(file, note) {
-  const r = new FileReader();
-  r.onload = () => {
-    try {
-      const j = JSON.parse(r.result);
-      const keys = Object.keys((j && j.data) || {}).filter(k => k.startsWith(SAVE_PREFIX));
-      if (!keys.length) throw new Error('no Darren save data in that file');
-      for (const k of keys) localStorage.setItem(k, String(j.data[k]));
-      note('Loaded ' + keys.length + ' saved items. Reloading...');
-      setTimeout(() => location.reload(), 900);
-    } catch (e) {
-      note('Could not load that file: ' + e.message + '.');
-    }
-  };
-  r.readAsText(file);
+function saveDataLoad(text, note) {
+  try {
+    const j = JSON.parse(text);
+    const keys = Object.keys((j && j.data) || {}).filter(k => k.startsWith(SAVE_PREFIX));
+    if (!keys.length) throw new Error('no Darren save data in it');
+    for (const k of keys) localStorage.setItem(k, String(j.data[k]));
+    note('Loaded ' + keys.length + ' saved items. Reloading...');
+    setTimeout(() => location.reload(), 900);
+  } catch (e) {
+    note('Could not load that: ' + e.message + '.');
+  }
 }
 function fillSaveData(box) {
-  const s = section(box, 'Save data', 'Progress, unlocks and settings are saved in this browser (or in the app). Export them to a file to move them to another computer, a browser, or the Windows app.');
+  const s = section(box, 'Save data', 'Progress, unlocks and settings are saved in this browser (or in the app). Export them to move them to another computer, a browser, or the Windows app: as a file, or as text to copy and paste.');
   const row = el('div', 'btns sub'),
-    note = el('p', 'hint', '');
+    note = el('p', 'hint', ''),
+    ta = document.createElement('textarea');
+  ta.className = 'savebox';
+  ta.hidden = true;
+  ta.spellcheck = false;
+  ta.setAttribute('aria-label', 'Save data text');
   const ex = el('button', 'go opt', 'Export save file');
   ex.type = 'button';
   ex.addEventListener('click', () => {
     saveDataExport();
-    note.textContent = 'Saved a .json file in your downloads.';
+    ta.value = JSON.stringify(saveDataJSON());
+    ta.hidden = false;
+    note.textContent = 'Saved a .json file in your downloads. If no file appeared (some pages cannot save files), copy the text below instead.';
+  });
+  const cp = el('button', 'go opt', 'Copy save text');
+  cp.type = 'button';
+  cp.addEventListener('click', () => {
+    ta.value = JSON.stringify(saveDataJSON());
+    ta.hidden = false;
+    ta.select();
+    const done = () => (note.textContent = 'Copied. Paste it into Import on the other side.');
+    if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(done, () => (note.textContent = 'Select the text below and copy it.'));
+    else note.textContent = 'Select the text below and copy it.';
   });
   const im = el('button', 'go opt', 'Import save file...');
   im.type = 'button';
@@ -55,10 +68,27 @@ function fillSaveData(box) {
   inp.type = 'file';
   inp.accept = '.json,application/json';
   inp.hidden = true;
-  inp.addEventListener('change', () => inp.files[0] && saveDataImport(inp.files[0], t => (note.textContent = t)));
+  inp.addEventListener('change', () => {
+    if (!inp.files[0]) return;
+    const r = new FileReader();
+    r.onload = () => saveDataLoad(r.result, t => (note.textContent = t));
+    r.readAsText(inp.files[0]);
+  });
   im.addEventListener('click', () => inp.click());
-  row.append(ex, im, inp);
-  s.append(row, note);
+  const pa = el('button', 'go opt', 'Import pasted text');
+  pa.type = 'button';
+  pa.addEventListener('click', () => {
+    if (ta.hidden || !ta.value.trim()) {
+      ta.hidden = false;
+      ta.value = '';
+      ta.placeholder = 'Paste the save text here, then press Import pasted text again.';
+      ta.focus();
+      return;
+    }
+    saveDataLoad(ta.value, t => (note.textContent = t));
+  });
+  row.append(ex, cp, im, pa, inp);
+  s.append(row, ta, note);
 }
 
 /* ---------- the Update tab (desktop app only) ---------- */
