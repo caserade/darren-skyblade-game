@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.6.0 — 2026-10-19 — Windows app with Claude and ChatGPT update channels
+
+- **`Darren Skyblade.exe`** (`desktop-app/`, Electron): the game in its own window, nothing else to install.
+  Download `Darren-Skyblade-Windows.zip` from the `app-v1.0.0` release, extract, run. F11 full screen.
+- **Automatic updates from two channels.** The app checks GitHub when it starts and every hour: Claude's
+  channel (the `game-updates` branch, rebuilt from `main` by a workflow on every push) and ChatGPT's channel
+  (`chatgpt-updates`, rebuilt from the `chatgpt` branch). The title screen says when either has a game you
+  do not have; Hangar > Update shows both channels, and Get this update downloads only the changed files,
+  checks every byte and restarts the game with saves kept. A failed download never replaces the game.
+- **Import a ChatGPT zip** (Game menu or the Update tab): installs a zip ChatGPT hands back, finding the game
+  inside it; keys and `.git` folders in it are skipped.
+- **Save data export / import** in Hangar > Settings (and the Update tab): move progress between a browser,
+  the old PC launcher and the app.
+- Workflow `.github/workflows/publish-game-update.yml`; tests `tests/desktop_update.js` (updater with a
+  stand-in GitHub, 31 checks) and `tests/desktop_app.js` (the real app under a virtual screen).
+
 ## 1.5.2 — 2026-10-16 — Easier, fair difficulty (everything can be played through)
 
 Tuned with a new playtest bot (`tests/balance.js`): a plain "average player" that walks in, mashes combos, jumps at

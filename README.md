@@ -5,8 +5,12 @@ a Neopets look, and a Skyforge update inspired by mech hunting games like Daemon
 
 ## Play
 
-* **On a PC:** double-click `Play Darren.cmd` (needs [Node.js LTS](https://nodejs.org)). It opens the game at
-  `http://127.0.0.1:4319/`, which keeps your save in one place. `Stop Darren.cmd` stops it.
+* **Windows app:** download `Darren-Skyblade-Windows.zip` from the newest `app-v…` entry on
+  [Releases](https://github.com/caserade/darren-skyblade-game/releases), extract it to a new folder and run
+  `Darren Skyblade.exe` (nothing else to install). It updates itself from GitHub: Claude's channel and the
+  ChatGPT channel, plus a zip import. See `desktop-app/README.md`.
+* **On a PC without the app:** double-click `Play Darren.cmd` (needs [Node.js LTS](https://nodejs.org)). It
+  opens the game at `http://127.0.0.1:4319/`. `Stop Darren.cmd` stops it.
 * **One file:** open `dist/DarrenSkyblade.html` in Chrome or Edge (everything inside, works offline).
 * **GitHub Pages:** Settings → Pages → deploy from the `main` branch, root folder. The game is `index.html`.
 
@@ -30,8 +34,9 @@ three.js and the fonts are bundled, so no internet connection is needed.
 * **Big monsters in Cloud Utopia:** the Stormbelly Sky Drake (swoops from the sky), the Stormbelly Heavyweight
   (stomp shockwaves) and Chomp Rex (charge and bite). The Stormbellies eat snack bushes and grow through 7
   weight stages. New parts, armor, weapons and contracts come from them.
-* **Hangar menu:** Loadout, Forge, Parts, Contracts, Dumpling, Map, Moves, Field guide and Settings (difficulty,
-  camera, camera shake, volume, Graphics: Automatic / High detail / Performance). Menus work with a controller.
+* **Hangar menu:** Loadout, Forge, Parts, Contracts, Dumpling, Map, Moves, Field guide, Settings (difficulty,
+  camera, camera shake, volume, Graphics: Automatic / High detail / Performance, Save data export / import) and,
+  in the Windows app, Update. Menus work with a controller.
 
 ## Making boss models with Meshy AI (optional)
 

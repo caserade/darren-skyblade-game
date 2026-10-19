@@ -6,3 +6,5 @@ dist/artifact.html
 __pycache__/
 meshy_key.txt
 models/meshy/
+desktop-app/node_modules/
+desktop-app/out/

@@ -1,0 +1,17 @@
+{
+  "name": "darren-skyblade-desktop",
+  "productName": "Darren Skyblade Hunt",
+  "version": "1.0.0",
+  "description": "Windows desktop app for Darren: Skyblade Hunt, with game updates from GitHub (Claude and ChatGPT channels)",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "node build-windows.cjs",
+    "test": "node ../tests/desktop_update.js"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "electron": "44.9.0"
+  }
+}

@@ -77,6 +77,21 @@ const TABS = [
   ['settings', 'Settings'],
   ['guide', 'Field guide'],
 ];
+// what fills each tab; src/desktop.js adds 'update' (in the Windows app) and the Save data section
+const PANEL_FILL = {
+  loadout: box => fillLoadout(box),
+  forge: box => fillForge(box),
+  parts: box => fillParts(box),
+  contracts: box => fillContracts(box),
+  dumpling: box => fillDumpling(box),
+  map: box => fillMap(box),
+  moves: box => fillMoves(box),
+  settings: box => {
+    fillSettings(box);
+    if (PANEL_FILL.settingsExtra) PANEL_FILL.settingsExtra(box);
+  },
+  guide: box => fillFieldGuide(box),
+};
 let panelTab = 'loadout',
   mapTimer = 0;
 let panelReturnFocus = null;
@@ -126,17 +141,7 @@ function openPanel(tab) {
   const box = $('pBody');
   box.innerHTML = '';
   box.scrollTop = 0;
-  ({
-    loadout: fillLoadout,
-    forge: fillForge,
-    parts: fillParts,
-    contracts: fillContracts,
-    dumpling: fillDumpling,
-    map: fillMap,
-    moves: fillMoves,
-    settings: fillSettings,
-    guide: fillFieldGuide,
-  })[panelTab](box);
+  PANEL_FILL[panelTab](box);
   const selected = nav.querySelector('[aria-selected="true"]');
   if (selected) selected.focus();
 }

@@ -1,4 +1,4 @@
-DARREN: SKYBLADE HUNT 1.5 - PC EDITION
+DARREN: SKYBLADE HUNT - PC EDITION
 
 PLAY
 Double-click "Play Darren.cmd". Your browser opens the game at http://127.0.0.1:4319/

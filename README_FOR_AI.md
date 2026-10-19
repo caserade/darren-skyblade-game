@@ -18,6 +18,10 @@ A step-by-step guide for making new content with ChatGPT is in `docs/CHATGPT_GUI
 `http://127.0.0.1:4319/` and opens the browser; `Stop Darren.cmd` stops it). Or open `dist/DarrenSkyblade.html`.
 three.js, its add-ons and the fonts are bundled (`vendor/`, `assets/fonts/`), so no internet is needed.
 **To share one file:** run `python tools/build_single.py`; the result is `dist/DarrenSkyblade.html`.
+**Windows app:** `desktop-app/` is an Electron shell that bundles the game and updates it from GitHub (see
+`desktop-app/README.md`). Pushing to `main` publishes Claude's channel (`game-updates` branch) and, when
+`desktop-app/package.json` has a new version, a new app release; pushing to `chatgpt` publishes the ChatGPT
+channel (`chatgpt-updates`). **Never commit keys**: `package-security.cjs` refuses to package or publish them.
 **This is the main version.** On 15 October a "Merged PC" copy combined this game with a hosted Sites version;
 its new content (Chapter 3, the field guide, input and save hardening, memory release, bundled libraries, the
 launcher) is folded in here (1.5.0). Where the two disagreed, this version's look and ids were kept.
@@ -36,7 +40,7 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 4. **Keep the load order** in `index.html`: `vendor/*`, `data/game_data.js`, `data/chapter2.js`, `data/forge.js`,
    `data/adventure.js`, `data/stormglass.js`, `data/dumpling.js`, `data/cast.js`, assets, then `core`, `look`,
    `models`, `props`, `skin`, `weapons`, `forge`, `arms`, `combat`, `adventure`, `stormglass-art`, `stormglass-world`,
-   `stormglass`, `polish`, `weight`, `dumpling`, `cast`, `stormglass-cast`, `level`, `menu`, `fieldguide`.
+   `stormglass`, `polish`, `weight`, `dumpling`, `cast`, `stormglass-cast`, `level`, `menu`, `fieldguide`, `desktop`.
    Later files may use anything defined in earlier ones.
    All files share one global scope, so two files must never declare the same `const` / `function` name.
 5. **All walkable ground is at height 0.** Islands are flat discs; bridges and stones connect them. A gap between
@@ -88,6 +92,9 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 | `docs/CHATGPT_GUIDE.md` | Copy-paste prompts and a data cheat sheet for adding armor, weapons, contracts, islands |
 | `blender/darren_rig3.py` | Blender script that repairs, rigs, weights and animates Darren and exports `.blend/.fbx/.glb` |
 | `tools/meshy_make.cjs`, `tools/meshy/*.txt`, `Make Titanic Scion.cmd` | Generates boss models with the Meshy AI API on Michael's PC (key in `meshy_key.txt`, never committed or served). Output: `models/meshy/<name>/` (git-ignored raw files) |
+| `desktop-app/` | The Windows app: `main.cjs` (window, `skyblade://game/`, menus), `updater.cjs` (two channels, zip import), `preload.cjs` (`window.skybladeDesktop`), `build-windows.cjs` |
+| `tools/game-files.cjs`, `tools/publish-game-update.cjs` | What counts as the playable game (index.html, src, data, assets, vendor) and the update publisher the workflow runs |
+| `src/desktop.js` | The Hangar's Update tab and title notice (app only) and Save data export / import (everywhere) |
 | `tools/build_single.py` | Inlines everything into one HTML file (`dist/`): scripts, CSS, fonts and images as data URIs |
 | `pc-server.cjs`, `Play Darren.cmd`, `Stop Darren.cmd` | The PC launcher: a tiny Node.js server for this folder on 127.0.0.1:4319 (game folders only) |
 | `vendor/` | three.js r128 and its add-ons (unchanged official files) |
@@ -99,7 +106,7 @@ launcher) is folded in here (1.5.0). Where the two disagreed, this version's loo
 | `models/*.glb` | Rigged, animated exports of the three monsters (glTF 2.0, +Y up, facing +Z, metres) and `cast_animations.json` (clip durations, loops, event times) |
 | `tools/make_dumpling_art.py` | Builds the concept sheet `docs/art/dumpling_concept.png` and the portraits from `tests/dumpling_art.js` renders |
 | `tools/pack_assets.py` | Re-packs a new `darren.glb` or music file into `assets/*.js` |
-| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `story3.js` plays Chapter 3; `balance.js` is the difficulty check (a bot plays every fight); `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
+| `tests/*.js` | Automated tests (need Node and Playwright; optional): `story.js` and `story2.js` play each chapter, `flow.js`, `combat2.js`, `mobile2.js` check systems; `story3.js` plays Chapter 3; `balance.js` is the difficulty check (a bot plays every fight); `desktop_update.js` and `desktop_app.js` test the Windows app's updater and the app itself; `dumpling.js` and `cast.js` test Dumpling and the big monsters; `cast_view.js` / `dumpling_art.js` render the art; `cast_export.js` writes and re-checks `models/*.glb`. Serve the repo with `python3 -m http.server 8768` and run `python tools/build_single.py --test` first |
 
 ## How the game runs
 

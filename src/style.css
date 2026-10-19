@@ -1744,3 +1744,7 @@ body.touch #dhKey {
 .ptabs{flex-wrap:wrap}.btns.sub{flex-wrap:wrap}
 button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a5e7ed;outline-offset:4px}
 @media(max-width:600px){.guide-grid{grid-template-columns:1fr}.guide-card{padding:13px}}
+
+/* ---- Windows app: update notice on the title screen ---- */
+.updnote{margin:6px 0 0;color:#ffe08a;font-weight:700;font-size:14px;text-shadow:0 1px 4px #0008}
+.updnote[hidden]{display:none}
